@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go build:*)",
+      "WebFetch(domain:api.doublehq.com)",
+      "Bash(curl -s \"https://api.doublehq.com/api-docs/swagger-ui-init.js\")",
+      "Bash(python3:*)",
+      "WebSearch",
+      "WebFetch(domain:help.doublehq.com)",
+      "WebFetch(domain:zapier.com)",
+      "WebFetch(domain:api.keeper.app)"
+    ]
+  }
+}
