@@ -8,7 +8,9 @@
       "WebSearch",
       "WebFetch(domain:help.doublehq.com)",
       "WebFetch(domain:zapier.com)",
-      "WebFetch(domain:api.keeper.app)"
+      "WebFetch(domain:api.keeper.app)",
+      "Bash(curl -s -X POST https://pnlflux.onrender.com/webhooks/financialsflux -H \"Content-Type: application/json\" -d '{\"\"id\"\":1,\"\"name\"\":\"\"Pre Manager Financial Analysis\"\",\"\"status\"\":\"\"inProgress\"\",\"\"clientId\"\":123}')",
+      "Bash(curl -s -X POST https://pnlflux.onrender.com/webhooks/financialsflux -H \"Content-Type: application/json\" -d '{\"\"id\"\":1,\"\"name\"\":\"\"Pre Manager Financial Analysis\"\",\"\"status\"\":\"\"inProgress\"\",\"\"clientId\"\":290239}')"
     ]
   }
 }
