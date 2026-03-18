@@ -5,28 +5,28 @@ import (
 	"io"
 	"log/slog"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/normzaura/pnlflux/util"
 )
 
-// zapierTaskPayload matches the Double HQ Task object that Zapier forwards
-// on a "Task Status Update" trigger. Field names and types are taken directly
-// from the Double HQ OpenAPI schema.
-// NOTE: field names are unverified against a live Zapier sample — confirm once
-// a real trigger has been tested via RequestBin or Webhook.site.
+// zapierTaskPayload matches the exact JSON Zapier sends on a
+// Double HQ "Task Status Update" trigger. All numeric IDs arrive as strings.
 type zapierTaskPayload struct {
-	ID          int     `json:"id"`
-	Name        string  `json:"name"`
-	Description *string `json:"description"`
-	Status      string  `json:"status"`   // notStarted | inProgress | done | customerBlocked
-	Priority    *string `json:"priority"` // low | medium | high
-	DueDate     *string `json:"dueDate"`
-	AssigneeID  *int    `json:"assigneeId"`
-	ClientID    int     `json:"clientId"`
-	SectionID   *int    `json:"sectionId"`
-	CreatedAt   *string `json:"createdAt"`
-	UpdatedAt   *string `json:"updatedAt"`
+	TaskID         string `json:"taskId"`
+	Name           string `json:"name"`
+	ClientID       string `json:"clientId"`
+	ClientName     string `json:"clientName"`
+	AssigneeID     string `json:"assigneeId"`
+	AssigneeName   string `json:"assigneeName"`
+	NewStatus      string `json:"newStatus"`
+	OldStatus      string `json:"oldStatus"`
+	Section        string `json:"section"`
+	DueDate        string `json:"dueDate"`
+	IsHighPriority string `json:"isHighPriority"`
+	Type           string `json:"type"`
+	UpdatedTime    string `json:"updatedTime"`
 }
 
 // WebhookHandler handles inbound webhook events from Double HQ.
@@ -64,14 +64,21 @@ func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
 		return
 	}
 
+	clientID, err := strconv.Atoi(task.ClientID)
+	if err != nil {
+		h.logger.Error("invalid clientId in payload", "client_id", task.ClientID)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid clientId"})
+		return
+	}
+
 	h.logger.Info("financials flux webhook received",
-		"task_id", task.ID,
+		"task_id", task.TaskID,
 		"name", task.Name,
-		"status", task.Status,
-		"client_id", task.ClientID,
+		"status", task.NewStatus,
+		"client_id", clientID,
 	)
 
-	files, err := util.FetchClientFiles(c.Request.Context(), h.httpClient, h.doubleBase, h.tokens, task.ClientID)
+	files, err := util.FetchClientFiles(c.Request.Context(), h.httpClient, h.doubleBase, h.tokens, clientID)
 	if err != nil {
 		h.logger.Error("failed to fetch client files", "client_id", task.ClientID, "err", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to fetch client files"})
