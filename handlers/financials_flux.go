@@ -86,8 +86,8 @@ func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
 	}
 
 	h.logger.Info("fetched client files",
-		"client_id", task.ClientID,
-		"folder_count", len(files.Folders),
+		"client_id", clientID,
+		"root_children", len(files.Root.Children),
 	)
 
 	// TODO: pass files to analysis service
