@@ -2,10 +2,13 @@ package handler
 
 import (
 	"bytes"
+	"context"
 	"io"
 	"log/slog"
 	"net/http"
 	"strconv"
+	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/normzaura/pnlflux/util"
@@ -35,15 +38,17 @@ type WebhookHandler struct {
 	httpClient *http.Client
 	doubleBase string
 	tokens     *util.TokenProvider
+	categories []util.Category
 }
 
 // NewWebhookHandler constructs a WebhookHandler with the given logger and Double HQ credentials.
-func NewWebhookHandler(logger *slog.Logger, httpClient *http.Client, doubleBase string, tokens *util.TokenProvider) *WebhookHandler {
+func NewWebhookHandler(logger *slog.Logger, httpClient *http.Client, doubleBase string, tokens *util.TokenProvider, categories []util.Category) *WebhookHandler {
 	return &WebhookHandler{
 		logger:     logger,
 		httpClient: httpClient,
 		doubleBase: doubleBase,
 		tokens:     tokens,
+		categories: categories,
 	}
 }
 
@@ -71,26 +76,55 @@ func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
 		return
 	}
 
+	taskID, err := strconv.Atoi(task.TaskID)
+	if err != nil {
+		h.logger.Error("invalid taskId in payload", "task_id", task.TaskID)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid taskId"})
+		return
+	}
+
 	h.logger.Info("financials flux webhook received",
-		"task_id", task.TaskID,
+		"task_id", taskID,
 		"name", task.Name,
 		"status", task.NewStatus,
 		"client_id", clientID,
 	)
 
-	files, err := util.FetchClientFiles(c.Request.Context(), h.httpClient, h.doubleBase, h.tokens, clientID)
+	c.JSON(http.StatusOK, gin.H{"received": true})
+
+	go h.processFinancialsFlux(clientID, taskID, task.Name)
+}
+
+func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name string) {
+	ctx := context.Background()
+
+	if !strings.EqualFold(name, "automated review") {
+		h.logger.Info("ignoring task, name is not 'automated review'", "name", name)
+		return
+	}
+
+	time.Sleep(20 * time.Second)
+
+	files, err := util.FetchClientFiles(ctx, h.httpClient, h.doubleBase, h.tokens, clientID, taskID)
 	if err != nil {
-		h.logger.Error("failed to fetch client files", "client_id", task.ClientID, "err", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to fetch client files"})
+		h.logger.Error("failed to fetch client files", "client_id", clientID, "task_id", taskID, "err", err)
 		return
 	}
 
 	h.logger.Info("fetched client files",
 		"client_id", clientID,
+		"task_id", taskID,
+		"task_attachment_count", len(files.TaskAttachments),
 		"root_children", len(files.Root.Children),
 	)
 
-	// TODO: pass files to analysis service
+	results, err := util.DownloadAndProcess(ctx, h.httpClient, files.TaskAttachments, h.categories)
+	if err != nil {
+		h.logger.Error("failed to download and process financials", "client_id", clientID, "task_id", taskID, "err", err)
+		return
+	}
 
-	c.JSON(http.StatusOK, gin.H{"received": true})
+	for fileName := range results {
+		h.logger.Info("processed financial file", "client_id", clientID, "task_id", taskID, "file", fileName)
+	}
 }

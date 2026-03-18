@@ -29,11 +29,20 @@ func main() {
 		log.Fatal("DOUBLE_CLIENT_SECRET is required")
 	}
 
+	categoriesPath := os.Getenv("CATEGORIES_CSV_PATH")
+	if categoriesPath == "" {
+		categoriesPath = "categories_index.csv"
+	}
+	categories, err := util.LoadCategories(categoriesPath)
+	if err != nil {
+		log.Fatalf("failed to load categories: %v", err)
+	}
+
 	httpClient := &http.Client{Timeout: 10 * time.Second}
 
 	tokens := util.NewTokenProvider(httpClient, doubleBase+"/oauth/token", clientID, clientSecret)
 
-	webhookHandler := handler.NewWebhookHandler(logger, httpClient, doubleBase, tokens)
+	webhookHandler := handler.NewWebhookHandler(logger, httpClient, doubleBase, tokens, categories)
 
 	r := gin.Default()
 
