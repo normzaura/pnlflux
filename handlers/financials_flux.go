@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"bytes"
+	"io"
 	"log/slog"
 	"net/http"
 
@@ -51,6 +53,10 @@ func NewWebhookHandler(logger *slog.Logger, httpClient *http.Client, doubleBase 
 //
 // Route: POST /webhooks/financialsflux
 func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
+	rawBody, _ := io.ReadAll(c.Request.Body)
+	c.Request.Body = io.NopCloser(bytes.NewReader(rawBody))
+	h.logger.Info("raw zapier payload", "body", string(rawBody))
+
 	var task zapierTaskPayload
 
 	if err := c.ShouldBindJSON(&task); err != nil {
@@ -74,7 +80,6 @@ func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
 
 	h.logger.Info("fetched client files",
 		"client_id", task.ClientID,
-		"attachment_count", len(files.Attachments),
 		"folder_count", len(files.Folders),
 	)
 
