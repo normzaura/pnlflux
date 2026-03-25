@@ -1,6 +1,7 @@
 package util
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -23,31 +24,13 @@ type Attachment struct {
 	} `json:"metadata"`
 }
 
-// FileNode represents a file or folder in Double HQ's file tree.
-// The root node returned by /files contains Children which may be files or subfolders.
-type FileNode struct {
-	ID                      int        `json:"id"`
-	Name                    string     `json:"name"`
-	Type                    string     `json:"type"` // "folder" or "file"
-	CreatedAt               *string    `json:"createdAt"`
-	S3Key                   *string    `json:"s3Key"`
-	IsVisibleInClientPortal bool       `json:"isVisibleInClientPortal"`
-	ClientDescription       *string    `json:"clientDescription"`
-	DeletedAt               *string    `json:"deletedAt"`
-	ParentID                *int       `json:"parentId"`
-	CreatorID               *int       `json:"creatorId"`
-	ClientID                int        `json:"clientId"`
-	Children                []FileNode `json:"children"`
-}
 
-// ClientFiles holds attachments filtered to the triggering task, and the full file tree.
+// ClientFiles holds attachments filtered to the triggering task.
 type ClientFiles struct {
 	TaskAttachments []Attachment
-	Root            *FileNode
 }
 
-// FetchClientFiles fetches all attachments for the client filtered to the given taskID,
-// and the full file tree via GET /api/clients/{clientId}/files.
+// FetchClientFiles fetches all attachments for the client filtered to the given taskID.
 func FetchClientFiles(ctx context.Context, httpClient *http.Client, baseURL string, tokens *TokenProvider, clientID, taskID int) (*ClientFiles, error) {
 	token, err := tokens.Token(ctx)
 	if err != nil {
@@ -59,15 +42,7 @@ func FetchClientFiles(ctx context.Context, httpClient *http.Client, baseURL stri
 		return nil, fmt.Errorf("fetch attachments: %w", err)
 	}
 
-	root, err := fetchFiles(ctx, httpClient, baseURL, token, clientID)
-	if err != nil {
-		return nil, fmt.Errorf("fetch files: %w", err)
-	}
-
-	return &ClientFiles{
-		TaskAttachments: attachments,
-		Root:            root,
-	}, nil
+	return &ClientFiles{TaskAttachments: attachments}, nil
 }
 
 func fetchAttachments(ctx context.Context, httpClient *http.Client, baseURL, bearerToken string, clientID, taskID int) ([]Attachment, error) {
@@ -105,29 +80,34 @@ func fetchAttachments(ctx context.Context, httpClient *http.Client, baseURL, bea
 	return filtered, nil
 }
 
-func fetchFiles(ctx context.Context, httpClient *http.Client, baseURL, bearerToken string, clientID int) (*FileNode, error) {
-	url := fmt.Sprintf("%s/api/clients/%d/files", baseURL, clientID)
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+// PatchTaskSubText appends text to a task's subText field via PATCH /api/tasks/{taskId}.
+func PatchTaskSubText(ctx context.Context, httpClient *http.Client, baseURL string, tokens *TokenProvider, taskID int, subText string) error {
+	token, err := tokens.Token(ctx)
 	if err != nil {
-		return nil, err
+		return fmt.Errorf("get token: %w", err)
 	}
-	req.Header.Set("Authorization", "Bearer "+bearerToken)
-	req.Header.Set("Accept", "application/json")
+
+	body, err := json.Marshal(map[string]string{"subText": subText})
+	if err != nil {
+		return fmt.Errorf("marshal patch body: %w", err)
+	}
+
+	url := fmt.Sprintf("%s/api/tasks/%d", baseURL, taskID)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, url, bytes.NewReader(body))
+	if err != nil {
+		return fmt.Errorf("build patch request: %w", err)
+	}
+	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Set("Content-Type", "application/json")
 
 	resp, err := httpClient.Do(req)
 	if err != nil {
-		return nil, err
+		return fmt.Errorf("patch task: %w", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("unexpected status %d", resp.StatusCode)
+		return fmt.Errorf("patch task returned %d", resp.StatusCode)
 	}
-
-	var result FileNode
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, err
-	}
-	return &result, nil
+	return nil
 }

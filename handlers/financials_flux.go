@@ -99,6 +99,12 @@ func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
 }
 
 func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name, clientName string) {
+	defer func() {
+		if r := recover(); r != nil {
+			h.logger.Error("panic in processFinancialsFlux", "recover", r, "task_id", taskID)
+		}
+	}()
+
 	ctx := context.Background()
 
 	if !strings.EqualFold(name, "automated review") {
@@ -114,11 +120,15 @@ func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name, clien
 		return
 	}
 
+	if len(files.TaskAttachments) == 0 {
+		h.logger.Info("task has no attached files", "task_name", name, "task_id", taskID)
+		return
+	}
+
 	h.logger.Info("fetched client files",
 		"client_id", clientID,
 		"task_id", taskID,
 		"task_attachment_count", len(files.TaskAttachments),
-		"root_children", len(files.Root.Children),
 	)
 
 	results, err := util.DownloadAndProcess(ctx, h.httpClient, files.TaskAttachments, h.categories)
@@ -129,11 +139,17 @@ func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name, clien
 
 	for fileName, data := range results {
 		key := fmt.Sprintf("processed/%s/%s", clientName, fileName)
-		url, err := h.s3.PushToS3(ctx, key, data)
+		objectURL, err := h.s3.PushToS3(ctx, key, data)
 		if err != nil {
 			h.logger.Error("failed to upload to s3", "client_id", clientID, "file", fileName, "err", err)
 			continue
 		}
-		h.logger.Info("uploaded processed file to s3", "client_id", clientID, "task_id", taskID, "url", url)
+		h.logger.Info("uploaded processed file to s3", "client_id", clientID, "task_id", taskID, "url", objectURL)
+
+		if err := util.PatchTaskSubText(ctx, h.httpClient, h.doubleBase, h.tokens, taskID, objectURL); err != nil {
+			h.logger.Error("failed to patch task subtext", "task_id", taskID, "err", err)
+		} else {
+			h.logger.Info("patched task subtext with s3 url", "task_id", taskID)
+		}
 	}
 }

@@ -1,0 +1,224 @@
+1001 Columbia Checking 9893
+1002 Wells Checking 0971 (deleted)
+1003 Columbia Saving 9893
+1100 Accounts Receivable
+1210 Inventory
+1220 WIP Materials
+1230 WIP Labor
+1240 Employee Loans
+1250 Prepaid Expenses
+1260 Finished Goods Inventory
+1300 Fixed Assets
+1310 Automobiles
+1320 Computers & Software
+1330 Equipment
+1340 Furniture and Fixtures
+1350 Leasehold Improvements
+1391 Accum. Depreciation - A...
+1392 Accum Depreciation - Computers & Sof...
+1393 Accum. Depreciation - Equipment
+1394 Accum. Depreciation - F&F
+1395 Accum. Depreciation - Leasehold Impr...
+1410 Organization Costs
+1460 Security Deposit
+1490 Accum Amortiz - Organiz Costs
+1500 Right-Of-Use-Assets
+1510 Audi A6 - 2023
+1590 Accum. Amortization - R...
+2000 Accounts Payable
+2100 Credit Cards
+2105 Barclays CC 2941 - SM
+2110 Bonvoy Credit Card ...
+2120 Pacific Premier CC 0690 - SM
+2130 Pacific Premier CC 2080 - YM
+2150 Pacific Premier CC ...
+2160 Pacific Premier CC 8701 - SB
+2200 401k Liability
+2210 Accrued Payroll
+2215 Accrued PTO
+2220 Accrued Expenses
+2225 Accrued Profit Sharing
+2230 Payroll Clearing
+2240 Garnishment Payable
+2250 HSA Contribution Paya...
+2260 Sales Tax Payable
+2270 Wells Fargo LOC 8226
+2280 Zeiss Contura 2024
+2290 Methods MV-1000L 2024
+2300 Short-Term Liabilities
+2301 Chip Conveyor - 2021
+2302 DMG #1 - 2016
+2303 DMG #2 - 2019
+2304 DMG #3 - 2020
+2305 DMG Robot - 2021
+2306 RoboDrill - 2022
+2307 Tesla X - 2021
+2308 Zeiss CMM - 2021
+2309 Zeiss Duramax - 2022
+2310 Audi A6 - 2023
+2311 DMG #4 - 2024
+2312 RoboDrill CNC - 2024
+2350 Loan Payable - SBA ST
+2351 Loan from Shareholder
+2400 Long-Term Liabilities
+2402 DMG #1 - 2016
+2403 DMG #2 - 2019
+2404 DMG #3 - 2020
+2405 DMG Robot - 2021
+2406 RoboDrill - 2022
+2407 Tesla X -2021
+2408 Zeiss CMM - 2021
+2409 Zeiss Duramax - 2022
+2410 Audi A6 - 2023
+2411 DMG #4 - 2024
+2412 RoboDrill CNC - 2024
+2450 Loan Payable - SBA LT
+3100 Shareholder's Distributio...
+3200 Shareholder's Distributio...
+3900 Retained Earnings
+4001 Marketing Income- SEM
+4002 Marketing Income- SEO
+4003 Marketing Income- Email
+4004 Media Income - Visual
+4005 Management Income - Campaign
+4006 Services Income - Display
+4007 Services Income - Design
+4008 Services Income - Web Devel...
+4009 Social Media Income
+4009.1 Social Media Income - A...
+4009.2 Social Media Income - Marketing
+4020 Credit Card Service Fee Inc...
+4030 Late Fee Income
+4090 Customer Discounts & Refunds
+5001 Marketing COGS - SEM
+5002 Marketing COGS - SEO
+5003 Marketing COGS - Email
+5004 Media COGS - Visual
+5006 Services COGS - Display
+5008 Services COGS - Web Develop...
+5009 Social Media COGS
+5009.1 Social Media COGS - Advertising
+5009.2 Social Media COGS - Marketing
+5020 Contract Labor COGS - Marke...
+5030 Contract Labor COGS - Sales
+5040 Software COGS - Apps & Other
+5100 Direct Labor - COGS
+5101 Direct Labor PR - Wages
+5102 Direct Labor PR - Taxes
+5103 Direct Labor PR - Commiss...
+5104 Direct Labor PR - Health ...
+5105 Direct Labor PR - Wellnes...
+6000 Indirect Labor - Officers
+6001 Officer PR - Wages
+6002 Officer PR - Taxes
+6005 Officer PR - Wellness Benefit
+6006 Officer Insurances (Health/Vision/Dent...
+6100 Indirect Labor - Employees
+6101 Employee PR - Wages
+6101.2 Wages - Social Media Ma...
+6101.3 Wages - Social Media Ad...
+6101.4 Wages - SEM
+6101.5 Wages - Sales
+6101.6 Wages - Video
+6102 Employee PR - Taxes
+6103 Employee PR - Commission
+6104 Employee PR - Health Bene...
+6105 Employee PR - Wellness Benefit
+6110 Payroll Fees
+6125 Advertising & Marketing
+6150 Office & Other Admin Expenses
+6151 Dues & Subscriptions
+6152 Office Expenses
+6153 Office Furniture & Equipm...
+6154 Electric & Gas
+6155 Phone & Internet Expenses
+6156 Shipping & Postage
+6157 Repairs & Maintenance
+6158 Software & apps
+6200 Rent
+6225 Charitable Contributions
+6250 Continuing Education
+6300 Bank & Other Financing Fees
+6301 Bank & CC Fees
+6302 QuickBooks Payments Fees
+6350 Legal & Professional Fees
+6351 Accounting Services
+6352 Legal Services
+6353 Tax Services
+6400 Insurance Expenses
+6401 Liability insurance
+6403 Worker's Comp Insurance
+6450 Vehicle Expenses
+6451 Fuel
+6452 Parking & Tolls
+6454 Vehicle Repairs & Mainten...
+6500 Travel Expense
+6501 Meals (50%)
+6502 Airfare
+6503 Hotels & Accomodation
+6504 Transportation
+6550 License & Permits
+6999 Bad Debt
+7000 Interest Earned
+7001 Cash Bank Rewards
+7002 Late Fee - Other
+8000 Interest Expenses
+8999 Cash Over/Short
+1000 Cash
+1001 Central Bank Checking (...
+1002 Central Bank Money Market (0972)
+1003 Central Bank Money Mark...
+1004 Wells Fargo Checking (7...
+1005 Wells Fargo Savings (6175)
+1008 Venmo
+1100 Accounts Receivable (A/R)
+1210 Allowance for Bad Debts
+1220 Credit Card Receivables
+1230 Prepaid Expenses
+1240 Loan to/from Shareholders
+1280 Undeposited Payments
+1290 James Lubonski - Tax Correction
+1290.1 James Lubonski - Pending Returns
+1300 Fixed Assets & Leasehold Improvements
+1304 Leasehold Improvements
+1305 Office Equipments
+1400 Vehicles
+1401 Ford - 2021 F1-150 Lariat
+1499 Accumulated Depreciation
+1501 Goodwill
+1599 Accumulated Amortization
+2000 Accounts Payable (A/P)
+2101 Chase CC (3050)
+2102 Wells Fargo CC (9418)
+2103 Wells Fargo CC (8872)
+2104 Wells Fargo CC (1237)
+2105 Wells Fargo CC (2587)
+2200 Payroll Clearing
+2210 IRA Payable - Vestwell
+2220 Accrued Payroll
+2240 Deferred Revenue
+2290 2% Shareholder Benefits
+2310 Central Bank Loan (4286)
+2400 ST Loans/Notes Payable
+2402 Ford - 2021 F1-150 Lariat - ST
+2300.1 Intuit Loan (deleted)
+2300.5 Intuit Loan #2 (deleted)
+2500 LT Loans/Notes Payable
+2502 Ford - 2021 F1-150 Lariat - LT
+2610 Shareholder Loan - B. Sorensen
+2620 Shareholder Loan - C. Sorensen
+2630 Shareholder Loan - B. See
+3100 Partner Contributions
+3010 Contributions - B. Sorensen
+3020 Contributions - C. Sorensen
+3030 Contributions - B. See
+3200 Partner Distributions
+3210 Distributions - B. Sorensen
+3210.1 Schwab
+3220 Distributions - C. Sorensen
+3230 Distributions - B. See
+3230.1 Buyout Payments
+3400 Additonal Paid-In Capital
+3500 Common Stock
+3501 Treasury Stock
+3900 Retained Earnings

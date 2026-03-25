@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(go get:*)",
-      "Bash(go run:*)"
+      "Bash(go run:*)",
+      "Bash(grep -E '^\\\\s*\\([0-9]{4,5}\\(\\\\.[0-9]+\\)?|[0-9]{5}-[0-9]{3}\\) ' /var/home/bazzite/Desktop/projects/pnlflux/codeprocess.txt)",
+      "Bash(mv /var/home/bazzite/Desktop/projects/pnlflux/codeprocess.txt.tmp /var/home/bazzite/Desktop/projects/pnlflux/codeprocess.txt)"
     ]
   }
 }
