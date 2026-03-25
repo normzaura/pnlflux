@@ -3,6 +3,7 @@ package handler
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
@@ -39,16 +40,18 @@ type WebhookHandler struct {
 	doubleBase string
 	tokens     *util.TokenProvider
 	categories []util.Category
+	s3         *util.S3Client
 }
 
 // NewWebhookHandler constructs a WebhookHandler with the given logger and Double HQ credentials.
-func NewWebhookHandler(logger *slog.Logger, httpClient *http.Client, doubleBase string, tokens *util.TokenProvider, categories []util.Category) *WebhookHandler {
+func NewWebhookHandler(logger *slog.Logger, httpClient *http.Client, doubleBase string, tokens *util.TokenProvider, categories []util.Category, s3 *util.S3Client) *WebhookHandler {
 	return &WebhookHandler{
 		logger:     logger,
 		httpClient: httpClient,
 		doubleBase: doubleBase,
 		tokens:     tokens,
 		categories: categories,
+		s3:         s3,
 	}
 }
 
@@ -92,10 +95,10 @@ func (h *WebhookHandler) HandleFinancialsFlux(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"received": true})
 
-	go h.processFinancialsFlux(clientID, taskID, task.Name)
+	go h.processFinancialsFlux(clientID, taskID, task.Name, task.ClientName)
 }
 
-func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name string) {
+func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name, clientName string) {
 	ctx := context.Background()
 
 	if !strings.EqualFold(name, "automated review") {
@@ -124,7 +127,13 @@ func (h *WebhookHandler) processFinancialsFlux(clientID, taskID int, name string
 		return
 	}
 
-	for fileName := range results {
-		h.logger.Info("processed financial file", "client_id", clientID, "task_id", taskID, "file", fileName)
+	for fileName, data := range results {
+		key := fmt.Sprintf("processed/%s/%s", clientName, fileName)
+		url, err := h.s3.PushToS3(ctx, key, data)
+		if err != nil {
+			h.logger.Error("failed to upload to s3", "client_id", clientID, "file", fileName, "err", err)
+			continue
+		}
+		h.logger.Info("uploaded processed file to s3", "client_id", clientID, "task_id", taskID, "url", url)
 	}
 }

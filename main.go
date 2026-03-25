@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"log/slog"
 	"net/http"
@@ -38,11 +39,20 @@ func main() {
 		log.Fatalf("failed to load categories: %v", err)
 	}
 
+	s3Bucket := os.Getenv("AWS_S3_BUCKET")
+	if s3Bucket == "" {
+		log.Fatal("AWS_S3_BUCKET is required")
+	}
+	s3Client, err := util.NewS3Client(context.Background(), s3Bucket)
+	if err != nil {
+		log.Fatalf("failed to create s3 client: %v", err)
+	}
+
 	httpClient := &http.Client{Timeout: 10 * time.Second}
 
 	tokens := util.NewTokenProvider(httpClient, doubleBase+"/oauth/token", clientID, clientSecret)
 
-	webhookHandler := handler.NewWebhookHandler(logger, httpClient, doubleBase, tokens, categories)
+	webhookHandler := handler.NewWebhookHandler(logger, httpClient, doubleBase, tokens, categories, s3Client)
 
 	r := gin.Default()
 
