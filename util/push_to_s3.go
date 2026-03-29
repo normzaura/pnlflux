@@ -6,7 +6,6 @@ import (
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
@@ -15,21 +14,6 @@ type S3Client struct {
 	client *s3.Client
 	bucket string
 	region string
-}
-
-// NewS3Client loads AWS credentials from environment variables
-// (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION) and returns an S3Client.
-// AWS_S3_BUCKET must also be set.
-func NewS3Client(ctx context.Context, bucket string) (*S3Client, error) {
-	cfg, err := config.LoadDefaultConfig(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("load aws config: %w", err)
-	}
-	return &S3Client{
-		client: s3.NewFromConfig(cfg),
-		bucket: bucket,
-		region: cfg.Region,
-	}, nil
 }
 
 // PushToS3 uploads data to the configured S3 bucket under the given key

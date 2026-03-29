@@ -3,32 +3,72 @@ package util
 import (
 	"bytes"
 	"context"
-	"encoding/csv"
 	"fmt"
-	"math"
 	"net/http"
-	"os"
-	"sort"
+	"regexp"
 	"strconv"
 	"strings"
 
 	"github.com/xuri/excelize/v2"
 )
 
+// codePrefix matches leading account code patterns like "6001 ", "40500-000 ", "4009.1 ".
+var codePrefix = regexp.MustCompile(`^\s*\d[\d.\-]*\s+`)
+
+// stripCodePrefix removes the leading numeric code from an account name,
+// returning only the descriptive name portion.
+func stripCodePrefix(s string) string {
+	return strings.TrimSpace(codePrefix.ReplaceAllString(s, ""))
+}
+
 var monthSubstrings = []string{
 	"jan", "feb", "mar", "apr", "may", "jun",
 	"jul", "aug", "sep", "oct", "nov", "dec",
 }
 
-// Category holds a matched account name and its MAD outlier threshold.
-type Category struct {
-	Name      string
-	Threshold float64
+
+// LoadCategoryNamesFromXLSX reads all tabs of categories_index.xlsx and returns
+// a map of lowercase code → threshold value (col B). Entries with no threshold value default to 0.
+func LoadCategoryNamesFromXLSX(xlsxPath string) (map[string]float64, error) {
+	f, err := excelize.OpenFile(xlsxPath)
+	if err != nil {
+		return nil, fmt.Errorf("open categories xlsx: %w", err)
+	}
+	defer f.Close()
+
+	categories := map[string]float64{}
+	for _, sheet := range f.GetSheetList() {
+		rows, err := f.GetRows(sheet)
+		if err != nil {
+			continue
+		}
+		for i, row := range rows {
+			if i == 0 { // skip header row
+				continue
+			}
+			if len(row) == 0 || strings.TrimSpace(row[0]) == "" {
+				continue
+			}
+			// stripped := strings.ToLower(stripCodePrefix(row[0]))
+			name := strings.ToLower(strings.TrimSpace(row[0]))
+			if name == "" {
+				continue
+			}
+			var threshold float64
+			if len(row) >= 2 && strings.TrimSpace(row[1]) != "" {
+				if v, err := strconv.ParseFloat(strings.TrimSpace(row[1]), 64); err == nil {
+					threshold = v
+				}
+			}
+			categories[name] = threshold
+		}
+	}
+	return categories, nil
 }
 
 // DownloadAndProcess downloads each xlsx attachment for the task, runs ProcessFinancials
 // on it, and returns a map of filename → processed bytes.
-func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, cats []Category) (map[string][]byte, error) {
+func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64) (map[string][]byte, error) {
 	results := map[string][]byte{}
 	for _, a := range attachments {
 		if !strings.HasSuffix(strings.ToLower(a.FileName), ".xlsx") {
@@ -38,7 +78,7 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 		if err != nil {
 			return nil, fmt.Errorf("download %s: %w", a.FileName, err)
 		}
-		processed, err := ProcessFinancials(data, cats)
+		processed, err := ProcessFinancials(data, categoryNames)
 		if err != nil {
 			return nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
@@ -47,64 +87,13 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 	return results, nil
 }
 
-// LoadCategories parses categories_index.csv into a slice of Category.
-// Row 1 is the header and is skipped. Each non-empty cell in subsequent rows
-// must be formatted as "account name:threshold".
-func LoadCategories(csvPath string) ([]Category, error) {
-	f, err := os.Open(csvPath)
-	if err != nil {
-		return nil, fmt.Errorf("open categories csv: %w", err)
-	}
-	defer f.Close()
-
-	rows, err := csv.NewReader(f).ReadAll()
-	if err != nil {
-		return nil, fmt.Errorf("read categories csv: %w", err)
-	}
-	if len(rows) < 2 {
-		return nil, nil
-	}
-
-	var cats []Category
-	for _, row := range rows[1:] { // skip header row
-		for _, cell := range row {
-			cell = strings.TrimSpace(cell)
-			if cell == "" {
-				continue
-			}
-			parts := strings.SplitN(cell, ":", 2)
-			name := strings.ToLower(strings.TrimSpace(parts[0]))
-			threshold := 3.5 // sensible default
-			if len(parts) == 2 {
-				if t, err := strconv.ParseFloat(strings.TrimSpace(parts[1]), 64); err == nil {
-					threshold = t
-				}
-			}
-			cats = append(cats, Category{Name: name, Threshold: threshold})
-		}
-	}
-	return cats, nil
-}
-
-// matchCategory returns the Category whose name is contained within colA (case-insensitive).
-// Returns nil if no match.
-func matchCategory(colA string, cats []Category) *Category {
-	lower := strings.ToLower(colA)
-	for i := range cats {
-		if strings.Contains(lower, cats[i].Name) {
-			return &cats[i]
-		}
-	}
-	return nil
-}
-
 // ProcessFinancials opens an xlsx file, finds the Income Statement / Profit & Loss sheet,
-// and for each row whose column A matches a category in cats:
+// and for each row whose column A matches a category in categoryNames:
 //   - highlights empty month cells yellow (partial missing data)
-//   - highlights month cells that are MAD outliers orange
+//   - highlights the last month cell red if it falls outside avg±threshold
 //
 // Rows not matching any category are skipped entirely.
-func ProcessFinancials(data []byte, cats []Category) ([]byte, error) {
+func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, error) {
 	f, err := excelize.OpenReader(bytes.NewReader(data))
 	if err != nil {
 		return nil, fmt.Errorf("open xlsx: %w", err)
@@ -142,7 +131,7 @@ func ProcessFinancials(data []byte, cats []Category) ([]byte, error) {
 	}
 
 	yellowStyleCache := map[int]int{}
-	orangeStyleCache := map[int]int{}
+	redStyleCache := map[int]int{}
 
 	for row := headerExcelRow + 1; row <= maxRow; row++ {
 		cells := grid[row-1]
@@ -155,9 +144,11 @@ func ProcessFinancials(data []byte, cats []Category) ([]byte, error) {
 			continue
 		}
 
-		cat := matchCategory(colA, cats)
-		if cat == nil {
-			continue // row does not match any tracked category
+		// Filter by categories_index.xlsx: match full column A value.
+		threshold, matched := categoryNames[strings.ToLower(colA)]
+		// stripped := strings.ToLower(stripCodePrefix(colA)); threshold, matched = categoryNames[stripped]
+		if len(categoryNames) > 0 && !matched {
+			continue
 		}
 
 		if isPartiallyMissing(cells, monthCols) {
@@ -166,8 +157,10 @@ func ProcessFinancials(data []byte, cats []Category) ([]byte, error) {
 			}
 		}
 
-		if err := highlightOutliers(f, sheetName, row, cells, monthCols, cat.Threshold, orangeStyleCache); err != nil {
-			return nil, fmt.Errorf("highlight outliers row %d: %w", row, err)
+		if threshold > 0 {
+			if err := highlightMethodOutliers(f, sheetName, row, cells, monthCols, threshold, redStyleCache); err != nil {
+				return nil, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
+			}
 		}
 	}
 
@@ -178,99 +171,6 @@ func ProcessFinancials(data []byte, cats []Category) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-// highlightOutliers applies an orange fill to month cells whose value is a MAD outlier.
-func highlightOutliers(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, threshold float64, styleCache map[int]int) error {
-	// collect (colIndex, value) pairs for non-empty month cells
-	type colVal struct {
-		col int
-		val float64
-	}
-	var vals []colVal
-	for _, col := range monthCols {
-		if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
-			continue
-		}
-		v, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
-		if err != nil {
-			continue
-		}
-		vals = append(vals, colVal{col, v})
-	}
-	if len(vals) < 3 {
-		return nil // not enough data points for meaningful MAD
-	}
-
-	floats := make([]float64, len(vals))
-	for i, cv := range vals {
-		floats[i] = cv.val
-	}
-	med := median(floats)
-	mad := computeMAD(floats, med)
-	if mad == 0 {
-		return nil // all values identical, no outliers possible
-	}
-
-	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
-
-	for _, cv := range vals {
-		if math.Abs(cv.val-med) <= threshold*mad {
-			continue
-		}
-		cellName, err := excelize.CoordinatesToCellName(cv.col+1, rowNum)
-		if err != nil {
-			return err
-		}
-		existingID, err := f.GetCellStyle(sheet, cellName)
-		if err != nil {
-			return err
-		}
-		mergedID, ok := styleCache[existingID]
-		if !ok {
-			existing, err := f.GetStyle(existingID)
-			if err != nil {
-				return err
-			}
-			border := existing.Border
-			if len(border) == 0 {
-				border = rowBorder
-			}
-			merged, err := f.NewStyle(&excelize.Style{
-				Border:    border,
-				Alignment: existing.Alignment,
-				Font:      existing.Font,
-				Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FFA500"}, Pattern: 1},
-			})
-			if err != nil {
-				return err
-			}
-			styleCache[existingID] = merged
-			mergedID = merged
-		}
-		if err := f.SetCellStyle(sheet, cellName, cellName, mergedID); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-func median(vals []float64) float64 {
-	s := make([]float64, len(vals))
-	copy(s, vals)
-	sort.Float64s(s)
-	n := len(s)
-	if n%2 == 0 {
-		return (s[n/2-1] + s[n/2]) / 2
-	}
-	return s[n/2]
-}
-
-func computeMAD(vals []float64, med float64) float64 {
-	devs := make([]float64, len(vals))
-	for i, v := range vals {
-		devs[i] = math.Abs(v - med)
-	}
-	return median(devs)
-}
 
 // parseDimension parses a range like "A1:N74" and returns (minRow, maxRow, maxCol, error).
 func parseDimension(dim string) (minRow, maxRow, maxCol int, err error) {
@@ -385,6 +285,76 @@ func highlightMissingCells(f *excelize.File, sheet string, rowNum int, cells []s
 	}
 	return nil
 }
+
+// highlightMethodOutliers calculates the average of all month cells in the row, then checks
+// only the last non-empty month cell. If its value is greater than avg+threshold or less than
+// avg-threshold, it is tinted red.
+func highlightMethodOutliers(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, threshold float64, styleCache map[int]int) error {
+	type colVal struct {
+		col int
+		val float64
+	}
+	var vals []colVal
+	for _, col := range monthCols {
+		if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
+			continue
+		}
+		v, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
+		if err != nil {
+			continue
+		}
+		vals = append(vals, colVal{col, v})
+	}
+	if len(vals) == 0 {
+		return nil
+	}
+
+	var sum float64
+	for _, cv := range vals {
+		sum += cv.val
+	}
+	avg := sum / float64(len(vals))
+	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
+
+	// Only check the last non-empty month cell (rightmost, immediately left of total).
+	last := vals[len(vals)-1]
+	if last.val <= avg+threshold && last.val >= avg-threshold {
+		return nil
+	}
+
+	cellName, err := excelize.CoordinatesToCellName(last.col+1, rowNum)
+	if err != nil {
+		return err
+	}
+	existingID, err := f.GetCellStyle(sheet, cellName)
+	if err != nil {
+		return err
+	}
+	mergedID, ok := styleCache[existingID]
+	if !ok {
+		existing, err := f.GetStyle(existingID)
+		if err != nil {
+			return err
+		}
+		border := existing.Border
+		if len(border) == 0 {
+			border = rowBorder
+		}
+		merged, err := f.NewStyle(&excelize.Style{
+			Border:    border,
+			Alignment: existing.Alignment,
+			Font:      existing.Font,
+			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
+		})
+		if err != nil {
+			return err
+		}
+		styleCache[existingID] = merged
+		mergedID = merged
+	}
+	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
+}
+
 
 // resolveRowBorder finds an explicit border from a filled cell in the row, or falls back to thin black.
 func resolveRowBorder(f *excelize.File, sheet string, rowNum int, monthCols []int) []excelize.Border {

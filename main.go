@@ -9,54 +9,33 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	handler "github.com/normzaura/pnlflux/handlers"
+	pnlfluxHandler "github.com/normzaura/pnlflux/handlers"
 	"github.com/normzaura/pnlflux/util"
 )
 
 func main() {
-	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	cfg := util.LoadConfig()
 
-	doubleBase := os.Getenv("DOUBLE_HQ_BASE_URL")
-	clientID := os.Getenv("DOUBLE_CLIENT_ID")
-	clientSecret := os.Getenv("DOUBLE_CLIENT_SECRET")
+	pnlfluxHandler.Logger = slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	pnlfluxHandler.DoubleBase = cfg.DoubleBase
+	pnlfluxHandler.HttpClient = &http.Client{Timeout: 10 * time.Second}
+	pnlfluxHandler.Tokens = util.NewTokenProvider(pnlfluxHandler.HttpClient, cfg.DoubleBase+"/oauth/token", cfg.ClientID, cfg.ClientSecret)
 
-	if doubleBase == "" {
-		doubleBase = "https://api.doublehq.com"
-	}
-	if clientID == "" {
-		log.Fatal("DOUBLE_CLIENT_ID is required")
-	}
-	if clientSecret == "" {
-		log.Fatal("DOUBLE_CLIENT_SECRET is required")
-	}
-
-	categoriesPath := os.Getenv("CATEGORIES_CSV_PATH")
-	if categoriesPath == "" {
-		categoriesPath = "categories_index.csv"
-	}
-	categories, err := util.LoadCategories(categoriesPath)
+	categoryNames, err := util.LoadCategoryNamesFromXLSX("categories_index.xlsx")
 	if err != nil {
-		log.Fatalf("failed to load categories: %v", err)
+		log.Fatalf("failed to load category names from xlsx: %v", err)
 	}
+	pnlfluxHandler.CategoryNames = categoryNames
 
-	s3Bucket := os.Getenv("AWS_S3_BUCKET")
-	if s3Bucket == "" {
-		log.Fatal("AWS_S3_BUCKET is required")
-	}
-	s3Client, err := util.NewS3Client(context.Background(), s3Bucket)
+	s3Client, err := util.NewS3Client(context.Background(), cfg.S3Bucket)
 	if err != nil {
 		log.Fatalf("failed to create s3 client: %v", err)
 	}
-
-	httpClient := &http.Client{Timeout: 10 * time.Second}
-
-	tokens := util.NewTokenProvider(httpClient, doubleBase+"/oauth/token", clientID, clientSecret)
-
-	webhookHandler := handler.NewWebhookHandler(logger, httpClient, doubleBase, tokens, categories, s3Client)
+	pnlfluxHandler.S3 = s3Client
 
 	r := gin.Default()
 
-	r.POST("/webhooks/financialsflux", webhookHandler.HandleFinancialsFlux)
+	r.POST("/webhooks/financialsflux", pnlfluxHandler.HandleFinancialsFlux)
 
 	log.Println("Server running on :8080")
 	if err := r.Run(":8080"); err != nil {
