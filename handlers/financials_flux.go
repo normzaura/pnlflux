@@ -29,7 +29,7 @@ var (
 // zapierTaskPayload matches the exact JSON Zapier sends on a
 // Double HQ "Task Status Update" trigger. All numeric IDs arrive as strings.
 type zapierTaskPayload struct {
-	TaskID         string `json:"zapDataId"`
+	TaskID         string `json:"taskId"`
 	Name           string `json:"name"`
 	ClientID       string `json:"clientId"`
 	ClientName     string `json:"clientName"`
@@ -68,9 +68,9 @@ func HandleFinancialsFlux(c *gin.Context) {
 		return
 	}
 
-	doubleTaskID, err := strconv.Atoi(zapData.TaskID)
+	doubleTaskID, err := strconv.Atoi(strings.TrimSpace(zapData.TaskID))
 	if err != nil {
-		Logger.Error("invalid zapDataId in payload", "doubleTask_id", zapData.TaskID)
+		Logger.Error("invalid zapDataId in payload", "raw_task_id", zapData.TaskID, "err", err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid zapDataId"})
 		return
 	}

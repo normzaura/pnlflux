@@ -1,0 +1,900 @@
+{
+  "category": [
+    {
+      "item_code": "1001",
+      "item_name": "Columbia Checking 9893"
+    },
+    {
+      "item_code": "1002",
+      "item_name": "Wells Checking 0971 (deleted)"
+    },
+    {
+      "item_code": "1003",
+      "item_name": "Columbia Saving 9893"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "1210",
+      "item_name": "Inventory"
+    },
+    {
+      "item_code": "1220",
+      "item_name": "WIP Materials"
+    },
+    {
+      "item_code": "1230",
+      "item_name": "WIP Labor"
+    },
+    {
+      "item_code": "1240",
+      "item_name": "Employee Loans"
+    },
+    {
+      "item_code": "1250",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1260",
+      "item_name": "Finished Goods Inventory"
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Fixed Assets"
+    },
+    {
+      "item_code": "1310",
+      "item_name": "Automobiles"
+    },
+    {
+      "item_code": "1320",
+      "item_name": "Computers & Software"
+    },
+    {
+      "item_code": "1330",
+      "item_name": "Equipment"
+    },
+    {
+      "item_code": "1340",
+      "item_name": "Furniture and Fixtures"
+    },
+    {
+      "item_code": "1350",
+      "item_name": "Leasehold Improvements"
+    },
+    {
+      "item_code": "1391",
+      "item_name": "Accum. Depreciation - A..."
+    },
+    {
+      "item_code": "1392",
+      "item_name": "Accum Depreciation - Computers & Sof..."
+    },
+    {
+      "item_code": "1393",
+      "item_name": "Accum. Depreciation - Equipment"
+    },
+    {
+      "item_code": "1394",
+      "item_name": "Accum. Depreciation - F&F"
+    },
+    {
+      "item_code": "1395",
+      "item_name": "Accum. Depreciation - Leasehold Impr..."
+    },
+    {
+      "item_code": "1410",
+      "item_name": "Organization Costs"
+    },
+    {
+      "item_code": "1460",
+      "item_name": "Security Deposit"
+    },
+    {
+      "item_code": "1490",
+      "item_name": "Accum Amortiz - Organiz Costs"
+    },
+    {
+      "item_code": "1500",
+      "item_name": "Right-Of-Use-Assets"
+    },
+    {
+      "item_code": "1510",
+      "item_name": "Audi A6 - 2023"
+    },
+    {
+      "item_code": "1590",
+      "item_name": "Accum. Amortization - R..."
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "Credit Cards"
+    },
+    {
+      "item_code": "2105",
+      "item_name": "Barclays CC 2941 - SM"
+    },
+    {
+      "item_code": "2110",
+      "item_name": "Bonvoy Credit Card ..."
+    },
+    {
+      "item_code": "2120",
+      "item_name": "Pacific Premier CC 0690 - SM"
+    },
+    {
+      "item_code": "2130",
+      "item_name": "Pacific Premier CC 2080 - YM"
+    },
+    {
+      "item_code": "2150",
+      "item_name": "Pacific Premier CC ..."
+    },
+    {
+      "item_code": "2160",
+      "item_name": "Pacific Premier CC 8701 - SB"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "401k Liability"
+    },
+    {
+      "item_code": "2210",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "2215",
+      "item_name": "Accrued PTO"
+    },
+    {
+      "item_code": "2220",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2225",
+      "item_name": "Accrued Profit Sharing"
+    },
+    {
+      "item_code": "2230",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2240",
+      "item_name": "Garnishment Payable"
+    },
+    {
+      "item_code": "2250",
+      "item_name": "HSA Contribution Paya..."
+    },
+    {
+      "item_code": "2260",
+      "item_name": "Sales Tax Payable"
+    },
+    {
+      "item_code": "2270",
+      "item_name": "Wells Fargo LOC 8226"
+    },
+    {
+      "item_code": "2280",
+      "item_name": "Zeiss Contura 2024"
+    },
+    {
+      "item_code": "2290",
+      "item_name": "Methods MV-1000L 2024"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Short-Term Liabilities"
+    },
+    {
+      "item_code": "2301",
+      "item_name": "Chip Conveyor - 2021"
+    },
+    {
+      "item_code": "2302",
+      "item_name": "DMG #1 - 2016"
+    },
+    {
+      "item_code": "2303",
+      "item_name": "DMG #2 - 2019"
+    },
+    {
+      "item_code": "2304",
+      "item_name": "DMG #3 - 2020"
+    },
+    {
+      "item_code": "2305",
+      "item_name": "DMG Robot - 2021"
+    },
+    {
+      "item_code": "2306",
+      "item_name": "RoboDrill - 2022"
+    },
+    {
+      "item_code": "2307",
+      "item_name": "Tesla X - 2021"
+    },
+    {
+      "item_code": "2308",
+      "item_name": "Zeiss CMM - 2021"
+    },
+    {
+      "item_code": "2309",
+      "item_name": "Zeiss Duramax - 2022"
+    },
+    {
+      "item_code": "2310",
+      "item_name": "Audi A6 - 2023"
+    },
+    {
+      "item_code": "2311",
+      "item_name": "DMG #4 - 2024"
+    },
+    {
+      "item_code": "2312",
+      "item_name": "RoboDrill CNC - 2024"
+    },
+    {
+      "item_code": "2350",
+      "item_name": "Loan Payable - SBA ST"
+    },
+    {
+      "item_code": "2351",
+      "item_name": "Loan from Shareholder"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "Long-Term Liabilities"
+    },
+    {
+      "item_code": "2402",
+      "item_name": "DMG #1 - 2016"
+    },
+    {
+      "item_code": "2403",
+      "item_name": "DMG #2 - 2019"
+    },
+    {
+      "item_code": "2404",
+      "item_name": "DMG #3 - 2020"
+    },
+    {
+      "item_code": "2405",
+      "item_name": "DMG Robot - 2021"
+    },
+    {
+      "item_code": "2406",
+      "item_name": "RoboDrill - 2022"
+    },
+    {
+      "item_code": "2407",
+      "item_name": "Tesla X -2021"
+    },
+    {
+      "item_code": "2408",
+      "item_name": "Zeiss CMM - 2021"
+    },
+    {
+      "item_code": "2409",
+      "item_name": "Zeiss Duramax - 2022"
+    },
+    {
+      "item_code": "2410",
+      "item_name": "Audi A6 - 2023"
+    },
+    {
+      "item_code": "2411",
+      "item_name": "DMG #4 - 2024"
+    },
+    {
+      "item_code": "2412",
+      "item_name": "RoboDrill CNC - 2024"
+    },
+    {
+      "item_code": "2450",
+      "item_name": "Loan Payable - SBA LT"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Shareholder's Distributio..."
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Shareholder's Distributio..."
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    },
+    {
+      "item_code": "4001",
+      "item_name": "Marketing Income- SEM"
+    },
+    {
+      "item_code": "4002",
+      "item_name": "Marketing Income- SEO"
+    },
+    {
+      "item_code": "4003",
+      "item_name": "Marketing Income- Email"
+    },
+    {
+      "item_code": "4004",
+      "item_name": "Media Income - Visual"
+    },
+    {
+      "item_code": "4005",
+      "item_name": "Management Income - Campaign"
+    },
+    {
+      "item_code": "4006",
+      "item_name": "Services Income - Display"
+    },
+    {
+      "item_code": "4007",
+      "item_name": "Services Income - Design"
+    },
+    {
+      "item_code": "4008",
+      "item_name": "Services Income - Web Devel..."
+    },
+    {
+      "item_code": "4009",
+      "item_name": "Social Media Income"
+    },
+    {
+      "item_code": "4009.1",
+      "item_name": "Social Media Income - A..."
+    },
+    {
+      "item_code": "4009.2",
+      "item_name": "Social Media Income - Marketing"
+    },
+    {
+      "item_code": "4020",
+      "item_name": "Credit Card Service Fee Inc..."
+    },
+    {
+      "item_code": "4030",
+      "item_name": "Late Fee Income"
+    },
+    {
+      "item_code": "4090",
+      "item_name": "Customer Discounts & Refunds"
+    },
+    {
+      "item_code": "5001",
+      "item_name": "Marketing COGS - SEM"
+    },
+    {
+      "item_code": "5002",
+      "item_name": "Marketing COGS - SEO"
+    },
+    {
+      "item_code": "5003",
+      "item_name": "Marketing COGS - Email"
+    },
+    {
+      "item_code": "5004",
+      "item_name": "Media COGS - Visual"
+    },
+    {
+      "item_code": "5006",
+      "item_name": "Services COGS - Display"
+    },
+    {
+      "item_code": "5008",
+      "item_name": "Services COGS - Web Develop..."
+    },
+    {
+      "item_code": "5009",
+      "item_name": "Social Media COGS"
+    },
+    {
+      "item_code": "5009.1",
+      "item_name": "Social Media COGS - Advertising"
+    },
+    {
+      "item_code": "5009.2",
+      "item_name": "Social Media COGS - Marketing"
+    },
+    {
+      "item_code": "5020",
+      "item_name": "Contract Labor COGS - Marke..."
+    },
+    {
+      "item_code": "5030",
+      "item_name": "Contract Labor COGS - Sales"
+    },
+    {
+      "item_code": "5040",
+      "item_name": "Software COGS - Apps & Other"
+    },
+    {
+      "item_code": "5100",
+      "item_name": "Direct Labor - COGS"
+    },
+    {
+      "item_code": "5101",
+      "item_name": "Direct Labor PR - Wages"
+    },
+    {
+      "item_code": "5102",
+      "item_name": "Direct Labor PR - Taxes"
+    },
+    {
+      "item_code": "5103",
+      "item_name": "Direct Labor PR - Commiss..."
+    },
+    {
+      "item_code": "5104",
+      "item_name": "Direct Labor PR - Health ..."
+    },
+    {
+      "item_code": "5105",
+      "item_name": "Direct Labor PR - Wellnes..."
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Indirect Labor - Officers"
+    },
+    {
+      "item_code": "6001",
+      "item_name": "Officer PR - Wages"
+    },
+    {
+      "item_code": "6002",
+      "item_name": "Officer PR - Taxes"
+    },
+    {
+      "item_code": "6005",
+      "item_name": "Officer PR - Wellness Benefit"
+    },
+    {
+      "item_code": "6006",
+      "item_name": "Officer Insurances (Health/Vision/Dent..."
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Indirect Labor - Employees"
+    },
+    {
+      "item_code": "6101",
+      "item_name": "Employee PR - Wages"
+    },
+    {
+      "item_code": "6101.2",
+      "item_name": "Wages - Social Media Ma..."
+    },
+    {
+      "item_code": "6101.3",
+      "item_name": "Wages - Social Media Ad..."
+    },
+    {
+      "item_code": "6101.4",
+      "item_name": "Wages - SEM"
+    },
+    {
+      "item_code": "6101.5",
+      "item_name": "Wages - Sales"
+    },
+    {
+      "item_code": "6101.6",
+      "item_name": "Wages - Video"
+    },
+    {
+      "item_code": "6102",
+      "item_name": "Employee PR - Taxes"
+    },
+    {
+      "item_code": "6103",
+      "item_name": "Employee PR - Commission"
+    },
+    {
+      "item_code": "6104",
+      "item_name": "Employee PR - Health Bene..."
+    },
+    {
+      "item_code": "6105",
+      "item_name": "Employee PR - Wellness Benefit"
+    },
+    {
+      "item_code": "6110",
+      "item_name": "Payroll Fees"
+    },
+    {
+      "item_code": "6125",
+      "item_name": "Advertising & Marketing"
+    },
+    {
+      "item_code": "6150",
+      "item_name": "Office & Other Admin Expenses"
+    },
+    {
+      "item_code": "6151",
+      "item_name": "Dues & Subscriptions"
+    },
+    {
+      "item_code": "6152",
+      "item_name": "Office Expenses"
+    },
+    {
+      "item_code": "6153",
+      "item_name": "Office Furniture & Equipm..."
+    },
+    {
+      "item_code": "6154",
+      "item_name": "Electric & Gas"
+    },
+    {
+      "item_code": "6155",
+      "item_name": "Phone & Internet Expenses"
+    },
+    {
+      "item_code": "6156",
+      "item_name": "Shipping & Postage"
+    },
+    {
+      "item_code": "6157",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "6158",
+      "item_name": "Software & apps"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Rent"
+    },
+    {
+      "item_code": "6225",
+      "item_name": "Charitable Contributions"
+    },
+    {
+      "item_code": "6250",
+      "item_name": "Continuing Education"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Bank & Other Financing Fees"
+    },
+    {
+      "item_code": "6301",
+      "item_name": "Bank & CC Fees"
+    },
+    {
+      "item_code": "6302",
+      "item_name": "QuickBooks Payments Fees"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Legal & Professional Fees"
+    },
+    {
+      "item_code": "6351",
+      "item_name": "Accounting Services"
+    },
+    {
+      "item_code": "6352",
+      "item_name": "Legal Services"
+    },
+    {
+      "item_code": "6353",
+      "item_name": "Tax Services"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Insurance Expenses"
+    },
+    {
+      "item_code": "6401",
+      "item_name": "Liability insurance"
+    },
+    {
+      "item_code": "6403",
+      "item_name": "Worker's Comp Insurance"
+    },
+    {
+      "item_code": "6450",
+      "item_name": "Vehicle Expenses"
+    },
+    {
+      "item_code": "6451",
+      "item_name": "Fuel"
+    },
+    {
+      "item_code": "6452",
+      "item_name": "Parking & Tolls"
+    },
+    {
+      "item_code": "6454",
+      "item_name": "Vehicle Repairs & Mainten..."
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Travel Expense"
+    },
+    {
+      "item_code": "6501",
+      "item_name": "Meals (50%)"
+    },
+    {
+      "item_code": "6502",
+      "item_name": "Airfare"
+    },
+    {
+      "item_code": "6503",
+      "item_name": "Hotels & Accomodation"
+    },
+    {
+      "item_code": "6504",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "6550",
+      "item_name": "License & Permits"
+    },
+    {
+      "item_code": "6999",
+      "item_name": "Bad Debt"
+    },
+    {
+      "item_code": "7000",
+      "item_name": "Interest Earned"
+    },
+    {
+      "item_code": "7001",
+      "item_name": "Cash Bank Rewards"
+    },
+    {
+      "item_code": "7002",
+      "item_name": "Late Fee - Other"
+    },
+    {
+      "item_code": "8000",
+      "item_name": "Interest Expenses"
+    },
+    {
+      "item_code": "8999",
+      "item_name": "Cash Over/Short"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Cash"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "Central Bank Checking (..."
+    },
+    {
+      "item_code": "1002",
+      "item_name": "Central Bank Money Market (0972)"
+    },
+    {
+      "item_code": "1003",
+      "item_name": "Central Bank Money Mark..."
+    },
+    {
+      "item_code": "1004",
+      "item_name": "Wells Fargo Checking (7..."
+    },
+    {
+      "item_code": "1005",
+      "item_name": "Wells Fargo Savings (6175)"
+    },
+    {
+      "item_code": "1008",
+      "item_name": "Venmo"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable (A/R)"
+    },
+    {
+      "item_code": "1210",
+      "item_name": "Allowance for Bad Debts"
+    },
+    {
+      "item_code": "1220",
+      "item_name": "Credit Card Receivables"
+    },
+    {
+      "item_code": "1230",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1240",
+      "item_name": "Loan to/from Shareholders"
+    },
+    {
+      "item_code": "1280",
+      "item_name": "Undeposited Payments"
+    },
+    {
+      "item_code": "1290",
+      "item_name": "James Lubonski - Tax Correction"
+    },
+    {
+      "item_code": "1290.1",
+      "item_name": "James Lubonski - Pending Returns"
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Fixed Assets & Leasehold Improvements"
+    },
+    {
+      "item_code": "1304",
+      "item_name": "Leasehold Improvements"
+    },
+    {
+      "item_code": "1305",
+      "item_name": "Office Equipments"
+    },
+    {
+      "item_code": "1400",
+      "item_name": "Vehicles"
+    },
+    {
+      "item_code": "1401",
+      "item_name": "Ford - 2021 F1-150 Lariat"
+    },
+    {
+      "item_code": "1499",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "1501",
+      "item_name": "Goodwill"
+    },
+    {
+      "item_code": "1599",
+      "item_name": "Accumulated Amortization"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable (A/P)"
+    },
+    {
+      "item_code": "2101",
+      "item_name": "Chase CC (3050)"
+    },
+    {
+      "item_code": "2102",
+      "item_name": "Wells Fargo CC (9418)"
+    },
+    {
+      "item_code": "2103",
+      "item_name": "Wells Fargo CC (8872)"
+    },
+    {
+      "item_code": "2104",
+      "item_name": "Wells Fargo CC (1237)"
+    },
+    {
+      "item_code": "2105",
+      "item_name": "Wells Fargo CC (2587)"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2210",
+      "item_name": "IRA Payable - Vestwell"
+    },
+    {
+      "item_code": "2220",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "2240",
+      "item_name": "Deferred Revenue"
+    },
+    {
+      "item_code": "2290",
+      "item_name": "2% Shareholder Benefits"
+    },
+    {
+      "item_code": "2310",
+      "item_name": "Central Bank Loan (4286)"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "ST Loans/Notes Payable"
+    },
+    {
+      "item_code": "2402",
+      "item_name": "Ford - 2021 F1-150 Lariat - ST"
+    },
+    {
+      "item_code": "2300.1",
+      "item_name": "Intuit Loan (deleted)"
+    },
+    {
+      "item_code": "2300.5",
+      "item_name": "Intuit Loan #2 (deleted)"
+    },
+    {
+      "item_code": "2500",
+      "item_name": "LT Loans/Notes Payable"
+    },
+    {
+      "item_code": "2502",
+      "item_name": "Ford - 2021 F1-150 Lariat - LT"
+    },
+    {
+      "item_code": "2610",
+      "item_name": "Shareholder Loan - B. Sorensen"
+    },
+    {
+      "item_code": "2620",
+      "item_name": "Shareholder Loan - C. Sorensen"
+    },
+    {
+      "item_code": "2630",
+      "item_name": "Shareholder Loan - B. See"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Partner Contributions"
+    },
+    {
+      "item_code": "3010",
+      "item_name": "Contributions - B. Sorensen"
+    },
+    {
+      "item_code": "3020",
+      "item_name": "Contributions - C. Sorensen"
+    },
+    {
+      "item_code": "3030",
+      "item_name": "Contributions - B. See"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Partner Distributions"
+    },
+    {
+      "item_code": "3210",
+      "item_name": "Distributions - B. Sorensen"
+    },
+    {
+      "item_code": "3210.1",
+      "item_name": "Schwab"
+    },
+    {
+      "item_code": "3220",
+      "item_name": "Distributions - C. Sorensen"
+    },
+    {
+      "item_code": "3230",
+      "item_name": "Distributions - B. See"
+    },
+    {
+      "item_code": "3230.1",
+      "item_name": "Buyout Payments"
+    },
+    {
+      "item_code": "3400",
+      "item_name": "Additonal Paid-In Capital"
+    },
+    {
+      "item_code": "3500",
+      "item_name": "Common Stock"
+    },
+    {
+      "item_code": "3501",
+      "item_name": "Treasury Stock"
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

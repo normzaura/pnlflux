@@ -1,0 +1,240 @@
+{
+  "category": [
+    {
+      "item_code": "4001",
+      "item_name": "Marketing Retainer"
+    },
+    {
+      "item_code": "4002",
+      "item_name": "Event Services"
+    },
+    {
+      "item_code": "4004",
+      "item_name": "Referral Revenue"
+    },
+    {
+      "item_code": "4005",
+      "item_name": "Reimbursable Revenue"
+    },
+    {
+      "item_code": "5001",
+      "item_name": "Direct Labor - Wages"
+    },
+    {
+      "item_code": "5002",
+      "item_name": "Direct Labor - Taxes"
+    },
+    {
+      "item_code": "5003",
+      "item_name": "Contractor COGS"
+    },
+    {
+      "item_code": "5004",
+      "item_name": "Software & App COGS"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Advertising & Marketing"
+    },
+    {
+      "item_code": "6050",
+      "item_name": "Bank Fees & CC Charges"
+    },
+    {
+      "item_code": "6075",
+      "item_name": "Client Gifts"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Office & Other Admin Expenses"
+    },
+    {
+      "item_code": "6201",
+      "item_name": "Dues & Subscription"
+    },
+    {
+      "item_code": "6202",
+      "item_name": "Office Expenses"
+    },
+    {
+      "item_code": "6203",
+      "item_name": "Phone/Internet"
+    },
+    {
+      "item_code": "6206",
+      "item_name": "Software & Apps"
+    },
+    {
+      "item_code": "6250",
+      "item_name": "Meals"
+    },
+    {
+      "item_code": "6275",
+      "item_name": "Business Insurance"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Health Insurance"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6351",
+      "item_name": "Officer Wages"
+    },
+    {
+      "item_code": "6353",
+      "item_name": "Taxes"
+    },
+    {
+      "item_code": "6355",
+      "item_name": "Payroll Fees"
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Legal & Professional Services"
+    },
+    {
+      "item_code": "6501",
+      "item_name": "Accounting Fees"
+    },
+    {
+      "item_code": "6502",
+      "item_name": "Consulting Fees"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "QuickBooks Payments Fees"
+    },
+    {
+      "item_code": "6650",
+      "item_name": "Rent"
+    },
+    {
+      "item_code": "6700",
+      "item_name": "Taxes & Licenses"
+    },
+    {
+      "item_code": "6750",
+      "item_name": "Travel Expenses"
+    },
+    {
+      "item_code": "6751",
+      "item_name": "Airfare"
+    },
+    {
+      "item_code": "6752",
+      "item_name": "Hotel & Accommodation"
+    },
+    {
+      "item_code": "6753",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Vehicle Expenses"
+    },
+    {
+      "item_code": "6801",
+      "item_name": "Gas & Fuel"
+    },
+    {
+      "item_code": "6804",
+      "item_name": "Lease Expense"
+    },
+    {
+      "item_code": "6805",
+      "item_name": "Parking & Tolls"
+    },
+    {
+      "item_code": "6806",
+      "item_name": "Repairs & Maintainence"
+    },
+    {
+      "item_code": "7001",
+      "item_name": "Misc Income"
+    },
+    {
+      "item_code": "8003",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "Wells Fargo Checking - ..."
+    },
+    {
+      "item_code": "1303",
+      "item_name": "Furniture & Fixtures"
+    },
+    {
+      "item_code": "1304",
+      "item_name": "Office Equipment"
+    },
+    {
+      "item_code": "1499",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "2101",
+      "item_name": "AMEX Green CC - 2005"
+    },
+    {
+      "item_code": "2102",
+      "item_name": "AMEX Platinum CC - 3001"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2201",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2202",
+      "item_name": "Attractful 401k Trust - Solo Con..."
+    },
+    {
+      "item_code": "2203",
+      "item_name": "CA PIT / SDI"
+    },
+    {
+      "item_code": "2204",
+      "item_name": "CA SUI / ETT"
+    },
+    {
+      "item_code": "2206",
+      "item_name": "Federal Taxes (941/944)"
+    },
+    {
+      "item_code": "2207",
+      "item_name": "Federal Unemployment (940)"
+    },
+    {
+      "item_code": "2401",
+      "item_name": "Shareholder Benefits Payable"
+    },
+    {
+      "item_code": "2501",
+      "item_name": "SBA Loan Payable"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3010",
+      "item_name": "Owner's Contribution"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Owner's Distribution"
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}
