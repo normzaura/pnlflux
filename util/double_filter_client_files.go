@@ -30,8 +30,8 @@ type ClientFiles struct {
 	TaskAttachments []Attachment
 }
 
-// FetchClientFiles fetches all attachments for the client filtered to the given taskID.
-func FetchClientFiles(ctx context.Context, httpClient *http.Client, baseURL string, tokens *TokenProvider, clientID, taskID int) (*ClientFiles, error) {
+// FilterClientAttachedFiles fetches all attachments for the client filtered to the given taskID.
+func FilterClientAttachedFiles(ctx context.Context, httpClient *http.Client, baseURL string, tokens *TokenProvider, clientID, taskID int) (*ClientFiles, error) {
 	token, err := tokens.Token(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("get token: %w", err)

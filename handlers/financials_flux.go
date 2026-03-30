@@ -30,7 +30,7 @@ var (
 // Double HQ "Task Status Update" trigger. All numeric IDs arrive as strings.
 type zapierTaskPayload struct {
 	TaskID         string `json:"taskId"`
-	Name           string `json:"name"`
+	DoubleTaskName string `json:"name"`
 	ClientID       string `json:"clientId"`
 	ClientName     string `json:"clientName"`
 	AssigneeID     string `json:"assigneeId"`
@@ -44,16 +44,13 @@ type zapierTaskPayload struct {
 	UpdatedTime    string `json:"updatedTime"`
 }
 
-// HandleFinancialsFlux is triggered when Double HQ starts a
-// "Pre Manager Financial Analysis" zapData, signalling that a financial
-// report is ready for flux analysis.
-//
-// Route: POST /webhooks/financialsflux
+// The process starts from a Zapier POST
 func HandleFinancialsFlux(c *gin.Context) {
 	rawBody, _ := io.ReadAll(c.Request.Body)
 	c.Request.Body = io.NopCloser(bytes.NewReader(rawBody))
 	Logger.Info("raw zapier payload", "body", string(rawBody))
 
+	// Process Zapier payload
 	var zapData zapierTaskPayload
 
 	if err := c.ShouldBindJSON(&zapData); err != nil {
@@ -77,29 +74,36 @@ func HandleFinancialsFlux(c *gin.Context) {
 
 	Logger.Info("financials flux webhook received",
 		"doubleTask_id", doubleTaskID,
-		"name", zapData.Name,
+		"name", zapData.DoubleTaskName,
 		"status", zapData.NewStatus,
 		"client_id", clientID,
 	)
 
+	if !strings.EqualFold(zapData.DoubleTaskName, "automated review") {
+		Logger.Info("ignoring double task, task name is not 'automated review'", "name", zapData.DoubleTaskName)
+		c.JSON(http.StatusOK, gin.H{"received": true})
+		return
+	}
+
+	if !strings.EqualFold(zapData.NewStatus, "In Progress") {
+		Logger.Info("ignoring double task, status is not 'In Progress'", "status", zapData.NewStatus)
+		c.JSON(http.StatusOK, gin.H{"received": true})
+		return
+	}
+
 	c.JSON(http.StatusOK, gin.H{"received": true})
 
-	go processFinancialsFlux(clientID, doubleTaskID, zapData.Name, zapData.ClientName)
+	go processZapierPost(clientID, doubleTaskID, zapData.ClientName)
 }
 
-func processFinancialsFlux(clientID, doubleTaskID int, name, clientName string) {
+func processZapierPost(clientID, doubleTaskID int, clientName string) {
 	defer func() {
 		if r := recover(); r != nil {
-			Logger.Error("panic in processFinancialsFlux", "recover", r, "doubleTask_id", doubleTaskID)
+			Logger.Error("panic in processZapierPost", "recover", r, "doubleTask_id", doubleTaskID)
 		}
 	}()
 
 	ctx := context.Background()
-
-	if !strings.EqualFold(name, "automated review") {
-		Logger.Info("ignoring zapData, name is not 'automated review'", "name", name)
-		return
-	}
 
 	bufferSecs := 20 // DEFAULT VALUE, REPLACED BY ENV SET VALUE
 	if v, err := strconv.Atoi(os.Getenv("POST_REQUEST_BUFFER")); err == nil && v > 0 {
@@ -109,14 +113,14 @@ func processFinancialsFlux(clientID, doubleTaskID int, name, clientName string) 
 	}
 	time.Sleep(time.Duration(bufferSecs) * time.Second)
 
-	files, err := util.FetchClientFiles(ctx, HttpClient, DoubleBase, Tokens, clientID, doubleTaskID)
+	files, err := util.FilterClientAttachedFiles(ctx, HttpClient, DoubleBase, Tokens, clientID, doubleTaskID)
 	if err != nil {
 		Logger.Error("failed to fetch client files", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return
 	}
 
 	if len(files.TaskAttachments) == 0 {
-		Logger.Info("zapData has no attached files", "zapData_name", name, "doubleTask_id", doubleTaskID)
+		Logger.Info("zapData has no attached files", "doubleTask_id", doubleTaskID)
 		return
 	}
 

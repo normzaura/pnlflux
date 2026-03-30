@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -74,9 +75,21 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 		if !strings.HasSuffix(strings.ToLower(a.FileName), ".xlsx") {
 			continue
 		}
-		data, err := DownloadFinancial(ctx, httpClient, a.DownloadURL)
+		req, err := http.NewRequestWithContext(ctx, http.MethodGet, a.DownloadURL, nil)
+		if err != nil {
+			return nil, fmt.Errorf("build request %s: %w", a.FileName, err)
+		}
+		resp, err := httpClient.Do(req)
 		if err != nil {
 			return nil, fmt.Errorf("download %s: %w", a.FileName, err)
+		}
+		data, err := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		if err != nil {
+			return nil, fmt.Errorf("read body %s: %w", a.FileName, err)
+		}
+		if resp.StatusCode != http.StatusOK {
+			return nil, fmt.Errorf("download %s: unexpected status %d", a.FileName, resp.StatusCode)
 		}
 		processed, err := ProcessFinancials(data, categoryNames)
 		if err != nil {
