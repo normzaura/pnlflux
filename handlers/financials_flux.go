@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -136,21 +137,8 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		return
 	}
 
-	decodedClientName, err := url.PathUnescape(clientName)
-	if err != nil {
-		Logger.Warn("failed to decode clientName, using raw value", "clientName", clientName, "err", err)
-		decodedClientName = clientName
-	}
-	safeClientName := strings.NewReplacer(
-		" ", "-",
-		",", "",
-		".", "",
-		"'", "",
-		"&", "",
-	).Replace(decodedClientName)
-
 	for fileName, data := range results {
-		key := fmt.Sprintf("processed/%s/%s", safeClientName, fileName)
+		key := fmt.Sprintf("processed/%s/%s", cleanClientName(clientName), fileName)
 		objectURL, err := S3.PushToS3(ctx, key, data)
 		if err != nil {
 			Logger.Error("failed to upload to s3", "client_id", clientID, "file", fileName, "err", err)
@@ -164,4 +152,25 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 			Logger.Info("patched zapData subtext with s3 url", "doubleTask_id", doubleTaskID)
 		}
 	}
+}
+
+func cleanClientName(clientName string) string {
+	decoded, err := url.PathUnescape(clientName)
+
+	if err != nil {
+		decoded = clientName
+	}
+	safe := strings.NewReplacer(
+		"+", "-",
+		" ", "-",
+		",", "",
+		".", "",
+		"'", "",
+		"&", "",
+	).Replace(decoded)
+
+	multiDash := regexp.MustCompile(`-{2,}`)
+
+	return multiDash.ReplaceAllString(safe, "-")
+
 }
