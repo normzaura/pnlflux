@@ -51,13 +51,29 @@ func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []stri
 	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
 }
 
+// normalizeByDivisor divides val by the parsed value of divisorCells[col].
+// When divisorCells is nil the raw value is returned unchanged.
+// Returns (0, false) if the divisor cell is missing, empty, zero, or unparseable.
+func normalizeByDivisor(val float64, col int, divisorCells []string) (float64, bool) {
+	if divisorCells == nil {
+		return val, true
+	}
+	if col >= len(divisorCells) || strings.TrimSpace(divisorCells[col]) == "" {
+		return 0, false
+	}
+	d, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[col]), ",", ""), 64)
+	if err != nil || d == 0 {
+		return 0, false
+	}
+	return val / d, true
+}
+
 // detectFluctuation calculates the average of all previous month cells (excluding the last),
 // then checks the last month cell. If its value differs from that average by more than
 // threshold%, it is tinted yellow.
 //
-// When divisorCells is non-nil (code-6 rows), each month value is divided by the
-// corresponding total income cell before comparison, normalizing the expense as a
-// fraction of revenue.
+// When divisorCells is non-nil (code-5 rows), each month value is normalized by the
+// corresponding total income cell via normalizeByDivisor before comparison.
 func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, threshold float64, divisorCells []string, styleCache map[int]int) error {
 	if len(monthCols) == 0 {
 		return nil
@@ -73,22 +89,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 		return nil
 	}
 
-	// Normalize by total income when divisorCells is provided.
-	normalize := func(val float64, col int) (float64, bool) {
-		if divisorCells == nil {
-			return val, true
-		}
-		if col >= len(divisorCells) || strings.TrimSpace(divisorCells[col]) == "" {
-			return 0, false
-		}
-		d, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[col]), ",", ""), 64)
-		if err != nil || d == 0 {
-			return 0, false
-		}
-		return val / d, true
-	}
-
-	normLast, ok := normalize(lastVal, lastCol)
+	normLast, ok := normalizeByDivisor(lastVal, lastCol, divisorCells)
 	if !ok {
 		return nil
 	}
@@ -107,7 +108,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 		if err != nil {
 			continue
 		}
-		nv, ok := normalize(v, col)
+		nv, ok := normalizeByDivisor(v, col, divisorCells)
 		if !ok {
 			continue
 		}

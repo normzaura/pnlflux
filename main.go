@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -21,7 +22,12 @@ func main() {
 	pnlfluxHandler.HttpClient = &http.Client{Timeout: 10 * time.Second}
 	pnlfluxHandler.Tokens = util.NewTokenProvider(pnlfluxHandler.HttpClient, cfg.DoubleBase+"/oauth/token", cfg.ClientID, cfg.ClientSecret)
 
-	categoryNames, err := util.LoadCategoryNamesFromXLSX("categories_index.xlsx")
+	categoriesFile := "categories_index.xlsx"
+	if strings.EqualFold(os.Getenv("TEST"), "true") {
+		categoriesFile = "categories_index_test.xlsx"
+		log.Println("TEST mode: using categories_index_test.xlsx")
+	}
+	categoryNames, err := util.LoadCategoryNamesFromXLSX(categoriesFile)
 	if err != nil {
 		log.Fatalf("failed to load category names from xlsx: %v", err)
 	}
