@@ -1,0 +1,742 @@
+
+Income
+-
+-
+-
+-
+
+4000 Retainer Revenue
+$226,645
+$110,583
+$135,542
+$472,771
+
+4001 Affiliate Revenue
+- $2,207 (75%)
+$3,993
+$1,898
+$738
+$6,629
+Total Income
+- $35,279 (21%)
+$230,638
+$112,481
+$136,280
+$479,400
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+5001 Direct Labor - Wages
+- $4,454 (21%)
+$21,627
+$20,687
+$16,703
+$59,018
+
+5003 Direct Labor - PR Fees
+- $763 (24%)
+$3,165
+$3,130
+$2,383
+$8,679
+
+5004 Contract labor - COGS
+$20,571
+$9,297
+$16,037
+$45,906
+
+5005 Software & App COGS
+- $329 (59%)
+$553
+$553
+$224
+$1,330
+Total Cost of Goods Sold
+$45,917
+$33,668
+$35,348
+$114,935
+Gross Profit
+- $30,835 (23%)
+$184,720
+$78,812
+$100,931
+$364,465
+
+Expenses
+-
+-
+-
+-
+
+6000 General & Administrative
+-
+-
+-
+-
+
+6001 Contract Labor
+$3,630
+$1,351
+$2,830
+$7,811
+Total 6000 General & Administrative
+$3,630
+$1,351
+$2,830
+$7,811
+
+6005 Advertising & Marketing
+-
+-
+-
+-
+
+6007 Online Web, Ads, Social Media
+$10,401
+$170
+$5,663
+$16,235
+Total 6005 Advertising & Marketing
+$10,401
+$170
+$5,663
+$16,235
+
+6100 Bank & CC Service Charges
+- $212 (26%)
+$947
+$659
+$591
+$2,199
+
+6125 Business Licenses & Permits
+- $466 (94%)
+$723
+$267
+$29
+$1,019
+
+6150 Insurance Expense
+-
+-
+-
+-
+
+6151 Auto/Business Insurance
+$255
+$226
+$215
+$697
+Total 6150 Insurance Expense
+$255
+$226
+$215
+$697
+
+6200 Office Expense
++ $1,214 (67%)
+$2,621
+$1,001
+$3,025
+$6,648
+
+6210 QuickBooks Fees
++ $134 (39%)
+$394
+$293
+$478
+$1,167
+
+6225 Rent
+$175
+$175
+$175
+$525
+
+6250 Repair & Maintenance
+- $699 (100%)
+$1,373
+$26
+-
+$1,399
+
+6275 Software, Apps, Subscriptions
+$2,908
+$3,539
+$2,767
+$9,216
+
+6325 Taxes & Licenses
+- $417 (100%)
+$834
+-
+-
+$834
+
+6375 Utilities
+$673
+$793
+$648
+$2,114
+
+6400 Payroll Expenses
+-
+-
+-
+-
+
+6401 Employee Wages
++ $1,502 (28%)
+$5,529
+$5,289
+$6,911
+$17,731
+
+6402 Employee Taxes
+- $381 (100%)
+-
+$762
+-
+$762
+
+6403 Payroll Fees
++ $310 (45%)
+$692
+$692
+$1,002
+$2,386
+
+6404 Employee Bonus
+- $8,113 (89%)
+$17,226
+$1,000
+$1,000
+$19,226
+Total 6400 Payroll Expenses
+- $6,682 (43%)
+$23,448
+$7,744
+$8,914
+$40,106
+
+6500 Legal & Professional Fees
+-
+-
+-
+-
+
+6501 Accounting Services
+- $3,192 (52%)
+$6,908
+$5,326
+$2,925
+$15,159
+
+6502 Education & Coaching
++ $4,500 (--)
+-
+-
+$4,500
+$4,500
+
+6503 Legal Services
+- $111 (100%)
+$181
+$41
+-
+$223
+
+6504 Recruitment Services
++ $500 (--)
+-
+-
+$500
+$500
+
+6505 Consulting Fee
+- $87,500 (100%)
+$175,000
+-
+-
+$175,000
+Total 6500 Legal & Professiona...
+- $85,803 (92%)
+$182,089
+$5,368
+$7,925
+$195,382
+
+6700 Travel
+-
+-
+-
+-
+
+6701 Meals
+- $1,242 (71%)
+$1,789
+$1,732
+$518
+$4,040
+
+6702 Airfare
+- $1,565 (35%)
+$5,390
+$3,574
+$2,917
+$11,881
+
+6703 Hotels & Lodging
++ $3,267 (129%)
+$3,290
+$1,782
+$5,804
+$10,877
+
+6704 Transportation
+- $585 (46%)
+$1,161
+$1,396
+$693
+$3,251
+Total 6700 Travel
+$11,631
+$8,485
+$9,933
+$30,050
+
+6800 Vehicle Expense
+-
+-
+-
+-
+
+6801 Gas & Car Charge
+$10
+$23
+$10
+$44
+
+6803 Vehicle Repairs
+$108
+$108
+$108
+$325
+Total 6800 Vehicle Expense
+$119
+$131
+$119
+$370
+Total Expenses
+- $92,914 (68%)
+$242,229
+$30,234
+$43,317
+$315,781
+Net Operating Income
++ $62,079 (1390%)
+-$57,508
+$48,578
+$57,614
+$48,684
+
+Other Income
+-
+-
+-
+-
+
+7000 Credit Card Rewards - Rebate Points
+$159
+-
+-
+$159
+
+7004 Misc Income
+- $618 (84%)
+$1,372
+$96
+$115
+$1,585
+
+7008 Unrealized Gains and Losess
+- $393 (20%)
+$1,380
+$2,482
+$1,538
+$5,400
+Total Other Income
+- $1,091 (40%)
+$2,912
+$2,578
+$1,654
+$7,145
+
+Other Expenses
+-
+-
+-
+-
+
+8001 Contributions To Charities
+- $7,500 (100%)
+-
+$15,000
+-
+$15,000
+
+8003 Depreciation
+$1,032
+$1,032
+$1,032
+$3,097
+
+8004 Interest Expense
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1001 Wells Fargo Checking - ...
++ $43,536 (31%)
+$127,477
+$157,119
+$185,834
+
+1002 Wise Bank EUR - 7728
+$4,254
+$4,224
+$3,713
+
+1003 Thrivent Advisor Guided - 5418
+$164,764
+$166,734
+$168,362
+
+1004 Thrivent Money Market - 8624
+-
+-
+-
+Total Bank Accounts
+$296,496
+$328,078
+$357,910
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable (A/R)
+- $23,639 (23%)
+$109,240
+$98,254
+$80,107
+Total Accounts Receivable
+- $23,639 (23%)
+$109,240
+$98,254
+$80,107
+
+Other Current Assets
+-
+-
+-
+
+1200 Payments to deposit
+-
+-
+-
+
+1205 Prepaid Expense
++ $3,000 (--)
+-
+-
+$3,000
+
+1250 Unbilled Accounts Receivable (A/R)
+$154,614
+$96,188
+$103,024
+1260 Uncategorized Asset
+-
+-
+-
+Total Other Current Assets
+$154,614
+$96,188
+$106,024
+Total Current Assets
+$560,351
+$522,520
+$544,042
+
+Fixed Assets
+-
+-
+-
+
+1300 Fixed Assets & Leasehold Improvements
+-
+-
+-
+1301 Computer & Printer
+$5,094
+$5,094
+$5,094
+1302 Office Equipment
+$15,231
+$15,231
+$15,231
+1303 Leasehold Improvements
+-
+-
+-
+1304 Tools, machinery, and equipment
+-
+-
+-
+1400 Tesla - 2023 Model Y
+$51,980
+$51,980
+$51,980
+Total 1300 Fixed Assets & Leasehold Impro...
+$72,305
+$72,305
+$72,305
+
+1499 Accumulated Depreciation
+-$51,717
+-$52,749
+-$53,782
+Total Fixed Assets
+$20,588
+$19,555
+$18,523
+TOTAL ASSETS
+$580,939
+$542,076
+$562,565
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Credit Cards
+-
+-
+-
+
+2101 Amex Delta CC - 1005
++ $133 (177%)
+$150
+-
+$208
+
+2103 Amex Platinum CC - 1007
++ $2,101 (141%)
+$2,264
+$719
+$3,593
+
+2104 Chase United CC - 8858
+- $1,678 (42%)
+$5,046
+$2,912
+$2,300
+
+2105 Chase Saphire CC - 0617
+$742
+$2,775
+$1,710
+Total Credit Cards
+$8,203
+$6,408
+$7,813
+
+Other Current Liabilities
+-
+-
+-
+
+2200 Payroll Liabilities
+-
+-
+-
+
+2201 Payroll Clearing
+-
+-
+-
+2202 Federal Taxes (941/943/944)
+-
+-
+-
+2203 Federal Unemployment (940)
+-
+-
+-
+2204 CO Income Tax
+-
+-
+-
+2205 CO Paid Family and Medical Leave
+-
+-
+-
+2206 CO Unemployment Tax
+-
+-
+-
+2207 NYS Income Tax
+-
+-
+-
+2208 OR Employment Taxes
+-
+-
+-
+2209 OR Income Tax
+-
+-
+-
+2210 OR Local Tax
+-
+-
+-
+2211 OR Paid Family and Medical Leave
+-
+-
+-
+2212 OR Statewide Transit Taxes
+-
+-
+-
+2213 TN Quarterly Taxes
+-
+-
+-
+
+2214 Tennessee Department of Revenue ...
+$116
+$116
+$116
+Total 2200 Payroll Liabilities
+$116
+$116
+$116
+2215 Out Of Scope Agency Payable
+-
+-
+-
+2216 Direct Deposit Payable
+-
+-
+-
+
+2300 Accrued Expense
++ $1,743 (223%)
+$187
+$1,375
+$2,525
+
+2301 Accrued Payroll
+- $5,351 (67%)
+$13,378
+$2,675
+$2,675
+2401 Tesla - 2023 Model Y - ST
+-
+-
+-
+Total Other Current Liabil...
+- $3,608 (40%)
+$13,682
+$4,168
+$5,317
+Total Current Liabilities
+$21,886
+$10,576
+$13,130
+
+Long-Term Liabilities
+-
+-
+-
+2501 Tesla - 2023 Model Y - LT
+-
+-
+-
+Total Long-Term Liabilities
+-
+-
+-
+Total Liabilities
+$21,886
+$10,576
+$13,130
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+$49,049
+$49,049
+$49,049
+
+3200 Owner Distribution
++ $128,253 (55%)
+-$399,774
+-$62,665
+-$102,966
+
+3201 Distribution - CleanPress
++ $5,383 (-100%)
+-$10,767
+-
+-
+3203 ATM Draw
+-
+-
+-
+3204 Paypay Draw
+-
+-
+-
+Total 3200 Owner Distribution
++ $133,637 (56%)
+-$410,541
+-$62,665
+-$102,966
+
+3900 Retained Earnings

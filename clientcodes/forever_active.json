@@ -1,0 +1,260 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "HMO Income Acct"
+    },
+    {
+      "item_code": "4200",
+      "item_name": "Medi-Care Income"
+    },
+    {
+      "item_code": "4300",
+      "item_name": "Retail Income"
+    },
+    {
+      "item_code": "5000",
+      "item_name": "Equipment"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6001",
+      "item_name": "Wages"
+    },
+    {
+      "item_code": "6002",
+      "item_name": "Taxes"
+    },
+    {
+      "item_code": "6040",
+      "item_name": "Bank & CC Fees"
+    },
+    {
+      "item_code": "6050",
+      "item_name": "Advertising and Promotion"
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Automobile Expense"
+    },
+    {
+      "item_code": "6101",
+      "item_name": "Gas"
+    },
+    {
+      "item_code": "6103",
+      "item_name": "Parking & Tolls"
+    },
+    {
+      "item_code": "6104",
+      "item_name": "Repair & Maintenance"
+    },
+    {
+      "item_code": "6150",
+      "item_name": "Business License & Permit"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Computer and Internet Expenses"
+    },
+    {
+      "item_code": "6250",
+      "item_name": "Dues and Subscriptions"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Insurance Expense"
+    },
+    {
+      "item_code": "6301",
+      "item_name": "Automobile Insurance"
+    },
+    {
+      "item_code": "6305",
+      "item_name": "Health Insurance"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Meals and Entertainment"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Office Expense"
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Postage and Delivery"
+    },
+    {
+      "item_code": "6550",
+      "item_name": "Professional Fees"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Reimbursements"
+    },
+    {
+      "item_code": "6650",
+      "item_name": "Repairs and Maintenace"
+    },
+    {
+      "item_code": "6700",
+      "item_name": "Rent Expense"
+    },
+    {
+      "item_code": "6715",
+      "item_name": "Software Expense"
+    },
+    {
+      "item_code": "6750",
+      "item_name": "Subcontractor Expense"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Telephone Expense"
+    },
+    {
+      "item_code": "6850",
+      "item_name": "Travel Expense"
+    },
+    {
+      "item_code": "6900",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "7000",
+      "item_name": "Other Income"
+    },
+    {
+      "item_code": "8000",
+      "item_name": "Charitable Donation"
+    },
+    {
+      "item_code": "8100",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "8200",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Wells Fargo Checking 0685"
+    },
+    {
+      "item_code": "1010",
+      "item_name": "CalPrivate Checking"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "1200",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1250",
+      "item_name": "Shareholder Loan"
+    },
+    {
+      "item_code": "1260",
+      "item_name": "Employee Loan"
+    },
+    {
+      "item_code": "1270",
+      "item_name": "QuickBooks Tax Holding ..."
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Company Vehicle"
+    },
+    {
+      "item_code": "1400",
+      "item_name": "Furniture and Equipment"
+    },
+    {
+      "item_code": "1500",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "1600",
+      "item_name": "Rent Deposit"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "American Express - Pl..."
+    },
+    {
+      "item_code": "2100",
+      "item_name": "Capital One -Spark 3813"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Chase Auto Loan"
+    },
+    {
+      "item_code": "2250",
+      "item_name": "Ford Credit Loan"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "SBA Loan - ST"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2401",
+      "item_name": "CA PIT / SDI"
+    },
+    {
+      "item_code": "2402",
+      "item_name": "CA SUI / ETT"
+    },
+    {
+      "item_code": "2403",
+      "item_name": "Federal Taxes (941/..."
+    },
+    {
+      "item_code": "2404",
+      "item_name": "Federal Unemploymen..."
+    },
+    {
+      "item_code": "2405",
+      "item_name": "Retirement Savings Deduction Plan"
+    },
+    {
+      "item_code": "2600",
+      "item_name": "Due To/From Harry"
+    },
+    {
+      "item_code": "2700",
+      "item_name": "SBA Loan - LT"
+    },
+    {
+      "item_code": "2800",
+      "item_name": "Ford Credit Loan - LT"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Capital Stock"
+    },
+    {
+      "item_code": "30000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Retained Earnings"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Shareholder Distributions"
+    }
+  ]
+}

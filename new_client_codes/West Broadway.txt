@@ -1,0 +1,865 @@
+
+Income
+-
+-
+-
+-
+
+42000 Revenue
++ $1,269,914 (41%)
+$3,250,147
+$3,012,964
+$4,401,470
+$10,664,582
+49999 Unapplied Cash Payment Income
+-
+-
+-
+-
+Total Income
++ $1,269,914 (41%)
+$3,250,147
+$3,012,964
+$4,401,470
+$10,664,582
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+50000 Cost of Goods Sold
+-
+-
+-
+-
+
+51100 Direct Material & Permit...
+- $81,262 (38%)
+$194,314
+$230,468
+$131,128
+$555,911
+
+51200 Direct Labor
+$357,470
+$318,563
+$319,757
+$995,791
+
+51300 Direct Subcontract
+$2,631,821
+$1,603,200
+$2,533,944
+$6,768,966
+
+51500 Travel, Fuel, & Per Diem...
+- $1,598 (41%)
+$5,832
+$2,028
+$2,331
+$10,192
+
+53300 Permit Fees
+- $1,815 (100%)
+-
+$3,630
+-
+$3,630
+Total 50000 Cost of Goods Sold
+$3,189,439
+$2,157,890
+$2,987,162
+$8,334,492
+Total Cost of Goods Sold
+$3,189,439
+$2,157,890
+$2,987,162
+$8,334,492
+Gross Profit
++ $956,417 (209%)
+$60,707
+$855,073
+$1,414,308
+$2,330,089
+
+Expenses
+-
+-
+-
+-
+
+61000 Marketing
+-
+-
+-
+-
+
+61011 Advertising & Website
++ $1,489 (14715%)
+$20
+-
+$1,500
+$1,520
+
+61025 Customer Relations
+- $771 (65%)
+$2,224
+$165
+$423
+$2,813
+
+61041 Promotional
++ $326 (2022%)
+-
+$32
+$342
+$375
+Total 61000 Marketing
++ $1,044 (86%)
+$2,244
+$198
+$2,266
+$4,709
+
+62000 Office & Utility Expenses
+-
+-
+-
+-
+
+62011 Office Expenses
+- $3,498 (50%)
+$9,037
+$5,082
+$3,560
+$17,680
+
+62021 Rent or Lease
+$15,695
+$18,930
+$18,930
+$53,556
+
+62031 Stationery & Printing
+- $165 (100%)
+$330
+-
+-
+$330
+
+62051 Utilities
+- $537 (25%)
+$2,667
+$1,625
+$1,608
+$5,901
+Total 62000 Office & Utility Expenses
+$27,730
+$25,638
+$24,100
+$77,469
+
+63000 Adminstrative, Legal, & Taxes
+-
+-
+-
+-
+
+63011 401K Admin Fees
+$369
+$361
+$361
+$1,091
+
+63031 Dues & Subscriptions
+- $22,306 (89%)
+$23,942
+$26,366
+$2,847
+$53,155
+
+63041 Legal & Professional Fees
+-
+$3,370
+$1,685
+$5,055
+
+63051 Purchases
+-
+-
+-
+-
+
+63071 Taxes & Licenses
+- $978 (59%)
+$2,566
+$753
+$681
+$4,000
+Total 63000 Adminstrative, Leg...
+- $23,288 (81%)
+$26,877
+$30,850
+$5,574
+$63,302
+
+64000 Payroll Expenses
+-
+-
+-
+-
+
+64100 Wages
+- $20,603 (25%)
+$106,194
+$57,658
+$61,323
+$225,176
+
+64200 Taxes
+- $4,105 (47%)
+$10,332
+$7,119
+$4,620
+$22,072
+
+64400 Company Contributions
+$18,597
+$11,498
+$15,081
+$45,177
+
+64500 Bonus
+- $242,868 (100%)
+$485,737
+-
+-
+$485,737
+Total 64000 Payroll Expenses
+- $267,543 (77%)
+$620,862
+$76,275
+$81,025
+$778,163
+
+64800 Subcontractors
++ $1,015 (-100%)
+-
+-$2,030
+-
+-$2,030
+
+64950 Employee Relations
++ $450 (--)
+-
+-
+$450
+$450
+
+65000 Insurance
+-
+-
+-
+-
+
+65020 Bond Expense
+- $750 (100%)
+$1,500
+-
+-
+$1,500
+
+65030 Liability Insurance
++ $55,931 (--)
+-
+-
+$55,931
+$55,931
+
+65050 Workmans Compensation Insurance
+-$894
+$4,219
+$1,619
+$4,944
+Total 65000 Insurance
++ $55,137 (2286%)
+$605
+$4,219
+$57,550
+$62,375
+
+66200 Automobile
+-
+-
+-
+-
+
+66210 Repair & Maintenance
+- $424 (91%)
+$919
+$13
+$41
+$974
+
+66230 Other Auto Expenses
+$1,483
+$1,483
+$1,483
+$4,451
+Total 66200 Automobile
+- $424 (22%)
+$2,402
+$1,496
+$1,525
+$5,425
+
+66820 Employee Meals
+- $197 (47%)
+$684
+$150
+$219
+$1,054
+
+66830 Promotional Meals
+- $2,042 (67%)
+$4,328
+$1,787
+$1,016
+$7,132
+
+67000 Repairs & Maintenance
+$28
+$28
+-
+$57
+69900 Unapplied Cash Bill Payment Expense
+-
+-
+-
+-
+Total Expenses
+- $238,461 (58%)
+$685,765
+$138,616
+$173,729
+$998,110
+Net Operating Income
++ $1,194,879 (2615%)
+-$625,057
+$716,457
+$1,240,579
+$1,331,979
+
+Other Income
+-
+-
+-
+-
+
+71500 Cash Back Income
+$4
+$4
+-
+$8
+
+79000 Miscellaneous Revenue
++ $149,249 (--)
+-
+-
+$149,249
+$149,249
+Total Other Income
++ $149,244 (3474848%)
+$4
+$4
+$149,249
+$149,257
+
+Other Expenses
+-
+-
+-
+-
+
+80000 Pass-Through Entity Tax
+- $36,500 (100%)
+$73,000
+-
+-
+$73,000
+
+85000 Charitable Contributions
++ $330 (--)
+-
+-
+$330
+$330
+
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+10010 Broadway Building Group LLC
+-
+-
+-
+
+10020 Chase Operating Accoun...
++ $1,642,441 (117%)
+$1,139,822
+$1,668,069
+$3,046,387
+
+10030 Chase Payables Account...
+- $8,836 (--)
+-
+-
+-$8,836
+
+10040 Chase Receivables Account 8885
+-
+-
+-
+
+10050 Chase Commercial Checking 0232
+$210,211
+$233,856
+$241,974
+Total Bank Accounts
++ $1,653,546 (102%)
+$1,350,033
+$1,901,925
+$3,279,525
+
+Other Current Assets
+-
+-
+-
+
+12100 Retention Receivable
++ $222,854 (27%)
+$760,624
+$895,480
+$1,050,907
+12190 Other Receivable
+-
+-
+-
+12195 Payroll Refunds
+-
+-
+-
+12600 Undeposited Funds
+-
+-
+-
+
+14100 Prepaid Expenses
+$28,463
+$36,967
+$37,406
+
+14200 Security Deposit Receivable
+$16,202
+$16,202
+$16,202
+Total Other Current Assets
++ $227,545 (26%)
+$805,290
+$948,650
+$1,104,515
+Total Current Assets
++ $1,881,091 (75%)
+$2,155,323
+$2,850,576
+$4,384,040
+
+Fixed Assets
+-
+-
+-
+15000 Furniture
+$16,745
+$16,745
+$16,745
+15050 Computers
+$5,645
+$5,645
+$5,645
+
+15100 Vehicles
+-
+-
+-
+15111 2016 Chevrolet Tahoe
+-
+-
+-
+15112 2016 Toyota Tacoma
+$32,991
+$32,991
+$32,991
+15113 2017 Ford Explorer
+$37,239
+$37,239
+$37,239
+15115 2017 Ford F150
+$30,901
+$30,901
+$30,901
+15116 2018 Toyota Prius
+-
+-
+-
+15117 2022 Ford F-150
+$35,642
+$35,642
+$35,642
+15118 2022 Toyota Camry
+$37,311
+$37,311
+$37,311
+15119 2022 GM Cadillac Escalade
+$116,055
+$116,055
+$116,055
+15120 2022 Dodge Ram 1500 #1
+$69,999
+$69,999
+$69,999
+15121 2022 Dodge Ram 1500 #2
+$43,093
+$43,093
+$43,093
+15122 2022 Dodge Ram 1500 #3
+$36,986
+$36,986
+$36,986
+15123 2022 Dodge Ram ProMaster
+$38,033
+$38,033
+$38,033
+15124 2023 Dodge Ram 1500 #4
+$43,077
+$43,077
+$43,077
+15125 2023 Tesla Model Y
+$57,125
+$57,125
+$57,125
+15126 2024 Tesla Model X
+$92,750
+$92,750
+$92,750
+15127 2023 Ford Maverick #1
+$28,976
+$28,976
+$28,976
+15128 2024 Ford Maverick #2
+$32,467
+$32,467
+$32,467
+15129 2024 Ford Maverick #3 - Joe Marin
+$32,688
+$32,688
+$32,688
+15130 2025 Toyota Tacoma
+$42,132
+$42,132
+$42,132
+Total 15100 Vehicles
+$807,474
+$807,474
+$807,474
+16000 Accumulated Depreciation
+-$596,167
+-$596,167
+-$596,167
+Total Fixed Assets
+$233,698
+$233,698
+$233,698
+TOTAL ASSETS
++ $1,881,091 (69%)
+$2,389,021
+$3,084,274
+$4,617,739
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+21000 Accounts Payable
+-
+-
+-
+Total Accounts Payable
+-
+-
+-
+
+Credit Cards
+-
+-
+-
+
+21500 Werbe Amex (3009)
+-
+$110
+$153
+
+21501 Chase Credit Card (2...
++ $318 (2795%)
+$7
+$15
+$330
+
+21502 Amex Platinum (2004)
++ $18,495 (232%)
+$2,673
+$13,249
+$26,457
+
+22100 Accrued Payroll
+-
+-
+-
+
+22200 Accrued Reimbursements
++ $1,470 (1503%)
+$129
+$66
+$1,568
+Total Credit Cards
++ $20,382 (251%)
+$2,810
+$13,441
+$28,508
+
+Other Current Liabilities
+-
+-
+-
+
+22500 Retention Payable
+$624,662
+$593,764
+$728,665
+23000 Direct Deposit Payable
+-
+-
+-
+23500 Other Payable
+-
+-
+-
+
+24000 Payroll Liabilities
+-
+-
+-
+24011 401K Plan (Employees)
+-
+-
+-
+24012 Guideline Roth 401(k)
+-
+-
+-
+
+24013 Guideline Traditional 401(k)
+$4,253
+$5,225
+$5,082
+
+24020 Anthem Blue Cross - Health
+-
+-
+-
+24021 Blue Shield - Health & Dental
+-
+-
+-
+24022 Kaiser - Health
+-
+-
+-
+
+24023 Unum - Dental, Lif...
+- $146 (73%)
+$253
+$145
+$53
+24031 CA PIT / SDI
+-
+-
+-
+24041 CA SUI / ETT
+-
+-
+-
+24045 AZ Income Tax
+-
+-
+-
+24051 Federal Taxes (941/944)
+-
+-
+-
+24061 Federal Unemployment (940)
+-
+-
+-
+
+24071 Flex Spending Account (Employee...
+$9,723
+$10,758
+$9,538
+
+24081 HSA
+- $112 (31%)
+$475
+$250
+$250
+24085 Paycheck Witholdings
+-
+-
+-
+Total 24000 Payroll Liabilities
+$14,705
+$16,379
+$14,923
+
+27000 Short-Term Lease Liabilities
+-
+-
+-
+
+27117 Ford F150 Loan- 2022
+$5,128
+$5,128
+$5,128
+
+27120 Dodge Ram 1500 #1 Loan - 2022
+$13,125
+$11,667
+$10,208
+Total 27000 Short-Term Lease Liabilit...
+$18,253
+$16,795
+$15,337
+Total Other Current Liabilities
+$657,621
+$626,939
+$758,926
+Total Current Liabilities
++ $137,028 (21%)
+$660,431
+$640,381
+$787,434
+
+Long-Term Liabilities
+-
+-
+-
+27011 PPP Loan - SBA/First Republic
+-
+-
+-
+27012 PPP Loan 2 - SBA/First Republic
+-
+-
+-
+27118 Toyota Camry Loan - 2022
+-
+-
+-
+27121 Dodge Ram 1500 #2 Loan - 2022
+-
+-
+-
+27124 Dodge Ram 1500 #3 Loan - 2023
+-
+-
+-
+
+28000 Long-Term Liabilities
+-
+-
+-
+
+28117 Ford F150 Loan- 2022
+- $640 (100%)
+$854
+$427
+-
+28120 27120 Dodge Ram 1500 #1 Loan - 2022
+-
+-
+-
+Total 28000 Long-Term Liab...
+- $640 (100%)
+$854
+$427
+-
+Total Long-Term Liabilities
+- $640 (100%)
+$854
+$427
+-
+Total Liabilities
++ $136,387 (21%)
+$661,286
+$640,808
+$787,434
+
+Equity
+-
+-
+-
+30000 Opening Balance Equity
+-
+-
+-
+
+35000 Shareholder Distribution
++ $279,624 (99%)
+-$565,300
+-$731
+-$3,391
+
+39000 Retained Earnings
++ $306,968 (22%)
+$1,113,798
+$1,727,735
+$1,727,735

@@ -1,0 +1,368 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Commission Income"
+    },
+    {
+      "item_code": "4001",
+      "item_name": "Buyer Commission"
+    },
+    {
+      "item_code": "4002",
+      "item_name": "Lease Commission"
+    },
+    {
+      "item_code": "4003",
+      "item_name": "Listing Commission"
+    },
+    {
+      "item_code": "4004",
+      "item_name": "Referral Commission"
+    },
+    {
+      "item_code": "6010",
+      "item_name": "Auto"
+    },
+    {
+      "item_code": "6016",
+      "item_name": "Taxi & Uber"
+    },
+    {
+      "item_code": "6030",
+      "item_name": "Bank, CC & Loan Fees"
+    },
+    {
+      "item_code": "6040",
+      "item_name": "Dues & Membership"
+    },
+    {
+      "item_code": "6041",
+      "item_name": "Douglas Elliman Dues"
+    },
+    {
+      "item_code": "6044",
+      "item_name": "NGORA"
+    },
+    {
+      "item_code": "6045",
+      "item_name": "Other Dues & Memberships"
+    },
+    {
+      "item_code": "6047",
+      "item_name": "Realtor Association"
+    },
+    {
+      "item_code": "6060",
+      "item_name": "Marketing"
+    },
+    {
+      "item_code": "6065",
+      "item_name": "Marketing | Lead Generation & Nurturing"
+    },
+    {
+      "item_code": "6066",
+      "item_name": "Agent Gifts"
+    },
+    {
+      "item_code": "6071",
+      "item_name": "Facebook & Instagram Ads"
+    },
+    {
+      "item_code": "6078",
+      "item_name": "Market Reports"
+    },
+    {
+      "item_code": "6082",
+      "item_name": "Nellie Gail Ranch"
+    },
+    {
+      "item_code": "6087",
+      "item_name": "Nellie Gail Ranch"
+    },
+    {
+      "item_code": "6089",
+      "item_name": "Photography & Videography"
+    },
+    {
+      "item_code": "6093",
+      "item_name": "Website"
+    },
+    {
+      "item_code": "6095",
+      "item_name": "Marketing | Listings"
+    },
+    {
+      "item_code": "6097",
+      "item_name": "Closing Gifts"
+    },
+    {
+      "item_code": "6099",
+      "item_name": "General Marketing"
+    },
+    {
+      "item_code": "6104",
+      "item_name": "Listing Repairs & Clean..."
+    },
+    {
+      "item_code": "6107",
+      "item_name": "Property Websites"
+    },
+    {
+      "item_code": "6108",
+      "item_name": "Signs & Riders"
+    },
+    {
+      "item_code": "6110",
+      "item_name": "Staging"
+    },
+    {
+      "item_code": "6150",
+      "item_name": "Meals"
+    },
+    {
+      "item_code": "6152",
+      "item_name": "Team & Client Meals"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Office Expense"
+    },
+    {
+      "item_code": "6201",
+      "item_name": "AIM Mail"
+    },
+    {
+      "item_code": "6203",
+      "item_name": "Office Supplies"
+    },
+    {
+      "item_code": "6205",
+      "item_name": "US Storage"
+    },
+    {
+      "item_code": "6290",
+      "item_name": "Shipping"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Systems & Software"
+    },
+    {
+      "item_code": "6308",
+      "item_name": "GSuite"
+    },
+    {
+      "item_code": "6310",
+      "item_name": "MailChimp"
+    },
+    {
+      "item_code": "6311",
+      "item_name": "Miscellaneous Systems"
+    },
+    {
+      "item_code": "6312",
+      "item_name": "Mojo Dialer"
+    },
+    {
+      "item_code": "6313",
+      "item_name": "Private Records"
+    },
+    {
+      "item_code": "6314",
+      "item_name": "Real Grader"
+    },
+    {
+      "item_code": "6317",
+      "item_name": "Supra"
+    },
+    {
+      "item_code": "6321",
+      "item_name": "Adobe"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6402",
+      "item_name": "Officer Salaries"
+    },
+    {
+      "item_code": "6403",
+      "item_name": "Bradley Feldman - Payroll"
+    },
+    {
+      "item_code": "6404",
+      "item_name": "Jacci Pearce - Payroll"
+    },
+    {
+      "item_code": "6405",
+      "item_name": "Trent Mason - Payroll"
+    },
+    {
+      "item_code": "6407",
+      "item_name": "ADP Payroll Fees"
+    },
+    {
+      "item_code": "6412",
+      "item_name": "Employer Tax"
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Legal & Professional Services"
+    },
+    {
+      "item_code": "6501",
+      "item_name": "Accountant"
+    },
+    {
+      "item_code": "6506",
+      "item_name": "Strategy, Consulting & Im..."
+    },
+    {
+      "item_code": "6550",
+      "item_name": "Outside Services"
+    },
+    {
+      "item_code": "6551",
+      "item_name": "Concierge Services"
+    },
+    {
+      "item_code": "6554",
+      "item_name": "Transaction Coordinator"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Training & Conferences"
+    },
+    {
+      "item_code": "6604",
+      "item_name": "Travel"
+    },
+    {
+      "item_code": "7010",
+      "item_name": "Interest Earned"
+    },
+    {
+      "item_code": "8010",
+      "item_name": "Interest Paid"
+    },
+    {
+      "item_code": "8020",
+      "item_name": "Charitable Donations"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "Checking 5720"
+    },
+    {
+      "item_code": "1002",
+      "item_name": "Savings 9643"
+    },
+    {
+      "item_code": "1302",
+      "item_name": "Suzie Bolik"
+    },
+    {
+      "item_code": "2201",
+      "item_name": "AMEX 1003"
+    },
+    {
+      "item_code": "2205",
+      "item_name": "Capital One Spark Card 8209"
+    },
+    {
+      "item_code": "2206",
+      "item_name": "US Bank CC 0369"
+    },
+    {
+      "item_code": "2401",
+      "item_name": "ADP Payroll Employer Liability"
+    },
+    {
+      "item_code": "2402",
+      "item_name": "ADP Payroll Tax Withheld"
+    },
+    {
+      "item_code": "2403",
+      "item_name": "Retirement Services"
+    },
+    {
+      "item_code": "2410",
+      "item_name": "Profit Share Payable"
+    },
+    {
+      "item_code": "2412",
+      "item_name": "SEP IRA Payable"
+    },
+    {
+      "item_code": "2501",
+      "item_name": "EIDL Loan"
+    },
+    {
+      "item_code": "2502",
+      "item_name": "PPP Loan"
+    },
+    {
+      "item_code": "2503",
+      "item_name": "AMEX Loan #1"
+    },
+    {
+      "item_code": "2504",
+      "item_name": "AMEX Loan #2"
+    },
+    {
+      "item_code": "2505",
+      "item_name": "AMEX Loan #3"
+    },
+    {
+      "item_code": "2506",
+      "item_name": "Commission Advance"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Owner's Equity"
+    },
+    {
+      "item_code": "3101",
+      "item_name": "Bradley Feldman"
+    },
+    {
+      "item_code": "3102",
+      "item_name": "Jacci Pearce"
+    },
+    {
+      "item_code": "3103",
+      "item_name": "Trent Mason"
+    },
+    {
+      "item_code": "3150",
+      "item_name": "Partner Distributions"
+    },
+    {
+      "item_code": "3151",
+      "item_name": "Distributions - Bradley..."
+    },
+    {
+      "item_code": "3152",
+      "item_name": "Distributions - Jacci P..."
+    },
+    {
+      "item_code": "3153",
+      "item_name": "Distributions - Trent M..."
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Owner's Investment"
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

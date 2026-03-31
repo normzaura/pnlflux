@@ -1,0 +1,680 @@
+
+Income
+-
+-
+-
+-
+
+40100-000 Membership Dues
+-
+-
+-
+-
+
+40100-001 Collab Plan
+-
+-
+-
+-
+
+40100-002 Cultivate Plan
+-
+-
+-
+-
+
+40100-005 New Member Fee
+-
+-
+-
+-
+
+40100-007 Premium Membership
+$16,292
+$16,521
+$16,372
+$49,186
+
+40100-008 Community Subscription
+$5,528
+$5,678
+$5,704
+$16,911
+Total 40100-000 Membership Dues
+$21,820
+$22,200
+$22,077
+$66,097
+
+40200-000 CoWork
+-
+-
+-
+-
+
+40200-0015 Monthly Rent Package
+$6,470
+$6,380
+$6,200
+$19,050
+
+40200-002 On-demand Bookings
+-
+-
+-
+-
+
+40200-003 Mail Handling
+$368
+$368
+$368
+$1,104
+
+40200-004 Storage Locker
+$196
+$196
+$196
+$588
+Total 40200-000 CoWork
+$7,034
+$6,944
+$6,764
+$20,742
+
+47500-000 Vendor Partner Income
+$20,779
+$21,874
+$20,777
+$63,430
+
+48000-000 Events
+-
+-
+-
+-
+
+48000-001 Sponsorships
+-
+-
+-
+-
+Total 48000-000 Events
+-
+-
+-
+-
+Total Income
+$49,633
+$51,018
+$49,618
+$150,270
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+50000-000 Cost of Sales
+-
+-
+-
+-
+
+51000-000 Member Services
+-
+-
+-
+-
+
+51100-000 Payroll Expenses
+-
+-
+-
+-
+
+51110-000 Salaries and Wages
++ $7,897 (222%)
+$5,375
+$1,750
+$11,460
+$18,586
+
+51120-000 Payroll Taxes
++ $821 (206%)
+$583
+$213
+$1,219
+$2,016
+
+51130-001 Benefits
+$79
+$21
+$5
+$107
+Total 51100-000 Payroll Ex...
++ $8,673 (216%)
+$6,039
+$1,985
+$12,685
+$20,710
+Total 51000-000 Member Servi...
++ $8,673 (216%)
+$6,039
+$1,985
+$12,685
+$20,710
+
+51200-000 Member Mail
+$27
+$19
+$19
+$65
+Total 50000-000 Cost of Sales
++ $8,669 (215%)
+$6,066
+$2,004
+$12,704
+$20,776
+
+50100-000 Direct Location Costs
+-
+-
+-
+-
+
+50110-151 Direct Rent
+$44,564
+$44,564
+$44,564
+$133,693
+
+50111-151 Direct CAM Charges
+- $306 (58%)
+$532
+$532
+$226
+$1,291
+
+50130-151 Direct Supplies
+- $145 (100%)
+$156
+$133
+-
+$290
+
+50135-151 Direct Snacks & Drinks
+$83
+$48
+-
+$132
+
+50145-151 Direct Maintenance
+$624
+$624
+$624
+$1,872
+
+50160-151 Direct Equipment Rental
+$955
+$1,113
+$955
+$3,025
+Total 50100-000 Direct Location Costs
+$46,917
+$47,016
+$46,370
+$140,304
+
+51300-000 Platform Operating Costs
+- $3,520 (34%)
+$10,946
+$9,833
+$6,869
+$27,649
+
+52000-000 Support Expenses
+-
+-
+-
+-
+
+52100-000 Payroll Expenses
+-
+-
+-
+-
+
+52101-000 Salaries and Wages
+-
+-
+-
+-
+
+52103-000 Payroll Taxes
+$168
+-
+-
+$168
+
+52103-001 Benefits
+-
+-
+-
+-
+Total 52100-000 Payroll Expenses
+$168
+-
+-
+$168
+Total 52000-000 Support Expenses
+$168
+-
+-
+$168
+Total Cost of Goods Sold
+$64,098
+$58,854
+$65,944
+$188,898
+Gross Profit
+- $5,175 (46%)
+-$14,465
+-$7,836
+-$16,326
+-$38,628
+
+Expenses
+-
+-
+-
+-
+
+60000-000 Selling Expenses
+-
+-
+-
+-
+
+60010-000 Payroll Expenses
+-
+-
+-
+-
+
+60011-000 Salaries and Wages
+- $4,843 (51%)
+$10,263
+$8,623
+$4,600
+$23,487
+
+60014-000 Payroll Taxes
+- $579 (54%)
+$1,244
+$921
+$503
+$2,669
+
+60014-001 Benefits
+- $353 (88%)
+$612
+$194
+$50
+$857
+Total 60010-000 Payroll Expe...
+- $5,776 (53%)
+$12,120
+$9,739
+$5,153
+$27,013
+
+60101-000 Dues and Subscriptions
+$2,510
+$2,510
+$2,510
+$7,530
+
+60103-000 Contract Services
+$5,103
+$5,103
+$5,103
+$15,310
+
+60109-000 Employee Travel Meals
++ $168 (--)
+-
+-
+$168
+$168
+Total 60000-000 Selling Expenses
+- $5,607 (30%)
+$19,734
+$17,352
+$12,935
+$50,022
+
+65000-000 General and Administrative
+-
+-
+-
+-
+
+65100-000 Payroll Expenses
+-
+-
+-
+-
+
+65101-000 Salaries and Wages
+-
+-
+-
+-
+
+65102-000 Payroll Taxes
+$0
+-
+-
+$0
+
+65102-001 Benefits
+-
+-
+-
+-
+
+65108-000 Payroll Processing Fees
+$398
+$398
+$425
+$1,223
+Total 65100-000 Payroll Expenses
+$398
+$398
+$425
+$1,223
+
+65150-000 Merchant Account Fees
+$1,744
+$1,512
+$1,362
+$4,619
+
+65200-000 General Office Expenses
+-
+-
+-
+-
+
+65211-000 Office Supplies
++ $917 (--)
+-
+-
+$917
+$917
+Total 65200-000 General Offi...
++ $917 (--)
+-
+-
+$917
+$917
+
+65220-000 Insurance
+$1,516
+$1,014
+$1,476
+$4,007
+
+65240-001 Telephone Expense
+$171
+$171
+$171
+$513
+
+65260-000 Transport, Mileage, & Parking (Lo...
+$52
+$409
+$227
+$689
+
+65270-000 Dues and Subscriptions
+- $1,608 (44%)
+$5,158
+$2,100
+$2,020
+$9,279
+
+65280-000 Outside Services
++ $21,047 (159%)
+$16,563
+$9,967
+$34,313
+$60,844
+
+65500-000 Legal and Professional Fees
+-
+-
+-
+-
+
+65511-000 Accounting Fees
+$2,446
+$2,446
+$2,506
+$7,398
+Total 65500-000 Legal and Professional Fees
+$2,446
+$2,446
+$2,506
+$7,398
+Total 65000-000 General and Ad...
++ $20,385 (88%)
+$28,051
+$18,021
+$43,421
+$89,493
+Total Expenses
++ $14,777 (36%)
+$47,785
+$35,373
+$56,356
+$139,516
+Net Operating Income
+- $19,952 (38%)
+
+Other Expenses
+-
+-
+-
+-
+
+81000-000 Other Expense
+-
+-
+-
+-
+
+81400-000 Depreciation Expense
+$112
+$112
+$112
+$338
+Total 81000-000 Other Expense
+$112
+$112
+$112
+$338
+
+81300-000 Taxes and Licenses
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Accounts Receivable
+-
+-
+-
+
+11000-000 Accounts Receivable
++ $2,447 (42%)
+$5,288
+$6,423
+$8,303
+Total Accounts Receivable
++ $2,447 (42%)
+$5,288
+$6,423
+$8,303
+
+Other Current Assets
+-
+-
+-
+
+11100-000 Accounts Receivabl...
++ $3,089 (414%)
+$735
+$755
+$3,835
+11400-000 Undeposited Funds
+-
+-
+-
+
+11600-000 Prepaid Expenses
+$34,342
+$27,850
+$32,119
+Total Other Current Assets
+$35,078
+$28,606
+$35,955
+Total Current Assets
+$40,367
+$35,030
+$44,259
+
+Fixed Assets
+-
+-
+-
+
+12110-000 Fixed Asset Equipment - Corporate
+$6,773
+$6,773
+$6,773
+
+12150-000 Accumulated Depreciation
+-$2,402
+-$2,515
+-$2,628
+Total 12110-000 Fixed Asset Equipment - C...
+$4,370
+$4,258
+$4,145
+Total Fixed Assets
+$4,370
+$4,258
+$4,145
+TOTAL ASSETS
+$44,738
+$39,288
+$48,404
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+20100-000 Accounts Payable
+$22,500
+$624
+$9,624
+Total Accounts Payable
+$22,500
+$624
+$9,624
+
+Other Current Liabilities
+-
+-
+-
+
+22000-000 Deferred Revenue
+$145,037
+$137,410
+$128,596
+22000-001 Deferred Revenue - S
+-
+-
+-
+22010-000 Customer Event Deposits
+-
+-
+-
+22020-000 Rent Deposit
+$4,200
+$4,200
+$4,200
+
+22300-000 Accrued Expenses
++ $8,377 (85%)
+$9,292
+$10,422
+$18,234
+
+22400-600 Due to Word Merchant
+$1,429,414
+$1,494,159
+$1,568,073
+
+22400-700 Due to Attorney Share
+$6,744
+$8,244
+$8,244
+Total Other Current Liabilities
+$1,594,687
+$1,654,437
+$1,727,349
+Total Current Liabilities
+$1,617,187
+$1,655,061
+$1,736,973
+Total Liabilities
+$1,617,187
+$1,655,061
+$1,736,973
+
+Equity
+-
+-
+-
+32000-000 Retained Earnings
+- $299,711 (24%)
+-$973,025
+-$1,572,449
+-$1,572,449

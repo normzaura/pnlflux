@@ -1,0 +1,1299 @@
+
+Income
+-
+-
+-
+-
+
+4050 Creative
+-
+-
+-
+-
+
+4060 Branding
+$323,400
+$305,997
+$311,226
+$940,623
+
+4065 Campaign
+- $17,313 (65%)
+$31,121
+$22,265
+$9,380
+$62,766
+Total 4050 Creative
+$354,521
+$328,262
+$320,606
+$1,003,390
+
+4150 Public Relations
+-
+-
+-
+-
+
+4160 Ongoing
++ $27,276 (27%)
+$95,106
+$104,720
+$127,190
+$327,016
+
+4165 Project
+- $9,742 (100%)
+$16,985
+$2,500
+-
+$19,485
+Total 4150 Public Relations
+$112,091
+$107,220
+$127,190
+$346,501
+
+4200 Service Fee
+-
+-
+-
+-
+
+4210 Service Fee - Earned Income
+$34,000
+$34,000
+$34,000
+$102,000
+
+4215 Markup
+- $39,810 (100%)
+$4,525
+$75,094
+-
+$79,620
+
+4220 Passthrough Billings (Zer...
++ $29,863 (--)
+-
+-
+$29,863
+$29,863
+
+4225 Passthrough Expenses (Zer...
++ $12,763 (--)
+-
+-
+$12,763
+$12,763
+
+4230 Technology Fee
+$2,000
+$2,150
+$2,450
+$6,600
+Total 4200 Service Fee
+$40,525
+$111,244
+$79,076
+$230,847
+
+807 Uncategorized Income
+-
+-
+$0
+$0
+Total Income
+$507,137
+$546,727
+$526,873
+$1,580,738
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+5000 Pass through Vendor Costs
+-
+-
+-
+-
+
+5100 Service Fee - Billing/Costs
+-
+-
+-
+-
+
+5110 Service Fee - Billed/In...
++ $154,036 (26%)
+-$817,093
+-$387,933
+-$448,476
+-$1,653,503
+
+5115 Service Fee - Pass Thro...
+- $154,036 (26%)
+$817,093
+$387,933
+$448,476
+$1,653,503
+Total 5100 Service Fee - Billing/Costs
+-
+-
+-
+-
+
+5200 Reimbursed Client Expenses
+-
+-
+-
+-
+
+5210 Mark-up - Charged Income
++ $143,792 (79%)
+-$101,954
+-$263,872
+-$39,120
+-$404,946
+
+5215 Mark-up - Reimbursed Ex...
+- $113,816 (62%)
+$101,954
+$263,872
+$69,096
+$434,922
+Total 5200 Reimbursed Client...
++ $29,975 (--)
+-
+-
+$29,975
+$29,975
+Total 5000 Pass through Vendor...
++ $29,975 (--)
+-
+-
+$29,975
+$29,975
+
+5300 People Costs - Direct
+-
+-
+-
+-
+
+5310 Payroll - Direct
+$183,928
+$220,082
+$197,508
+$601,518
+
+5315 Benefits - Direct
+$10,479
+$11,570
+$11,714
+$33,764
+
+5320 Payroll Taxes - Direct
+- $4,184 (21%)
+$18,539
+$21,279
+$15,724
+$55,542
+
+5330 Vacation - Direct
++ $1,095 (21%)
+$5,587
+$5,085
+$6,431
+$17,104
+Total 5300 People Costs - Direct
+$218,535
+$258,016
+$231,378
+$707,930
+
+5400 Project Costs
+-
+-
+-
+-
+
+5410 COGS-Event/Project Manage...
+- $2,712 (100%)
+$4,050
+$1,375
+-
+$5,425
+
+5415 COGS-Video Services
+- $7,489 (100%)
+$576
+$14,402
+-
+$14,978
+
+5420 COGS-Web/Digital Services
+- $7,087 (23%)
+$34,501
+$26,739
+$23,532
+$84,773
+
+5425 COGS-General Services
+- $670 (24%)
+$1,278
+$4,362
+$2,150
+$7,790
+
+5430 COGS-Design Services
++ $14,022 (224%)
+$10,210
+$2,287
+$20,271
+$32,769
+
+5435 COGS-Marketing Consulting
+$13,475
+$17,037
+$16,700
+$47,212
+
+5445 COGS-PR Consulting
++ $15,887 (290%)
+$10,355
+$600
+$21,365
+$32,320
+
+5450 COGS-Copywriting
++ $18,468 (81%)
+$21,698
+$24,027
+$41,331
+$87,057
+Total 5400 Project Costs
++ $31,861 (34%)
+$96,145
+$90,831
+$125,350
+$312,327
+
+5500 Client Expenses & Supplies
+-
+-
+-
+-
+
+5510 Client Supplies (Non Reim...
++ $300 (--)
+-
+-
+$300
+$300
+
+5515 Media Clippings
+- $279 (90%)
+$9
+$610
+$30
+$651
+
+5520 Client Cultivation
++ $1,850 (--)
+-
+-
+$1,850
+$1,850
+Total 5500 Client Expenses & S...
++ $1,870 (603%)
+$9
+$610
+$2,181
+$2,801
+Total Cost of Goods Sold
+$314,690
+$349,458
+$388,885
+$1,053,034
+Gross Profit
+- $56,870 (29%)
+$192,447
+$197,268
+$137,987
+$527,703
+
+Expenses
+-
+-
+-
+-
+
+6000 People Costs
+-
+-
+-
+-
+
+6010 Payroll - G&A
+$29,033
+$28,654
+$26,516
+$84,204
+
+6015 Benefits - G&A
+$1,908
+$2,300
+$2,300
+$6,509
+
+6020 PR Taxes - G&A
+$2,145
+$2,723
+$2,149
+$7,018
+
+6025 Payroll Fees
+$3,653
+$3,747
+$4,009
+$11,410
+
+6030 Vacation - G&A
++ $692 (63%)
+$399
+$1,784
+$1,784
+$3,968
+
+6050 Training/Development
+-
+-
+-
+-
+
+6052 Association Dues
+- $533 (45%)
+$1,468
+$887
+$644
+$2,999
+
+6055 Staff Appreciation
+- $5,558 (66%)
+$15,313
+$1,439
+$2,817
+$19,570
+Total 6050 Training/Developm...
+- $6,092 (64%)
+$16,781
+$2,326
+$3,461
+$22,570
+
+6060 Travel
+- $1,263 (35%)
+$3,476
+$3,821
+$2,385
+$9,684
+Total 6000 People Costs
+$57,398
+$45,358
+$42,608
+$145,365
+
+6100 Facility Costs
+-
+-
+-
+-
+
+6110 Rent/Lease Costs
+- $12,971 (85%)
+$15,245
+$15,245
+$2,274
+$32,765
+
+6115 Facilities Maintenance
+- $1,779 (61%)
+$3,439
+$2,430
+$1,155
+$7,024
+Total 6100 Facility Costs
+- $14,751 (81%)
+$18,685
+$17,675
+$3,429
+$39,790
+
+6200 Office Expenses
+- $300 (100%)
+$400
+$200
+-
+$600
+
+6210 Computer Equipment
+$1,501
+$100
+$920
+$2,522
+
+6215 Computer Software
++ $16,033 (691%)
+$1,760
+$2,879
+$18,353
+$22,993
+
+6220 Project Management Tools
+$2,871
+$3,197
+$3,565
+$9,634
+
+6225 Utilities
+-
+-
+-
+-
+
+6230 Cell Phone
+- $415 (66%)
+$214
+$1,044
+$214
+$1,473
+
+6231 Internet
+- $158 (84%)
+$188
+$188
+$30
+$407
+
+6232 IT/Website/Leases
+$724
+$724
+$724
+$2,173
+
+6233 Phone Service
+$41
+$41
+$41
+$124
+Total 6225 Utilities
+- $573 (36%)
+$1,169
+$1,999
+$1,010
+$4,179
+
+6240 IT Consulting/Projects
+- $1,235 (31%)
+$2,575
+$5,334
+$2,719
+$10,630
+
+6245 Mailing
+- $291 (39%)
+$786
+$701
+$452
+$1,940
+
+6250 Supplies
+- $3,258 (63%)
+$6,225
+$4,135
+$1,922
+$12,283
+
+6255 Subscriptions
+- $1,135 (36%)
+$3,267
+$3,111
+$2,053
+$8,432
+
+6260 QuickBooks Payments Fees
+$155
+$135
+$155
+$445
+Total 6200 Office Expenses
++ $9,898 (47%)
+$20,713
+$21,795
+$31,152
+$73,661
+
+6300 Auto
+-
+-
+-
+-
+
+6310 Parking
+$1,203
+$729
+$943
+$2,875
+
+6325 Mileage Reimbursement
++ $241 (106%)
+$356
+$101
+$470
+$928
+
+6330 Other
+$186
+$186
+$186
+$558
+Total 6300 Auto
+$1,746
+$1,016
+$1,600
+$4,362
+
+6400 Business Development
+-
+-
+-
+-
+
+6410 New Business Development-...
++ $996 (53%)
+$1,880
+$1,887
+$2,880
+$6,647
+
+6415 New Business Development-...
+- $5,238 (100%)
+$9,345
+$1,131
+-
+$10,477
+
+6420 New Business Development-...
+- $15,166 (56%)
+$36,230
+$17,525
+$11,711
+$65,467
+Total 6400 Business Development
+- $19,408 (57%)
+$47,456
+$20,544
+$14,591
+$82,592
+
+6500 Advertising and Marketing
+-
+-
+-
+-
+
+6510 Meals and Entertainment
+$15
+-
+-
+$15
+
+6525 Business Meals
+$7,498
+$4,990
+$5,517
+$18,006
+
+6530 Charitable Giving
++ $1,339 (510%)
+$525
+-
+$1,602
+$2,127
+Total 6500 Advertising and Marketing
+$8,038
+$4,990
+$7,119
+$20,149
+
+6600 Legal & Professional Fees
+-
+-
+-
+-
+
+6615 Accounting and Finance Support
+$7,245
+$7,607
+$7,607
+$22,459
+Total 6600 Legal & Professional Fees
+$7,245
+$7,607
+$7,607
+$22,459
+
+6700 Insurance
+- $1,208 (57%)
+$802
+$3,445
+$915
+$5,163
+
+6710 Professional Liability
++ $593 (100%)
+$1,186
+-
+$1,186
+$2,372
+
+6715 Life Insurance
+$2,026
+$112
+$1,000
+$3,139
+
+6720 Insurance - Workers Comp
+$1,249
+$1,510
+$1,329
+$4,089
+Total 6700 Insurance
+$5,265
+$5,068
+$4,431
+$14,765
+
+6800 Other Business Expenses
+-
+-
+-
+-
+
+6810 Bank Charges
+$91
+$165
+$184
+$442
+
+6820 Taxes & Licenses
+$33
+-
+-
+$33
+
+6821 State Tax Expense
+- $61,800 (100%)
+$123,600
+-
+-
+$123,600
+Total 6800 Other Business Expe...
+- $61,760 (100%)
+$123,725
+$165
+$184
+$124,075
+Total Expenses
+- $94,523 (46%)
+$290,275
+$124,221
+$112,724
+$527,221
+Net Operating Income
++ $37,652 (304%)
+-$97,828
+$73,047
+$25,262
+$481
+
+Other Income
+-
+-
+-
+-
+
+7000 Interest Earned
+$1
+$1
+$2
+$6
+Total Other Income
+$1
+$1
+$2
+$6
+
+Other Expenses
+-
+-
+-
+-
+
+8010 Depreciation
+$2,785
+$2,785
+$2,785
+$8,355
+
+8020 Interest Expense
++ $1,876 (123%)
+$1,528
+$1,525
+$3,404
+$6,458
+
+8030 Other Gain/(Loss)
+$95
+-
+-
+$95
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1000 Reveille Bank Accounts
+-
+-
+-
+
+1007 Chase PASSTHROUGH Che...
+- $341,323 (87%)
+$726,196
+$62,458
+$53,003
+
+1011 Chase OPERATING - 8671
+$231,490
+$191,650
+$233,191
+
+1012 CHASE - 5677
++ $40,254 (233%)
+$17,680
+$16,901
+$57,545
+
+1024 CHASE Savings - 5520
++ $115,003 (100%)
+$100,003
+$130,005
+$230,007
+1025 Wells Checking
+$9
+$9
+$9
+1026 Wells Savings
+$382
+$382
+$382
+Total 1000 Reveille Bank A...
+- $164,445 (22%)
+$1,075,762
+$401,407
+$574,139
+
+1050 Client Prepaid Accounts
+-
+-
+-
+
+1013 CHASE - COH National ...
++ $299,616 (342%)
+$87,710
+$87,710
+$387,327
+
+1051 Chase Client Checking...
+- $92,786 (61%)
+$109,237
+$196,904
+$60,284
+
+1055 Chase Checking-OCPA 6...
+- $14,463 (51%)
+$41,821
+$15,012
+$13,953
+Total 1050 Client Prepaid ...
++ $192,366 (71%)
+$238,769
+$299,627
+$461,564
+Total Bank Accounts
+$1,314,532
+$701,035
+$1,035,704
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable
+- $493,281 (31%)
+$1,079,607
+$2,101,674
+$1,097,359
+Total Accounts Receivable
+- $493,281 (31%)
+$1,079,607
+$2,101,674
+$1,097,359
+
+Other Current Assets
+-
+-
+-
+
+1110 Undeposited Funds
+-
+-
+-
+1120 Unbilled AR/Client Reimbursed Expenses
+-
+-
+-
+
+1200 Prepaid Expenses
+$62,697
+$69,445
+$74,604
+1350 Uncategorized Asset
+-
+-
+-
+Total Other Current Assets
+$62,697
+$69,445
+$74,604
+Total Current Assets
+$2,456,836
+$2,872,155
+$2,207,668
+
+Fixed Assets
+-
+-
+-
+
+1500 Fixed Asset - Auto
+-
+-
+-
+1510 Fixed Assets - Brenda Car
+-
+-
+-
+1515 Fixed Assets - Accumulated Depreciat...
+-
+-
+-
+Total 1500 Fixed Asset - Auto
+-
+-
+-
+
+1520 Fixed Assets - Comp Hardw...
++ $4,373 (--)
+-
+-
+$4,373
+1525 Original Cost
+$285,391
+$285,391
+$285,391
+
+1530 Fixed Asset Accum Depreciation
+-$153,035
+-$155,820
+-$158,605
+Total 1520 Fixed Assets - Comp Hardware/F...
+$132,356
+$129,570
+$131,159
+Total Fixed Assets
+$132,356
+$129,570
+$131,159
+
+Other Assets
+-
+-
+-
+1600 Security Deposits
+$16,575
+$16,575
+$16,575
+
+1630 ROU Asset
+$320,693
+$308,896
+$308,896
+
+1631 ROU Rivian
+$48,271
+$46,816
+$45,358
+1650 Shareholder Loan Receivable
+$93,339
+$93,339
+$93,339
+1700 Expansion
+-
+-
+-
+Total Other Assets
+$478,879
+$465,627
+$464,169
+TOTAL ASSETS
+$3,068,072
+$3,467,354
+$2,802,997
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+2000 Accounts Payable
+$216,347
+$425,573
+$365,180
+Total Accounts Payable
+$216,347
+$425,573
+$365,180
+
+Credit Cards
+-
+-
+-
+
+2100 Credit Cards -
+-
+-
+-
+
+2109 Chase CC x3580
+$44,543
+$44,543
+$44,543
+
+2110 Chase CC - Brenda (3580)
+-$530,403
+-$564,676
+-$573,779
+
+2111 Chase CC - Luke (3606)
+$12,683
+$13,359
+$14,035
+
+2113 Chase CC- Kristin...
++ $22,913 (23%)
+$93,552
+$105,026
+$122,203
+
+2114 Chase CC - Lindsey (0696)
+$64,662
+$65,283
+$54,282
+
+2117 Chase CC - Gina (4129)
+$326,702
+$340,277
+$357,816
+Total 2109 Chase CC x3...
++ $11,324 (146%)
+$11,741
+$3,813
+$19,101
+
+2120 Chase CC - Brenda (...
+- $22,683 (77%)
+$52,197
+$6,423
+$6,627
+Total 2100 Credit Cards -
+- $11,359 (31%)
+$63,938
+$10,237
+$25,728
+2130 Wells Fargo Credit Card - Brenda
+-
+-
+-
+2155 Wells Fargo BusinessLine Credit
+-
+-
+-
+Total Credit Cards
+- $11,359 (31%)
+$63,938
+$10,237
+$25,728
+
+Other Current Liabilities
+-
+-
+-
+2200 Other Current Liabilities
+-
+-
+-
+
+2210 Accrued expenses
+$160,124
+$170,226
+$161,076
+
+2215 LOC - Chase
++ $1,881 (--)
+-
+-
+$1,881
+
+2220 Loan Payable
+-
+-
+-
+2221 _WITHUM Loan Payable-Audi
+-
+-
+-
+Total 2220 Loan Payable
+-
+-
+-
+2225 Accrued Interest
+-
+-
+-
+
+2230 ST Lease Liability
+$162,371
+$163,326
+$163,326
+
+2231 ST Rivian Liability
+$12,842
+$12,883
+$12,924
+
+2300 Payroll (Liability)
+-
+-
+-
+2310 Medical
+-
+-
+-
+2315 Payroll Taxes Employee
+-
+-
+-
+
+2320 Accrued Payroll
++ $47,981 (59%)
+-
+$162,337
+$129,150
+2325 Payroll Clearing
+-
+-
+-
+
+2330 Accrued PTO
+$124,687
+$131,556
+$139,773
+Total 2300 Payroll (Liab...
++ $59,632 (28%)
+$124,687
+$293,894
+$268,923
+
+2400 City of Hope Deposits
+-
+-
+-
+
+2410 City of Hope - Prep...
+- $381,001 (40%)
+$983,645
+$919,793
+$570,718
+2415 City of Hope - Unearned Service ...
+$21,883
+$21,883
+$21,883
+
+2420 City of Hope - Syst...
+- $104,196 (22%)
+$431,560
+$523,167
+$373,167
+Total 2400 City of Hope ...
+- $485,198 (33%)
+$1,437,089
+$1,464,844
+$965,769
+
+2450 Client Deposits
+$119,607
+$119,012
+$110,507
+Total Other Current Liabil...
+- $436,047 (21%)
+$2,016,722
+$2,224,188
+$1,684,408
+Total Current Liabilities
+$2,297,009
+$2,659,999
+$2,075,317
+
+Long-Term Liabilities
+-
+-
+-
+
+2600 COVID-19 FUNDING
+-
+-
+-
+
+2610 EIDL
+$488,221
+$487,259
+$486,293
+2615 PPP
+-
+-
+-
+2620 PPP-2
+-
+-
+-
+Total 2600 COVID-19 FUNDING
+$488,221
+$487,259
+$486,293
+
+2630 LT Lease Liability
+$196,310
+$182,417
+$159,727
+
+2631 LT Rivian Liability
+$21,334
+$20,242
+$19,146
+Total Long-Term Liabilities
+$705,866
+$689,918
+$665,167
+Total Liabilities
+$3,002,875
+$3,349,918
+$2,740,485
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+-
+-
+-
+
+3100 Partner Distributions
+-
+-
+-
+3110 A Distribution
+-
+-
+-
+
+3115 B Distribution
+- $82,250 (51%)
+-$152,833
+-$169,333
+-$243,333
+Total 3100 Partner Distribut...
+- $82,250 (51%)
+-$152,833
+-$169,333
+-$243,333
+
+3150 Partner's Equity
+-
+-
+-
+3160 B Capital Contributions
+-
+-
+-
+3170 B Equity
+-
+-
+-
+Total 3150 Partner's Equity
+-
+-
+-
+3200 Retained Earnings
++ $507,406 (175%)
+-$796,783
+$218,030
+$218,030
+3250 Retained Earnings-Distributions
+-
+-
+-

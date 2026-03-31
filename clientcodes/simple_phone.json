@@ -1,0 +1,396 @@
+{
+  "category": [
+    {
+      "item_code": "4001",
+      "item_name": "Recurring Revenue"
+    },
+    {
+      "item_code": "4002",
+      "item_name": "Telecomm Fees"
+    },
+    {
+      "item_code": "4003",
+      "item_name": "Equipment Buyout Fees"
+    },
+    {
+      "item_code": "4004",
+      "item_name": "On-site Support and Installs"
+    },
+    {
+      "item_code": "5001",
+      "item_name": "Direct Materials"
+    },
+    {
+      "item_code": "5004",
+      "item_name": "Direct Support Labor"
+    },
+    {
+      "item_code": "5005",
+      "item_name": "Direct Support Payroll Taxes"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6001",
+      "item_name": "Officers Salaries & Wages"
+    },
+    {
+      "item_code": "6002",
+      "item_name": "Salaries & Wages"
+    },
+    {
+      "item_code": "6004",
+      "item_name": "Employee Bonus"
+    },
+    {
+      "item_code": "6005",
+      "item_name": "Employee Commissions"
+    },
+    {
+      "item_code": "6007",
+      "item_name": "Payroll Taxes"
+    },
+    {
+      "item_code": "6008",
+      "item_name": "Payroll Fees"
+    },
+    {
+      "item_code": "6009",
+      "item_name": "401K Processing Fee"
+    },
+    {
+      "item_code": "6010",
+      "item_name": "Medical Insurance"
+    },
+    {
+      "item_code": "6011",
+      "item_name": "PTO Expense"
+    },
+    {
+      "item_code": "6050",
+      "item_name": "Marketing"
+    },
+    {
+      "item_code": "6051",
+      "item_name": "Advertising"
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Computer and Internet"
+    },
+    {
+      "item_code": "6101",
+      "item_name": "Computer Software"
+    },
+    {
+      "item_code": "6103",
+      "item_name": "Web Hosting & Domains"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Dues and Subscriptions"
+    },
+    {
+      "item_code": "6204",
+      "item_name": "Software Subscriptions"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Fees"
+    },
+    {
+      "item_code": "6303",
+      "item_name": "Merchant Account Fees"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Meals"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Other Expenses"
+    },
+    {
+      "item_code": "6404",
+      "item_name": "Fuel"
+    },
+    {
+      "item_code": "6405",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "6414",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "6415",
+      "item_name": "Shipping Costs"
+    },
+    {
+      "item_code": "6450",
+      "item_name": "Payroll Benefits"
+    },
+    {
+      "item_code": "6453",
+      "item_name": "401(k) Employer Match"
+    },
+    {
+      "item_code": "6550",
+      "item_name": "Professional Fees"
+    },
+    {
+      "item_code": "6551",
+      "item_name": "Prof Fees - Accounting"
+    },
+    {
+      "item_code": "6553",
+      "item_name": "Prof Fees - Other"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Sales Acquisition"
+    },
+    {
+      "item_code": "6601",
+      "item_name": "Partner Commissions"
+    },
+    {
+      "item_code": "6650",
+      "item_name": "Supplies"
+    },
+    {
+      "item_code": "6651",
+      "item_name": "Office Supplies"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "6801",
+      "item_name": "Cable & Internet"
+    },
+    {
+      "item_code": "6806",
+      "item_name": "Telephone"
+    },
+    {
+      "item_code": "6950",
+      "item_name": "Bad Debt Expense"
+    },
+    {
+      "item_code": "7000",
+      "item_name": "Other (Income)"
+    },
+    {
+      "item_code": "7001",
+      "item_name": "Miscellaneous Income"
+    },
+    {
+      "item_code": "7002",
+      "item_name": "Interest (Income)"
+    },
+    {
+      "item_code": "8000",
+      "item_name": "Other Expense"
+    },
+    {
+      "item_code": "8004",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Mercury - 4057"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "Mercury - 4399"
+    },
+    {
+      "item_code": "1002",
+      "item_name": "Wells Fargo - 1475"
+    },
+    {
+      "item_code": "1003",
+      "item_name": "Wells Fargo - 1712"
+    },
+    {
+      "item_code": "1004",
+      "item_name": "Mercury - 8057"
+    },
+    {
+      "item_code": "1005",
+      "item_name": "PayPal"
+    },
+    {
+      "item_code": "1007",
+      "item_name": "Wells Fargo - 7580"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable (Bi..."
+    },
+    {
+      "item_code": "1101",
+      "item_name": "Accounts Receivable (Rev)"
+    },
+    {
+      "item_code": "1235",
+      "item_name": "Intercompany Receivables"
+    },
+    {
+      "item_code": "1250",
+      "item_name": "Other Receivables"
+    },
+    {
+      "item_code": "1260",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1262",
+      "item_name": "Prepaid Rent"
+    },
+    {
+      "item_code": "1263",
+      "item_name": "Prepaid Other"
+    },
+    {
+      "item_code": "1270",
+      "item_name": "Stripe Receivables"
+    },
+    {
+      "item_code": "1280",
+      "item_name": "Unbilled AR - Jolli"
+    },
+    {
+      "item_code": "1290",
+      "item_name": "Unbilled AR - IRVTech"
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Fixed Assets"
+    },
+    {
+      "item_code": "1302",
+      "item_name": "Computer Equipment"
+    },
+    {
+      "item_code": "1303",
+      "item_name": "Phone Hardware"
+    },
+    {
+      "item_code": "1350",
+      "item_name": "Acc Dep"
+    },
+    {
+      "item_code": "1352",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "1400",
+      "item_name": "Intangible Assets"
+    },
+    {
+      "item_code": "1401",
+      "item_name": "Website Purchases"
+    },
+    {
+      "item_code": "1402",
+      "item_name": "Amort Website Purchases"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable (A/P)"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "Stripe Corporate Card"
+    },
+    {
+      "item_code": "2150",
+      "item_name": "Mercury Credit Card"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2225",
+      "item_name": "Accrued Commissions"
+    },
+    {
+      "item_code": "2250",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Accrued Vacation"
+    },
+    {
+      "item_code": "2350",
+      "item_name": "401K Liabilities"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2404",
+      "item_name": "Other Payroll Liabiliites"
+    },
+    {
+      "item_code": "2500",
+      "item_name": "Loans Payable - Current"
+    },
+    {
+      "item_code": "2550",
+      "item_name": "Kabbage Loan"
+    },
+    {
+      "item_code": "2600",
+      "item_name": "Stripe Loan"
+    },
+    {
+      "item_code": "2650",
+      "item_name": "Elevate Loan"
+    },
+    {
+      "item_code": "2750",
+      "item_name": "Deferred Revenue - Current"
+    },
+    {
+      "item_code": "2810",
+      "item_name": "PPP Loan"
+    },
+    {
+      "item_code": "2850",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "2860",
+      "item_name": "Due to Shareholder"
+    },
+    {
+      "item_code": "2870",
+      "item_name": "Sales Tax Payable"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Owner's Draw"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Owner Investment"
+    },
+    {
+      "item_code": "3300",
+      "item_name": "Retained Earnings"
+    },
+    {
+      "item_code": "3400",
+      "item_name": "Shareholder Distributions"
+    }
+  ]
+}

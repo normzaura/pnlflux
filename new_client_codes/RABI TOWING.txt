@@ -1,0 +1,234 @@
+Income
+-
+-
+-
+-
+Gross Profit
+-
+-
+-
+-
+
+Expenses
+-
+-
+-
+-
+
+6450 Office Supplies & Software
+$131
+$53
+$20
+$206
+Total Expenses
+$131
+$53
+$20
+$206
+Net Operating Income
+-$131
+-$53
+-$20
+-$206
+
+Other Expenses
+-
+-
+-
+-
+
+8025 Interest Expense
+
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1000 Chase Business Ckg 3505
+$4,672
+$4,672
+$4,672
+1010 Venmo
+$250
+$250
+$250
+1025 Chase Savings
+-
+-
+-
+1050 Petty Cash
+-
+-
+-
+Total Bank Accounts
+$4,922
+$4,922
+$4,922
+
+Accounts Receivable
+-
+-
+-
+1100 Accounts Receivable (A/R)
+-
+-
+-
+Total Accounts Receivable
+-
+-
+-
+
+Other Current Assets
+-
+-
+-
+1125 Uncategorized Asset
+-
+-
+-
+1150 Undeposited Funds
+-
+-
+-
+Total Other Current Assets
+-
+-
+-
+Total Current Assets
+$4,922
+$4,922
+$4,922
+TOTAL ASSETS
+$4,922
+$4,922
+$4,922
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Credit Cards
+-
+-
+-
+2000 Amex 1000
+$1,809
+$1,809
+$1,809
+2010 Venture CC 6620(Capital One)
+$9,399
+$9,399
+$9,399
+2020 Platinum CC 3356(Capital One)
+-
+-
+-
+2030 Platinum MC CC 8362(Capital One)
+$1,223
+$1,223
+$1,223
+
+2040 Chase Sapphire CC 1629
+$5,261
+$5,315
+$5,335
+2050 Chase Slate CC 6923
+-
+-
+-
+2060 Chase Ink 8378
+$7,232
+$7,232
+$7,232
+Total Credit Cards
+$24,924
+$24,978
+$24,999
+
+Other Current Liabilities
+-
+-
+-
+2500 PPP Loan
+-
+-
+-
+Total Other Current Liabilities
+-
+-
+-
+Total Current Liabilities
+$24,924
+$24,978
+$24,999
+Total Liabilities
+$24,924
+$24,978
+$24,999
+
+Equity
+-
+-
+-
+3011 Opening Balance Equity
+-
+-
+-
+
+3030 Owner's Pay & Personal Expenses
+-
+-
+-
+Groceries
+-
+-
+-
+Medical
+-
+-
+-
+Total 3030 Owner's Pay & Personal Expenses
+-
+-
+-
+
+3050 Distributions
+-
+-
+-
+3051 Medical
+-
+-
+-
+Total 3050 Distributions
+-
+-
+-
+
+3100 Retained Earnings
+-$19,786
+-$19,786
+-$19,786

@@ -1,0 +1,608 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Design Income"
+    },
+    {
+      "item_code": "4200",
+      "item_name": "Reimbursable Income"
+    },
+    {
+      "item_code": "4400",
+      "item_name": "Sales Revenue"
+    },
+    {
+      "item_code": "5001",
+      "item_name": "Direct Labor Salaries & Wages"
+    },
+    {
+      "item_code": "5002",
+      "item_name": "Direct Labor Employer Taxes"
+    },
+    {
+      "item_code": "5200",
+      "item_name": "Reimbursable Expenses"
+    },
+    {
+      "item_code": "5400",
+      "item_name": "Product Expenses"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6001",
+      "item_name": "Indirect Officer Wages - KM"
+    },
+    {
+      "item_code": "6002",
+      "item_name": "Indirect Officer Wages - MM"
+    },
+    {
+      "item_code": "6003",
+      "item_name": "Indirect Salaries & Wages"
+    },
+    {
+      "item_code": "6004",
+      "item_name": "Indirect Employer Taxes"
+    },
+    {
+      "item_code": "6005",
+      "item_name": "Medical Insurance"
+    },
+    {
+      "item_code": "6006",
+      "item_name": "Payroll Processing Fees"
+    },
+    {
+      "item_code": "6008",
+      "item_name": "401(K) Employer Contribut..."
+    },
+    {
+      "item_code": "6009",
+      "item_name": "Bonus"
+    },
+    {
+      "item_code": "6010",
+      "item_name": "Advertising & Promotion"
+    },
+    {
+      "item_code": "6015",
+      "item_name": "Automobile Expense"
+    },
+    {
+      "item_code": "6016",
+      "item_name": "Fuel/ EV Charging"
+    },
+    {
+      "item_code": "6017",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "6018",
+      "item_name": "Lease"
+    },
+    {
+      "item_code": "6019",
+      "item_name": "Parking & Tolls"
+    },
+    {
+      "item_code": "6020",
+      "item_name": "Repairs & Maintenances"
+    },
+    {
+      "item_code": "6025",
+      "item_name": "Bank Service Charges & Fees"
+    },
+    {
+      "item_code": "6026",
+      "item_name": "Bank Charges"
+    },
+    {
+      "item_code": "6027",
+      "item_name": "Finance Charge"
+    },
+    {
+      "item_code": "6028",
+      "item_name": "Merchant Account Fees"
+    },
+    {
+      "item_code": "6029",
+      "item_name": "Loan Fees"
+    },
+    {
+      "item_code": "6035",
+      "item_name": "Business Licenses, Permits,..."
+    },
+    {
+      "item_code": "6040",
+      "item_name": "Client Relations"
+    },
+    {
+      "item_code": "6045",
+      "item_name": "Computer and Internet Expen..."
+    },
+    {
+      "item_code": "6055",
+      "item_name": "Dues and Subscriptions"
+    },
+    {
+      "item_code": "6058",
+      "item_name": "Employee Relations"
+    },
+    {
+      "item_code": "6060",
+      "item_name": "Insurance Expense"
+    },
+    {
+      "item_code": "6061",
+      "item_name": "Business"
+    },
+    {
+      "item_code": "6065",
+      "item_name": "Meals"
+    },
+    {
+      "item_code": "6070",
+      "item_name": "Professional Fees"
+    },
+    {
+      "item_code": "6075",
+      "item_name": "Accounting"
+    },
+    {
+      "item_code": "6076",
+      "item_name": "Legal Expenses"
+    },
+    {
+      "item_code": "6077",
+      "item_name": "Consulting"
+    },
+    {
+      "item_code": "6078",
+      "item_name": "Office Expense"
+    },
+    {
+      "item_code": "6080",
+      "item_name": "Office Supplies"
+    },
+    {
+      "item_code": "6085",
+      "item_name": "Office Rent"
+    },
+    {
+      "item_code": "6090",
+      "item_name": "Outside Services"
+    },
+    {
+      "item_code": "6095",
+      "item_name": "Postage/Delivery"
+    },
+    {
+      "item_code": "6110",
+      "item_name": "Travel"
+    },
+    {
+      "item_code": "6111",
+      "item_name": "Airfare"
+    },
+    {
+      "item_code": "6112",
+      "item_name": "Hotel"
+    },
+    {
+      "item_code": "6113",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "6115",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "6117",
+      "item_name": "Internet & Telephone"
+    },
+    {
+      "item_code": "6120",
+      "item_name": "Bad Debts"
+    },
+    {
+      "item_code": "8001",
+      "item_name": "Miscellaneous Expenses"
+    },
+    {
+      "item_code": "8005",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "8010",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "8020",
+      "item_name": "Charitable Contributions"
+    },
+    {
+      "item_code": "8025",
+      "item_name": "Pass-through Entity Tax"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "Chase - Checking x9715"
+    },
+    {
+      "item_code": "1002",
+      "item_name": "Chase - Payroll 3560"
+    },
+    {
+      "item_code": "1003",
+      "item_name": "Comm West 1429"
+    },
+    {
+      "item_code": "1004",
+      "item_name": "Comm West 1478"
+    },
+    {
+      "item_code": "1005",
+      "item_name": "Comm West 1502"
+    },
+    {
+      "item_code": "1006",
+      "item_name": "Farmers & Merchants 6414"
+    },
+    {
+      "item_code": "1007",
+      "item_name": "Farmers & Merchants 6481"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "1205",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1210",
+      "item_name": "Inventory Asset"
+    },
+    {
+      "item_code": "1220",
+      "item_name": "Unbilled AR"
+    },
+    {
+      "item_code": "1225",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1230",
+      "item_name": "Lease Deposit"
+    },
+    {
+      "item_code": "1235",
+      "item_name": "Due From Heather's Mom"
+    },
+    {
+      "item_code": "1240",
+      "item_name": "Due from Muller Maciocia Architects PC"
+    },
+    {
+      "item_code": "1245",
+      "item_name": "I/C Receivable/Payable M+D Studio"
+    },
+    {
+      "item_code": "1250",
+      "item_name": "Leasehold Improvements Receivable"
+    },
+    {
+      "item_code": "1260",
+      "item_name": "Loan to Shareholders"
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Fixed Asset"
+    },
+    {
+      "item_code": "1301",
+      "item_name": "Computer Software"
+    },
+    {
+      "item_code": "1302",
+      "item_name": "Furniture and Equipment"
+    },
+    {
+      "item_code": "1303",
+      "item_name": "Leasehold Improvements"
+    },
+    {
+      "item_code": "1304",
+      "item_name": "Website Design"
+    },
+    {
+      "item_code": "1305",
+      "item_name": "Auto Capital Lease"
+    },
+    {
+      "item_code": "1400",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "1401",
+      "item_name": "Computer Software"
+    },
+    {
+      "item_code": "1402",
+      "item_name": "Furniture & Equipment"
+    },
+    {
+      "item_code": "1403",
+      "item_name": "Leasehold Improvements"
+    },
+    {
+      "item_code": "1404",
+      "item_name": "Website Design"
+    },
+    {
+      "item_code": "1405",
+      "item_name": "Auto Capital Lease"
+    },
+    {
+      "item_code": "1501",
+      "item_name": "Investment-Beach City Cap. LLC"
+    },
+    {
+      "item_code": "1502",
+      "item_name": "Prepaid Deposit for Lease"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "American Express 1001"
+    },
+    {
+      "item_code": "2160",
+      "item_name": "American Express 11001"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "CommerceWest LOC"
+    },
+    {
+      "item_code": "2205",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2210",
+      "item_name": "Customer Deposits"
+    },
+    {
+      "item_code": "2215",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2216",
+      "item_name": "401(K) Liability"
+    },
+    {
+      "item_code": "2217",
+      "item_name": "FSA"
+    },
+    {
+      "item_code": "2220",
+      "item_name": "Due to Shareholder"
+    },
+    {
+      "item_code": "2250",
+      "item_name": "Business Insurance Loan"
+    },
+    {
+      "item_code": "2260",
+      "item_name": "Sales Tax Payable"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "ST - Amex Loan"
+    },
+    {
+      "item_code": "2301",
+      "item_name": "ST - Amex Loan 3179"
+    },
+    {
+      "item_code": "2305",
+      "item_name": "ST - Audi Captial Lease"
+    },
+    {
+      "item_code": "2306",
+      "item_name": "ST - Rivian Lease"
+    },
+    {
+      "item_code": "2310",
+      "item_name": "ST - Jeep Capital Lease"
+    },
+    {
+      "item_code": "2315",
+      "item_name": "ST - Balboa Loan 3-002"
+    },
+    {
+      "item_code": "2330",
+      "item_name": "ST - Balboa Loan 3-005"
+    },
+    {
+      "item_code": "2335",
+      "item_name": "ST - Balboa Loan 3-006"
+    },
+    {
+      "item_code": "2340",
+      "item_name": "ST - Balboa Loan 3-007"
+    },
+    {
+      "item_code": "2345",
+      "item_name": "ST - Balboa Loan 3-008"
+    },
+    {
+      "item_code": "2346",
+      "item_name": "ST - Balboa Loan 3-009"
+    },
+    {
+      "item_code": "2347",
+      "item_name": "ST - Balboa Loan 5566..."
+    },
+    {
+      "item_code": "2350",
+      "item_name": "ST - LiftForward Lease"
+    },
+    {
+      "item_code": "2355",
+      "item_name": "ST - LiftForward Lease - 3221"
+    },
+    {
+      "item_code": "2360",
+      "item_name": "ST - LiftForward Lease - 4785"
+    },
+    {
+      "item_code": "2365",
+      "item_name": "ST - LiftForward Lease - 5538"
+    },
+    {
+      "item_code": "2370",
+      "item_name": "ST - LiftForward Lease - 6215"
+    },
+    {
+      "item_code": "2375",
+      "item_name": "ST - LiftForward Leas..."
+    },
+    {
+      "item_code": "2380",
+      "item_name": "ST - LiftForward Leas..."
+    },
+    {
+      "item_code": "2385",
+      "item_name": "ST - Celtic SBA Loan"
+    },
+    {
+      "item_code": "2390",
+      "item_name": "ST - Lendistry SB Loan"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "LT - Amex Loan"
+    },
+    {
+      "item_code": "2405",
+      "item_name": "LT - Audi Capital Lease"
+    },
+    {
+      "item_code": "2406",
+      "item_name": "LT - Rivian Lease"
+    },
+    {
+      "item_code": "2410",
+      "item_name": "LT - Jeep Capital Lease"
+    },
+    {
+      "item_code": "2415",
+      "item_name": "LT - Balboa Loan 3-002"
+    },
+    {
+      "item_code": "2420",
+      "item_name": "LT - Balboa Loan 3-003"
+    },
+    {
+      "item_code": "2425",
+      "item_name": "LT - Balboa Loan 3-004"
+    },
+    {
+      "item_code": "2430",
+      "item_name": "LT - Balboa Loan 3-005"
+    },
+    {
+      "item_code": "2435",
+      "item_name": "LT - Balboa Loan 3-006"
+    },
+    {
+      "item_code": "2440",
+      "item_name": "LT - Balboa Loan 3-007"
+    },
+    {
+      "item_code": "2445",
+      "item_name": "LT - Balboa Loan 3-008"
+    },
+    {
+      "item_code": "2450",
+      "item_name": "LT - LiftForward Lease"
+    },
+    {
+      "item_code": "2455",
+      "item_name": "LT - LiftForward Lease - 3221"
+    },
+    {
+      "item_code": "2460",
+      "item_name": "LT - LiftForward Lease - 4785"
+    },
+    {
+      "item_code": "2465",
+      "item_name": "LT - LiftForward Lease - 5538"
+    },
+    {
+      "item_code": "2470",
+      "item_name": "LT - LiftForward Lease - 6215"
+    },
+    {
+      "item_code": "2475",
+      "item_name": "LT - LiftForward Lease - 7214"
+    },
+    {
+      "item_code": "2480",
+      "item_name": "LT - LiftForward Lease - 8392"
+    },
+    {
+      "item_code": "2485",
+      "item_name": "LT - Celtic SBA Loan"
+    },
+    {
+      "item_code": "2490",
+      "item_name": "LT - Lendistry SB Loan"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Shareholder's Contributions"
+    },
+    {
+      "item_code": "3101",
+      "item_name": "Shareholder Contribution - Keith"
+    },
+    {
+      "item_code": "3102",
+      "item_name": "Shareholder Contribution - Michael"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Shareholder Distributions"
+    },
+    {
+      "item_code": "3201",
+      "item_name": "Shareholder Distributio..."
+    },
+    {
+      "item_code": "3202",
+      "item_name": "Shareholder Distributio..."
+    },
+    {
+      "item_code": "3203",
+      "item_name": "Olive Mill Distributions"
+    },
+    {
+      "item_code": "3204",
+      "item_name": "Shareholder Distributions - Devon"
+    },
+    {
+      "item_code": "3300",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

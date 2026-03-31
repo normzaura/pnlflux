@@ -1,0 +1,476 @@
+{
+  "category": [
+    {
+      "item_code": "42000",
+      "item_name": "Revenue"
+    },
+    {
+      "item_code": "49999",
+      "item_name": "Unapplied Cash Payment Income"
+    },
+    {
+      "item_code": "50000",
+      "item_name": "Cost of Goods Sold"
+    },
+    {
+      "item_code": "51100",
+      "item_name": "Direct Material & Permit..."
+    },
+    {
+      "item_code": "51200",
+      "item_name": "Direct Labor"
+    },
+    {
+      "item_code": "51300",
+      "item_name": "Direct Subcontract"
+    },
+    {
+      "item_code": "51500",
+      "item_name": "Travel, Fuel, & Per Diem..."
+    },
+    {
+      "item_code": "53300",
+      "item_name": "Permit Fees"
+    },
+    {
+      "item_code": "61000",
+      "item_name": "Marketing"
+    },
+    {
+      "item_code": "61011",
+      "item_name": "Advertising & Website"
+    },
+    {
+      "item_code": "61025",
+      "item_name": "Customer Relations"
+    },
+    {
+      "item_code": "61041",
+      "item_name": "Promotional"
+    },
+    {
+      "item_code": "62000",
+      "item_name": "Office & Utility Expenses"
+    },
+    {
+      "item_code": "62011",
+      "item_name": "Office Expenses"
+    },
+    {
+      "item_code": "62021",
+      "item_name": "Rent or Lease"
+    },
+    {
+      "item_code": "62031",
+      "item_name": "Stationery & Printing"
+    },
+    {
+      "item_code": "62051",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "63000",
+      "item_name": "Adminstrative, Legal, & Taxes"
+    },
+    {
+      "item_code": "63011",
+      "item_name": "401K Admin Fees"
+    },
+    {
+      "item_code": "63031",
+      "item_name": "Dues & Subscriptions"
+    },
+    {
+      "item_code": "63041",
+      "item_name": "Legal & Professional Fees"
+    },
+    {
+      "item_code": "63051",
+      "item_name": "Purchases"
+    },
+    {
+      "item_code": "63071",
+      "item_name": "Taxes & Licenses"
+    },
+    {
+      "item_code": "64000",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "64100",
+      "item_name": "Wages"
+    },
+    {
+      "item_code": "64200",
+      "item_name": "Taxes"
+    },
+    {
+      "item_code": "64400",
+      "item_name": "Company Contributions"
+    },
+    {
+      "item_code": "64500",
+      "item_name": "Bonus"
+    },
+    {
+      "item_code": "64800",
+      "item_name": "Subcontractors"
+    },
+    {
+      "item_code": "64950",
+      "item_name": "Employee Relations"
+    },
+    {
+      "item_code": "65000",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "65020",
+      "item_name": "Bond Expense"
+    },
+    {
+      "item_code": "65030",
+      "item_name": "Liability Insurance"
+    },
+    {
+      "item_code": "65050",
+      "item_name": "Workmans Compensation Insurance"
+    },
+    {
+      "item_code": "66200",
+      "item_name": "Automobile"
+    },
+    {
+      "item_code": "66210",
+      "item_name": "Repair & Maintenance"
+    },
+    {
+      "item_code": "66230",
+      "item_name": "Other Auto Expenses"
+    },
+    {
+      "item_code": "66820",
+      "item_name": "Employee Meals"
+    },
+    {
+      "item_code": "66830",
+      "item_name": "Promotional Meals"
+    },
+    {
+      "item_code": "67000",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "69900",
+      "item_name": "Unapplied Cash Bill Payment Expense"
+    },
+    {
+      "item_code": "71500",
+      "item_name": "Cash Back Income"
+    },
+    {
+      "item_code": "79000",
+      "item_name": "Miscellaneous Revenue"
+    },
+    {
+      "item_code": "80000",
+      "item_name": "Pass-Through Entity Tax"
+    },
+    {
+      "item_code": "85000",
+      "item_name": "Charitable Contributions"
+    },
+    {
+      "item_code": "10010",
+      "item_name": "Broadway Building Group LLC"
+    },
+    {
+      "item_code": "10020",
+      "item_name": "Chase Operating Accoun..."
+    },
+    {
+      "item_code": "10030",
+      "item_name": "Chase Payables Account..."
+    },
+    {
+      "item_code": "10040",
+      "item_name": "Chase Receivables Account 8885"
+    },
+    {
+      "item_code": "10050",
+      "item_name": "Chase Commercial Checking 0232"
+    },
+    {
+      "item_code": "12100",
+      "item_name": "Retention Receivable"
+    },
+    {
+      "item_code": "12190",
+      "item_name": "Other Receivable"
+    },
+    {
+      "item_code": "12195",
+      "item_name": "Payroll Refunds"
+    },
+    {
+      "item_code": "12600",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "14100",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "14200",
+      "item_name": "Security Deposit Receivable"
+    },
+    {
+      "item_code": "15000",
+      "item_name": "Furniture"
+    },
+    {
+      "item_code": "15050",
+      "item_name": "Computers"
+    },
+    {
+      "item_code": "15100",
+      "item_name": "Vehicles"
+    },
+    {
+      "item_code": "15111",
+      "item_name": "2016 Chevrolet Tahoe"
+    },
+    {
+      "item_code": "15112",
+      "item_name": "2016 Toyota Tacoma"
+    },
+    {
+      "item_code": "15113",
+      "item_name": "2017 Ford Explorer"
+    },
+    {
+      "item_code": "15115",
+      "item_name": "2017 Ford F150"
+    },
+    {
+      "item_code": "15116",
+      "item_name": "2018 Toyota Prius"
+    },
+    {
+      "item_code": "15117",
+      "item_name": "2022 Ford F-150"
+    },
+    {
+      "item_code": "15118",
+      "item_name": "2022 Toyota Camry"
+    },
+    {
+      "item_code": "15119",
+      "item_name": "2022 GM Cadillac Escalade"
+    },
+    {
+      "item_code": "15120",
+      "item_name": "2022 Dodge Ram 1500 #1"
+    },
+    {
+      "item_code": "15121",
+      "item_name": "2022 Dodge Ram 1500 #2"
+    },
+    {
+      "item_code": "15122",
+      "item_name": "2022 Dodge Ram 1500 #3"
+    },
+    {
+      "item_code": "15123",
+      "item_name": "2022 Dodge Ram ProMaster"
+    },
+    {
+      "item_code": "15124",
+      "item_name": "2023 Dodge Ram 1500 #4"
+    },
+    {
+      "item_code": "15125",
+      "item_name": "2023 Tesla Model Y"
+    },
+    {
+      "item_code": "15126",
+      "item_name": "2024 Tesla Model X"
+    },
+    {
+      "item_code": "15127",
+      "item_name": "2023 Ford Maverick #1"
+    },
+    {
+      "item_code": "15128",
+      "item_name": "2024 Ford Maverick #2"
+    },
+    {
+      "item_code": "15129",
+      "item_name": "2024 Ford Maverick #3 - Joe Marin"
+    },
+    {
+      "item_code": "15130",
+      "item_name": "2025 Toyota Tacoma"
+    },
+    {
+      "item_code": "16000",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "21000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "21500",
+      "item_name": "Werbe Amex (3009)"
+    },
+    {
+      "item_code": "21501",
+      "item_name": "Chase Credit Card (2..."
+    },
+    {
+      "item_code": "21502",
+      "item_name": "Amex Platinum (2004)"
+    },
+    {
+      "item_code": "22100",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "22200",
+      "item_name": "Accrued Reimbursements"
+    },
+    {
+      "item_code": "22500",
+      "item_name": "Retention Payable"
+    },
+    {
+      "item_code": "23000",
+      "item_name": "Direct Deposit Payable"
+    },
+    {
+      "item_code": "23500",
+      "item_name": "Other Payable"
+    },
+    {
+      "item_code": "24000",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "24011",
+      "item_name": "401K Plan (Employees)"
+    },
+    {
+      "item_code": "24012",
+      "item_name": "Guideline Roth 401(k)"
+    },
+    {
+      "item_code": "24013",
+      "item_name": "Guideline Traditional 401(k)"
+    },
+    {
+      "item_code": "24020",
+      "item_name": "Anthem Blue Cross - Health"
+    },
+    {
+      "item_code": "24021",
+      "item_name": "Blue Shield - Health & Dental"
+    },
+    {
+      "item_code": "24022",
+      "item_name": "Kaiser - Health"
+    },
+    {
+      "item_code": "24023",
+      "item_name": "Unum - Dental, Lif..."
+    },
+    {
+      "item_code": "24031",
+      "item_name": "CA PIT / SDI"
+    },
+    {
+      "item_code": "24041",
+      "item_name": "CA SUI / ETT"
+    },
+    {
+      "item_code": "24045",
+      "item_name": "AZ Income Tax"
+    },
+    {
+      "item_code": "24051",
+      "item_name": "Federal Taxes (941/944)"
+    },
+    {
+      "item_code": "24061",
+      "item_name": "Federal Unemployment (940)"
+    },
+    {
+      "item_code": "24071",
+      "item_name": "Flex Spending Account (Employee..."
+    },
+    {
+      "item_code": "24081",
+      "item_name": "HSA"
+    },
+    {
+      "item_code": "24085",
+      "item_name": "Paycheck Witholdings"
+    },
+    {
+      "item_code": "27000",
+      "item_name": "Short-Term Lease Liabilities"
+    },
+    {
+      "item_code": "27117",
+      "item_name": "Ford F150 Loan- 2022"
+    },
+    {
+      "item_code": "27120",
+      "item_name": "Dodge Ram 1500 #1 Loan - 2022"
+    },
+    {
+      "item_code": "27011",
+      "item_name": "PPP Loan - SBA/First Republic"
+    },
+    {
+      "item_code": "27012",
+      "item_name": "PPP Loan 2 - SBA/First Republic"
+    },
+    {
+      "item_code": "27118",
+      "item_name": "Toyota Camry Loan - 2022"
+    },
+    {
+      "item_code": "27121",
+      "item_name": "Dodge Ram 1500 #2 Loan - 2022"
+    },
+    {
+      "item_code": "27124",
+      "item_name": "Dodge Ram 1500 #3 Loan - 2023"
+    },
+    {
+      "item_code": "28000",
+      "item_name": "Long-Term Liabilities"
+    },
+    {
+      "item_code": "28117",
+      "item_name": "Ford F150 Loan- 2022"
+    },
+    {
+      "item_code": "28120",
+      "item_name": "27120 Dodge Ram 1500 #1 Loan - 2022"
+    },
+    {
+      "item_code": "30000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "35000",
+      "item_name": "Shareholder Distribution"
+    },
+    {
+      "item_code": "39000",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

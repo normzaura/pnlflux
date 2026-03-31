@@ -1,0 +1,540 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "PR & Marketing Retainer Rev..."
+    },
+    {
+      "item_code": "4001",
+      "item_name": "Digital Marketing Services Revenue"
+    },
+    {
+      "item_code": "4002",
+      "item_name": "Project and Events Revenue"
+    },
+    {
+      "item_code": "4009",
+      "item_name": "Customer Discounts & Refunds"
+    },
+    {
+      "item_code": "5001",
+      "item_name": "COGS Ads - Facebook"
+    },
+    {
+      "item_code": "5002",
+      "item_name": "COGS Ads - Google & Others"
+    },
+    {
+      "item_code": "5003",
+      "item_name": "COGS Event"
+    },
+    {
+      "item_code": "5004",
+      "item_name": "COGS Travel"
+    },
+    {
+      "item_code": "5006",
+      "item_name": "COGS Transportation"
+    },
+    {
+      "item_code": "5007",
+      "item_name": "COGS Media Supplies"
+    },
+    {
+      "item_code": "5008",
+      "item_name": "COGS Web Development"
+    },
+    {
+      "item_code": "5009",
+      "item_name": "COGS Misc"
+    },
+    {
+      "item_code": "5020",
+      "item_name": "Direct Payroll Expenses"
+    },
+    {
+      "item_code": "5021",
+      "item_name": "Employee PR - DL Wages"
+    },
+    {
+      "item_code": "5022",
+      "item_name": "Employee PR - DL Taxes"
+    },
+    {
+      "item_code": "5023",
+      "item_name": "Employee PR - DL PTO"
+    },
+    {
+      "item_code": "5025",
+      "item_name": "Employee PR - DL Commissi..."
+    },
+    {
+      "item_code": "5120",
+      "item_name": "The Garage Agency - Direct Payroll Expen..."
+    },
+    {
+      "item_code": "5121",
+      "item_name": "The Garage Agency - DL Wa..."
+    },
+    {
+      "item_code": "5122",
+      "item_name": "The Garage Agency - DL Ta..."
+    },
+    {
+      "item_code": "5220",
+      "item_name": "The TREAD Agency - Direct Payroll Expenses"
+    },
+    {
+      "item_code": "5221",
+      "item_name": "The TREAD Agency - DL Wages"
+    },
+    {
+      "item_code": "5222",
+      "item_name": "The TREAD Agency - DL Taxes"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Indirect Payroll Expenses"
+    },
+    {
+      "item_code": "6010",
+      "item_name": "Payroll Expenses - Officer"
+    },
+    {
+      "item_code": "6011",
+      "item_name": "Officer PR - Wages"
+    },
+    {
+      "item_code": "6012",
+      "item_name": "Officer PR - Taxes"
+    },
+    {
+      "item_code": "6014",
+      "item_name": "Officer PR - Bonuses"
+    },
+    {
+      "item_code": "6015",
+      "item_name": "Officer PR - Commissions"
+    },
+    {
+      "item_code": "6020",
+      "item_name": "Payroll Expenses - Employee"
+    },
+    {
+      "item_code": "6021",
+      "item_name": "Employee PR - Wages"
+    },
+    {
+      "item_code": "6022",
+      "item_name": "Employee PR - Taxes"
+    },
+    {
+      "item_code": "6023",
+      "item_name": "Employee PR - PTO"
+    },
+    {
+      "item_code": "6024",
+      "item_name": "Employee PR - Bonuses"
+    },
+    {
+      "item_code": "6030",
+      "item_name": "Payroll Expense - 401k EE Match"
+    },
+    {
+      "item_code": "6031",
+      "item_name": "Payroll Expense - Medical Benefits"
+    },
+    {
+      "item_code": "6032",
+      "item_name": "Payroll Expense - PR Fees"
+    },
+    {
+      "item_code": "6033",
+      "item_name": "Payroll Expense - Worker'..."
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Advertising & Marketing"
+    },
+    {
+      "item_code": "6101",
+      "item_name": "Gifts & Entertainment"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Education & Research"
+    },
+    {
+      "item_code": "6250",
+      "item_name": "Bank & Other Financing Fees"
+    },
+    {
+      "item_code": "6251",
+      "item_name": "Bank & CC Fees"
+    },
+    {
+      "item_code": "6252",
+      "item_name": "Merchant Fees"
+    },
+    {
+      "item_code": "6253",
+      "item_name": "Loan Fees"
+    },
+    {
+      "item_code": "6254",
+      "item_name": "Commission Fees - NowCorp"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "6301",
+      "item_name": "General Business"
+    },
+    {
+      "item_code": "6302",
+      "item_name": "Officer's Life"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Office & Other Admin Expenses"
+    },
+    {
+      "item_code": "6351",
+      "item_name": "Office & Breakroom"
+    },
+    {
+      "item_code": "6352",
+      "item_name": "Apps & Software"
+    },
+    {
+      "item_code": "6353",
+      "item_name": "Dues & Subscriptions"
+    },
+    {
+      "item_code": "6354",
+      "item_name": "Postage & Delivery"
+    },
+    {
+      "item_code": "6355",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "6357",
+      "item_name": "Office Security"
+    },
+    {
+      "item_code": "6366",
+      "item_name": "Telephone"
+    },
+    {
+      "item_code": "6367",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Outside Services"
+    },
+    {
+      "item_code": "6450",
+      "item_name": "Rent Expense"
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Taxes & Licenses"
+    },
+    {
+      "item_code": "6550",
+      "item_name": "Legal & Professional Fees"
+    },
+    {
+      "item_code": "6551",
+      "item_name": "Accounting"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Travel"
+    },
+    {
+      "item_code": "6601",
+      "item_name": "Client Meals"
+    },
+    {
+      "item_code": "6603",
+      "item_name": "Hotel & Accommodation"
+    },
+    {
+      "item_code": "6604",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "6700",
+      "item_name": "Vehicle Expenses"
+    },
+    {
+      "item_code": "6701",
+      "item_name": "Fuel"
+    },
+    {
+      "item_code": "6702",
+      "item_name": "Lease"
+    },
+    {
+      "item_code": "6703",
+      "item_name": "Parking & Tolls"
+    },
+    {
+      "item_code": "6704",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "7000",
+      "item_name": "Other Misc. Income"
+    },
+    {
+      "item_code": "8000",
+      "item_name": "Employee Expenses"
+    },
+    {
+      "item_code": "8001",
+      "item_name": "Depreciation"
+    },
+    {
+      "item_code": "8003",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "8004",
+      "item_name": "Gain/Loss of Sales of Fixed..."
+    },
+    {
+      "item_code": "8009",
+      "item_name": "Other Misc. Expenses"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Petty Cash"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "First Checking OPS - 9417"
+    },
+    {
+      "item_code": "1002",
+      "item_name": "First Checking PR - 9420"
+    },
+    {
+      "item_code": "1003",
+      "item_name": "First Checking PPP - 3410"
+    },
+    {
+      "item_code": "1005",
+      "item_name": "Bill.Com Clearing - Mon..."
+    },
+    {
+      "item_code": "1006",
+      "item_name": "Relay Profit Bank - 7856"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable - A/R"
+    },
+    {
+      "item_code": "1205",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1221",
+      "item_name": "Loan Receivable-Shareholder"
+    },
+    {
+      "item_code": "1222",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1223",
+      "item_name": "Uncategorized Asset"
+    },
+    {
+      "item_code": "1400",
+      "item_name": "Fixed Assets"
+    },
+    {
+      "item_code": "1401",
+      "item_name": "Computer Equipment"
+    },
+    {
+      "item_code": "1402",
+      "item_name": "Furn, Fix & Equip"
+    },
+    {
+      "item_code": "1403",
+      "item_name": "Room Improvements"
+    },
+    {
+      "item_code": "1404",
+      "item_name": "Vehicles"
+    },
+    {
+      "item_code": "1404.1",
+      "item_name": "Dodge - 2024 Ram 2500"
+    },
+    {
+      "item_code": "1499",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "1500",
+      "item_name": "Right-Of-Use-Assets"
+    },
+    {
+      "item_code": "1503",
+      "item_name": "Rental Lease ROU - 2023 / 2028"
+    },
+    {
+      "item_code": "1505",
+      "item_name": "Genesis ROU - 2025 GV70"
+    },
+    {
+      "item_code": "1590",
+      "item_name": "Accum. Amortization - ROU Assets"
+    },
+    {
+      "item_code": "1600",
+      "item_name": "Security Deposit"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable - A/P"
+    },
+    {
+      "item_code": "2101",
+      "item_name": "Amex CC - 1003"
+    },
+    {
+      "item_code": "2102",
+      "item_name": "Amex CC - 3001"
+    },
+    {
+      "item_code": "2103",
+      "item_name": "Capital One CC -0837"
+    },
+    {
+      "item_code": "2104",
+      "item_name": "Chase Ink CC - 6839"
+    },
+    {
+      "item_code": "2104.1",
+      "item_name": "Chase Ink Ana (0179) (deleted)"
+    },
+    {
+      "item_code": "2104.4",
+      "item_name": "Chase Ink Dan (0736 Originally..."
+    },
+    {
+      "item_code": "2104.7",
+      "item_name": "Chase Ink Jon (6854) (deleted)"
+    },
+    {
+      "item_code": "2104.9",
+      "item_name": "Chase Ink Sheridan (6839) (del..."
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2201",
+      "item_name": "401K Payable"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Accrued Expense"
+    },
+    {
+      "item_code": "2301",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "2302",
+      "item_name": "Accrued Payroll - PTO"
+    },
+    {
+      "item_code": "2305",
+      "item_name": "Suspense Clearing - NowCorp"
+    },
+    {
+      "item_code": "2401",
+      "item_name": "First Bank LOC - 9146"
+    },
+    {
+      "item_code": "2402",
+      "item_name": "Amex LOC - 8594"
+    },
+    {
+      "item_code": "2403",
+      "item_name": "Rental Lease ST - 2023 / 2028"
+    },
+    {
+      "item_code": "2404",
+      "item_name": "Celtic Bank Loan ST"
+    },
+    {
+      "item_code": "2405",
+      "item_name": "Genesis Finance Lease - ST"
+    },
+    {
+      "item_code": "2406",
+      "item_name": "Langley Federal CU - ST"
+    },
+    {
+      "item_code": "2407",
+      "item_name": "Ready Capital Loan ST - 0996"
+    },
+    {
+      "item_code": "2408",
+      "item_name": "SBA EIDL Loan ST - 7810"
+    },
+    {
+      "item_code": "2503",
+      "item_name": "Rental Lease LT - 2023 / 2028"
+    },
+    {
+      "item_code": "2504",
+      "item_name": "Celtic Bank Loan LT"
+    },
+    {
+      "item_code": "2505",
+      "item_name": "Genesis Finance Lease - LT"
+    },
+    {
+      "item_code": "2506",
+      "item_name": "Langley Federal CU - LT"
+    },
+    {
+      "item_code": "2507",
+      "item_name": "Ready Capital Loan LT - 0996"
+    },
+    {
+      "item_code": "2508",
+      "item_name": "SBA EIDL Loan LT - 7810"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Owner's Capital"
+    },
+    {
+      "item_code": "3202",
+      "item_name": "Shareholder Distributions"
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

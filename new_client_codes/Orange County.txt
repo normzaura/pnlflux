@@ -1,0 +1,892 @@
+
+Revenue
+-
+-
+-
+-
+
+4000 Donations
+-
+-
+-
+-
+
+4001 Corp & Business Donations
+- $400 (100%)
+$800
+-
+-
+$800
+
+4002 In-Kind Donations
+$8,333
+$8,561
+$8,333
+$25,228
+
+4003 Private & Public Donations
++ $6,751 (122%)
+$7,218
+$3,860
+$12,291
+$23,369
+
+4004 Private & Public Foundations
+$31,000
+-
+$15,560
+$46,560
+
+4006 REED Foundation
+- $268 (25%)
+$617
+$1,548
+$814
+$2,980
+Total 4004 Private & Public Foundations
+$31,617
+$1,548
+$16,374
+$49,540
+Total 4000 Donations
+$47,969
+$13,970
+$36,998
+$98,938
+
+4050 Fee For Service
+$6,816
+$12,184
+$9,878
+$28,878
+
+4052 Day School Program
+$9,457
+$10,933
+$11,748
+$32,139
+
+4054 Self Determination Tuition
+$3,047
+$2,587
+$2,762
+$8,397
+
+4055 Arts Tuition Fees
+$7,760
+$10,165
+$9,264
+$27,190
+Total 4050 Fee For Service
+$27,081
+$35,870
+$33,653
+$96,605
+
+4100 Fundraising Income
+$70
+-
+-
+$70
+
+4150 Government Contracts
+-
+-
+-
+-
+
+4152 County SocialServices/Wrap
+$8,260
+$8,540
+$9,310
+$26,110
+
+4156 Regional Center- OCCTAC FMP
+- $23,702 (82%)
+$27,995
+$30,055
+$5,322
+$63,373
+
+4157 Regional Center-Socializat
+$32,000
+$29,750
+$30,830
+$92,580
+
+4159 First 5 HVP CalWORKs
++ $4,172 (20%)
+$22,096
+$18,747
+$24,594
+$65,438
+
+4160 First 5 Infant/Toddler
++ $2,034 (35%)
+$6,665
+$5,087
+$7,911
+$19,663
+
+4200 SAUSD
+-
+-
+-
+-
+
+4205 SAUSD ART Elementary
++ $6,545 (22%)
+$28,173
+$30,417
+$35,840
+$94,431
+
+4206 SAUSD ART Intermediate
+$5,555
+$11,165
+$7,238
+$23,960
+
+4207 SAUSD MUSIC Elementary
+$18,019
+$20,637
+$22,320
+$60,976
+
+4208 SAUSD MUSIC Intermediate
+- $2,805 (41%)
+$2,563
+$11,165
+$4,059
+$17,789
+Total 4200 SAUSD
+$54,312
+$73,386
+$69,459
+$197,157
+Total 4150 Government Contracts
+$151,329
+$165,566
+$147,427
+$464,323
+
+4250 Government Grants
+-
+-
+-
+-
+
+4257 City of Santa Ana, CDBG
+- $500 (26%)
+$2,393
+$1,451
+$1,422
+$5,267
+
+4258 City of Santa Ana, WIOA
++ $6,180 (51%)
+$9,406
+$15,049
+$18,407
+$42,863
+
+4260 FACT Collaborative
+$232
+$232
+$232
+$697
+
+4268 MECCA - EISOA
+$5,577
+$5,990
+$6,053
+$17,620
+
+4269 MECCA-Family Support Servs
+$3,845
+$3,104
+$3,548
+$10,498
+
+4298 MECCA - HHIP
+$6,030
+$7,070
+$6,277
+$19,378
+Total 4250 Government Grants
+$27,485
+$32,899
+$35,941
+$96,326
+
+4400 Investments
+-
+-
+-
+-
+
+4403 Interest-Savings, ST - CD
+$4
+$5
+$4
+$14
+Total 4400 Investments
+$4
+$5
+$4
+$14
+Total Revenue
+$253,940
+$248,311
+$254,026
+$756,277
+Gross Profit
+$253,940
+$248,311
+$254,026
+$756,277
+
+Expenditures
+-
+-
+-
+-
+
+6000 Marketing Expense
++ $720 (31%)
+$2,297
+$2,378
+$3,059
+$7,735
+
+6001 Fundraising Expenses
++ $486 (68%)
+$1,272
+$167
+$1,206
+$2,646
+Total 6000 Marketing Expense
++ $1,207 (39%)
+$3,570
+$2,546
+$4,265
+$10,382
+
+6050 Office Supplies
+-
+-
+-
+-
+
+6051 Office Supplies
++ $2,806 (2264%)
+-
+$247
+$2,930
+$3,178
+
+6052 Postage
+$101
+$108
+$78
+$287
+
+6053 Printing & Copying
+$71
+-
+-
+$71
+Total 6050 Office Supplies
++ $2,743 (1037%)
+$172
+$356
+$3,008
+$3,537
+
+6100 Travel Expenses
+-
+-
+-
+-
+
+6101 Conferences & Conventions
+$15
+$100
+-
+$115
+Total 6100 Travel Expenses
+$15
+$100
+-
+$115
+
+6200 Insurance
+$258
+$258
+$258
+$776
+
+6201 General Liability Insuranc
+$1,164
+$1,608
+$1,608
+$4,380
+Total 6200 Insurance
+$1,423
+$1,867
+$1,867
+$5,157
+
+6250 Business Expenses
+-
+-
+-
+-
+
+6252 Business Registration Fees
+-
+-
+$21
+$21
+Total 6250 Business Expenses
+-
+-
+$21
+$21
+
+6257 Bank Fees
+$192
+$283
+$251
+$726
+
+6300 Program Expenses
+-
+-
+-
+-
+
+6303 Food
+- $216 (35%)
+$421
+$823
+$406
+$1,652
+
+6306 Livescan
+-
+$25
+-
+$25
+
+6307 Mileage
+$1,557
+$1,759
+$1,548
+$4,865
+
+6310 Program Supplies
+$15,018
+$9,812
+$11,723
+$36,554
+
+6312 Stipends
+- $413 (100%)
+$746
+$80
+-
+$826
+
+6314 WIA
++ $2,653 (320%)
+$1,008
+$652
+$3,484
+$5,145
+Total 6300 Program Expenses
+$18,751
+$13,154
+$17,163
+$49,070
+
+6350 Contract Services
+-
+-
+-
+-
+
+6351 Accounting & Legal Fees
+- $2,211 (52%)
+$6,189
+$2,339
+$2,052
+$10,580
+
+6353 Professional & Consulting
++ $4,298 (73%)
+$6,165
+$5,665
+$10,213
+$22,043
+Total 6350 Contract Services
++ $2,086 (20%)
+$12,354
+$8,004
+$12,265
+$32,623
+
+6400 Operations
+-
+-
+-
+-
+
+6401 Dues & Subscriptions
+- $100 (49%)
+$16
+$395
+$105
+$517
+
+6404 IT Services
+$1,667
+$1,667
+$1,717
+$5,053
+
+6405 Software
+$129
+$129
+$129
+$387
+Total 6400 Operations
+$1,813
+$2,192
+$1,952
+$5,957
+
+6450 Facilities and Equipment
+-
+-
+-
+-
+
+6453 Rent & Maintenance
+$12,679
+$12,589
+$12,423
+$37,692
+
+6456 Maintenance
+$287
+$693
+$444
+$1,425
+Total 6450 Facilities and Equipment
+$12,967
+$13,282
+$12,868
+$39,117
+
+6550 Payroll Expenses
+-
+-
+-
+-
+
+6551 Salaries & Wages
+$154,071
+$160,885
+$168,245
+$483,201
+
+6553 Employer Taxes & Benefits
+$11,786
+$12,307
+$12,870
+$36,964
+
+6554 Workers Comp. Insurance
+$4,098
+$3,972
+$3,972
+$12,043
+
+6555 Bonus
+- $1,479 (100%)
+$2,959
+-
+-
+$2,959
+
+6556 Unemployement Benefits
++ $4,039 (265%)
+-
+$3,052
+$5,566
+$8,619
+
+6558 Payroll Processing Fee
++ $1,001 (167%)
+$595
+$605
+$1,601
+$2,802
+Total 6550 Payroll Expenses
+$173,511
+$180,823
+$192,256
+$546,591
+
+6650 Other Types of Expenses
+-
+-
+-
+-
+
+6652 In-Kind Expense
+$8,333
+$8,333
+$8,333
+$24,999
+Total 6650 Other Types of Expenses
+$8,333
+$8,333
+$8,333
+$24,999
+Total Expenditures
+$233,104
+$230,943
+$254,251
+$718,299
+Net Operating Revenue
+- $19,326 (101%)
+$20,835
+$17,367
+-$224
+$37,978
+
+Other Revenue
+-
+-
+-
+-
+
+7000 Other Misc Income
+- $330 (100%)
+$660
+-
+-
+$660
+
+7002 Other Income - ERC
+- $34,178 (100%)
+$68,357
+-
+-
+$68,357
+Total Other Revenue
+- $34,509 (100%)
+$69,018
+-
+-
+$69,018
+
+Other Expenditures
+-
+-
+-
+-
+
+8005 Depreciation Expense
+$152
+$199
+$199
+$550
+
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1000 Clearing account
+-
+-
+-
+1010 Coeur Capital Reserve
+-
+-
+-
+1020 Front Desk Petty Cash
+$100
+$100
+$100
+
+1030 WF Operating Checking 2...
+- $16,488 (53%)
+$46,719
+$15,847
+$14,794
+
+1040 WF Payroll 2195
+- $20,721 (25%)
+$103,354
+$60,762
+$61,337
+
+1050 Day School Petty Cash
+$10
+$10
+$10
+
+1060 WF Savings Account 5539
+$600,443
+$600,473
+$605,477
+1070 25th Anniversary Petty Cash
+-
+-
+-
+Total Bank Accounts
+$750,628
+$677,194
+$681,720
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable
+$340,412
+$420,810
+$402,725
+Total Accounts Receivable
+$340,412
+$420,810
+$402,725
+
+Other Current Assets
+-
+-
+-
+
+1230 Prepaid Expenses
+$776
+$1,386
+$1,048
+
+1240 Prepaid Insurance
+$4,969
+$4,953
+$4,937
+1260 Undeposited Funds
+-
+-
+-
+Total Other Current Assets
+$5,745
+$6,339
+$5,986
+Total Current Assets
+$1,096,786
+$1,104,344
+$1,090,432
+
+Fixed Assets
+-
+-
+-
+1302 Donated Assets
+$102,270
+$102,270
+$102,270
+
+1303 Equipment
+$19,903
+$19,903
+$19,903
+1305 Fixture, Furniture & Equip
+$54,289
+$54,289
+$54,289
+1309 Materials 1st Team
+$32,600
+$32,600
+$32,600
+1311 Software - Fixed asset
+$6,107
+$6,107
+$6,107
+1393 Accumulated Amortization
+-$6,107
+-$6,107
+-$6,107
+
+1394 Accumulated Depreciation
+-$205,195
+-$205,394
+-$205,594
+Total Fixed Assets
+$3,866
+$3,667
+$3,468
+
+Other Assets
+-
+-
+-
+1406 Security Deposits Asset
+$9,600
+$9,600
+$9,600
+Total Other Assets
+$9,600
+$9,600
+$9,600
+TOTAL ASSETS
+$1,110,252
+$1,117,612
+$1,103,501
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+2000 Accounts Payable
+- $11,909 (45%)
+$26,543
+$26,892
+$14,809
+Total Accounts Payable
+- $11,909 (45%)
+$26,543
+$26,892
+$14,809
+
+Credit Cards
+-
+-
+-
+2100 Prepaid Credit Card
+-
+-
+-
+2101 School First Fed Credit Un
+-
+-
+-
+
+2102 WF Credit Card 6263
++ $2,980 (260%)
+$202
+$2,095
+$4,129
+Total Credit Cards
++ $2,980 (260%)
+$202
+$2,095
+$4,129
+
+Other Current Liabilities
+-
+-
+-
+
+2200 Accrued Expenses
+- $1,027 (100%)
+$2,054
+-
+-
+
+2202 Deferred Revenue
+- $4,088 (33%)
+$15,725
+$9,177
+$8,362
+2204 Loan Payable - ST
+-
+-
+-
+
+2206 Payroll Checks Payable
+$129,310
+$134,706
+$141,793
+
+2207 Payroll Tax Liabilities
+$33,462
+$36,039
+$37,309
+
+2208 Payroll Withholding
+$1,843
+$2,077
+$2,012
+
+2209 Unearned Revenue
+$90,735
+$79,079
+$67,964
+Total Other Current Liabilities
+$273,132
+$261,080
+$257,443
+Total Current Liabilities
+$299,878
+$290,069
+$276,382
+Total Liabilities
+$299,878
+$290,069
+$276,382
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+-
+-
+-
+3002 Retained Earnings-Restrict
+$34,915
+$34,915
+$34,915
+3003 RetainedEarnings-Unrestric
+$48,669
+$48,669
+$48,669
+3005 Unrestricted Net Assets
+$392,597
+$392,597
+$392,597

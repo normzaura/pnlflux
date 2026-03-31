@@ -1,0 +1,222 @@
+
+Income
+-
+-
+-
+-
+
+4000 Rental Income
+- $2,549 (38%)
+$8,994
+$4,295
+$4,095
+$17,384
+
+4100 Service/Fee Income
+- $116 (100%)
+$233
+-
+-
+$233
+Total Income
+- $2,666 (39%)
+$9,227
+$4,295
+$4,095
+$17,617
+Gross Profit
+- $2,666 (39%)
+$9,227
+$4,295
+$4,095
+$17,617
+
+Expenses
+-
+-
+-
+-
+
+6700 QuickBooks Payments Fees
+$148
+$104
+$49
+$303
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1000 SH CalPrivate Checking ...
++ $5,347 (28%)
+$17,077
+$20,472
+$24,122
+Total Bank Accounts
++ $5,347 (28%)
+$17,077
+$20,472
+$24,122
+
+Accounts Receivable
+-
+-
+-
+
+Accounts Receivable (A/R)
+$4,927
+$5,722
+$6,117
+Total Accounts Receivable
+$4,927
+$5,722
+$6,117
+
+Other Current Assets
+-
+-
+-
+1200 Loan to Officer
+-
+-
+-
+
+Undeposited Funds
+-
+-
+-
+Total Other Current Assets
+-
+-
+-
+Total Current Assets
++ $6,140 (25%)
+$22,005
+$26,195
+$30,240
+
+Fixed Assets
+-
+-
+-
+1600 Building (Buena Park)
+$142,370
+$142,370
+$142,370
+1700 Building Improvements (Buena Park)
+$288,649
+$288,649
+$288,649
+1800 Land (Buena Park)
+$332,198
+$332,198
+$332,198
+1900 Accumulated Depreciation
+-$166,206
+-$166,206
+-$166,206
+Total Fixed Assets
+$597,010
+$597,010
+$597,010
+
+Other Assets
+-
+-
+-
+Escrow
+-
+-
+-
+Total Other Assets
+-
+-
+-
+TOTAL ASSETS
+$619,015
+$623,206
+$627,251
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Other Current Liabilities
+-
+-
+-
+2000 Chase Loan - ST
+$9,646
+$9,646
+$9,646
+Total Other Current Liabilities
+$9,646
+$9,646
+$9,646
+Total Current Liabilities
+$9,646
+$9,646
+$9,646
+
+Long-Term Liabilities
+-
+-
+-
+2100 Chase Loan - LT
+$195,540
+$195,540
+$195,540
+Total Long-Term Liabilities
+$195,540
+$195,540
+$195,540
+Total Liabilities
+$205,186
+$205,186
+$205,186
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+$43,507
+$43,507
+$43,507
+3100 Shareholder's Investment
+-
+-
+-
+
+3150 Shareholder's Draw
+-
+-
+-
+
+3200 Retained Earnings
+$361,242
+$361,242
+$361,242

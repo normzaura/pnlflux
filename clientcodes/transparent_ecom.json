@@ -1,0 +1,296 @@
+{
+  "category": [
+    {
+      "item_code": "4001",
+      "item_name": "Meta Advertisement Revenue"
+    },
+    {
+      "item_code": "4002",
+      "item_name": "Management Fee Revenue"
+    },
+    {
+      "item_code": "4004",
+      "item_name": "Support Service Reveneue"
+    },
+    {
+      "item_code": "4005",
+      "item_name": "Processing Fee Revenue"
+    },
+    {
+      "item_code": "4009",
+      "item_name": "Customer Discounts & Refunds"
+    },
+    {
+      "item_code": "5000",
+      "item_name": "Cost of goods sold"
+    },
+    {
+      "item_code": "5001",
+      "item_name": "Advertising Partners"
+    },
+    {
+      "item_code": "5002",
+      "item_name": "Ads & Marketing COGS"
+    },
+    {
+      "item_code": "5005",
+      "item_name": "Subcontractor Labor"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Advertising & Marketing"
+    },
+    {
+      "item_code": "6002",
+      "item_name": "Marketing Business Expenses"
+    },
+    {
+      "item_code": "6004",
+      "item_name": "Marketing Professional Se..."
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Bank & CC Fees"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Office & Other Admin Expenses"
+    },
+    {
+      "item_code": "6201",
+      "item_name": "Office Expenses"
+    },
+    {
+      "item_code": "6203",
+      "item_name": "Dues & Subscriptions"
+    },
+    {
+      "item_code": "6204",
+      "item_name": "Internet & Telephone Expe..."
+    },
+    {
+      "item_code": "6205",
+      "item_name": "Software & Computer Expen..."
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Indirect Payroll Expenses"
+    },
+    {
+      "item_code": "6301",
+      "item_name": "Officer PR - Wages"
+    },
+    {
+      "item_code": "6302",
+      "item_name": "Officer PR - Taxes"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Contractor Services"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Legal & Professional Services"
+    },
+    {
+      "item_code": "6601",
+      "item_name": "Accounting Services"
+    },
+    {
+      "item_code": "6602",
+      "item_name": "Legal Services"
+    },
+    {
+      "item_code": "6700",
+      "item_name": "Travel & Entertainment"
+    },
+    {
+      "item_code": "6701",
+      "item_name": "Client Meals"
+    },
+    {
+      "item_code": "6702",
+      "item_name": "Airfare"
+    },
+    {
+      "item_code": "6703",
+      "item_name": "Hotels & Accomodation"
+    },
+    {
+      "item_code": "6704",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Vehicle Expense"
+    },
+    {
+      "item_code": "6801",
+      "item_name": "Gas & Fuel"
+    },
+    {
+      "item_code": "6802",
+      "item_name": "Parking & Tolls"
+    },
+    {
+      "item_code": "7001",
+      "item_name": "Credit Card Rewards"
+    },
+    {
+      "item_code": "9001",
+      "item_name": "Prior Period Adjustments"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "BofA Bus.Fundamentals C..."
+    },
+    {
+      "item_code": "1002",
+      "item_name": "BofA Bus.Relationship CHK - 3983"
+    },
+    {
+      "item_code": "1004",
+      "item_name": "PayPal Bank"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Recivable - A/R"
+    },
+    {
+      "item_code": "1201",
+      "item_name": "QBO Payment Deposits"
+    },
+    {
+      "item_code": "1202",
+      "item_name": "QuickBooks Tax Holding Account"
+    },
+    {
+      "item_code": "1210",
+      "item_name": "Unbilled AR"
+    },
+    {
+      "item_code": "1250",
+      "item_name": "Prepaid expenses"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Account Payable - A/P"
+    },
+    {
+      "item_code": "2101",
+      "item_name": "Amex Blue CC - 4006"
+    },
+    {
+      "item_code": "2102",
+      "item_name": "Amex Gold CC - 9007"
+    },
+    {
+      "item_code": "2103",
+      "item_name": "Amex Platinum CC - 5005"
+    },
+    {
+      "item_code": "2104",
+      "item_name": "BofA CC - 2037"
+    },
+    {
+      "item_code": "2104.1",
+      "item_name": "Sub 4506"
+    },
+    {
+      "item_code": "2104.2",
+      "item_name": "Sub 2037"
+    },
+    {
+      "item_code": "2105",
+      "item_name": "BofA CC - 4213"
+    },
+    {
+      "item_code": "2105.1",
+      "item_name": "Sub 0469"
+    },
+    {
+      "item_code": "2105.2",
+      "item_name": "Sub 4213"
+    },
+    {
+      "item_code": "2106",
+      "item_name": "Capital One CC - 2421"
+    },
+    {
+      "item_code": "2107",
+      "item_name": "Chase Ink Cash CC - 8653"
+    },
+    {
+      "item_code": "2108",
+      "item_name": "Chase Ink Preferred CC - 6041"
+    },
+    {
+      "item_code": "2109",
+      "item_name": "Dash.Fi - 2347"
+    },
+    {
+      "item_code": "2110",
+      "item_name": "Frontier Credit Card"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2201",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2202",
+      "item_name": "CA PIT / SDI"
+    },
+    {
+      "item_code": "2203",
+      "item_name": "CA SUI / ETT"
+    },
+    {
+      "item_code": "2204",
+      "item_name": "Federal Taxes (941/943/944)"
+    },
+    {
+      "item_code": "2205",
+      "item_name": "Federal Unemployment (940)"
+    },
+    {
+      "item_code": "2206",
+      "item_name": "NV UI Bond Obligation Assessment"
+    },
+    {
+      "item_code": "2207",
+      "item_name": "NV Unemployment Tax"
+    },
+    {
+      "item_code": "2250",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Loans From Shareholde..."
+    },
+    {
+      "item_code": "2400",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Shareholder's Equity"
+    },
+    {
+      "item_code": "3202",
+      "item_name": "Shareholder's Distribut..."
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

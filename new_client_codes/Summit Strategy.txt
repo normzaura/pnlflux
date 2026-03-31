@@ -1,0 +1,1032 @@
+
+Income
+-
+-
+-
+-
+
+40000 Project Revenue
+-
+-
+-
+-
+
+40100 Fixed Fee Projects
++ $11,724 (33%)
+$25,346
+$45,036
+$46,916
+$117,299
+
+40200 Retainer Projects
++ $13,316 (20%)
+$61,875
+$70,720
+$79,614
+$212,210
+
+40300 T&M Projects
++ $36,230 (76%)
+$42,783
+$53,035
+$84,139
+$179,959
+Total 40000 Project Revenue
++ $61,271 (41%)
+$130,006
+$168,792
+$210,670
+$509,468
+
+41000 Online eServices
++ $7,907 (--)
+-
+-
+$7,907
+$7,907
+Total Income
++ $69,179 (46%)
+$130,006
+$168,792
+$218,578
+$517,376
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+50000 Cost of Services
+-
+-
+-
+-
+
+50010 Contracted Labor
++ $47,503 (68%)
+$58,786
+$80,330
+$117,061
+$256,177
+
+50015 Direct Labor
+- $2,621 (92%)
+$2,510
+$3,214
+$241
+$5,966
+
+50020 Software and Tools Subsc...
+- $138 (100%)
+$276
+-
+-
+$276
+
+50030 Referral Fees
++ $584 (--)
+-
+-
+$584
+$584
+
+50050 Travel Costs
++ $276 (-100%)
+-$552
+-
+-
+-$552
+Total 50000 Cost of Services
++ $45,604 (63%)
+$61,020
+$83,544
+$117,887
+$262,451
+Total Cost of Goods Sold
++ $45,604 (63%)
+$61,020
+$83,544
+$117,887
+$262,451
+Gross Profit
++ $23,574 (31%)
+$68,985
+$85,247
+$100,691
+$254,924
+
+Expenses
+-
+-
+-
+-
+
+60000 Payroll Expenses
+-
+-
+-
+-
+
+60010 Officer Wages
+$7,912
+$11,862
+$10,235
+$30,010
+
+60020 Wages
+- $6,831 (32%)
+$18,345
+$24,096
+$14,389
+$56,831
+
+60030 Payroll Taxes
+- $1,819 (44%)
+$2,974
+$5,383
+$2,359
+$10,717
+
+60040 401K Match
++ $362 (581%)
+-$618
+$743
+$425
+$550
+
+60050 Bonus
+- $13,000 (100%)
+$26,000
+-
+-
+$26,000
+
+60060 Payroll Fees
+$140
+$140
+$140
+$420
+
+60070 Other Benefits
+$207
+$138
+$138
+$484
+Total 60000 Payroll Expenses
+- $20,975 (43%)
+$54,961
+$42,364
+$27,687
+$125,013
+
+61000 Advertising & Marketing
+-
+-
+-
+-
+
+61010 Miscellaneous Marketing
++ $621 (37%)
+$1,282
+$2,110
+$2,317
+$5,710
+
+61030 Website
+$2,430
+$2,766
+$2,596
+$7,792
+
+61040 Advertising & Sponsorships
++ $5,113 (478%)
+$856
+$1,282
+$6,182
+$8,321
+
+61045 Content Creation
+- $365 (100%)
+-
+$731
+-
+$731
+Total 61000 Advertising & Mark...
++ $5,367 (94%)
+$4,569
+$6,890
+$11,096
+$22,556
+
+61050 Business Development
+-
+-
+-
+-
+
+61052 Networking Events - Fees
+- $310 (100%)
+$72
+$549
+-
+$621
+
+61053 Networking Events - Travel
+- $3,736 (81%)
+$3,343
+$5,832
+$851
+$10,027
+
+61054 New Ventures
+- $6,988 (83%)
+$5,867
+$10,902
+$1,396
+$18,166
+Total 61050 Business Development
+- $11,035 (83%)
+$9,283
+$17,283
+$2,248
+$28,815
+
+61500 Office & Other Admin Expenses
+-
+-
+-
+-
+
+61520 Office Supplies
+$1,245
+$779
+$868
+$2,893
+
+61550 Software & Apps
+$2,578
+$3,026
+$2,949
+$8,553
+Total 61500 Office & Other Admin Expenses
+$3,823
+$3,805
+$3,817
+$11,447
+
+62000 Travel Expense
+-
+-
+-
+-
+
+62010 Meals
++ $349 (1150%)
+-
+$60
+$380
+$441
+
+62020 Airfare
+- $114 (100%)
+-
+$229
+-
+$229
+
+62030 Hotels
++ $870 (--)
+-
+-
+$870
+$870
+
+62060 Taxis or shared rides
++ $541 (--)
+-
+-
+$541
+$541
+
+62070 Parking & Tolls
+$90
+-
+$90
+$180
+
+62080 Meals/Entertainment - EO
+-
+-
+-
+-
+Total 62000 Travel Expense
++ $1,692 (890%)
+$90
+$290
+$1,882
+$2,262
+
+63000 Vehicle Expenses
+-
+-
+-
+-
+
+63010 Lease
+$819
+$819
+$819
+$2,459
+
+63020 Gas / Electric Charging
+$100
+$100
+$100
+$300
+
+63030 General Expenses
+$49
+$49
+$49
+$149
+Total 63000 Vehicle Expenses
+$969
+$969
+$969
+$2,909
+
+64000 Rent & Utility Expenses
+-
+-
+-
+-
+
+64010 Rent
+$1,539
+$1,437
+$1,437
+$4,413
+
+64020 Utilities
+$92
+$93
+$79
+$265
+
+64030 Telephone
+$250
+$251
+$264
+$766
+
+64040 Internet
+$108
+$112
+$112
+$334
+
+64050 Repairs and Maintenance
+$81
+$156
+$44
+$282
+Total 64000 Rent & Utility Expenses
+$2,072
+$2,051
+$1,938
+$6,062
+
+66000 Insurance Expenses
+-
+-
+-
+-
+
+66010 Auto Insurance
+$408
+$316
+$316
+$1,040
+
+66020 Business Insurance
+$39
+$47
+$31
+$118
+
+66030 Cyber Insurance
+$227
+$310
+$310
+$847
+
+66040 Disability Insurance
+$170
+$170
+$170
+$511
+
+66060 Liability Insurance
+$175
+$175
+$175
+$525
+
+66070 Officer Health Insurance
+$1,898
+$2,149
+$2,149
+$6,197
+
+66080 Worker's Compensation
+$82
+$82
+$73
+$237
+Total 66000 Insurance Expenses
+$3,001
+$3,251
+$3,226
+$9,478
+
+67000 Bank & Other Financing Fees
+-
+-
+-
+-
+
+67020 Merchant & Bank Fees
++ $281 (76%)
+$619
+$122
+$652
+$1,394
+Total 67000 Bank & Other Finan...
++ $281 (76%)
+$619
+$122
+$652
+$1,394
+
+68000 Legal & Professional Fees
+-
+-
+-
+-
+
+68010 Accounting fees
+$4,004
+$4,533
+$4,111
+$12,649
+
+68020 Consulting
+- $2,084 (100%)
+$4,169
+-
+-
+$4,169
+
+68030 Contractors
+- $851 (38%)
+$3,089
+$1,386
+$1,386
+$5,862
+
+68040 HR/Recruiting fees
+- $669 (100%)
+-
+$1,338
+-
+$1,338
+
+68050 IT Services
+- $4,675 (171%)
+$3,177
+$2,287
+-$1,942
+$3,523
+
+68060 Legal Fees
++ $250 (--)
+-
+-
+$250
+$250
+Total 68000 Legal & Profession...
+- $8,187 (68%)
+$14,440
+$9,546
+$3,806
+$27,793
+
+69000 Other Operating Expenses
+-
+-
+-
+-
+
+69010 Seminars & Education
++ $554 (--)
+-
+-
+$554
+$554
+
+69020 Employee Relations
+- $550 (90%)
+$1,204
+$24
+$64
+$1,293
+
+69030 Dues and Subscriptions
+- $413 (46%)
+$1,116
+$679
+$484
+$2,280
+
+69040 QSEHRA
+$30
+$30
+$30
+$90
+Total 69000 Other Operating Ex...
+- $409 (27%)
+$2,350
+$734
+$1,133
+$4,218
+Total Expenses
+- $33,286 (36%)
+$96,183
+$87,310
+$58,460
+$241,953
+Net Operating Income
++ $56,860 (389%)
+-$27,197
+-$2,062
+$42,231
+$12,971
+
+Other Income
+-
+-
+-
+-
+
+70000 Other Income
+-
+-
+-
+-
+
+70010 Miscellaneous Income
+$103
+-
+$15
+$119
+
+70020 Interest earned
++ $253 (105%)
+$58
+$424
+$495
+$979
+Total 70000 Other Income
++ $216 (74%)
+$162
+$424
+$510
+$1,098
+Total Other Income
++ $216 (74%)
+$162
+$424
+$510
+$1,098
+
+Other Expenses
+-
+-
+-
+-
+
+80000 Other Expenses
+-
+-
+-
+-
+
+80020 Interest Expense
+$226
+$113
+$113
+$452
+Total 80000 Other Expenses
+$226
+$113
+$113
+$452
+
+91000 Ask My Accountant
+-
+-
+-
+-
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+10000 Cash
+-
+-
+-
+
+10010 Checking - CWB | 0118
++ $8,555 (218%)
+$1,080
+$6,784
+$12,488
+10020 Checking - PayPal Bank | C64XW
+$0
+$0
+$0
+10030 Savings - CWB | 0522
+-
+-
+-
+
+10040 Savings - Live Oak |...
++ $105,692 (84%)
+$24,945
+$225,360
+$230,845
+
+10050 Checking - BeachCiti...
+- $98,649 (42%)
+$331,485
+$135,502
+$134,844
+Total 10000 Cash
+$357,511
+$367,647
+$378,178
+Total Bank Accounts
+$357,511
+$367,647
+$378,178
+
+Accounts Receivable
+-
+-
+-
+
+11000 Accounts Receivable
+$177,891
+$137,388
+$166,273
+
+11001 Accounts Receivable - Kajabi
+-
+-
+-
+Total Accounts Receivable
+$177,891
+$137,388
+$166,273
+
+Other Current Assets
+-
+-
+-
+12009 Undeposited Funds
+-
+-
+-
+
+12100 Prepaid Expenses
+-
+-
+-
+12110 Project's Prepaid Expenses
+-
+-
+-
+
+12120 Prepaid Vendors
+$25,921
+$47,943
+$37,309
+
+12130 Prepaid Insurance
++ $928 (27%)
+$1,830
+$4,983
+$4,335
+12135 Health Insurance
+-
+-
+-
+12136 Liability Insurance
+-
+-
+-
+Total 12130 Prepaid Insu...
++ $928 (27%)
+$1,830
+$4,983
+$4,335
+Total 12100 Prepaid Expenses
+$27,752
+$52,927
+$41,644
+
+12200 Other Current Assets
+-
+-
+-
+
+12210 Unbilled AR
++ $1,740 (33%)
+$848
+$9,586
+$6,957
+Total 12200 Other Current ...
++ $1,740 (33%)
+$848
+$9,586
+$6,957
+12300 State Refund Receivable
+-
+-
+-
+Total Other Current Assets
+$28,601
+$62,513
+$48,602
+Total Current Assets
+$564,004
+$567,549
+$593,054
+
+Fixed Assets
+-
+-
+-
+
+13000 Fixed Assets & Leasehold Improvements
+-
+-
+-
+13010 Computers
+-
+-
+-
+14990 Accumulated Depreciation
+-
+-
+-
+Total 13000 Fixed Assets & Leasehold Impr...
+-
+-
+-
+Total Fixed Assets
+-
+-
+-
+TOTAL ASSETS
+$564,004
+$567,549
+$593,054
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+20000 Accounts Payable
++ $40,851 (50%)
+$68,100
+$95,494
+$122,649
+Total Accounts Payable
++ $40,851 (50%)
+$68,100
+$95,494
+$122,649
+
+Credit Cards
+-
+-
+-
+
+21000 Credit Cards
+-
+-
+-
+
+21010 Capital One | 1399
+- $7,448 (64%)
+$432
+$23,015
+$4,275
+
+21020 AmEx Amazon | 1006
+- $269 (54%)
+$325
+$682
+$234
+
+21030 AmEx Business Blue | 1001
+-$62
+$1,421
+$627
+
+21040 AmEx Delta | 1008
+- $4,240 (61%)
+$9,880
+$3,956
+$2,677
+21060 Paypal
+-
+-
+-
+Total 21000 Credit Cards
+- $12,011 (61%)
+$10,576
+$29,077
+$7,815
+Total Credit Cards
+- $12,011 (61%)
+$10,576
+$29,077
+$7,815
+
+Other Current Liabilities
+-
+-
+-
+
+22000 Wages Payable
+-
+-
+-
+
+22020 401K Liabilities
+- $271 (29%)
+$932
+$944
+$667
+Total 22000 Wages Payable
+- $271 (29%)
+$932
+$944
+$667
+
+22600 Unearned Revenue
+$530,416
+$514,665
+$508,952
+
+23000 Accrued Expense
+-
+-
+-
+
+23010 Accrued Expenses
+- $15,485 (70%)
+$28,500
+$15,907
+$6,718
+23020 Accrued Interest
+-
+-
+-
+
+23030 Accrued Payroll
++ $1,861 (45%)
+-
+$8,289
+$6,006
+23040 CA Franchise Tax
+-
+-
+-
+Total 23000 Accrued Expe...
+- $13,623 (52%)
+$28,500
+$24,196
+$12,724
+
+24000 Other Current Liabilities
+-
+-
+-
+24010 AmEx Loan
+-
+-
+-
+
+24020 Commerce West Loan 181
+$17,500
+$17,500
+$17,500
+24030 Headway Capital LOC
+-
+-
+-
+Total 24000 Other Current Liabilities
+$17,500
+$17,500
+$17,500
+
+Payroll Clearing
+-
+-
+-
+Total Other Current Liabilities
+$577,350
+$557,306
+$539,845
+Total Current Liabilities
+$656,027
+$681,877
+$670,309
+Total Liabilities
+$656,027
+$681,877
+$670,309
+
+Equity
+-
+-
+-
+
+31000 Shareholder Equity
+-
+-
+-
+31100 Contributions
+-
+-
+-
+
+31200 Distributions
++ $46,974 (64%)
+-$125,614
+-$20,555
+-$26,110
+
+31300 Krystn Business Reimbursements
+-
+-
+-
+Total 31000 Shareholder Equity
++ $46,974 (64%)
+-$125,614
+-$20,555
+-$26,110
+
+38000 Excess Distributions
++ $77,282 (-100%)
+-$154,564
+-
+-
+
+39000 Retained Earnings
+- $33,735 (58%)
+-$24,551
+-$92,023
+-$92,023

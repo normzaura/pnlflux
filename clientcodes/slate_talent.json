@@ -1,0 +1,48 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Services"
+    },
+    {
+      "item_code": "0027",
+      "item_name": "Slate Talent Chase Chec..."
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Chase Checking 0027"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Vehicles"
+    },
+    {
+      "item_code": "1200",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Additional Paid-In Capital"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Capital Stock"
+    },
+    {
+      "item_code": "3300",
+      "item_name": "Shareholder Distribution"
+    },
+    {
+      "item_code": "3400",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

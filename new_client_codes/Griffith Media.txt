@@ -1,0 +1,900 @@
+
+Income
+-
+-
+-
+-
+
+4000 Video Income
+$98,004
+$24,919
+$56,352
+$179,276
+
+4002 Retainer Income
++ $9,600 (68%)
+$4,200
+$23,870
+$23,635
+$51,705
+
+4004 Royalty Income
+-
+-
+$15
+$15
+
+4005 Shipping Income
+-
+$85
+-
+$85
+
+4100 Discounts & Refunds given
+- $2,559 (100%)
+-$5,119
+$0
+-$5,119
+-$10,239
+Total Income
+$97,084
+$48,874
+$74,882
+$220,841
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+5000 COGS & Other Direct Expenses
+-
+-
+-
+-
+
+5001 Actors & Voiceover Actors
+- $125 (100%)
+-
+$250
+-
+$250
+
+5002 Cameras & Equipment
+- $1,413 (100%)
+$2,766
+$59
+-
+$2,826
+
+5005 Stock Media & Materials
+$900
+$375
+$600
+$1,875
+
+5006 Subcontractor Labor
+- $4,856 (35%)
+$22,058
+$5,513
+$8,930
+$36,502
+Total 5000 COGS & Other Direct...
+- $6,431 (40%)
+$25,725
+$6,198
+$9,530
+$41,454
+
+5010 Direct Labor
+-
+-
+-
+-
+
+5011 DL - Officer Wages
+$2,000
+$2,000
+$2,000
+$6,000
+
+5021 DL - EE Wages
+$16,102
+$8,099
+$13,819
+$38,022
+
+5022 DL - Taxes
+$953
+$945
+$863
+$2,762
+
+5023 DL - Bonus
+- $389 (100%)
+$749
+$30
+-
+$779
+Total 5010 Direct Labor
+$19,806
+$11,074
+$16,683
+$47,564
+Total Cost of Goods Sold
+$45,532
+$17,273
+$26,213
+$89,018
+Gross Profit
+$51,552
+$31,600
+$48,669
+$131,822
+
+Expenses
+-
+-
+-
+-
+
+6010 Payroll - Officers
+-
+-
+-
+-
+
+6011 Officer Wages
+$7,772
+$8,227
+$8,000
+$24,000
+
+6012 Officer Taxes
+$747
+$853
+$765
+$2,365
+
+6016 401(k) Employee Match
+$345
+$337
+$337
+$1,021
+Total 6010 Payroll - Officers
+$8,865
+$9,418
+$9,103
+$27,387
+
+6020 Payroll - Employees
+-
+-
+-
+-
+
+6021 Employee Wages
+$6,516
+$7,013
+$6,823
+$20,353
+
+6022 Employee Taxes
+$383
+$396
+$374
+$1,154
+
+6023 Employee Bonus
+$95
+-
+-
+$95
+
+6026 401(k) Employer Match
+$512
+$493
+$496
+$1,502
+
+6030 Payroll Fees
+$97
+$202
+$164
+$463
+Total 6020 Payroll - Employees
+$7,605
+$8,105
+$7,858
+$23,569
+
+6100 Advertising & Marketing
+-
+-
+-
+-
+
+6101 Marketing
++ $679 (185%)
+$267
+$468
+$1,047
+$1,782
+Total 6100 Advertising & Marke...
++ $679 (185%)
+$267
+$468
+$1,047
+$1,782
+
+6150 Office & Other Admin Expenses
+-
+-
+-
+-
+
+6151 Dues & Subscriptions
++ $3,036 (1008%)
+$375
+$226
+$3,337
+$3,940
+
+6154 Office expenses
+- $256 (63%)
+$687
+$132
+$153
+$973
+
+6155 Office Software
+- $429 (23%)
+$1,613
+$2,057
+$1,406
+$5,076
+Total 6150 Office & Other Admi...
++ $2,350 (92%)
+$2,676
+$2,416
+$4,897
+$9,990
+
+6200 Travel
+-
+-
+-
+-
+
+6201 Meals
+$410
+$293
+$262
+$966
+
+6202 Airfare
+- $405 (100%)
+$810
+-
+-
+$810
+
+6204 Transportation
+- $609 (100%)
+$1,242
+-$23
+-
+$1,218
+Total 6200 Travel
+- $1,104 (81%)
+$2,463
+$269
+$262
+$2,995
+
+6300 Vehicle Expenses
+-
+-
+-
+-
+
+6301 Gas
+$93
+$57
+$63
+$213
+
+6302 Parking & Tolls
+$135
+-
+-
+$135
+
+6303 Repairs & Maintenance
+- $2,441 (97%)
+$4,516
+$500
+$66
+$5,082
+Total 6300 Vehicle Expenses
+- $2,521 (95%)
+$4,744
+$557
+$129
+$5,431
+
+6400 Rent & Utilities Expenses
+-
+-
+-
+-
+
+6401 Rent & Lease
+$4,000
+$4,000
+$4,000
+$12,000
+
+6403 Internet
+$100
+$100
+$100
+$300
+
+6404 Telephone
+- $204 (64%)
+$316
+$324
+$115
+$757
+Total 6400 Rent & Utilities Expenses
+$4,416
+$4,424
+$4,215
+$13,057
+
+6500 Taxes & Licenses
+-
+-
+-
+-
+
+6503 Taxes, Licenses and Fees
+- $107 (100%)
+-
+$215
+-
+$215
+Total 6500 Taxes & Licenses
+- $107 (100%)
+-
+$215
+-
+$215
+
+6600 Insurance Expenses
+-
+-
+-
+-
+
+6601 General Liability Insurance
+$62
+$62
+$62
+$188
+
+6602 Equipment Insurance
+$144
+$144
+$144
+$434
+
+6603 Dental Insurance
+$193
+$193
+$193
+$579
+
+6604 Health insurance
+$3,407
+$2,657
+$2,657
+$8,722
+
+6605 Life & Vision Insurance
+$58
+$60
+$60
+$179
+
+6606 Worker's Comp Insurance
+$208
+$208
+$208
+$625
+Total 6600 Insurance Expenses
+$4,075
+$3,326
+$3,326
+$10,729
+
+6700 Bank & Other Financing Fees
+-
+-
+-
+-
+
+6701 Bank & CC Fees
+- $147 (27%)
+$895
+$189
+$395
+$1,479
+
+6703 QuickBooks Payments Fees
+$97
+$248
+$151
+$496
+Total 6700 Bank & Other Financ...
+- $168 (24%)
+$992
+$437
+$546
+$1,975
+
+6800 Legal & Professional Services
+-
+-
+-
+-
+
+6801 Accounting
+$2,550
+$2,550
+$2,550
+$7,650
+
+6802 Business Consulting
+$3,071
+$3,071
+$3,071
+$9,215
+Total 6800 Legal & Professional Services
+$5,621
+$5,621
+$5,621
+$16,865
+Total Expenses
+$41,729
+$35,262
+$37,009
+$114,001
+Net Operating Income
++ $8,578 (278%)
+$9,823
+-$3,661
+$11,659
+$17,821
+
+Other Income
+-
+-
+-
+-
+
+7000 Other Income
+-
+-
+-
+-
+
+7003 Misc Income
+- $9,857 (100%)
+-
+$19,715
+-
+$19,715
+Total 7000 Other Income
+- $9,857 (100%)
+-
+$19,715
+-
+$19,715
+Total Other Income
+- $9,857 (100%)
+-
+$19,715
+-
+$19,715
+
+Other Expenses
+-
+-
+-
+-
+
+8000 Other Expenses
+-
+-
+-
+-
+
+8001 Depreciation
++ $413 (43%)
+$551
+$1,378
+$1,378
+$3,309
+
+8003 Interest Expense
++ $100 (7640%)
+-
+$2
+$101
+$104
+
+8004 Loss on Sale of Asset
++ $500 (--)
+-
+-
+$500
+$500
+
+8005 Misc Expense
++ $18,028 (--)
+-
+-
+$18,028
+$18,028
+Total 8000 Other Expenses
++ $19,042 (1970%)
+$551
+$1,381
+$20,009
+$21,942
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1000 Cash
+-
+-
+-
+
+1001 Chase Checking (8833)
+$119,106
+$95,039
+$123,685
+Total 1000 Cash
+$119,106
+$95,039
+$123,685
+Total Bank Accounts
+$119,106
+$95,039
+$123,685
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable (A/R)
+$134,009
+$167,189
+$147,920
+Total Accounts Receivable
+$134,009
+$167,189
+$147,920
+
+Other Current Assets
+-
+-
+-
+
+1210 Prepaid Expenses
+$15,802
+$12,176
+$15,351
+
+1220 Prepaid Insurance
++ $367 (31%)
+$1,045
+$1,290
+$1,534
+
+1230 Prepaid Project Expense
+- $5,707 (48%)
+$10,731
+$13,070
+$6,194
+
+1240 Accrued Revenue
+- $8,977 (58%)
+$17,264
+$13,489
+$6,400
+
+Undeposited Funds
+-
+-
+-
+Total Other Current Assets
+- $12,954 (31%)
+$44,844
+$40,026
+$29,480
+Total Current Assets
+$297,960
+$302,255
+$301,087
+
+Fixed Assets
+-
+-
+-
+
+1300 Fixed Assets & Leasehold Improvements
+-
+-
+-
+1301 Camera Equipment
+$93,999
+$93,999
+$93,999
+
+1302 2013 Jeep Wrangler
+- $15,000 (100%)
+$15,000
+$15,000
+-
+
+1303 2026 VW Atlas
++ $24,813 (100%)
+-
+$49,627
+$49,627
+Total 1300 Fixed Assets & Leasehold Impro...
+$108,999
+$158,626
+$143,626
+
+1499 Accumulated Depreciation
+-$78,252
+-$79,631
+-$80,009
+Total Fixed Assets
+$30,746
+$78,995
+$63,616
+TOTAL ASSETS
+$328,707
+$381,251
+$364,704
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Credit Cards
+-
+-
+-
+
+2100 Credit Cards
+-
+-
+-
+2101 Amex Bonvoy CC (1007)
+-
+-
+-
+2102 Amex Gold CC (1005)
+-
+-
+-
+2103 Amex Gold CC (2000)
+-
+-
+-
+
+2104 Amex Gold CC (1003)
+-
+-
+-
+
+2105 Amex Platinum CC (1001)
+-
+-
+-
+
+2106 Amex Platinum CC (1...
+- $538 (100%)
+$1,076
+-
+-
+
+2107 B&H Photo CC (4007)
+- $1,475 (100%)
+$2,940
+$9
+-
+
+2108 CapOne Venture X CC...
+- $2,836 (33%)
+$1,635
+$15,372
+$5,667
+2109 Chase United CC (7972)
+-
+-
+-
+
+2110 CapOne Venture X Bi...
++ $28,408 (--)
+-
+-
+$28,408
+2120 Amex Hilton CC (32002) - CLOSING
+-
+-
+-
+2121 Amex Platinum CC (61005) - CLOSING
+-
+-
+-
+2122 Chase Ink CC (5355) - CLOSING
+-
+-
+-
+Total 2100 Credit Cards
++ $23,558 (224%)
+$5,652
+$15,381
+$34,075
+Credit_Chase Ink Preferred_5318
+-
+-
+-
+Total Credit Cards
++ $23,558 (224%)
+$5,652
+$15,381
+$34,075
+
+Other Current Liabilities
+-
+-
+-
+
+2200 Payroll Clearing
+-
+-
+-
+
+2220 Accrued Payroll
+$6,482
+$7,177
+$6,996
+
+2230 Accrued Expenses
+$4,000
+$4,000
+$4,000
+
+2270 Texas State Comptroller Payable
+$40
+-
+-
+
+2280 Unearned Revenue
+- $16,206 (64%)
+$20,417
+$30,490
+$9,247
+
+2301 ST - VW Atlas Loan
++ $2,885 (101%)
+-
+$5,723
+$5,746
+
+2350 401K Liabilities
+$2,424
+$2,712
+$2,710
+Out Of Scope Agency Payable
+-
+-
+-
+Retirement Plan Payable
+-
+-
+-
+Total Other Current Liabil...
+- $13,033 (31%)
+$33,365
+$50,103
+$28,701
+Total Current Liabilities
++ $10,525 (20%)
+$39,018
+$65,485
+$62,777
+
+Long-Term Liabilities
+-
+-
+-
+
+2401 LT - VW Atlas Loan
++ $8,962 (95%)
+-
+$18,904
+$18,414
+Total Long-Term Liabilities
++ $8,962 (95%)
+-
+$18,904
+$18,414
+Total Liabilities
++ $19,487 (32%)
+$39,018
+$84,389
+$81,191
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+-
+-
+-
+3100 Capital Stock
+$1,000
+$1,000
+$1,000
+3200 Shareholder Contribution
+$15,000
+$15,000
+$15,000
+
+3300 Shareholder Distribution
++ $97,846 (89%)
+-$213,193
+-$7,500
+-$12,500
+
+3900 Retained Earnings
+$263,065
+$273,689
+$273,689

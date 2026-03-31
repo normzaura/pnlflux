@@ -1,0 +1,187 @@
+
+Income
+-
+-
+-
+-
+
+4000 Services
++ $140,832 (735%)
+$38,333
+-
+$159,999
+$198,332
+Total Income
++ $140,832 (735%)
+$38,333
+-
+$159,999
+$198,332
+Gross Profit
++ $140,832 (735%)
+$38,333
+-
+$159,999
+$198,332
+
+Expenses
+-
+-
+-
+-
+
+QuickBooks Payments Fees
++ $1,195 (--)
+-
+-
+$1,195
+$1,195
+Total Expenses
++ $1,195 (--)
+-
+-
+$1,195
+$1,195
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+0027 Slate Talent Chase Chec...
++ $13,466 (--)
+-
+-
+$13,466
+
+1000 Chase Checking 0027
++ $158,803 (209%)
+$75,940
+$75,940
+$234,743
+Manual Import
+-
+-
+-
+Total Bank Accounts
++ $172,269 (227%)
+$75,940
+$75,940
+$248,209
+
+Other Current Assets
+-
+-
+-
+
+Undeposited Funds
+-
+-
+-
+Total Other Current Assets
+-
+-
+-
+Total Current Assets
++ $172,269 (227%)
+$75,940
+$75,940
+$248,209
+
+Fixed Assets
+-
+-
+-
+1100 Vehicles
+$39,150
+$39,150
+$39,150
+1200 Accumulated Depreciation
+-$6,525
+-$6,525
+-$6,525
+Total Fixed Assets
+$32,625
+$32,625
+$32,625
+TOTAL ASSETS
++ $172,269 (159%)
+$108,565
+$108,565
+$280,835
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Other Current Liabilities
+-
+-
+-
+2000 Payroll Clearing
+-
+-
+-
+Total Other Current Liabilities
+-
+-
+-
+Total Current Liabilities
+-
+-
+-
+Total Liabilities
+-
+-
+-
+
+Equity
+-
+-
+-
+
+3000 Opening Balance Equity
++ $13,466 (--)
+-
+-
+$13,466
+3100 Additional Paid-In Capital
+$4,581
+$4,581
+$4,581
+3200 Capital Stock
+$1,000
+$1,000
+$1,000
+
+3300 Shareholder Distribution
+-
+-
+-
+
+3400 Retained Earnings
+$64,651
+$64,651
+$64,651

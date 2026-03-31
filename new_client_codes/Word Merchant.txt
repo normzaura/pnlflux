@@ -1,0 +1,687 @@
+
+Income
+-
+-
+-
+-
+
+47500-000 Vendor Partner Income
+-
+-
+-
+-
+Total Income
+-
+-
+-
+-
+Gross Profit
+-
+-
+-
+-
+
+Expenses
+-
+-
+-
+-
+
+65000-000 General and Administrative
+-
+-
+-
+-
+
+65100-000 Payroll Expenses
+-
+-
+-
+-
+
+65106-000 401(k) Administrat...
+- $892 (100%)
+-
+$1,785
+-
+$1,785
+
+65107-000 Workers Comp Insurance
+$239
+$195
+$222
+$657
+Total 65100-000 Payroll Expe...
+- $887 (80%)
+$239
+$1,980
+$222
+$2,442
+
+65200-000 General Office Expenses
+-
+-
+-
+-
+
+81300-000 Taxes and Licenses
+- $1,180 (100%)
+$2,361
+-
+-
+$2,361
+Total 65200-000 General Offi...
+- $1,180 (100%)
+$2,361
+-
+-
+$2,361
+
+65220-000 Insurance
+$259
+$111
+$248
+$619
+
+65270-000 Dues and Subscriptions
+$50
+$50
+$50
+$150
+
+65280-000 Outside Services
++ $2,000 (702%)
+$285
+$285
+$2,285
+$2,855
+
+65290-000 Contract Services
+- $2,250 (100%)
+$4,501
+-
+-
+$4,501
+
+65300-000 Bank Charges
+$158
+$91
+$170
+$419
+
+65500-000 Legal and Professional Fees
+-
+-
+-
+-
+
+65510-000 Legal Fees
+$7,500
+$7,500
+$7,500
+$22,500
+
+65511-000 Accounting Fees
+$4,892
+$4,892
+$5,012
+$14,797
+Total 65500-000 Legal and Professional Fees
+$12,392
+$12,392
+$12,512
+$37,297
+Total 65000-000 General and Administrative
+$20,248
+$14,911
+$15,488
+$50,647
+Total Expenses
+$20,248
+$14,911
+$15,488
+$50,647
+Net Operating Income
+-$20,248
+-$14,911
+-$15,488
+-$50,647
+
+Other Income
+-
+-
+-
+-
+
+71000-000 Other Income
+-
+-
+-
+-
+
+71100-000 Interest Income
+$25
+$25
+$23
+$74
+Total 71000-000 Other Income
+$25
+$25
+$23
+$74
+Total Other Income
+$25
+$25
+$23
+$74
+
+Other Expenses
+-
+-
+-
+-
+
+81000-000 Other Expense
+-
+-
+-
+-
+
+81100-000 Interest Expense
+$6,575
+$5,000
+$5,000
+$16,575
+Total 81000-000 Other Expense
+$6,575
+$5,000
+$5,000
+$16,575
+
+81400-000 Depreciation Expense
+$2,416
+$2,416
+$2,416
+$7,250
+
+81500-000 Amortization Expense
+$590
+$590
+$590
+$1,771
+
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+10100-000 Wells Fargo Business Checking 7...
+-
+-
+-
+
+10105-000 Wells Fargo Business Checking 6...
+$615,028
+$235,962
+$501,387
+
+10200-000 Wells Fargo Business Savings
+$200,966
+$200,992
+$201,015
+10300-000 Petty Cash
+-
+-
+-
+Total Bank Accounts
+$815,995
+$436,955
+$702,402
+
+Accounts Receivable
+-
+-
+-
+11000-000 Accounts Receivable
+-
+-
+-
+Total Accounts Receivable
+-
+-
+-
+
+Other Current Assets
+-
+-
+-
+
+11100-000 Accounts Receivable - Stripe
+-
+-
+-
+11200-000 Unbilled Receivables
+-
+-
+-
+11400-000 Undeposited Funds
+-
+-
+-
+
+11600-000 Prepaid Expenses
++ $4,338 (86%)
+$2,701
+$7,404
+$9,391
+
+11700-000 Prepaid Rent
+$91,121
+$81,987
+$73,912
+11710-000 Lease Deposits
+-
+-
+-
+
+11750-700 Due from Justice HQ, LLC
+$1,429,413
+$1,494,159
+$1,568,073
+
+11750-800 Due from Attorney Share
+$7,577,357
+$7,858,980
+$8,002,151
+11800-000 Due from Simon Law Group
+-
+-
+-
+Total Other Current Assets
+$9,100,595
+$9,442,532
+$9,653,529
+Total Current Assets
+$9,916,590
+$9,879,487
+$10,355,932
+
+Fixed Assets
+-
+-
+-
+
+12000-000 Fixed Asset Equipment
+-
+-
+-
+12110-000 Fixed Asset Equipment - Corporate
+$7,032
+$7,032
+$7,032
+12110-151 Fixed Asset Equipment - Downtow...
+$8,880
+$8,880
+$8,880
+12110-152 Fixed Asset Equipment - South Bay
+-
+-
+-
+12110-160 Fixed Asset Equipment - Orange ...
+-
+-
+-
+12110-161 Fixed Asset Equipment - San Diego
+-
+-
+-
+
+12150-000 Accumulated Depreciation - Equi...
+-$14,167
+-$14,284
+-$14,402
+Total 12000-000 Fixed Asset Equipment
+$1,745
+$1,628
+$1,510
+
+12500-000 Fixed Asset Furniture
+-
+-
+-
+12500-001 Furniture - Storage
+-
+-
+-
+12510-151 Fixed Asset Furniture - Downtow...
+$50,815
+$50,815
+$50,815
+12510-152 Fixed Asset Furniture - South Bay
+-
+-
+-
+12510-160 Fixed Asset Furniture - Orange ...
+-
+-
+-
+12510-161 Fixed Asset Furniture - San Diego
+-
+-
+-
+
+12550-000 Accumulated Depreciation - Furn...
+-$42,486
+-$43,091
+-$43,696
+Total 12500-000 Fixed Asset Furniture
+$8,328
+$7,723
+$7,118
+
+12600-000 Leasehold Improvements
+$284,016
+$284,016
+$284,016
+12600-152 Leasehold Improvements - Torrance
+-
+-
+-
+
+12650-000 Accumulated Depreciation - Leas...
+-$114,961
+-$116,656
+-$118,350
+Total 12600-000 Leasehold Improvements
+$169,054
+$167,359
+$165,665
+
+12700-000 Software Development Costs
+$329,402
+$329,402
+$329,402
+
+12750-000 Accumulated Amortization
+-$318,182
+-$318,773
+-$319,363
+Total 12700-000 Software Development Costs
+$11,219
+$10,629
+$10,038
+
+12900-000 Right-Of-Use Assets
+-
+-
+-
+12910-120 ROU Asset - San Diego
+-
+-
+-
+12910-151 ROU Asset - Downtown Los Angeles
+$3,072,559
+$3,072,559
+$3,072,559
+12910-152 ROU Asset - South Bay
+-
+-
+-
+12910-160 ROU Asset - Orange County
+-
+-
+-
+
+12950-000 Accumulated Amortization - ROU ...
+-$2,374,202
+-$2,408,663
+-$2,443,169
+Total 12900-000 Right-Of-Use Assets
+$698,357
+$663,896
+$629,390
+Total Fixed Assets
+$888,705
+$851,237
+$813,723
+
+Other Assets
+-
+-
+-
+14000-000 Deferred Tax Assets
+$38,127
+$38,127
+$38,127
+Total Other Assets
+$38,127
+$38,127
+$38,127
+TOTAL ASSETS
+$10,843,422
+$10,768,851
+$11,207,783
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+20100-000 Accounts Payable
++ $2,000 (--)
+-
+-
+$2,000
+Total Accounts Payable
++ $2,000 (--)
+-
+-
+$2,000
+
+Credit Cards
+-
+-
+-
+
+21000-000 American Express
+-
+-
+-
+
+21010-000 Ramp
+- $3,588 (23%)
+$18,215
+$12,858
+$11,948
+Total Credit Cards
+- $3,588 (23%)
+$18,215
+$12,858
+$11,948
+
+Other Current Liabilities
+-
+-
+-
+22000-000 Unearned Revenue
+-
+-
+-
+22010-000 Customer Event Deposits
+-
+-
+-
+
+22100-000 401k Withholding
+$5,483
+$4,804
+$4,544
+
+22200-000 Accrued Paid Tim...
+- $3,902 (33%)
+$13,542
+$10,394
+$8,065
+
+22200-001 Payroll Clearing
+-
+-
+-
+
+22200-002 Payroll benefits
+-
+-
+-
+
+22200-003 Payroll tax paya...
+- $546 (100%)
+$1,092
+-
+-
+
+22300-000 Accrued Expenses
++ $4,212 (73%)
+$6,575
+$5,000
+$10,000
+22301-000 Federal Income Tax Payable
+-
+-
+-
+22400-000 Line of Credit
+$1,000,000
+$1,000,000
+$1,000,000
+
+23000-000 Short-Term Lease Liabilities
+-
+-
+-
+23010-120 Lease Liability - San Diego
+-
+-
+-
+
+23010-151 Lease Liability - Downtown ...
+$492,732
+$494,526
+$496,323
+23010-152 Lease Liability - South Bay
+-
+-
+-
+23010-160 Lease Liability - Orange Co...
+-
+-
+-
+Total 23000-000 Short-Term Lease Liab...
+$492,732
+$494,526
+$496,323
+23500-000 Other Current Liabilities
+$200,000
+$200,000
+$200,000
+23999-000 Suspense
+-
+-
+-
+Total Other Current Liabilities
+$1,719,425
+$1,714,726
+$1,718,933
+Total Current Liabilities
+$1,737,640
+$1,727,584
+$1,732,882
+
+Long-Term Liabilities
+-
+-
+-
+
+24000-000 Long-Term Lease Liabilities
+-
+-
+-
+24010-120 Lease Liability - San Diego
+$0
+$0
+$0
+
+24010-151 Lease Liability - Downtown Lo...
+$344,996
+$303,374
+$260,480
+24010-152 Lease Liability - South Bay
+-
+-
+-
+24010-160 Lease Liability - Orange County
+-
+-
+-
+Total 24000-000 Long-Term Lease Liabili...
+$344,996
+$303,374
+$260,480
+
+24100-000 SAFE Liabilities
+$9,140,000
+$9,140,000
+$9,640,000
+Total Long-Term Liabilities
+$9,484,996
+$9,443,374
+$9,900,480
+Total Liabilities
+$11,222,637
+$11,170,959
+$11,633,362
+
+Equity
+-
+-
+-
+30000-000 Common Stock
+$9
+$9
+$9
+30200-000 Deferred Stock Based Compensation
+-$0
+-$0
+-$0
+31000-000 Additional Paid-In Capital
+$1,896,843
+$1,896,843
+$1,896,843
+32000-000 Retained Earnings
+-$1,994,859
+-$2,276,067
+-$2,276,067

@@ -1,0 +1,60 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Rental Income"
+    },
+    {
+      "item_code": "6700",
+      "item_name": "QuickBooks Payments Fees"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "CalPrivate Checking (Rosebay 1938)"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable (A/R)"
+    },
+    {
+      "item_code": "1500",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1600",
+      "item_name": "Building (6565 Rosebay)"
+    },
+    {
+      "item_code": "1700",
+      "item_name": "Land (6565 Rosebay)"
+    },
+    {
+      "item_code": "1900",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Chase Loan 2218 - ST"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "Chase Loan 2218 - LT"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Shareholder's Investment"
+    },
+    {
+      "item_code": "3150",
+      "item_name": "Shareholder's Draw"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

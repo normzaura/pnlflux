@@ -1,0 +1,264 @@
+{
+  "category": [
+    {
+      "item_code": "5200",
+      "item_name": "Inbound Freight"
+    },
+    {
+      "item_code": "5300",
+      "item_name": "Outbound Freight"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Advertising and Promotion"
+    },
+    {
+      "item_code": "6050",
+      "item_name": "Automobile Expense"
+    },
+    {
+      "item_code": "6051",
+      "item_name": "Auto and Truck Lease"
+    },
+    {
+      "item_code": "6052",
+      "item_name": "Gasoline Expense"
+    },
+    {
+      "item_code": "6053",
+      "item_name": "Maintenance and Repairs"
+    },
+    {
+      "item_code": "6054",
+      "item_name": "Parking and Tolls"
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Bank Service Charges"
+    },
+    {
+      "item_code": "6110",
+      "item_name": "Bank Service Fees"
+    },
+    {
+      "item_code": "6250",
+      "item_name": "Dues and Subscriptions"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Insurance Expense"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Meals"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Office Expense"
+    },
+    {
+      "item_code": "6450",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "6451",
+      "item_name": "Salaries and Wages"
+    },
+    {
+      "item_code": "6452",
+      "item_name": "Payroll Taxes"
+    },
+    {
+      "item_code": "6453",
+      "item_name": "Payroll Processing Fees"
+    },
+    {
+      "item_code": "6454",
+      "item_name": "Workers Comp"
+    },
+    {
+      "item_code": "6550",
+      "item_name": "Professional Fees"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Rent Expense"
+    },
+    {
+      "item_code": "6650",
+      "item_name": "Repairs and Maintenance"
+    },
+    {
+      "item_code": "6750",
+      "item_name": "Telephone Expense"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Travel Expense"
+    },
+    {
+      "item_code": "8000",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "8100",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Bank of America 3323"
+    },
+    {
+      "item_code": "1010",
+      "item_name": "Bank of America 5059"
+    },
+    {
+      "item_code": "1020",
+      "item_name": "Cali Bank 5429"
+    },
+    {
+      "item_code": "1050",
+      "item_name": "Beach Cities Commercial Bank"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "1200",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Vehicles"
+    },
+    {
+      "item_code": "1310",
+      "item_name": "Vehicles - Acc. Dep."
+    },
+    {
+      "item_code": "14300",
+      "item_name": "So. Cal. Flowers Growers"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "American Express 1000..."
+    },
+    {
+      "item_code": "2105",
+      "item_name": "American Express 1007..."
+    },
+    {
+      "item_code": "2106",
+      "item_name": "American Express 41000"
+    },
+    {
+      "item_code": "2110",
+      "item_name": "Capital One 1151 (0251)"
+    },
+    {
+      "item_code": "2115",
+      "item_name": "Capital One 4693 (3970)"
+    },
+    {
+      "item_code": "2116",
+      "item_name": "Capital One 2893"
+    },
+    {
+      "item_code": "2117",
+      "item_name": "Capital One 4057"
+    },
+    {
+      "item_code": "2118",
+      "item_name": "Capital One 2900"
+    },
+    {
+      "item_code": "2120",
+      "item_name": "Chase 0979"
+    },
+    {
+      "item_code": "2125",
+      "item_name": "Chase 2483"
+    },
+    {
+      "item_code": "2130",
+      "item_name": "Chase 3646"
+    },
+    {
+      "item_code": "2135",
+      "item_name": "Chase 5451"
+    },
+    {
+      "item_code": "2140",
+      "item_name": "Chase 6379"
+    },
+    {
+      "item_code": "2145",
+      "item_name": "Hawaiian Airlines 1771"
+    },
+    {
+      "item_code": "2150",
+      "item_name": "Hawaiian Airlines 7198"
+    },
+    {
+      "item_code": "2155",
+      "item_name": "BofA Visa Business 4960"
+    },
+    {
+      "item_code": "2160",
+      "item_name": "BofA Visa Business 4580"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "2210",
+      "item_name": "Accrued Interest"
+    },
+    {
+      "item_code": "2220",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Loan from Shareholder"
+    },
+    {
+      "item_code": "2320",
+      "item_name": "Due to James Laitipaya"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "SBA EIDL"
+    },
+    {
+      "item_code": "2500",
+      "item_name": "BofA TRX Car Loan"
+    },
+    {
+      "item_code": "26800",
+      "item_name": "Mercedes-Benz Financial"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Common Stock"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Distributions"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Retained Earnings"
+    },
+    {
+      "item_code": "34000",
+      "item_name": "Opening Balance Equity"
+    }
+  ]
+}

@@ -1,0 +1,810 @@
+
+Income
+-
+-
+-
+-
+
+4000 Service Income
+-
+-
+-
+-
+
+4001 Project Services
+- $127,810 (79%)
+$79,759
+$243,334
+$33,736
+$356,829
+
+4070 Other Services
+- $41,238 (58%)
+$46,450
+$95,927
+$29,950
+$172,327
+Total 4000 Service Income
+- $169,049 (73%)
+$126,209
+$339,261
+$63,686
+$529,156
+Total Income
+- $169,049 (73%)
+$126,209
+$339,261
+$63,686
+$529,156
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+5000 Project Costs
+-
+-
+-
+-
+
+5001 Project Related Costs
+$44,160
+$48,754
+$49,509
+$142,424
+
+5002 Project Sub-Contractors
++ $42,062 (282%)
+$22,000
+$7,875
+$57,000
+$86,875
+
+5003 Project Permits & Fees
++ $835 (163%)
+$461
+$564
+$1,347
+$2,373
+
+5004 Project Engineering / Str...
+- $300 (100%)
+-
+$600
+-
+$600
+
+5006 Project Insurance
+- $2,076 (100%)
+$4,152
+-
+-
+$4,152
+Total 5000 Project Costs
++ $43,573 (68%)
+$70,773
+$57,794
+$107,857
+$236,424
+
+5070 Other Service Costs
+-
+-
+-
+-
+
+5072 Subcontractors
+- $1,722 (100%)
+$3,445
+-
+-
+$3,445
+
+5079 Other Costs
+- $17,336 (58%)
+$41,697
+$17,881
+$12,453
+$72,032
+Total 5070 Other Service Costs
+- $19,059 (60%)
+$45,143
+$17,881
+$12,453
+$75,477
+Total Cost of Goods Sold
++ $24,513 (26%)
+$115,916
+$75,675
+$120,310
+$311,902
+Gross Profit
+- $193,563 (141%)
+$10,292
+$263,585
+-$56,624
+$217,254
+
+Expenses
+-
+-
+-
+-
+
+6001 Advertising
+$412
+-
+$276
+$688
+
+6025 Payroll Expenses
+- $105 (21%)
+$531
+$473
+$396
+$1,400
+
+6028 Taxes
+$5,961
+$5,046
+$4,779
+$15,786
+
+6030 Wages
+$61,447
+$62,223
+$62,474
+$186,144
+
+6035 Company Contributions
+-
+-
+-
+-
+
+6036 Retirement
+$903
+$903
+$903
+$2,711
+Total 6035 Company Contributions
+$903
+$903
+$903
+$2,711
+Total 6025 Payroll Expenses
+$68,843
+$68,646
+$68,553
+$206,043
+
+6040 Educational / Seminar / Tra...
++ $289 (--)
+-
+-
+$289
+$289
+
+6051 Legal & Professional Fees
+- $2,441 (91%)
+$4,841
+$507
+$233
+$5,582
+
+6060 Facilities
+-
+-
+-
+-
+
+6061 Rent or Lease
++ $1,750 (47%)
+$2,000
+$5,500
+$5,500
+$13,000
+
+6063 Software Expenses
+- $516 (47%)
+$1,547
+$632
+$574
+$2,754
+
+6065 Utilities
+$1,638
+$1,168
+$1,191
+$3,998
+
+6066 Facility Repair & Maintenance
+-
+$110
+-
+$110
+Total 6060 Facilities
+$5,186
+$7,411
+$7,265
+$19,863
+
+6070 Insurance
+-
+-
+-
+-
+
+6074 Insurance - Health
+$1,108
+$1,092
+$1,092
+$3,292
+
+6075 Insurance - Life
+$293
+$293
+$293
+$881
+
+6077 Insurance - WC Disability
+- $1,293 (100%)
+-
+$2,587
+-
+$2,587
+Total 6070 Insurance
+- $1,301 (48%)
+$1,402
+$3,973
+$1,386
+$6,761
+
+6080 Auto / Vehicle
+- $940 (100%)
+$1,881
+-
+-
+$1,881
+
+6084 Fuel
++ $1,057 (53%)
+$767
+$3,233
+$3,057
+$7,057
+
+6085 Parking
+-
+$3
+$15
+$18
+
+6086 Repairs & Maintenance
+- $2,942 (97%)
+$2,745
+$3,298
+$79
+$6,124
+
+6088 Auto Lease
++ $250 (31%)
+$800
+$800
+$1,050
+$2,651
+Total 6080 Auto / Vehicle
+- $2,562 (38%)
+$6,194
+$7,335
+$4,202
+$17,732
+
+6091 Bank Charges
+-
+-
+$11
+$11
+
+6094 Licensing
+$51
+-
+-
+$51
+
+6096 State Taxes
+- $131 (100%)
+$262
+-
+-
+$262
+
+6101 Dues & Subscriptions
+$292
+$556
+$504
+$1,352
+
+6102 QuickBooks Payments Fees
+$40
+$180
+$151
+$371
+
+6130 Other Operating Expenses
+$2,938
+$2,947
+$2,930
+$8,816
+
+6133 Reimbursements
++ $532 (125%)
+$750
+$100
+$957
+$1,807
+
+6134 Postage, Shipping, Freigh...
++ $480 (--)
+-
+-
+$480
+$480
+
+6135 Office Expenses
+$252
+$3,021
+$1,478
+$4,752
+
+6136 Meals
+$74
+$97
+$115
+$287
+
+6137 Travel
++ $174 (1082%)
+$12
+$19
+$190
+$222
+Total 6130 Other Operating Exp...
++ $1,045 (20%)
+$4,028
+$6,185
+$6,152
+$16,365
+
+Office Supplies & Software
+-
+-
+$21
+$21
+Total Expenses
+$91,553
+$94,796
+$89,047
+$275,398
+Net Operating Income
+- $189,435 (433%)
+-$81,261
+$168,788
+-$145,671
+-$58,144
+
+Other Expenses
+-
+-
+-
+-
+
+8001 Interest Expense
+- $1,893 (100%)
+$1,497
+$2,290
+-
+$3,787
+
+8600 Charitable Contributions
+$100
+-
+$100
+$200
+Total Other Expenses
+- $1,843 (95%)
+$1,597
+$2,290
+$100
+$3,987
+Net Other Income
++ $1,843 (95%)
+-$1,597
+-$2,290
+-$100
+-$3,987
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1002 CalPrivate Checking
+- $104,271 (64%)
+$142,872
+$185,393
+$59,860
+Total Bank Accounts
+- $104,271 (64%)
+$142,872
+$185,393
+$59,860
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable
+- $143,917 (29%)
+$630,299
+$375,991
+$359,227
+Total Accounts Receivable
+- $143,917 (29%)
+$630,299
+$375,991
+$359,227
+
+Other Current Assets
+-
+-
+-
+1125 Unbilled AR
+$116,397
+$116,397
+$116,397
+1150 Cost In Excess
+$51,993
+$51,993
+$51,993
+
+1200 Undeposited Funds
+-
+$156,861
+$85,000
+1400 Prepaid Expenses
+$53,086
+$53,086
+$53,086
+1700 Uncategorized Asset
+-
+-
+-
+1710 LOC Deposit
+-
+-
+-
+
+QuickBooks Tax Holding Account
+$6,327
+$5,483
+$5,594
+Total Other Current Assets
+$227,805
+$383,822
+$312,071
+Total Current Assets
+- $241,931 (25%)
+$1,000,976
+$945,207
+$731,160
+
+Fixed Assets
+-
+-
+-
+1510 Company Vehicles
+$138,502
+$138,502
+$138,502
+
+1520 Equipment and Tools
+$22,198
+$26,288
+$26,288
+1600 Accumulated Depreciation
+-$66,007
+-$66,007
+-$66,007
+Total Fixed Assets
+$94,693
+$98,783
+$98,783
+
+Other Assets
+-
+-
+-
+1800 Loan to Shareholder
+-
+-
+-
+1820 Right of Use Asset
+$3,870
+$3,870
+$3,870
+Total Other Assets
+$3,870
+$3,870
+$3,870
+TOTAL ASSETS
+- $239,886 (22%)
+$1,099,540
+$1,047,861
+$833,814
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+2100 Accounts Payable
+- $10,174 (94%)
+$21,390
+$286
+$664
+Total Accounts Payable
+- $10,174 (94%)
+$21,390
+$286
+$664
+
+Credit Cards
+-
+-
+-
+
+2211 AMEX Amazon 1004
++ $392 (48%)
+$703
+$920
+$1,204
+
+2213 AMEX Blue Card 4003
+-
+-
+-
+
+2214 AMEX Platinum 1004
+- $34,263 (62%)
+$54,869
+$55,809
+$21,075
+
+2215 AMEX Gold Card 1007
+-
+-
+-
+
+2221 Arco Fleet Manager OC577
+$2,434
+$2,908
+$2,496
+
+2230 Chase Ink Card 6555
+- $939 (100%)
+$195
+$1,684
+-
+
+2241 Home Depot Card 7968
+- $30,030 (40%)
+$69,768
+$78,962
+$44,335
+
+2261 Lowe's Card 0883
+$14,886
+$5,743
+$9,951
+Total Credit Cards
+- $65,378 (45%)
+$142,857
+$146,028
+$79,064
+
+Other Current Liabilities
+-
+-
+-
+2150 Billings in Excess
+$177,005
+$177,005
+$177,005
+
+2280 CalPrivate Business L...
+- $100,000 (45%)
+$322,915
+$122,915
+$122,915
+
+2310 Payroll Liabilities
+-
+-
+-
+
+2311 CA PIT / SDI
+$724
+$677
+$728
+
+2312 CA SUI / ETT
+$916
+$1,124
+$1,124
+
+2313 Federal Taxes (941/944)
+$3,334
+$3,259
+$3,319
+
+2314 Federal Unemploymen...
+- $464 (52%)
+$1,351
+$421
+$421
+2315 Payroll Payable
+$9,719
+$9,719
+$9,719
+
+2316 Human Interest Roth...
++ $2,844 (100%)
+$1,896
+$3,792
+$5,688
+
+2317 Human Interest Trad...
++ $1,846 (48%)
+$3,246
+$4,476
+$5,707
+Total 2310 Payroll Liabilities
+$21,189
+$23,472
+$26,709
+
+2400 Direct Deposit Payable
+-
+-
+-
+2405 ST - Ford F-250 Loan
+-
+-
+-
+2406 ST - Toyota Prius 1
+$6,273
+$6,273
+$6,273
+2407 ST - Toyota Prius 2
+$6,521
+$6,521
+$6,521
+2411 ST - SBA Loan
+$16,070
+$16,070
+$16,070
+2420 ST - Lease Liability
+$3,144
+$3,144
+$3,144
+2450 Accrued Expenses
+-
+-
+-
+CalPrivate Business Line (LOC)DO NOT USE
+-
+-
+-
+Total Other Current Liabil...
+- $95,621 (21%)
+$553,120
+$355,403
+$358,640
+Total Current Liabilities
+- $171,173 (28%)
+$717,369
+$501,718
+$438,370
+
+Long-Term Liabilities
+-
+-
+-
+2600 Loans Payable
+-
+-
+-
+2605 LT - Ford F-250 Loan
+-
+-
+-
+
+2606 LT - Toyota Prius - 1
+$7,665
+$7,665
+$6,465
+
+2607 LT - Toyota Prius - 2
+$9,150
+$9,150
+$7,950
+2610 PPP Loan
+-
+-
+-
+
+2611 LT - SBA Loan
+$368,804
+$366,277
+$363,750
+2620 LT - Lease Liability
+-
+-
+-
+Total Long-Term Liabilities
+$385,620
+$383,093
+$378,166
+Total Liabilities
+$1,102,989
+$884,811
+$816,536
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+-$15,122
+-$15,122
+-$15,122
+
+3500 Shareholder Distribution
+-$311,883
+-$311,883
+-$311,883
+3900 Retained Earnings
+$406,416
+$406,416
+$406,416
+Net Income

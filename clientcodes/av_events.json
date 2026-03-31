@@ -1,0 +1,144 @@
+{
+  "category": [
+    {
+      "item_code": "2-41000",
+      "item_name": "Beverage Services Revenue"
+    },
+    {
+      "item_code": "2-42000",
+      "item_name": "Service Fees Revenue"
+    },
+    {
+      "item_code": "2-52000",
+      "item_name": "Food and Beverage Costs"
+    },
+    {
+      "item_code": "2-61000",
+      "item_name": "Dues and Subscriptions"
+    },
+    {
+      "item_code": "2-63550",
+      "item_name": "Merchant Account Fees"
+    },
+    {
+      "item_code": "2-67600",
+      "item_name": "Taxes and Licenses"
+    },
+    {
+      "item_code": "2-67630",
+      "item_name": "Liquor License"
+    },
+    {
+      "item_code": "2-67950",
+      "item_name": "Bad Debt Expense"
+    },
+    {
+      "item_code": "2-70000",
+      "item_name": "Interest Income"
+    },
+    {
+      "item_code": "2-85000",
+      "item_name": "Other Miscellaneous Expe..."
+    },
+    {
+      "item_code": "2-10010",
+      "item_name": "Manufacturers Bank-Checking"
+    },
+    {
+      "item_code": "2-10310",
+      "item_name": "Opus Bank- Checking-..."
+    },
+    {
+      "item_code": "2-10350",
+      "item_name": "PPB IntraFi Cash Service - 955"
+    },
+    {
+      "item_code": "2-10360",
+      "item_name": "Pacific Premier-Mone..."
+    },
+    {
+      "item_code": "2-10900",
+      "item_name": "Petty Cash"
+    },
+    {
+      "item_code": "2-11000",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "2-11750",
+      "item_name": "Unbilled Revenue"
+    },
+    {
+      "item_code": "2-12200",
+      "item_name": "Inventory"
+    },
+    {
+      "item_code": "2-12400",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "2-12701",
+      "item_name": "IC Receivable/Payable-N Effect"
+    },
+    {
+      "item_code": "2-12703",
+      "item_name": "IC Receivable/Payable-AV Venue"
+    },
+    {
+      "item_code": "2-12705",
+      "item_name": "Loans Receivable - Kovert"
+    },
+    {
+      "item_code": "2-12753",
+      "item_name": "IC Loans Receivable - AV Venue"
+    },
+    {
+      "item_code": "2-12800",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "2-20000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "2-22100",
+      "item_name": "Accrued Expense"
+    },
+    {
+      "item_code": "2-22500",
+      "item_name": "Sales Tax Payable"
+    },
+    {
+      "item_code": "2-24000",
+      "item_name": "Franchise Taxes Payable"
+    },
+    {
+      "item_code": "2-25000",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "2-25500",
+      "item_name": "Suspense"
+    },
+    {
+      "item_code": "2-30000",
+      "item_name": "Capital Stock"
+    },
+    {
+      "item_code": "2-31000",
+      "item_name": "Contributions"
+    },
+    {
+      "item_code": "2-35000",
+      "item_name": "Distributions"
+    },
+    {
+      "item_code": "2-38000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "2-39000",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

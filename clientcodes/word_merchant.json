@@ -1,0 +1,368 @@
+{
+  "category": [
+    {
+      "item_code": "47500-000",
+      "item_name": "Vendor Partner Income"
+    },
+    {
+      "item_code": "65000-000",
+      "item_name": "General and Administrative"
+    },
+    {
+      "item_code": "65100-000",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "65106-000",
+      "item_name": "401(k) Administrat..."
+    },
+    {
+      "item_code": "65107-000",
+      "item_name": "Workers Comp Insurance"
+    },
+    {
+      "item_code": "65200-000",
+      "item_name": "General Office Expenses"
+    },
+    {
+      "item_code": "81300-000",
+      "item_name": "Taxes and Licenses"
+    },
+    {
+      "item_code": "65220-000",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "65270-000",
+      "item_name": "Dues and Subscriptions"
+    },
+    {
+      "item_code": "65280-000",
+      "item_name": "Outside Services"
+    },
+    {
+      "item_code": "65290-000",
+      "item_name": "Contract Services"
+    },
+    {
+      "item_code": "65300-000",
+      "item_name": "Bank Charges"
+    },
+    {
+      "item_code": "65500-000",
+      "item_name": "Legal and Professional Fees"
+    },
+    {
+      "item_code": "65510-000",
+      "item_name": "Legal Fees"
+    },
+    {
+      "item_code": "65511-000",
+      "item_name": "Accounting Fees"
+    },
+    {
+      "item_code": "71000-000",
+      "item_name": "Other Income"
+    },
+    {
+      "item_code": "71100-000",
+      "item_name": "Interest Income"
+    },
+    {
+      "item_code": "81000-000",
+      "item_name": "Other Expense"
+    },
+    {
+      "item_code": "81100-000",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "81400-000",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "81500-000",
+      "item_name": "Amortization Expense"
+    },
+    {
+      "item_code": "10100-000",
+      "item_name": "Wells Fargo Business Checking 7..."
+    },
+    {
+      "item_code": "10105-000",
+      "item_name": "Wells Fargo Business Checking 6..."
+    },
+    {
+      "item_code": "10200-000",
+      "item_name": "Wells Fargo Business Savings"
+    },
+    {
+      "item_code": "10300-000",
+      "item_name": "Petty Cash"
+    },
+    {
+      "item_code": "11000-000",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "11100-000",
+      "item_name": "Accounts Receivable - Stripe"
+    },
+    {
+      "item_code": "11200-000",
+      "item_name": "Unbilled Receivables"
+    },
+    {
+      "item_code": "11400-000",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "11600-000",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "11700-000",
+      "item_name": "Prepaid Rent"
+    },
+    {
+      "item_code": "11710-000",
+      "item_name": "Lease Deposits"
+    },
+    {
+      "item_code": "11750-700",
+      "item_name": "Due from Justice HQ, LLC"
+    },
+    {
+      "item_code": "11750-800",
+      "item_name": "Due from Attorney Share"
+    },
+    {
+      "item_code": "11800-000",
+      "item_name": "Due from Simon Law Group"
+    },
+    {
+      "item_code": "12000-000",
+      "item_name": "Fixed Asset Equipment"
+    },
+    {
+      "item_code": "12110-000",
+      "item_name": "Fixed Asset Equipment - Corporate"
+    },
+    {
+      "item_code": "12110-151",
+      "item_name": "Fixed Asset Equipment - Downtow..."
+    },
+    {
+      "item_code": "12110-152",
+      "item_name": "Fixed Asset Equipment - South Bay"
+    },
+    {
+      "item_code": "12110-160",
+      "item_name": "Fixed Asset Equipment - Orange ..."
+    },
+    {
+      "item_code": "12110-161",
+      "item_name": "Fixed Asset Equipment - San Diego"
+    },
+    {
+      "item_code": "12150-000",
+      "item_name": "Accumulated Depreciation - Equi..."
+    },
+    {
+      "item_code": "12500-000",
+      "item_name": "Fixed Asset Furniture"
+    },
+    {
+      "item_code": "12500-001",
+      "item_name": "Furniture - Storage"
+    },
+    {
+      "item_code": "12510-151",
+      "item_name": "Fixed Asset Furniture - Downtow..."
+    },
+    {
+      "item_code": "12510-152",
+      "item_name": "Fixed Asset Furniture - South Bay"
+    },
+    {
+      "item_code": "12510-160",
+      "item_name": "Fixed Asset Furniture - Orange ..."
+    },
+    {
+      "item_code": "12510-161",
+      "item_name": "Fixed Asset Furniture - San Diego"
+    },
+    {
+      "item_code": "12550-000",
+      "item_name": "Accumulated Depreciation - Furn..."
+    },
+    {
+      "item_code": "12600-000",
+      "item_name": "Leasehold Improvements"
+    },
+    {
+      "item_code": "12600-152",
+      "item_name": "Leasehold Improvements - Torrance"
+    },
+    {
+      "item_code": "12650-000",
+      "item_name": "Accumulated Depreciation - Leas..."
+    },
+    {
+      "item_code": "12700-000",
+      "item_name": "Software Development Costs"
+    },
+    {
+      "item_code": "12750-000",
+      "item_name": "Accumulated Amortization"
+    },
+    {
+      "item_code": "12900-000",
+      "item_name": "Right-Of-Use Assets"
+    },
+    {
+      "item_code": "12910-120",
+      "item_name": "ROU Asset - San Diego"
+    },
+    {
+      "item_code": "12910-151",
+      "item_name": "ROU Asset - Downtown Los Angeles"
+    },
+    {
+      "item_code": "12910-152",
+      "item_name": "ROU Asset - South Bay"
+    },
+    {
+      "item_code": "12910-160",
+      "item_name": "ROU Asset - Orange County"
+    },
+    {
+      "item_code": "12950-000",
+      "item_name": "Accumulated Amortization - ROU ..."
+    },
+    {
+      "item_code": "14000-000",
+      "item_name": "Deferred Tax Assets"
+    },
+    {
+      "item_code": "20100-000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "21000-000",
+      "item_name": "American Express"
+    },
+    {
+      "item_code": "21010-000",
+      "item_name": "Ramp"
+    },
+    {
+      "item_code": "22000-000",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "22010-000",
+      "item_name": "Customer Event Deposits"
+    },
+    {
+      "item_code": "22100-000",
+      "item_name": "401k Withholding"
+    },
+    {
+      "item_code": "22200-000",
+      "item_name": "Accrued Paid Tim..."
+    },
+    {
+      "item_code": "22200-001",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "22200-002",
+      "item_name": "Payroll benefits"
+    },
+    {
+      "item_code": "22200-003",
+      "item_name": "Payroll tax paya..."
+    },
+    {
+      "item_code": "22300-000",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "22301-000",
+      "item_name": "Federal Income Tax Payable"
+    },
+    {
+      "item_code": "22400-000",
+      "item_name": "Line of Credit"
+    },
+    {
+      "item_code": "23000-000",
+      "item_name": "Short-Term Lease Liabilities"
+    },
+    {
+      "item_code": "23010-120",
+      "item_name": "Lease Liability - San Diego"
+    },
+    {
+      "item_code": "23010-151",
+      "item_name": "Lease Liability - Downtown ..."
+    },
+    {
+      "item_code": "23010-152",
+      "item_name": "Lease Liability - South Bay"
+    },
+    {
+      "item_code": "23010-160",
+      "item_name": "Lease Liability - Orange Co..."
+    },
+    {
+      "item_code": "23500-000",
+      "item_name": "Other Current Liabilities"
+    },
+    {
+      "item_code": "23999-000",
+      "item_name": "Suspense"
+    },
+    {
+      "item_code": "24000-000",
+      "item_name": "Long-Term Lease Liabilities"
+    },
+    {
+      "item_code": "24010-120",
+      "item_name": "Lease Liability - San Diego"
+    },
+    {
+      "item_code": "24010-151",
+      "item_name": "Lease Liability - Downtown Lo..."
+    },
+    {
+      "item_code": "24010-152",
+      "item_name": "Lease Liability - South Bay"
+    },
+    {
+      "item_code": "24010-160",
+      "item_name": "Lease Liability - Orange County"
+    },
+    {
+      "item_code": "24100-000",
+      "item_name": "SAFE Liabilities"
+    },
+    {
+      "item_code": "30000-000",
+      "item_name": "Common Stock"
+    },
+    {
+      "item_code": "30200-000",
+      "item_name": "Deferred Stock Based Compensation"
+    },
+    {
+      "item_code": "31000-000",
+      "item_name": "Additional Paid-In Capital"
+    },
+    {
+      "item_code": "32000-000",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

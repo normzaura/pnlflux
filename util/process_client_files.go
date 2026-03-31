@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -26,7 +27,6 @@ var monthSubstrings = []string{
 	"jan", "feb", "mar", "apr", "may", "jun",
 	"jul", "aug", "sep", "oct", "nov", "dec",
 }
-
 
 // LoadCategoryNamesFromXLSX reads all tabs of categories_index.xlsx and returns
 // a map of lowercase code → threshold value (col B). Entries with no threshold value default to 0.
@@ -118,32 +118,58 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 		return nil, err
 	}
 
-	dimension, err := f.GetSheetDimension(sheetName)
+	maxRow, maxCol, err := sheetDimensions(f, sheetName)
 	if err != nil {
-		return nil, fmt.Errorf("get sheet dimension: %w", err)
-	}
-	_, maxRow, maxCol, err := parseDimension(dimension)
-	if err != nil {
-		return nil, fmt.Errorf("parse dimension %q: %w", dimension, err)
+		return nil, fmt.Errorf("get sheet dimensions: %w", err)
 	}
 
 	// Read all cells by actual Excel coordinates.
+	// Some xlsx exports (e.g. QuickBooks) store numeric values in the formula element
+	// rather than the value element, so GetCellValue returns "". Fall back to
+	// GetCellFormula and use it when it parses as a valid float.
 	grid := make([][]string, maxRow)
 	for row := 1; row <= maxRow; row++ {
 		grid[row-1] = make([]string, maxCol)
 		for col := 1; col <= maxCol; col++ {
 			cellName, _ := excelize.CoordinatesToCellName(col, row)
 			val, _ := f.GetCellValue(sheetName, cellName)
+			if val == "" {
+				if formula, _ := f.GetCellFormula(sheetName, cellName); formula != "" {
+					if _, err := strconv.ParseFloat(strings.ReplaceAll(formula, ",", ""), 64); err == nil {
+						val = formula
+					}
+				}
+			}
 			grid[row-1][col-1] = val
 		}
 	}
 
-	headerExcelRow, monthCols := findHeaderAndMonthCols(grid, maxRow)
+	rawRows, err := f.GetRows(sheetName)
+	if err != nil {
+		return nil, fmt.Errorf("get rows for header scan: %w", err)
+	}
+	headerExcelRow, monthCols := findHeaderAndMonthCols(rawRows, maxRow)
 	if headerExcelRow == -1 || len(monthCols) == 0 {
 		return nil, fmt.Errorf("could not find month column headers in first 10 rows")
 	}
 
-	yellowStyleCache := map[int]int{}
+	// Pre-scan for the "Total Income" row to use as divisor for code-5 rows.
+	// This row always appears above any code-5 item rows in the sheet.
+	var totalCells []string
+	for row := headerExcelRow + 1; row <= maxRow; row++ {
+		if row-1 >= len(grid) {
+			break
+		}
+		c := grid[row-1]
+		if len(c) == 0 {
+			continue
+		}
+		if strings.EqualFold(strings.TrimSpace(c[0]), "total income") {
+			totalCells = c
+			break
+		}
+	}
+
 	redStyleCache := map[int]int{}
 
 	for row := headerExcelRow + 1; row <= maxRow; row++ {
@@ -164,14 +190,83 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 			continue
 		}
 
-		if isPartiallyMissing(cells, monthCols) {
-			if err := highlightMissingCells(f, sheetName, row, cells, monthCols, yellowStyleCache); err != nil {
-				return nil, fmt.Errorf("highlight missing cells row %d: %w", row, err)
+		fmt.Printf("[MATCH] %s\n", colA)
+
+		// Determine if this is a code-6 row (expense account).
+		// When it is, normalize each month's value against total income before comparison.
+		itemCode := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
+		var divisorCells []string
+		if strings.HasPrefix(itemCode, "5") && totalCells != nil {
+			divisorCells = totalCells
+		}
+
+		// Check if last month cell is empty.
+		if len(monthCols) > 0 {
+			lastCol := monthCols[len(monthCols)-1]
+			if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
+				fmt.Printf("  -> last month cell is empty\n")
 			}
 		}
 
+		if err := highlightEmptyCell(f, sheetName, row, cells, monthCols, redStyleCache); err != nil {
+			return nil, fmt.Errorf("highlight empty last month row %d: %w", row, err)
+		}
+
 		if threshold > 0 {
-			if err := highlightMethodOutliers(f, sheetName, row, cells, monthCols, threshold, redStyleCache); err != nil {
+			// Compute and print threshold evaluation.
+			if len(monthCols) > 0 {
+				lastCol := monthCols[len(monthCols)-1]
+				if lastCol < len(cells) && strings.TrimSpace(cells[lastCol]) != "" {
+					lastVal, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[lastCol]), ",", ""), 64)
+					if err == nil {
+						var sum float64
+						var count int
+						for _, col := range monthCols[:len(monthCols)-1] {
+							if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
+								continue
+							}
+							v, parseErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
+							if parseErr != nil {
+								continue
+							}
+							if divisorCells != nil {
+								if col < len(divisorCells) && strings.TrimSpace(divisorCells[col]) != "" {
+									d, dErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[col]), ",", ""), 64)
+									if dErr == nil && d != 0 {
+										v = v / d
+									}
+								}
+							}
+							sum += v
+							count++
+						}
+						if count > 0 {
+							avg := sum / float64(count)
+							if avg != 0 {
+								effectiveLast := lastVal
+								if divisorCells != nil && lastCol < len(divisorCells) && strings.TrimSpace(divisorCells[lastCol]) != "" {
+									d, dErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[lastCol]), ",", ""), 64)
+									if dErr == nil && d != 0 {
+										effectiveLast = lastVal / d
+									}
+								}
+								pctDiff := math.Abs(effectiveLast-avg) / math.Abs(avg) * 100
+								label := "ok"
+								if pctDiff > threshold {
+									label = "FLAGGED"
+								}
+								if divisorCells != nil {
+									fmt.Printf("  -> (normalized by total) last %.4f vs avg %.4f (%.1f%% diff, threshold %.0f%%) — %s\n", effectiveLast, avg, pctDiff, threshold, label)
+								} else {
+									fmt.Printf("  -> last month %.2f vs avg %.2f (%.1f%% diff, threshold %.0f%%) — %s\n", lastVal, avg, pctDiff, threshold, label)
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if err := detectFluctuation(f, sheetName, row, cells, monthCols, threshold, divisorCells, redStyleCache); err != nil {
 				return nil, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
 			}
 		}
@@ -183,7 +278,6 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 	}
 	return buf.Bytes(), nil
 }
-
 
 // parseDimension parses a range like "A1:N74" and returns (minRow, maxRow, maxCol, error).
 func parseDimension(dim string) (minRow, maxRow, maxCol int, err error) {
@@ -202,14 +296,18 @@ func parseDimension(dim string) (minRow, maxRow, maxCol int, err error) {
 // findHeaderAndMonthCols scans the first 10 Excel rows to find the header row.
 // Returns the 1-based Excel row number and 0-based column indices of month columns.
 // Column A (index 0) and any column containing "total" are always excluded.
-func findHeaderAndMonthCols(grid [][]string, maxRow int) (headerExcelRow int, monthCols []int) {
+// Uses raw GetRows data (not GetCellValue) so merged cells don't bleed across columns.
+func findHeaderAndMonthCols(rawRows [][]string, maxRow int) (headerExcelRow int, monthCols []int) {
 	limit := 10
 	if maxRow < limit {
 		limit = maxRow
 	}
 	for row := 1; row <= limit; row++ {
+		if row > len(rawRows) {
+			break
+		}
 		var cols []int
-		for j, cell := range grid[row-1] {
+		for j, cell := range rawRows[row-1] {
 			if j == 0 {
 				continue
 			}
@@ -242,132 +340,6 @@ func findIncomeSheet(f *excelize.File) (string, error) {
 	return "", fmt.Errorf("no income statement / profit & loss sheet found")
 }
 
-// isPartiallyMissing returns true if the row has at least one filled and one empty month cell.
-func isPartiallyMissing(row []string, monthCols []int) bool {
-	filled, empty := 0, 0
-	for _, col := range monthCols {
-		if col >= len(row) || strings.TrimSpace(row[col]) == "" {
-			empty++
-		} else {
-			filled++
-		}
-	}
-	return filled > 0 && empty > 0
-}
-
-// highlightMissingCells applies yellow fill to empty month cells in the row.
-func highlightMissingCells(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, styleCache map[int]int) error {
-	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
-	for _, col := range monthCols {
-		if col >= len(cells) || strings.TrimSpace(cells[col]) != "" {
-			continue
-		}
-		cellName, err := excelize.CoordinatesToCellName(col+1, rowNum)
-		if err != nil {
-			return err
-		}
-		existingID, err := f.GetCellStyle(sheet, cellName)
-		if err != nil {
-			return err
-		}
-		mergedID, ok := styleCache[existingID]
-		if !ok {
-			existing, err := f.GetStyle(existingID)
-			if err != nil {
-				return err
-			}
-			border := existing.Border
-			if len(border) == 0 {
-				border = rowBorder
-			}
-			merged, err := f.NewStyle(&excelize.Style{
-				Border:    border,
-				Alignment: existing.Alignment,
-				Font:      existing.Font,
-				Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
-			})
-			if err != nil {
-				return err
-			}
-			styleCache[existingID] = merged
-			mergedID = merged
-		}
-		if err := f.SetCellStyle(sheet, cellName, cellName, mergedID); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-// highlightMethodOutliers calculates the average of all month cells in the row, then checks
-// only the last non-empty month cell. If its value is greater than avg+threshold or less than
-// avg-threshold, it is tinted red.
-func highlightMethodOutliers(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, threshold float64, styleCache map[int]int) error {
-	type colVal struct {
-		col int
-		val float64
-	}
-	var vals []colVal
-	for _, col := range monthCols {
-		if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
-			continue
-		}
-		v, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
-		if err != nil {
-			continue
-		}
-		vals = append(vals, colVal{col, v})
-	}
-	if len(vals) == 0 {
-		return nil
-	}
-
-	var sum float64
-	for _, cv := range vals {
-		sum += cv.val
-	}
-	avg := sum / float64(len(vals))
-	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
-
-	// Only check the last non-empty month cell (rightmost, immediately left of total).
-	last := vals[len(vals)-1]
-	if last.val <= avg+threshold && last.val >= avg-threshold {
-		return nil
-	}
-
-	cellName, err := excelize.CoordinatesToCellName(last.col+1, rowNum)
-	if err != nil {
-		return err
-	}
-	existingID, err := f.GetCellStyle(sheet, cellName)
-	if err != nil {
-		return err
-	}
-	mergedID, ok := styleCache[existingID]
-	if !ok {
-		existing, err := f.GetStyle(existingID)
-		if err != nil {
-			return err
-		}
-		border := existing.Border
-		if len(border) == 0 {
-			border = rowBorder
-		}
-		merged, err := f.NewStyle(&excelize.Style{
-			Border:    border,
-			Alignment: existing.Alignment,
-			Font:      existing.Font,
-			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
-		})
-		if err != nil {
-			return err
-		}
-		styleCache[existingID] = merged
-		mergedID = merged
-	}
-	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
-}
-
 
 // resolveRowBorder finds an explicit border from a filled cell in the row, or falls back to thin black.
 func resolveRowBorder(f *excelize.File, sheet string, rowNum int, monthCols []int) []excelize.Border {
@@ -394,4 +366,27 @@ func resolveRowBorder(f *excelize.File, sheet string, rowNum int, monthCols []in
 		{Type: "top", Color: "000000", Style: 1},
 		{Type: "bottom", Color: "000000", Style: 1},
 	}
+}
+
+// sheetDimensions returns the max row and max column counts by reading all rows.
+// Falls back from GetSheetDimension when the xlsx metadata is missing or empty.
+func sheetDimensions(f *excelize.File, sheet string) (maxRow, maxCol int, err error) {
+	dim, _ := f.GetSheetDimension(sheet)
+	if dim != "" {
+		_, maxRow, maxCol, err = parseDimension(dim)
+		if err == nil {
+			return
+		}
+	}
+	rows, err := f.GetRows(sheet)
+	if err != nil {
+		return 0, 0, fmt.Errorf("get rows: %w", err)
+	}
+	maxRow = len(rows)
+	for _, row := range rows {
+		if len(row) > maxCol {
+			maxCol = len(row)
+		}
+	}
+	return maxRow, maxCol, nil
 }

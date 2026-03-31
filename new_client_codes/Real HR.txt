@@ -1,0 +1,818 @@
+
+Income
+-
+-
+-
+-
+
+4000 Revenue
+-
+-
+-
+-
+
+4100 HR Fractional
+- $36,091 (55%)
+$46,564
+$84,501
+$29,441
+$160,507
+
+4200 HR Consulting
+-
+-
+-
+-
+
+4220 HR Screening & Other
+$98
+-
+-
+$98
+Total 4200 HR Consulting
+$98
+-
+-
+$98
+
+4300 HR Recruiting
+- $20,825 (100%)
+$21,250
+$20,400
+-
+$41,650
+Total 4000 Revenue
+- $56,965 (66%)
+$67,912
+$104,901
+$29,441
+$202,255
+
+4800 Referral Discount
+- $195 (--)
+-
+-
+-$195
+-$195
+Total Income
+- $57,160 (66%)
+$67,912
+$104,901
+$29,245
+$202,059
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+5100 Direct Salaries & Benefits
+-
+-
+-
+-
+
+5110 Direct Labor - Wages
+$24,904
+$27,200
+$26,796
+$78,900
+
+5120 Direct Labor - Taxes
+- $901 (27%)
+$2,736
+$3,836
+$2,384
+$8,957
+
+5130 Direct Labor - 401K
++ $159 (30%)
+$440
+$614
+$687
+$1,743
+
+5140 Direct Labor - PTO
+- $2,007 (60%)
+$3,380
+$3,329
+$1,347
+$8,056
+
+5150 Direct Labor - Bonus
+- $1,000 (100%)
+$2,000
+-
+-
+$2,000
+
+5180 Direct Labor - Worker's Comp
+$132
+$125
+$123
+$381
+
+5185 Direct Labor - Other Benefits
+-
+$59
+-$26
+$33
+Total 5100 Direct Salaries & Benefits
+$33,593
+$35,165
+$31,313
+$100,073
+
+5200 Direct Purchases
+-
+-
+-
+-
+
+5210 Software & Subscriptions
+$218
+$218
+$218
+$656
+
+5220 Client Recruiting
+- $524 (53%)
+$867
+$1,116
+$467
+$2,451
+
+5230 HR Templates
++ $420 (--)
+-
+-
+$420
+$420
+
+5240 Background Checks
+$134
+-
+$36
+$170
+Total 5200 Direct Purchases
+$1,220
+$1,335
+$1,142
+$3,698
+Total Cost of Goods Sold
+$34,813
+$36,501
+$32,455
+$103,771
+Gross Profit
+- $53,959 (106%)
+$33,098
+$68,399
+-$3,209
+$98,288
+
+Expenses
+-
+-
+-
+-
+
+6000 Officer Salaries
+-
+-
+-
+-
+
+6010 Officer PR - Wages
+$7,023
+$7,342
+$6,384
+$20,749
+
+6011 Officer PR - Bonus
+- $2,750 (100%)
+$5,500
+-
+-
+$5,500
+
+6012 Officer PR - Taxes
+- $492 (51%)
+$1,061
+$885
+$481
+$2,428
+Total 6000 Officer Salaries
+- $4,040 (37%)
+$13,584
+$8,228
+$6,865
+$28,678
+
+6100 Indirect Salaries & Benefits
+-
+-
+-
+-
+
+6110 Employee PR - Wages
+$4,623
+$4,618
+$4,649
+$13,891
+
+6111 Employee PR - Bonus
+- $375 (100%)
+$750
+-
+-
+$750
+
+6120 Employee PR - Taxes
+- $206 (33%)
+$647
+$587
+$411
+$1,645
+
+6140 Employee PR - PTO
+- $852 (87%)
+$1,647
+$304
+$123
+$2,075
+
+6180 Employee PR - Worker's Comp
+$29
+$26
+$26
+$82
+
+6185 Employee PR - Other Benef...
+- $270 (142%)
+-
+$381
+-$79
+$302
+Total 6100 Indirect Salaries &...
+- $1,678 (25%)
+$7,697
+$5,918
+$5,130
+$18,746
+
+6200 Payroll Processing Fees
++ $137 (122%)
+$112
+$112
+$250
+$475
+
+6210 Retirement Plan Fees
+- $173 (29%)
+$727
+$490
+$435
+$1,652
+
+6220 Retirement & Benefits
+-
+$1,553
+$888
+$2,441
+
+6260 Referral Fee
++ $580 (--)
+-
+-
+$580
+$580
+
+6300 Sales & Marketing Expenses
+-
+-
+-
+-
+
+6310 Advertisement
++ $192 (23%)
+$833
+$833
+$1,025
+$2,692
+
+6320 Business Gifts & Meals
+- $118 (100%)
+$122
+$115
+-
+$237
+
+6330 Website Online
+$195
+$195
+$195
+$585
+Total 6300 Sales & Marketing Expenses
+$1,150
+$1,143
+$1,220
+$3,514
+
+6350 Bank & Merchant Expenses
+-
+-
+-
+-
+
+6351 Bank & CC Fees
+$25
+$25
+$91
+$141
+
+6352 Merchant Fees
+- $109 (100%)
+$218
+-
+-
+$218
+
+6353 Melio CC Fees
+$24
+$15
+$21
+$60
+Total 6350 Bank & Merchant Expenses
+$267
+$40
+$112
+$419
+
+6400 Office Expenses
+-
+-
+-
+-
+
+6401 Dues & Subscriptions
+$513
+$203
+$292
+$1,009
+
+6402 Office Expenses
+$24
+$278
+$210
+$514
+
+6403 Postage & Delivery
+-
+$22
+$62
+$85
+
+6404 Software Expenses
+$1,670
+$1,660
+$1,583
+$4,914
+Total 6400 Office Expenses
+$2,208
+$2,166
+$2,148
+$6,523
+
+6450 Business Insurance
++ $663 (115%)
+$576
+$582
+$1,243
+$2,401
+
+6500 Rent Expense
+$1,073
+$1,078
+$1,067
+$3,219
+
+6600 Legal & Professional Fees
+-
+-
+-
+-
+
+6610 Accounting
+$1,485
+$1,485
+$1,615
+$4,585
+
+6620 Consulting
+$875
+$5,160
+$2,660
+$8,695
+
+6630 IT Tech Consulting
+- $288 (20%)
+$1,802
+$1,082
+$1,154
+$4,039
+
+6640 Legal
+- $122 (100%)
+-
+$244
+-
+$244
+Total 6600 Legal & Professional Fees
+$4,162
+$7,972
+$5,429
+$17,564
+
+6650 Training & Education
++ $2,700 (450%)
+$1,200
+-
+$3,300
+$4,500
+
+6675 Travel & Entertainment
+-
+-
+-
+-
+
+6678 Transportation
+-
+-
+$3
+$3
+Total 6675 Travel & Entertainment
+-
+-
+$3
+$3
+Total Expenses
+$32,761
+$29,286
+$28,673
+$90,721
+Net Operating Income
+- $51,609 (262%)
+$337
+$39,113
+-$31,883
+$7,566
+
+Other Income
+-
+-
+-
+-
+
+7000 Interest Income
+- $1,750 (100%)
+$3,500
+-
+-
+$3,500
+Total Other Income
+- $1,750 (100%)
+$3,500
+-
+-
+$3,500
+
+Other Expenses
+-
+-
+-
+-
+
+8010 Depreciation Expense
+$47
+$47
+$47
+$141
+
+8020 Interest Expense
+$1,002
+$1,045
+$1,011
+$3,059
+
+8030 Income Taxes
+- $1,000 (100%)
+$2,000
+-
+-
+$2,000
+
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1001 Chase Checking - 9110
++ $11,944 (67%)
+$19,085
+$16,671
+$29,822
+1002 Chase Savings - 1600
+$2
+$2
+$2
+Total Bank Accounts
++ $11,944 (67%)
+$19,087
+$16,674
+$29,825
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable - A/R
+- $28,701 (54%)
+$32,592
+$73,451
+$24,320
+Total Accounts Receivable
+- $28,701 (54%)
+$32,592
+$73,451
+$24,320
+
+Other Current Assets
+-
+-
+-
+1111 Employee Advances
+-
+-
+-
+1115 Allowance for Bad Debt
+-
+-
+-
+
+1120 Undeposited Funds
+-
+-
+-
+
+1200 Unbilled Revenue
+$20,842
+$30,127
+$27,137
+
+1210 Prepaid Expenses
+$16,387
+$17,287
+$14,138
+Total Other Current Assets
+$37,230
+$47,414
+$41,276
+Total Current Assets
+$88,910
+$137,540
+$95,421
+
+Fixed Assets
+-
+-
+-
+
+1300 Gross Fixed Assets
+-
+-
+-
+1301 Computer Equipment
+$3,811
+$3,811
+$3,811
+Total 1300 Gross Fixed Assets
+$3,811
+$3,811
+$3,811
+
+1499 Accumulated Depreciation
+-$2,584
+-$2,631
+-$2,679
+Total Fixed Assets
+$1,226
+$1,179
+$1,132
+TOTAL ASSETS
+$90,137
+$138,720
+$96,554
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+2000 Accounts Payable
+$3,398
+$5,646
+$4,050
+Total Accounts Payable
+$3,398
+$5,646
+$4,050
+
+Credit Cards
+-
+-
+-
+
+2101 Chase Visa 1296
+$22,080
+$26,920
+$25,761
+Total Credit Cards
+$22,080
+$26,920
+$25,761
+
+Other Current Liabilities
+-
+-
+-
+
+2200 Payroll Liabilities
+-
+-
+-
+
+2201 PR Clearing
+-
+-
+-
+
+2202 401K Payable
++ $1,775 (72%)
+$2,904
+$1,999
+$4,227
+
+2210 Accrued Payroll
+$14,196
+$19,362
+$19,678
+
+2215 Accrued PTO
+$23,381
+$23,410
+$24,124
+
+2220 Payroll taxes payable
+-
+-
+-
+2220.1 P/R Taxes - Federal
+-
+-
+-
+2220.2 P/R Taxes - CA State
+-
+-
+-
+Total 2220 Payroll taxes payable
+-
+-
+-
+2225 SEP Payable
+-
+-
+-
+
+2230 WC Liability
+$77
+$77
+$73
+Total 2200 Payroll Liabilities
+$40,559
+$44,849
+$48,104
+
+2300 Chase LOC - 3001
+$70,148
+$74,989
+$70,930
+
+2400 Accrued Expenses
++ $582 (300%)
+-
+$388
+$776
+
+2402 EIDL Loan Payable - ST
+$596
+$598
+$600
+2550 Client Deposits
+$950
+$950
+$950
+2575 Unearned Revenue
+-
+-
+-
+Total Other Current Liabilities
+$112,254
+$121,775
+$121,361
+Total Current Liabilities
+$137,733
+$154,342
+$151,173
+
+Long-Term Liabilities
+-
+-
+-
+
+2500 Loan Payable
+-
+-
+-
+2501 Due To (From) Shareholder
+-$70,000
+-$70,000
+-$70,000
+
+2502 EIDL Loan Payable - LT
+$22,810
+$22,763
+$22,709
+Total 2500 Loan Payable
+-$47,189
+-$47,236
+-$47,291
+Total Long-Term Liabilities
+-$47,189
+-$47,236
+-$47,291
+Total Liabilities
+$90,543
+$107,106
+$103,882
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+$46,254
+$46,254
+$46,254
+
+3300 Owner Distributions
++ $16,847 (58%)
+-$51,695
+-$6,000
+-$12,000
+
+3900 Retained Earnings
+- $20,674 (80%)
+-$5,310
+-$46,659
+-$46,659

@@ -1,0 +1,376 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Income"
+    },
+    {
+      "item_code": "4010",
+      "item_name": "Pipeline Income"
+    },
+    {
+      "item_code": "4020",
+      "item_name": "PPC Income"
+    },
+    {
+      "item_code": "4030",
+      "item_name": "SEO Income"
+    },
+    {
+      "item_code": "4040",
+      "item_name": "Website Income"
+    },
+    {
+      "item_code": "4050",
+      "item_name": "General Income"
+    },
+    {
+      "item_code": "4060",
+      "item_name": "Affiliate Commissions Revenue"
+    },
+    {
+      "item_code": "4070",
+      "item_name": "Video Income"
+    },
+    {
+      "item_code": "5000",
+      "item_name": "COGS & Other Direct Expenses"
+    },
+    {
+      "item_code": "5100",
+      "item_name": "Direct Payroll Expense"
+    },
+    {
+      "item_code": "5101",
+      "item_name": "Direct Wages"
+    },
+    {
+      "item_code": "5102",
+      "item_name": "Direct Payroll Taxes"
+    },
+    {
+      "item_code": "5110",
+      "item_name": "Subcontractors"
+    },
+    {
+      "item_code": "5120",
+      "item_name": "Contract Service Providers"
+    },
+    {
+      "item_code": "5200",
+      "item_name": "Production Software"
+    },
+    {
+      "item_code": "5210",
+      "item_name": "Call Rail Fees"
+    },
+    {
+      "item_code": "5220",
+      "item_name": "Twilio Fees"
+    },
+    {
+      "item_code": "5230",
+      "item_name": "NexHealth Fees"
+    },
+    {
+      "item_code": "5240",
+      "item_name": "AI Fees"
+    },
+    {
+      "item_code": "5250",
+      "item_name": "Email Fees"
+    },
+    {
+      "item_code": "5270",
+      "item_name": "Hosting & Domains"
+    },
+    {
+      "item_code": "5300",
+      "item_name": "Other Expenses"
+    },
+    {
+      "item_code": "5400",
+      "item_name": "Supplies & Materials"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Payroll Expense"
+    },
+    {
+      "item_code": "6001",
+      "item_name": "Wages"
+    },
+    {
+      "item_code": "6002",
+      "item_name": "Payroll Taxes"
+    },
+    {
+      "item_code": "6004",
+      "item_name": "Payroll Fees"
+    },
+    {
+      "item_code": "6025",
+      "item_name": "Benefits"
+    },
+    {
+      "item_code": "6050",
+      "item_name": "Contractors Expenses - G&A"
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Advertising & Marketing"
+    },
+    {
+      "item_code": "6103",
+      "item_name": "Marketing"
+    },
+    {
+      "item_code": "6104",
+      "item_name": "Social Media"
+    },
+    {
+      "item_code": "6150",
+      "item_name": "Office & Other Admin Expenses"
+    },
+    {
+      "item_code": "6151",
+      "item_name": "Office Supplies"
+    },
+    {
+      "item_code": "6152",
+      "item_name": "Software & Applications"
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Travel"
+    },
+    {
+      "item_code": "6201",
+      "item_name": "Airfare"
+    },
+    {
+      "item_code": "6203",
+      "item_name": "Meals"
+    },
+    {
+      "item_code": "6204",
+      "item_name": "Lodging"
+    },
+    {
+      "item_code": "6205",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Vehicle Expenses"
+    },
+    {
+      "item_code": "6301",
+      "item_name": "Gas"
+    },
+    {
+      "item_code": "6302",
+      "item_name": "Parking"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Insurance Expenses"
+    },
+    {
+      "item_code": "6700",
+      "item_name": "Bank & Other Financing Fees"
+    },
+    {
+      "item_code": "6701",
+      "item_name": "Bank Charges & Fees"
+    },
+    {
+      "item_code": "6702",
+      "item_name": "Merchant Services Fees"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Legal & Professional Fees"
+    },
+    {
+      "item_code": "6801",
+      "item_name": "Accounting Fees"
+    },
+    {
+      "item_code": "6900",
+      "item_name": "Other Operating Expenses"
+    },
+    {
+      "item_code": "6901",
+      "item_name": "Education and Seminars"
+    },
+    {
+      "item_code": "6902",
+      "item_name": "Employee Relations"
+    },
+    {
+      "item_code": "6903",
+      "item_name": "Dues & Subscriptions"
+    },
+    {
+      "item_code": "6904",
+      "item_name": "Reimbursements"
+    },
+    {
+      "item_code": "6906",
+      "item_name": "Shipping & Delivery"
+    },
+    {
+      "item_code": "6907",
+      "item_name": "Recruiting Expense"
+    },
+    {
+      "item_code": "7000",
+      "item_name": "Other Income"
+    },
+    {
+      "item_code": "7004",
+      "item_name": "Credit Card Rewards"
+    },
+    {
+      "item_code": "8000",
+      "item_name": "Other Expenses"
+    },
+    {
+      "item_code": "8002",
+      "item_name": "Amortization"
+    },
+    {
+      "item_code": "8003",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "8004",
+      "item_name": "Prior Year Adjustments"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "Cash"
+    },
+    {
+      "item_code": "1010",
+      "item_name": "Operating Account | C..."
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable"
+    },
+    {
+      "item_code": "1210",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1230",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1500",
+      "item_name": "Intangible Assets"
+    },
+    {
+      "item_code": "1510",
+      "item_name": "Organizational Costs"
+    },
+    {
+      "item_code": "1520",
+      "item_name": "Website Domain"
+    },
+    {
+      "item_code": "1599",
+      "item_name": "Accumulated Amortization"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "Credit Cards"
+    },
+    {
+      "item_code": "2110",
+      "item_name": "Amex | 92000"
+    },
+    {
+      "item_code": "2120",
+      "item_name": "Capital One | 0937"
+    },
+    {
+      "item_code": "2130",
+      "item_name": "Edward Jones | 0817"
+    },
+    {
+      "item_code": "2140",
+      "item_name": "Amex | 21003"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Wages Payable"
+    },
+    {
+      "item_code": "2210",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Accrued Expense"
+    },
+    {
+      "item_code": "2310",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2330",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "2340",
+      "item_name": "PTO Liability"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "Other Current Liabilities"
+    },
+    {
+      "item_code": "2420",
+      "item_name": "Sales Tax Payable"
+    },
+    {
+      "item_code": "2600",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "2500",
+      "item_name": "LT Loans/Notes Payable"
+    },
+    {
+      "item_code": "2510",
+      "item_name": "Lifted Search Loan"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Owner Distributions"
+    },
+    {
+      "item_code": "3110",
+      "item_name": "Owner Distributions - ..."
+    },
+    {
+      "item_code": "3120",
+      "item_name": "Owner Distributions - O..."
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

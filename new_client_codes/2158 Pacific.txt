@@ -1,0 +1,232 @@
+
+Income
+-
+-
+-
+-
+
+4000 Rent Income
+- $3,600 (53%)
+-
+$13,600
+$3,200
+$16,800
+Total Income
+- $3,600 (53%)
+-
+$13,600
+$3,200
+$16,800
+Gross Profit
+- $3,600 (53%)
+-
+$13,600
+$3,200
+$16,800
+
+Expenses
+-
+-
+-
+-
+
+6400 Insurance
+- $978 (100%)
+-
+$1,956
+-
+$1,956
+
+6500 Legal & Professional Services
+- $468 (100%)
+$937
+-
+-
+$937
+
+6600 Office Supplies & Software
+$75
+$75
+-
+$150
+
+6800 Repairs & Maintenance
+- $6,250 (100%)
+$12,500
+-
+-
+$12,500
+
+6900 Utilities
+- $400 (100%)
+
+
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+
+1000 CalPrivate Bank (7167)
+$37,354
+$41,957
+$41,957
+Total Bank Accounts
+$37,354
+$41,957
+$41,957
+
+Accounts Receivable
+-
+-
+-
+
+1100 Accounts Receivable (A/R)
++ $5,200 (260%)
+-$4,000
+-
+$3,200
+Total Accounts Receivable
++ $5,200 (260%)
+-$4,000
+-
+$3,200
+
+Other Current Assets
+-
+-
+-
+1500 Undeposited Funds
+-
+-
+-
+Total Other Current Assets
+-
+-
+-
+Total Current Assets
+$33,354
+$41,957
+$45,157
+
+Fixed Assets
+-
+-
+-
+1600 Buildings (2158 Pacific Ave)
+$358,825
+$358,825
+$358,825
+1700 Land (2158 Pacific Ave)
+$153,782
+$153,782
+$153,782
+1900 Accumulated Depreciation
+-$77,741
+-$77,741
+-$77,741
+Total Fixed Assets
+$434,866
+$434,866
+$434,866
+TOTAL ASSETS
+$468,220
+$476,824
+$480,024
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+2000 Accounts Payable (A/P)
+-
+-
+-
+Total Accounts Payable
+-
+-
+-
+
+Other Current Liabilities
+-
+-
+-
+2100 BFC - SBA 504 7007- ST
+$6,717
+$6,717
+$6,717
+2150 CIT - Mortgage 3468- ST
+$12,987
+$12,987
+$12,987
+Total Other Current Liabilities
+$19,705
+$19,705
+$19,705
+Total Current Liabilities
+$19,705
+$19,705
+$19,705
+
+Long-Term Liabilities
+-
+-
+-
+
+2200 BFC - SBA 504 7007- LT
+$138,408
+$137,528
+$137,528
+
+2250 CIT - Mortgage 3468 - LT
+$203,460
+$201,824
+$201,824
+Total Long-Term Liabilities
+$341,869
+$339,353
+$339,353
+Total Liabilities
+$361,574
+$359,058
+$359,058
+
+Equity
+-
+-
+-
+3000 Opening Balance Equity
+$600
+$600
+$600
+3100 Shareholder's Investment
+$276,649
+$276,649
+$276,649
+3200 Retained Earnings

@@ -1,0 +1,384 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Revenue"
+    },
+    {
+      "item_code": "4100",
+      "item_name": "HR Fractional"
+    },
+    {
+      "item_code": "4200",
+      "item_name": "HR Consulting"
+    },
+    {
+      "item_code": "4220",
+      "item_name": "HR Screening & Other"
+    },
+    {
+      "item_code": "4300",
+      "item_name": "HR Recruiting"
+    },
+    {
+      "item_code": "4800",
+      "item_name": "Referral Discount"
+    },
+    {
+      "item_code": "5100",
+      "item_name": "Direct Salaries & Benefits"
+    },
+    {
+      "item_code": "5110",
+      "item_name": "Direct Labor - Wages"
+    },
+    {
+      "item_code": "5120",
+      "item_name": "Direct Labor - Taxes"
+    },
+    {
+      "item_code": "5130",
+      "item_name": "Direct Labor - 401K"
+    },
+    {
+      "item_code": "5140",
+      "item_name": "Direct Labor - PTO"
+    },
+    {
+      "item_code": "5150",
+      "item_name": "Direct Labor - Bonus"
+    },
+    {
+      "item_code": "5180",
+      "item_name": "Direct Labor - Worker's Comp"
+    },
+    {
+      "item_code": "5185",
+      "item_name": "Direct Labor - Other Benefits"
+    },
+    {
+      "item_code": "5200",
+      "item_name": "Direct Purchases"
+    },
+    {
+      "item_code": "5210",
+      "item_name": "Software & Subscriptions"
+    },
+    {
+      "item_code": "5220",
+      "item_name": "Client Recruiting"
+    },
+    {
+      "item_code": "5230",
+      "item_name": "HR Templates"
+    },
+    {
+      "item_code": "5240",
+      "item_name": "Background Checks"
+    },
+    {
+      "item_code": "6000",
+      "item_name": "Officer Salaries"
+    },
+    {
+      "item_code": "6010",
+      "item_name": "Officer PR - Wages"
+    },
+    {
+      "item_code": "6011",
+      "item_name": "Officer PR - Bonus"
+    },
+    {
+      "item_code": "6012",
+      "item_name": "Officer PR - Taxes"
+    },
+    {
+      "item_code": "6100",
+      "item_name": "Indirect Salaries & Benefits"
+    },
+    {
+      "item_code": "6110",
+      "item_name": "Employee PR - Wages"
+    },
+    {
+      "item_code": "6111",
+      "item_name": "Employee PR - Bonus"
+    },
+    {
+      "item_code": "6120",
+      "item_name": "Employee PR - Taxes"
+    },
+    {
+      "item_code": "6140",
+      "item_name": "Employee PR - PTO"
+    },
+    {
+      "item_code": "6180",
+      "item_name": "Employee PR - Worker's Comp"
+    },
+    {
+      "item_code": "6185",
+      "item_name": "Employee PR - Other Benef..."
+    },
+    {
+      "item_code": "6200",
+      "item_name": "Payroll Processing Fees"
+    },
+    {
+      "item_code": "6210",
+      "item_name": "Retirement Plan Fees"
+    },
+    {
+      "item_code": "6220",
+      "item_name": "Retirement & Benefits"
+    },
+    {
+      "item_code": "6260",
+      "item_name": "Referral Fee"
+    },
+    {
+      "item_code": "6300",
+      "item_name": "Sales & Marketing Expenses"
+    },
+    {
+      "item_code": "6310",
+      "item_name": "Advertisement"
+    },
+    {
+      "item_code": "6320",
+      "item_name": "Business Gifts & Meals"
+    },
+    {
+      "item_code": "6330",
+      "item_name": "Website Online"
+    },
+    {
+      "item_code": "6350",
+      "item_name": "Bank & Merchant Expenses"
+    },
+    {
+      "item_code": "6351",
+      "item_name": "Bank & CC Fees"
+    },
+    {
+      "item_code": "6352",
+      "item_name": "Merchant Fees"
+    },
+    {
+      "item_code": "6353",
+      "item_name": "Melio CC Fees"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Office Expenses"
+    },
+    {
+      "item_code": "6401",
+      "item_name": "Dues & Subscriptions"
+    },
+    {
+      "item_code": "6402",
+      "item_name": "Office Expenses"
+    },
+    {
+      "item_code": "6403",
+      "item_name": "Postage & Delivery"
+    },
+    {
+      "item_code": "6404",
+      "item_name": "Software Expenses"
+    },
+    {
+      "item_code": "6450",
+      "item_name": "Business Insurance"
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Rent Expense"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Legal & Professional Fees"
+    },
+    {
+      "item_code": "6610",
+      "item_name": "Accounting"
+    },
+    {
+      "item_code": "6620",
+      "item_name": "Consulting"
+    },
+    {
+      "item_code": "6630",
+      "item_name": "IT Tech Consulting"
+    },
+    {
+      "item_code": "6640",
+      "item_name": "Legal"
+    },
+    {
+      "item_code": "6650",
+      "item_name": "Training & Education"
+    },
+    {
+      "item_code": "6675",
+      "item_name": "Travel & Entertainment"
+    },
+    {
+      "item_code": "6678",
+      "item_name": "Transportation"
+    },
+    {
+      "item_code": "7000",
+      "item_name": "Interest Income"
+    },
+    {
+      "item_code": "8010",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "8020",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "8030",
+      "item_name": "Income Taxes"
+    },
+    {
+      "item_code": "1001",
+      "item_name": "Chase Checking - 9110"
+    },
+    {
+      "item_code": "1002",
+      "item_name": "Chase Savings - 1600"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable - A/R"
+    },
+    {
+      "item_code": "1111",
+      "item_name": "Employee Advances"
+    },
+    {
+      "item_code": "1115",
+      "item_name": "Allowance for Bad Debt"
+    },
+    {
+      "item_code": "1120",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1200",
+      "item_name": "Unbilled Revenue"
+    },
+    {
+      "item_code": "1210",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "1300",
+      "item_name": "Gross Fixed Assets"
+    },
+    {
+      "item_code": "1301",
+      "item_name": "Computer Equipment"
+    },
+    {
+      "item_code": "1499",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable"
+    },
+    {
+      "item_code": "2101",
+      "item_name": "Chase Visa 1296"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "Payroll Liabilities"
+    },
+    {
+      "item_code": "2201",
+      "item_name": "PR Clearing"
+    },
+    {
+      "item_code": "2202",
+      "item_name": "401K Payable"
+    },
+    {
+      "item_code": "2210",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "2215",
+      "item_name": "Accrued PTO"
+    },
+    {
+      "item_code": "2220",
+      "item_name": "Payroll taxes payable"
+    },
+    {
+      "item_code": "2220.1",
+      "item_name": "P/R Taxes - Federal"
+    },
+    {
+      "item_code": "2220.2",
+      "item_name": "P/R Taxes - CA State"
+    },
+    {
+      "item_code": "2225",
+      "item_name": "SEP Payable"
+    },
+    {
+      "item_code": "2230",
+      "item_name": "WC Liability"
+    },
+    {
+      "item_code": "2300",
+      "item_name": "Chase LOC - 3001"
+    },
+    {
+      "item_code": "2400",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "2402",
+      "item_name": "EIDL Loan Payable - ST"
+    },
+    {
+      "item_code": "2550",
+      "item_name": "Client Deposits"
+    },
+    {
+      "item_code": "2575",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "2500",
+      "item_name": "Loan Payable"
+    },
+    {
+      "item_code": "2501",
+      "item_name": "Due To (From) Shareholder"
+    },
+    {
+      "item_code": "2502",
+      "item_name": "EIDL Loan Payable - LT"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3300",
+      "item_name": "Owner Distributions"
+    },
+    {
+      "item_code": "3900",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

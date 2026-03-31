@@ -1,0 +1,84 @@
+{
+  "category": [
+    {
+      "item_code": "4000",
+      "item_name": "Rent Income"
+    },
+    {
+      "item_code": "6400",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "6500",
+      "item_name": "Legal & Professional Services"
+    },
+    {
+      "item_code": "6600",
+      "item_name": "Office Supplies & Software"
+    },
+    {
+      "item_code": "6800",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "6900",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "1000",
+      "item_name": "CalPrivate Bank (7167)"
+    },
+    {
+      "item_code": "1100",
+      "item_name": "Accounts Receivable (A/R)"
+    },
+    {
+      "item_code": "1500",
+      "item_name": "Undeposited Funds"
+    },
+    {
+      "item_code": "1600",
+      "item_name": "Buildings (2158 Pacific Ave)"
+    },
+    {
+      "item_code": "1700",
+      "item_name": "Land (2158 Pacific Ave)"
+    },
+    {
+      "item_code": "1900",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "2000",
+      "item_name": "Accounts Payable (A/P)"
+    },
+    {
+      "item_code": "2100",
+      "item_name": "BFC - SBA 504 7007- ST"
+    },
+    {
+      "item_code": "2150",
+      "item_name": "CIT - Mortgage 3468- ST"
+    },
+    {
+      "item_code": "2200",
+      "item_name": "BFC - SBA 504 7007- LT"
+    },
+    {
+      "item_code": "2250",
+      "item_name": "CIT - Mortgage 3468 - LT"
+    },
+    {
+      "item_code": "3000",
+      "item_name": "Opening Balance Equity"
+    },
+    {
+      "item_code": "3100",
+      "item_name": "Shareholder's Investment"
+    },
+    {
+      "item_code": "3200",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}

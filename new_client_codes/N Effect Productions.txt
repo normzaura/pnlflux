@@ -1,0 +1,960 @@
+
+Income
+-
+-
+-
+-
+
+1-43000 Production Revenue
+$13,800
+$251,300
+$141,963
+$407,064
+
+1-43003 IC Production Revenue Ve...
+- $26,790 (100%)
+$44,440
+$9,140
+-
+$53,580
+Total Income
+$58,240
+$260,440
+$141,963
+$460,644
+
+Cost of Goods Sold
+-
+-
+-
+-
+
+1-52000 Food and Beverage Costs
+-
+$6,756
+$2,750
+$9,506
+
+1-53000 Production Costs
++ $42,288 (288%)
+-$7,800
+$37,155
+$56,966
+$86,322
+
+1-53003 IC Production Costs Venue
+- $12,500 (33%)
+-
+$75,000
+$25,000
+$100,000
+
+1-53510 Equipment Rental
+- $300 (100%)
+$299
+$301
+-
+$601
+
+1-53750 Production Supplies
++ $2,264 (206%)
+$668
+$1,530
+$3,363
+$5,562
+
+1-54000 Direct Labor
+- $3,634 (100%)
+$1,000
+$6,268
+-
+$7,268
+
+1-54250 Meeting Facilities
+- $2,476 (100%)
+-$23,998
+$28,951
+-
+$4,953
+Total Cost of Goods Sold
++ $25,013 (40%)
+-$29,830
+$155,964
+$88,080
+$214,213
+Gross Profit
+- $42,390 (44%)
+$88,070
+$104,476
+$53,883
+$246,430
+
+Expenses
+-
+-
+-
+-
+
+1-60000 Automobile Expense
+-
+-
+-
+-
+
+1-60010 Fuel
++ $449 (82%)
+$751
+$343
+$996
+$2,092
+
+1-60020 Parking and Tolls
+- $284 (99%)
+-
+$576
+$4
+$580
+
+1-60030 Repairs and Maintenance
+- $192 (100%)
+$385
+-
+-
+$385
+Total 1-60000 Automobile Expense
+$1,136
+$920
+$1,000
+$3,057
+
+1-60500 Bank Service Charges
++ $265 (--)
+-
+-
+$265
+$265
+
+1-60600 Client Meals
+$4,576
+$2,742
+$3,206
+$10,526
+
+1-61000 Dues and Subscriptions
+- $910 (70%)
+$1,548
+$1,046
+$386
+$2,982
+
+1-62000 Earned Commissions
+- $3,362 (71%)
+$2,212
+$7,211
+$1,350
+$10,774
+
+1-62500 Accounting Fees
+$3,000
+$3,000
+$3,000
+$9,000
+
+1-62550 Legal and Professional F...
+- $1,525 (100%)
+$3,051
+-
+-
+$3,051
+
+1-63000 Insurance Expense
+-
+-
+$59
+$59
+
+1-63020 Health
+- $7,628 (100%)
+$5,399
+$9,857
+-
+$15,257
+
+1-63030 Liability
+- $2,613 (100%)
+$2,613
+$2,613
+-
+$5,227
+
+1-63050 Vehicles
+- $971 (100%)
+$971
+$971
+-
+$1,943
+
+1-63060 Workers Compensation
++ $316 (38%)
+$1,056
+$631
+$1,160
+$2,847
+Total 1-63000 Insurance Expense
+- $10,838 (90%)
+$10,041
+$14,073
+$1,219
+$25,334
+
+1-63500 Marketing Expense
+- $788 (100%)
+$833
+$743
+-
+$1,577
+
+1-63550 Merchant Account Fees
+- $181 (95%)
+$310
+$73
+$10
+$393
+
+1-64000 Office Rent
+-
+-
+-
+-
+
+1-64013 Intercompany Rent Expe...
+- $14,627 (100%)
+$14,627
+$14,627
+-
+$29,255
+Total 1-64000 Office Rent
+- $14,627 (100%)
+$14,627
+$14,627
+-
+$29,255
+
+1-64500 Office Expense
+- $490 (34%)
+$2,783
+$112
+$956
+$3,852
+
+1-64600 Office Supplies
+-
+-
+$90
+$90
+
+1-65500 Payroll Expenses
+-
+-
+-
+-
+
+1-65510 Payroll Processing Fees
++ $880 (259%)
+$201
+$479
+$1,221
+$1,902
+
+1-65520 Bonuses
+- $3,000 (100%)
+$6,000
+-
+-
+$6,000
+
+1-65530 Salaries and Wages
+- $39,719 (100%)
+$40,087
+$39,352
+-
+$79,439
+
+1-65540 Tech Salaries
+- $9,068 (100%)
+$7,583
+$10,553
+-
+$18,137
+
+1-65550 Payroll Taxes
++ $10,536 (188%)
+$3,973
+$7,235
+$16,140
+$27,349
+
+1-65560 Employer Contributions
+- $112 (100%)
+$100
+$125
+-
+$225
+Total 1-65500 Payroll Expenses
+- $40,483 (70%)
+$57,945
+$57,746
+$17,361
+$133,053
+
+1-65750 Postage and Delivery
+- $1,730 (100%)
+$13
+$3,446
+-
+$3,460
+
+1-66750 Repairs and Maintenance
+- $241 (100%)
+-
+$482
+-
+$482
+
+1-67000 Telephone Expense
+$361
+$574
+$374
+$1,311
+
+1-67500 Travel Expense
+-
+-
+-
+-
+
+1-67510 Accomodations
+- $261 (100%)
+$362
+$159
+-
+$522
+
+1-67550 Transportation
+- $280 (42%)
+$363
+$972
+$387
+$1,723
+Total 1-67500 Travel Expense
+- $541 (58%)
+$726
+$1,131
+$387
+$2,246
+
+1-67600 Taxes and Licenses
+-
+-
+-
+-
+
+1-67640 Property
+- $259 (100%)
+$259
+$259
+-
+$518
+Total 1-67600 Taxes and Licenses
+- $259 (100%)
+$259
+$259
+-
+$518
+
+1-67700 Utilities
+- $2,015 (87%)
+$2,077
+$2,551
+$299
+$4,928
+Total Expenses
+- $78,216 (72%)
+$105,505
+$110,746
+$29,910
+$246,162
+Net Operating Income
++ $35,825 (302%)
+-$17,435
+-$6,269
+$23,973
+$267
+
+Other Income
+-
+-
+-
+-
+
+1-70000 Interest Income
+$1,697
+$1,339
+$1,703
+$4,740
+Total Other Income
+$1,697
+$1,339
+$1,703
+$4,740
+
+Other Expenses
+-
+-
+-
+-
+
+1-80000 Interest Expense
+$212
+$208
+$208
+$630
+
+1-83000 Depreciation Expense
+- $8,761 (100%)
+$8,761
+$8,761
+-
+$17,523
+
+1-84000 Amortization Expense
+- $134 (100%)
+$143
+$126
+-
+$269
+
+
+1-85000 Other Miscellaneous Expense
+
+
+ASSETS
+-
+-
+-
+
+Current Assets
+-
+-
+-
+
+Bank Accounts
+-
+-
+-
+1-10000 Manufacturers Bank-Checking4782
+-
+-
+-
+1-10040 Manufacturers Bank-Money Market
+-
+-
+-
+1-10100 Chase Bank - Checking 3483
+-
+-
+-
+1-10110 Chase Bank - Savings 2063
+-
+-
+-
+1-10200 Bank of America - Money Market
+-
+-
+-
+1-10210 Bank of America - Personal 3737
+-
+-
+-
+1-10220 Bank of America - Checking 0348
+$47,304
+$47,304
+$47,304
+1-10300 Opus Bank- Checking -1334
+-
+-
+-
+
+1-10330 Opus Bank - Checking...
++ $91,054 (90%)
+$111,843
+$89,492
+$191,722
+1-10350 PPB IntraFi Cash Service - 807
+-
+-
+-
+
+1-10360 Pacific Premier-Mone...
+- $447,626 (74%)
+$601,008
+$602,348
+$154,051
+1-10900 Petty Cash
+-
+-
+-
+Total Bank Accounts
+- $356,572 (48%)
+$760,156
+$739,145
+$393,078
+
+Accounts Receivable
+-
+-
+-
+
+1-11000 Accounts Receivable
+$840,111
+$976,260
+$802,064
+1-11500 Allowance for Doubful Accounts
+$1,800
+$1,800
+$1,800
+Total Accounts Receivable
+$841,911
+$978,060
+$803,864
+
+Other Current Assets
+-
+-
+-
+1-11750 Unbilled Revenue
+-
+-
+-
+
+1-12000 Prepaid Deposit
+$207,032
+$178,532
+$183,532
+
+1-12100 Employee Advances
+-
+-
+-
+1-12300 Loan to Shareholder
+-
+-
+-
+
+1-12400 Prepaid Expenses
++ $55,001 (44%)
+$125,504
+$126,046
+$180,777
+1-12450 Prepaid Insurance
+-
+-
+-
+
+1-12702 IC Receivable/Payable-AV Events
+-$24,654
+-$24,379
+-$24,104
+
+1-12703 IC Receivable/Payabl...
++ $116,234 (24%)
+-$425,262
+-$552,631
+-$372,712
+1-12704 IC Receivable/Payable-Kris P In
+-
+-
+-
+
+1-12705 I/C Loan Receivable ...
++ $250,000 (167%)
+$150,000
+$150,000
+$400,000
+
+1-12800 Undeposited Funds
+-
+-
+-
+Total Other Current Assets
++ $412,398 (918%)
+$32,619
+-$122,432
+$367,492
+Total Current Assets
+$1,634,687
+$1,594,773
+$1,564,436
+
+Fixed Assets
+-
+-
+-
+1-13000 Buildings
+$0
+$0
+$0
+1-13200 Commercial Vehicles
+$228,809
+$228,809
+$228,809
+
+1-13500 Fixtures and Equipment
+$1,855,518
+$1,855,518
+$1,855,518
+1-13600 Leasehold Improvements
+$3,673,932
+$3,673,932
+$3,673,932
+
+1-13800 Accumulated Depreciation
+-$4,747,279
+-$4,756,041
+-$4,756,041
+1-13900 Land
+$0
+$0
+$0
+1-13950 F/A-Other
+$198,992
+$198,992
+$198,992
+1-13960 F/A-Venue
+$716,707
+$716,707
+$716,707
+Total Fixed Assets
+$1,926,683
+$1,917,921
+$1,917,921
+
+Other Assets
+-
+-
+-
+
+1-14000 Intangible Asset
+-
+-
+-
+1-14010 Start-up Cost
+$995
+$995
+$995
+1-14020 Liquor License Deposit
+$13,840
+$13,840
+$13,840
+1-14030 Website Development
+$26,571
+$26,571
+$26,571
+1-14040 Software
+$7,889
+$7,889
+$7,889
+Total 1-14000 Intangible Asset
+$49,295
+$49,295
+$49,295
+
+1-14250 Accumulated Amortization
+-$44,705
+-$44,831
+-$44,831
+1-15000 Prepaid Finance Charges
+-
+-
+-
+1-15500 Prepaid Venue
+-
+-
+-
+Total Other Assets
+$4,590
+$4,464
+$4,464
+TOTAL ASSETS
+$3,565,961
+$3,517,159
+$3,486,821
+
+LIABILITIES AND EQUITY
+-
+-
+-
+
+Liabilities
+-
+-
+-
+
+Current Liabilities
+-
+-
+-
+
+Accounts Payable
+-
+-
+-
+
+1-20000 Accounts Payable
+$276,656
+$226,768
+$230,937
+Total Accounts Payable
+$276,656
+$226,768
+$230,937
+
+Credit Cards
+-
+-
+-
+
+1-21510 Citi (1303)
+- $1,519 (28%)
+$4,490
+$6,241
+$3,846
+1-21520 Chase (3220)
+-
+-
+-
+1-21530 Chase (322)103
+-
+-
+-
+1-21540 Chase (3434)
+-
+-
+-
+1-21550 Chase (1094)
+-
+-
+-
+1-21560 Chase (4227)
+-
+-
+-
+1-21600 Chase (1001)
+-
+-
+-
+
+1-21660 Capital One (4394)
++ $6,529 (434%)
+$1,500
+$1,506
+$8,032
+Total Credit Cards
++ $5,010 (73%)
+$5,990
+$7,747
+$11,879
+
+Other Current Liabilities
+-
+-
+-
+
+1-22000 Payroll Clearing
+- $39,782 (--)
+-
+-
+-$39,782
+
+1-22100 Accrued Expense
++ $3,820 (26%)
+$10,837
+$18,478
+$18,478
+1-22150 Accrued Franchise Tax
+-
+-
+-
+1-22300 Garnishments Payable
+-
+-
+-
+1-22500 Sales Tax Payable
+-
+-
+-
+
+1-22800 Payroll Liabilities
+- $200 (200%)
+$100
+$100
+-$100
+1-23500 Bank of America Line of Credit
+-
+-
+-
+1-23550 Chase Line of Credit
+-
+-
+-
+
+1-25000 Unearned Revenue
+$951,760
+$989,351
+$995,401
+1-25070 ST Loan - Range Rover - 2023
+-
+-
+-
+
+1-25080 ST Loan - Isuzu Truck - 2025
+$11,155
+$11,199
+$11,199
+1-25500 Suspense
+-
+-
+-
+1-25600 LT Loan - Range Rover - 2020
+-
+-
+-
+
+1-25700 IC Payable - Kovert
+$86,186
+$83,209
+$80,232
+2765 Loan - Credit Line WAMU Closed
+-
+-
+-
+Total Other Current Liabilities
+$1,060,040
+$1,102,338
+$1,065,428
+Total Current Liabilities
+$1,342,686
+$1,336,854
+$1,308,245
+
+Long-Term Liabilities
+-
+-
+-
+
+1-26000 Loans Payable
+-
+-
+-
+1-26010 Balboa
+-
+-
+-
+1-26020 First Foundation
+-
+-
+-
+1-26030 Land Rover Financial
+-
+-
+-
+1-26040 TCF
+-
+-
+-
+1-26050 TD Auto Finance
+-
+-
+-
+1-26060 Wells Fargo
+-
+-
+-
+1-26070 LT Loan - Range Rover - 2023
+-
+-
+-
+
+1-26080 LT Loan - Isuzu Truck - 2025
+$53,462
+$52,552
+$51,643
+
+1-28990 Current Portion of LT Debt
+-$11,155
+-$11,199
+-$11,199
+Total 1-26000 Loans Payable
+$42,307
+$41,353
+$40,443
+1-26500 Due from Shareholder
+$1,883,300
+$1,883,300
+$1,883,300
+1-26700 Western Equipment Finance
+-
+-
+-
+1-26800 Mortgages Payable
+-
+-
+-
+1-26910 Loan - PPP
+-
+-
+-
+1-26920 Loan - EIDL
+-
+-
+-
+1-26930 Loan - PPP Pt. 2
+-
+-
+-
+1-26940 Loan - EIDL Pt. 2
+-
+-
+-
+Total Long-Term Liabilities
+$1,925,607
+$1,924,654
+$1,923,744
+Total Liabilities
+$3,268,294
+$3,261,508
+$3,231,990
+
+Equity
+-
+-
+-
+1-30000 Capital Stock
+$1,000
+$1,000
+$1,000
+
+1-35000 Distributions
++ $122,421 (69%)
+-$325,404
+-$27,989
+-$54,275
+1-38000 Opening Balance Equity
+-$525,592
+-$525,592
+-$525,592
+
+1-39000 Retained Earnings
+$733,680
+$822,259
+$822,259

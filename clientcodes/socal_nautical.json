@@ -1,0 +1,568 @@
+{
+  "category": [
+    {
+      "item_code": "40000",
+      "item_name": "Membership Dues"
+    },
+    {
+      "item_code": "41000",
+      "item_name": "Membership Fees"
+    },
+    {
+      "item_code": "42000",
+      "item_name": "Fuel"
+    },
+    {
+      "item_code": "51000",
+      "item_name": "Boat Hauling and Shipping"
+    },
+    {
+      "item_code": "52000",
+      "item_name": "Boat Fuel"
+    },
+    {
+      "item_code": "53000",
+      "item_name": "Boat Repairs & Maintenance"
+    },
+    {
+      "item_code": "54000",
+      "item_name": "Rent & Lease"
+    },
+    {
+      "item_code": "54001",
+      "item_name": "Pier 32 Marina"
+    },
+    {
+      "item_code": "54002",
+      "item_name": "Point Loma"
+    },
+    {
+      "item_code": "54004",
+      "item_name": "Goombah"
+    },
+    {
+      "item_code": "55000",
+      "item_name": "Direct Labor"
+    },
+    {
+      "item_code": "60000",
+      "item_name": "Payroll Expenses"
+    },
+    {
+      "item_code": "60001",
+      "item_name": "Salaries & Wages"
+    },
+    {
+      "item_code": "60002",
+      "item_name": "Contract Labor"
+    },
+    {
+      "item_code": "60003",
+      "item_name": "Payroll Taxes"
+    },
+    {
+      "item_code": "60004",
+      "item_name": "Medical Insurance"
+    },
+    {
+      "item_code": "60005",
+      "item_name": "Payroll Fee"
+    },
+    {
+      "item_code": "60006",
+      "item_name": "Bonus"
+    },
+    {
+      "item_code": "60500",
+      "item_name": "Advertising & Marketing"
+    },
+    {
+      "item_code": "61000",
+      "item_name": "Auto Expense"
+    },
+    {
+      "item_code": "61001",
+      "item_name": "Auto Insurance"
+    },
+    {
+      "item_code": "61003",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "61500",
+      "item_name": "Bank Charges & Fees"
+    },
+    {
+      "item_code": "61501",
+      "item_name": "Bank Charges"
+    },
+    {
+      "item_code": "61502",
+      "item_name": "Finance Charges"
+    },
+    {
+      "item_code": "61503",
+      "item_name": "Merchant Account Fees"
+    },
+    {
+      "item_code": "62275",
+      "item_name": "Dues & Subscription"
+    },
+    {
+      "item_code": "62300",
+      "item_name": "Insurance"
+    },
+    {
+      "item_code": "62301",
+      "item_name": "Liability"
+    },
+    {
+      "item_code": "62302",
+      "item_name": "Workmans Comp"
+    },
+    {
+      "item_code": "62375",
+      "item_name": "Legal & Professional Services"
+    },
+    {
+      "item_code": "62500",
+      "item_name": "Office Supplies & Software"
+    },
+    {
+      "item_code": "62650",
+      "item_name": "Repairs & Maintenance"
+    },
+    {
+      "item_code": "62750",
+      "item_name": "Taxes & Licenses"
+    },
+    {
+      "item_code": "62800",
+      "item_name": "Travel"
+    },
+    {
+      "item_code": "62850",
+      "item_name": "Utilities"
+    },
+    {
+      "item_code": "80000",
+      "item_name": "Interest Expense"
+    },
+    {
+      "item_code": "81000",
+      "item_name": "Other Miscellaneous Expense"
+    },
+    {
+      "item_code": "81500",
+      "item_name": "Depreciation Expense"
+    },
+    {
+      "item_code": "10000",
+      "item_name": "Business Fundamentals ..."
+    },
+    {
+      "item_code": "11000",
+      "item_name": "Accounts Receivable (A..."
+    },
+    {
+      "item_code": "11500",
+      "item_name": "Rent Receivable"
+    },
+    {
+      "item_code": "12000",
+      "item_name": "Prepaid Expenses"
+    },
+    {
+      "item_code": "12500",
+      "item_name": "Due To/From Carefree"
+    },
+    {
+      "item_code": "12600",
+      "item_name": "Finseeker 245WA"
+    },
+    {
+      "item_code": "13000",
+      "item_name": "2012 Boston Whaler"
+    },
+    {
+      "item_code": "13050",
+      "item_name": "2020 Monterey M4"
+    },
+    {
+      "item_code": "13100",
+      "item_name": "2021 Crownline 255XSS"
+    },
+    {
+      "item_code": "13150",
+      "item_name": "Avalon Catalina Funship 26"
+    },
+    {
+      "item_code": "13200",
+      "item_name": "Axopar 28 Moorea"
+    },
+    {
+      "item_code": "13250",
+      "item_name": "Benetau Antares 8"
+    },
+    {
+      "item_code": "13300",
+      "item_name": "Cobia 24CC"
+    },
+    {
+      "item_code": "13350",
+      "item_name": "Duffy 22 Sun Cruiser"
+    },
+    {
+      "item_code": "13400",
+      "item_name": "Manitou First Lady"
+    },
+    {
+      "item_code": "13450",
+      "item_name": "Premier Sunstation"
+    },
+    {
+      "item_code": "13500",
+      "item_name": "Sea Ray SPX 21"
+    },
+    {
+      "item_code": "13550",
+      "item_name": "Yamaha 242 SE"
+    },
+    {
+      "item_code": "13600",
+      "item_name": "Waco SE"
+    },
+    {
+      "item_code": "13650",
+      "item_name": "Aloha 26"
+    },
+    {
+      "item_code": "13700",
+      "item_name": "Manitou Aurora"
+    },
+    {
+      "item_code": "13750",
+      "item_name": "Seafox 30H021"
+    },
+    {
+      "item_code": "13800",
+      "item_name": "Seafox 31H021"
+    },
+    {
+      "item_code": "13850",
+      "item_name": "NX Boat"
+    },
+    {
+      "item_code": "13860",
+      "item_name": "Cobalt R6"
+    },
+    {
+      "item_code": "13880",
+      "item_name": "Aloha 260 Sundeck"
+    },
+    {
+      "item_code": "13890",
+      "item_name": "Ford F150 VIN A33530"
+    },
+    {
+      "item_code": "13900",
+      "item_name": "Axopar 28 Cabin Wetbar"
+    },
+    {
+      "item_code": "13910",
+      "item_name": "2019 Karavan Trailer"
+    },
+    {
+      "item_code": "13920",
+      "item_name": "Crowline Finseeker 245WA"
+    },
+    {
+      "item_code": "13930",
+      "item_name": "2026 Sea Fox 268 Commander"
+    },
+    {
+      "item_code": "14050",
+      "item_name": "Accumulated Depreciation"
+    },
+    {
+      "item_code": "20000",
+      "item_name": "Accounts Payable (A/P)"
+    },
+    {
+      "item_code": "20500",
+      "item_name": "Bank of America CC - 4672"
+    },
+    {
+      "item_code": "21000",
+      "item_name": "Bank of America CC - 7881"
+    },
+    {
+      "item_code": "21500",
+      "item_name": "Capital One CC - 1466"
+    },
+    {
+      "item_code": "22000",
+      "item_name": "Payroll Clearing"
+    },
+    {
+      "item_code": "22050",
+      "item_name": "Payroll Liability"
+    },
+    {
+      "item_code": "22100",
+      "item_name": "Headway Capital LOC"
+    },
+    {
+      "item_code": "22150",
+      "item_name": "Northpoint LOC"
+    },
+    {
+      "item_code": "22250",
+      "item_name": "Accrued Payroll"
+    },
+    {
+      "item_code": "22500",
+      "item_name": "Accrued Interest"
+    },
+    {
+      "item_code": "22750",
+      "item_name": "Accrued Expenses"
+    },
+    {
+      "item_code": "23000",
+      "item_name": "Unearned Revenue"
+    },
+    {
+      "item_code": "23250",
+      "item_name": "Due to Carefree Newport"
+    },
+    {
+      "item_code": "23500",
+      "item_name": "Insurance Payable"
+    },
+    {
+      "item_code": "23550",
+      "item_name": "QuickBooks Credit Line"
+    },
+    {
+      "item_code": "23560",
+      "item_name": "QuickBooks Credit Line 11/03"
+    },
+    {
+      "item_code": "23570",
+      "item_name": "QuickBooks Credit Line 11/24"
+    },
+    {
+      "item_code": "23580",
+      "item_name": "QuickBooks Credit Line 12/05"
+    },
+    {
+      "item_code": "24000",
+      "item_name": "ST - 2021 Crownline 255 XSS Loan"
+    },
+    {
+      "item_code": "24025",
+      "item_name": "ST - Axopar 28 Moorea Loan"
+    },
+    {
+      "item_code": "24026",
+      "item_name": "BTL Home Builders"
+    },
+    {
+      "item_code": "24027",
+      "item_name": "Loanmaker Inc."
+    },
+    {
+      "item_code": "24050",
+      "item_name": "ST - Boston Whaler Loan"
+    },
+    {
+      "item_code": "24075",
+      "item_name": "ST - Duffy 22 Loan"
+    },
+    {
+      "item_code": "24100",
+      "item_name": "ST - 2020 Monterey Loan"
+    },
+    {
+      "item_code": "24125",
+      "item_name": "ST - Cobia24CC Loan"
+    },
+    {
+      "item_code": "24150",
+      "item_name": "ST - Sea Ray Loan"
+    },
+    {
+      "item_code": "24175",
+      "item_name": "ST - Yamaha 242 Loan"
+    },
+    {
+      "item_code": "24200",
+      "item_name": "ST - Aloha 26 Club Loan"
+    },
+    {
+      "item_code": "24225",
+      "item_name": "ST - Manitou Aurora Loan"
+    },
+    {
+      "item_code": "24250",
+      "item_name": "ST - Seafox 30H021 Loan"
+    },
+    {
+      "item_code": "24275",
+      "item_name": "ST - 2021 Plaman Loan"
+    },
+    {
+      "item_code": "24300",
+      "item_name": "ST - NX Boat Loan"
+    },
+    {
+      "item_code": "24325",
+      "item_name": "ST - Cobalt R6 Loan"
+    },
+    {
+      "item_code": "24330",
+      "item_name": "ST - Ford F150 Loan"
+    },
+    {
+      "item_code": "24350",
+      "item_name": "ST - Credibly Merchant Cash Adv."
+    },
+    {
+      "item_code": "24360",
+      "item_name": "ST - 2025 Aloha 260 Sundeck Loan"
+    },
+    {
+      "item_code": "24370",
+      "item_name": "ST - Axopar 28 Cabin Wetbar Loan"
+    },
+    {
+      "item_code": "24380",
+      "item_name": "ST - CCJ True Loan"
+    },
+    {
+      "item_code": "24390",
+      "item_name": "ST - 2025 Crowline Finseeker"
+    },
+    {
+      "item_code": "24400",
+      "item_name": "ST - 2026 Sea Fox 268 Commander"
+    },
+    {
+      "item_code": "24750",
+      "item_name": "ST - SBA EIDL Loan"
+    },
+    {
+      "item_code": "25000",
+      "item_name": "LT - 2021 Crownline 255 XSS Loan"
+    },
+    {
+      "item_code": "25025",
+      "item_name": "LT - Axopar 28 Moorea Loan"
+    },
+    {
+      "item_code": "25026",
+      "item_name": "BTL Home Builders"
+    },
+    {
+      "item_code": "25027",
+      "item_name": "Loanmaker Inc."
+    },
+    {
+      "item_code": "25050",
+      "item_name": "LT - Boston Whaler Loan"
+    },
+    {
+      "item_code": "25075",
+      "item_name": "LT - Duffy 22 Loan"
+    },
+    {
+      "item_code": "25100",
+      "item_name": "LT - 2020 Monterey M4 Loan"
+    },
+    {
+      "item_code": "25125",
+      "item_name": "LT - Cobia 24CC Loan"
+    },
+    {
+      "item_code": "25150",
+      "item_name": "LT - Sea Ray Loan"
+    },
+    {
+      "item_code": "25175",
+      "item_name": "LT - Yamaha 242 Loan"
+    },
+    {
+      "item_code": "25200",
+      "item_name": "LT - Aloha 26 Club Loan"
+    },
+    {
+      "item_code": "25225",
+      "item_name": "LT - Manitou Aurora Loan"
+    },
+    {
+      "item_code": "25250",
+      "item_name": "LT - Seafox 30H021 Loan"
+    },
+    {
+      "item_code": "25275",
+      "item_name": "LT - 2021 Plaman Loan"
+    },
+    {
+      "item_code": "25300",
+      "item_name": "LT - NX Boat Loan"
+    },
+    {
+      "item_code": "25325",
+      "item_name": "LT - Cobalt R6 Loan"
+    },
+    {
+      "item_code": "25330",
+      "item_name": "LT - Ford F150 Loan"
+    },
+    {
+      "item_code": "25360",
+      "item_name": "LT - 2025 Aloha 260 Sundeck Loan"
+    },
+    {
+      "item_code": "25370",
+      "item_name": "LT - Axopar 28 Cabin Wetbar Loan"
+    },
+    {
+      "item_code": "25380",
+      "item_name": "LT - CCJ True Loan"
+    },
+    {
+      "item_code": "25390",
+      "item_name": "LT - 2025 Crowline Finseeker"
+    },
+    {
+      "item_code": "25400",
+      "item_name": "LT - 2026 Sea Fox 268 Commander"
+    },
+    {
+      "item_code": "29750",
+      "item_name": "LT - SBA EIDL Loan"
+    },
+    {
+      "item_code": "29850",
+      "item_name": "Due to Partner - Roman"
+    },
+    {
+      "item_code": "29950",
+      "item_name": "Due to Partner - Yanakiev"
+    },
+    {
+      "item_code": "30000",
+      "item_name": "Partner Contribution - Roman"
+    },
+    {
+      "item_code": "31000",
+      "item_name": "Partner Contribution - Yanakiev"
+    },
+    {
+      "item_code": "38000",
+      "item_name": "Retained Earnings"
+    }
+  ]
+}
