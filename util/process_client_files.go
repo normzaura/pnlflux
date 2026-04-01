@@ -192,7 +192,20 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 
 		fmt.Printf("[MATCH] %s\n", colA)
 
-		// Determine if this is a code-6 row (expense account).
+		// Skip rows where every month cell is empty — nothing to evaluate.
+		allEmpty := true
+		for _, col := range monthCols {
+			if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
+				allEmpty = false
+				break
+			}
+		}
+		if allEmpty {
+			fmt.Printf("  -> all month cells empty, skipping\n")
+			continue
+		}
+
+		// Determine if this is a code-5 row (expense account).
 		// When it is, normalize each month's value against total income before comparison.
 		itemCode := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
 		var divisorCells []string
