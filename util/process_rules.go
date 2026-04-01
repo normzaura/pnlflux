@@ -14,7 +14,11 @@ func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []stri
 		return nil
 	}
 	lastCol := monthCols[len(monthCols)-1]
-	if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) != "" {
+	if lastCol >= len(cells) {
+		return nil
+	}
+	v := strings.TrimSpace(cells[lastCol])
+	if v != "" && v != "0" && v != "0.00" {
 		return nil
 	}
 	cellName, err := excelize.CoordinatesToCellName(lastCol+1, rowNum)
@@ -85,7 +89,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 		return nil
 	}
 	lastVal, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[lastCol]), ",", ""), 64)
-	if err != nil {
+	if err != nil || lastVal == 0 {
 		return nil
 	}
 
