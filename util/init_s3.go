@@ -15,9 +15,11 @@ func NewS3Client(ctx context.Context, bucket string) (*S3Client, error) {
 	if err != nil {
 		return nil, fmt.Errorf("load aws config: %w", err)
 	}
+	client := s3.NewFromConfig(cfg)
 	return &S3Client{
-		client: s3.NewFromConfig(cfg),
-		bucket: bucket,
-		region: cfg.Region,
+		client:        client,
+		presignClient: s3.NewPresignClient(client),
+		bucket:        bucket,
+		region:        cfg.Region,
 	}, nil
 }

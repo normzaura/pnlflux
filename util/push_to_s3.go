@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
@@ -12,9 +13,10 @@ import (
 
 // S3Client wraps an S3 client, target bucket, and region.
 type S3Client struct {
-	client *s3.Client
-	bucket string
-	region string
+	client        *s3.Client
+	presignClient *s3.PresignClient
+	bucket        string
+	region        string
 }
 
 // PushToS3 uploads data to the configured S3 bucket under the given key.
@@ -36,8 +38,14 @@ func (c *S3Client) PushToS3(ctx context.Context, key string, data []byte) (strin
 	if err != nil {
 		return "", fmt.Errorf("s3 put object %q: %w", key, err)
 	}
-	url := fmt.Sprintf("https://%s.s3.%s.amazonaws.com/%s", c.bucket, c.region, key)
-	return url, nil
+	presigned, err := c.presignClient.PresignGetObject(ctx, &s3.GetObjectInput{
+		Bucket: aws.String(c.bucket),
+		Key:    aws.String(key),
+	}, s3.WithPresignExpires(7*24*time.Hour))
+	if err != nil {
+		return "", fmt.Errorf("presign %q: %w", key, err)
+	}
+	return presigned.URL, nil
 }
 
 // objectExists returns true if the key exists in the bucket.
