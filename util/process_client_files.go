@@ -171,6 +171,7 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 	}
 
 	redStyleCache := map[int]int{}
+	yellowStyleCache := map[int]int{}
 
 	for row := headerExcelRow + 1; row <= maxRow; row++ {
 		cells := grid[row-1]
@@ -279,7 +280,7 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 				}
 			}
 
-			if err := detectFluctuation(f, sheetName, row, cells, monthCols, threshold, divisorCells, redStyleCache); err != nil {
+			if err := detectFluctuation(f, sheetName, row, cells, monthCols, threshold, divisorCells, yellowStyleCache); err != nil {
 				return nil, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
 			}
 		}
