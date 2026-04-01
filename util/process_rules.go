@@ -101,12 +101,13 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 	}
 	var previous []colVal
 	for _, col := range monthCols[:len(monthCols)-1] {
-		if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
-			continue
-		}
-		v, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
-		if err != nil {
-			continue
+		var v float64
+		if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
+			parsed, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
+			if err != nil {
+				parsed = 0
+			}
+			v = parsed
 		}
 		nv, ok := normalizeByDivisor(v, col, divisorCells)
 		if !ok {
