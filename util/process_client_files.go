@@ -155,6 +155,8 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 
 	// Pre-scan for the "Total Income" row to use as divisor for code-5 rows.
 	// This row always appears above any code-5 item rows in the sheet.
+	// Total Income cells may contain cell-reference formulas (e.g. "(B7)+(B8)"), so
+	// we evaluate them with CalcCellValue rather than relying on the grid values.
 	var totalCells []string
 	for row := headerExcelRow + 1; row <= maxRow; row++ {
 		if row-1 >= len(grid) {
@@ -165,7 +167,20 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 			continue
 		}
 		if strings.EqualFold(strings.TrimSpace(c[0]), "total income") {
-			totalCells = c
+			evaluated := make([]string, len(c))
+			for i, v := range c {
+				evaluated[i] = v
+				if v == "" {
+					cellName, err := excelize.CoordinatesToCellName(i+1, row)
+					if err != nil {
+						continue
+					}
+					if calc, err := f.CalcCellValue(sheetName, cellName); err == nil && calc != "" {
+						evaluated[i] = calc
+					}
+				}
+			}
+			totalCells = evaluated
 			break
 		}
 	}
