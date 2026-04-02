@@ -22,16 +22,28 @@ func main() {
 	pnlfluxHandler.HttpClient = &http.Client{Timeout: 10 * time.Second}
 	pnlfluxHandler.Tokens = util.NewTokenProvider(pnlfluxHandler.HttpClient, cfg.DoubleBase+"/oauth/token", cfg.ClientID, cfg.ClientSecret)
 
-	categoriesFile := "categories_index.xlsx"
+	var categoryNames map[string]float64
 	if strings.EqualFold(os.Getenv("TEST"), "true") {
-		categoriesFile = "categories_index_test.xlsx"
-		log.Println("TEST mode: using categories_index_test.xlsx")
-	}
-	categoryNames, err := util.LoadCategoryNamesFromXLSX(categoriesFile)
-	if err != nil {
-		log.Fatalf("failed to load category names from xlsx: %v", err)
+		log.Println("TEST mode: using categories_index + categories_index_removed with random thresholds")
+		var err error
+		categoryNames, err = util.LoadCategoryNamesTestMode()
+		if err != nil {
+			log.Fatalf("failed to load test category names: %v", err)
+		}
+	} else {
+		var err error
+		categoryNames, err = util.LoadCategoryNamesFromXLSX("categories_index.xlsx")
+		if err != nil {
+			log.Fatalf("failed to load category names from xlsx: %v", err)
+		}
 	}
 	pnlfluxHandler.CategoryNames = categoryNames
+
+	specialTerms, err := util.LoadSpecialTermsFromXLSX("special_terms.xlsx")
+	if err != nil {
+		log.Fatalf("failed to load special terms from xlsx: %v", err)
+	}
+	pnlfluxHandler.SpecialTerms = specialTerms
 
 	s3Client, err := util.NewS3Client(context.Background(), cfg.S3Bucket)
 	if err != nil {

@@ -24,6 +24,7 @@ var (
 	DoubleBase    string
 	Tokens        *util.TokenProvider
 	CategoryNames map[string]float64
+	SpecialTerms  map[string]float64
 	S3            *util.S3Client
 )
 
@@ -131,7 +132,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		"zapData_attachment_count", len(files.TaskAttachments),
 	)
 
-	results, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames)
+	results, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return

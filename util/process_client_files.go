@@ -6,10 +6,12 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/rand"
 	"net/http"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/xuri/excelize/v2"
 )
@@ -67,9 +69,76 @@ func LoadCategoryNamesFromXLSX(xlsxPath string) (map[string]float64, error) {
 	return categories, nil
 }
 
+// LoadCategoryNamesTestMode loads categories_index.xlsx and categories_index_removed.xlsx,
+// assigning each entry a random threshold between 0 and 25 (neither file has thresholds populated).
+func LoadCategoryNamesTestMode() (map[string]float64, error) {
+	categories := map[string]float64{}
+	for _, path := range []string{"categories_index.xlsx", "categories_index_removed.xlsx"} {
+		f, err := excelize.OpenFile(path)
+		if err != nil {
+			return nil, fmt.Errorf("open %s: %w", path, err)
+		}
+		for _, sheet := range f.GetSheetList() {
+			rows, err := f.GetRows(sheet)
+			if err != nil {
+				f.Close()
+				return nil, fmt.Errorf("get rows %s/%s: %w", path, sheet, err)
+			}
+			for i, row := range rows {
+				if i == 0 {
+					continue
+				}
+				if len(row) == 0 || strings.TrimSpace(row[0]) == "" {
+					continue
+				}
+				name := strings.ToLower(strings.TrimSpace(row[0]))
+				categories[name] = math.Round(rand.Float64()*25*10) / 10
+			}
+		}
+		f.Close()
+	}
+	return categories, nil
+}
+
+// LoadSpecialTermsFromXLSX reads special_terms.xlsx and returns a map of
+// lowercase term → threshold. Rows whose column A contains a matching term
+// (substring) take priority over categories_index matches during processing.
+func LoadSpecialTermsFromXLSX(xlsxPath string) (map[string]float64, error) {
+	f, err := excelize.OpenFile(xlsxPath)
+	if err != nil {
+		return nil, fmt.Errorf("open %s: %w", xlsxPath, err)
+	}
+	defer f.Close()
+
+	terms := map[string]float64{}
+	for _, sheet := range f.GetSheetList() {
+		rows, err := f.GetRows(sheet)
+		if err != nil {
+			return nil, fmt.Errorf("get rows %s/%s: %w", xlsxPath, sheet, err)
+		}
+		for i, row := range rows {
+			if i == 0 {
+				continue // skip header
+			}
+			if len(row) == 0 || strings.TrimSpace(row[0]) == "" {
+				continue
+			}
+			term := strings.ToLower(strings.TrimSpace(row[0]))
+			var threshold float64
+			if len(row) >= 2 && strings.TrimSpace(row[1]) != "" {
+				if v, err := strconv.ParseFloat(strings.TrimSpace(row[1]), 64); err == nil {
+					threshold = v
+				}
+			}
+			terms[term] = threshold
+		}
+	}
+	return terms, nil
+}
+
 // DownloadAndProcess downloads each xlsx attachment for the task, runs ProcessFinancials
 // on it, and returns a map of filename → processed bytes.
-func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64) (map[string][]byte, error) {
+func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64, specialTerms map[string]float64) (map[string][]byte, error) {
 	results := map[string][]byte{}
 	for _, a := range attachments {
 		if !strings.HasSuffix(strings.ToLower(a.FileName), ".xlsx") {
@@ -91,7 +160,7 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 		if resp.StatusCode != http.StatusOK {
 			return nil, fmt.Errorf("download %s: unexpected status %d", a.FileName, resp.StatusCode)
 		}
-		processed, err := ProcessFinancials(data, categoryNames)
+		processed, err := ProcessFinancials(data, categoryNames, specialTerms)
 		if err != nil {
 			return nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
@@ -106,7 +175,7 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 //   - highlights the last month cell red if it falls outside avg±threshold
 //
 // Rows not matching any category are skipped entirely.
-func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, error) {
+func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTerms map[string]float64) ([]byte, error) {
 	f, err := excelize.OpenReader(bytes.NewReader(data))
 	if err != nil {
 		return nil, fmt.Errorf("open xlsx: %w", err)
@@ -151,6 +220,25 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 	headerExcelRow, monthCols := findHeaderAndMonthCols(rawRows, maxRow)
 	if headerExcelRow == -1 || len(monthCols) == 0 {
 		return nil, fmt.Errorf("could not find month column headers in first 10 rows")
+	}
+
+	// Parse month/year from each header cell for the business days row inserted later.
+	type monthInfo struct {
+		col   int // 1-based Excel column
+		year  int
+		month time.Month
+	}
+	var parsedMonths []monthInfo
+	headerRow := rawRows[headerExcelRow-1]
+	for _, col := range monthCols {
+		if col >= len(headerRow) {
+			continue
+		}
+		t, err := time.Parse("Jan 2006", strings.TrimSpace(headerRow[col]))
+		if err != nil {
+			continue
+		}
+		parsedMonths = append(parsedMonths, monthInfo{col: col + 1, year: t.Year(), month: t.Month()})
 	}
 
 	// Pre-scan for the "Total Income" row to use as divisor for code-5 rows.
@@ -201,7 +289,18 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 
 		// Filter by categories_index.xlsx: match full column A value.
 		threshold, matched := categoryNames[strings.ToLower(colA)]
-		// stripped := strings.ToLower(stripCodePrefix(colA)); threshold, matched = categoryNames[stripped]
+
+		// Special terms override: if column A contains any term from special_terms.xlsx,
+		// use that threshold instead (substring match, takes priority over categories_index).
+		colALower := strings.ToLower(colA)
+		for term, termThreshold := range specialTerms {
+			if strings.Contains(colALower, term) {
+				threshold = termThreshold
+				matched = true
+				break
+			}
+		}
+
 		if len(categoryNames) > 0 && !matched {
 			continue
 		}
@@ -221,11 +320,11 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 			continue
 		}
 
-		// Determine if this is a code-5 row (expense account).
-		// When it is, normalize each month's value against total income before comparison.
+		// Determine if this row should normalize against total income.
+		// Code-5 rows and rows matching 'gross profit' both divide by total income.
 		itemCode := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
 		var divisorCells []string
-		if strings.HasPrefix(itemCode, "5") && totalCells != nil {
+		if totalCells != nil && (strings.HasPrefix(itemCode, "5") || strings.Contains(colALower, "gross profit")) {
 			divisorCells = totalCells
 		}
 
@@ -301,11 +400,46 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64) ([]byte, e
 		}
 	}
 
+	// Insert the business days row directly above the month header row.
+	if err := f.InsertRows(sheetName, headerExcelRow, 1); err != nil {
+		return nil, fmt.Errorf("insert business days row: %w", err)
+	}
+	boldStyle, err := f.NewStyle(&excelize.Style{Font: &excelize.Font{Bold: true}})
+	if err != nil {
+		return nil, fmt.Errorf("create bold style: %w", err)
+	}
+	labelCell, _ := excelize.CoordinatesToCellName(1, headerExcelRow)
+	if err := f.SetCellValue(sheetName, labelCell, "Business Days"); err != nil {
+		return nil, fmt.Errorf("set business days label: %w", err)
+	}
+	if err := f.SetCellStyle(sheetName, labelCell, labelCell, boldStyle); err != nil {
+		return nil, fmt.Errorf("set bold style on business days label: %w", err)
+	}
+	for _, m := range parsedMonths {
+		cellName, _ := excelize.CoordinatesToCellName(m.col, headerExcelRow)
+		if err := f.SetCellValue(sheetName, cellName, workdaysInMonth(m.year, m.month)); err != nil {
+			return nil, fmt.Errorf("set workdays %s: %w", cellName, err)
+		}
+	}
+
 	var buf bytes.Buffer
 	if err := f.Write(&buf); err != nil {
 		return nil, fmt.Errorf("write xlsx: %w", err)
 	}
 	return buf.Bytes(), nil
+}
+
+// workdaysInMonth returns the number of Mon–Fri days in the given month and year.
+func workdaysInMonth(year int, month time.Month) int {
+	count := 0
+	d := time.Date(year, month, 1, 0, 0, 0, 0, time.UTC)
+	for d.Month() == month {
+		if wd := d.Weekday(); wd != time.Saturday && wd != time.Sunday {
+			count++
+		}
+		d = d.AddDate(0, 0, 1)
+	}
+	return count
 }
 
 // parseDimension parses a range like "A1:N74" and returns (minRow, maxRow, maxCol, error).
