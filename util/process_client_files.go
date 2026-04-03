@@ -103,7 +103,9 @@ func LoadCategoryNamesTestMode() (map[string]float64, error) {
 // LoadSpecialTermsFromXLSX reads special_terms.xlsx and returns a map of
 // lowercase term → threshold. Rows whose column A contains a matching term
 // (substring) take priority over categories_index matches during processing.
-func LoadSpecialTermsFromXLSX(xlsxPath string) (map[string]float64, error) {
+// When randomThresholds is true, each entry is assigned a random value 0–25
+// instead of reading col B (used in TEST mode).
+func LoadSpecialTermsFromXLSX(xlsxPath string, randomThresholds bool) (map[string]float64, error) {
 	f, err := excelize.OpenFile(xlsxPath)
 	if err != nil {
 		return nil, fmt.Errorf("open %s: %w", xlsxPath, err)
@@ -125,7 +127,9 @@ func LoadSpecialTermsFromXLSX(xlsxPath string) (map[string]float64, error) {
 			}
 			term := strings.ToLower(strings.TrimSpace(row[0]))
 			var threshold float64
-			if len(row) >= 2 && strings.TrimSpace(row[1]) != "" {
+			if randomThresholds {
+				threshold = math.Round(rand.Float64()*25*10) / 10
+			} else if len(row) >= 2 && strings.TrimSpace(row[1]) != "" {
 				if v, err := strconv.ParseFloat(strings.TrimSpace(row[1]), 64); err == nil {
 					threshold = v
 				}
@@ -136,37 +140,73 @@ func LoadSpecialTermsFromXLSX(xlsxPath string) (map[string]float64, error) {
 	return terms, nil
 }
 
-// DownloadAndProcess downloads each xlsx attachment for the task, runs ProcessFinancials
-// on it, and returns a map of filename → processed bytes.
-func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64, specialTerms map[string]float64) (map[string][]byte, error) {
-	results := map[string][]byte{}
-	for _, a := range attachments {
+// DownloadAndProcess downloads xlsx attachments for the task.
+// If two files are attached, the file whose name contains "financials" is
+// processed with ProcessFinancials; the other is loaded via LoadTBMatch.
+// The second return value contains the TB Match rows (nil when only one file).
+func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64, specialTerms map[string]float64) (map[string][]byte, [][]string, error) {
+	// Separate financials file from the TB workbook when two files are present.
+	var financialsAttachments []Attachment
+	var tbAttachment *Attachment
+
+	for i, a := range attachments {
 		if !strings.HasSuffix(strings.ToLower(a.FileName), ".xlsx") {
 			continue
 		}
-		req, err := http.NewRequestWithContext(ctx, http.MethodGet, a.DownloadURL, nil)
-		if err != nil {
-			return nil, fmt.Errorf("build request %s: %w", a.FileName, err)
+		if len(attachments) == 2 && !strings.Contains(strings.ToLower(a.FileName), "financials") {
+			tbAttachment = &attachments[i]
+		} else {
+			financialsAttachments = append(financialsAttachments, a)
 		}
-		resp, err := httpClient.Do(req)
+	}
+
+	// Download and parse the TB Match workbook if present.
+	var tbRows [][]string
+	if tbAttachment != nil {
+		data, err := downloadAttachment(ctx, httpClient, *tbAttachment)
 		if err != nil {
-			return nil, fmt.Errorf("download %s: %w", a.FileName, err)
+			return nil, nil, fmt.Errorf("download %s: %w", tbAttachment.FileName, err)
 		}
-		data, err := io.ReadAll(resp.Body)
-		resp.Body.Close()
+		tbRows, err = LoadTBMatch(data)
 		if err != nil {
-			return nil, fmt.Errorf("read body %s: %w", a.FileName, err)
+			return nil, nil, fmt.Errorf("load tb match %s: %w", tbAttachment.FileName, err)
 		}
-		if resp.StatusCode != http.StatusOK {
-			return nil, fmt.Errorf("download %s: unexpected status %d", a.FileName, resp.StatusCode)
-		}
-		processed, err := ProcessFinancials(data, categoryNames, specialTerms)
+	}
+
+	// Download and process each financials file.
+	results := map[string][]byte{}
+	for _, a := range financialsAttachments {
+		data, err := downloadAttachment(ctx, httpClient, a)
 		if err != nil {
-			return nil, fmt.Errorf("process %s: %w", a.FileName, err)
+			return nil, nil, fmt.Errorf("download %s: %w", a.FileName, err)
+		}
+		processed, err := ProcessFinancials(data, categoryNames, specialTerms, tbRows)
+		if err != nil {
+			return nil, nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
 		results[a.FileName] = processed
 	}
-	return results, nil
+	return results, tbRows, nil
+}
+
+func downloadAttachment(ctx context.Context, httpClient *http.Client, a Attachment) ([]byte, error) {
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, a.DownloadURL, nil)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	data, err := io.ReadAll(resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("unexpected status %d", resp.StatusCode)
+	}
+	return data, nil
 }
 
 // ProcessFinancials opens an xlsx file, finds the Income Statement / Profit & Loss sheet,
@@ -175,7 +215,7 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 //   - highlights the last month cell red if it falls outside avg±threshold
 //
 // Rows not matching any category are skipped entirely.
-func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTerms map[string]float64) ([]byte, error) {
+func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTerms map[string]float64, tbRows [][]string) ([]byte, error) {
 	f, err := excelize.OpenReader(bytes.NewReader(data))
 	if err != nil {
 		return nil, fmt.Errorf("open xlsx: %w", err)
@@ -400,6 +440,13 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 		}
 	}
 
+	// Reconcile TB Match against the Balance Sheet tab.
+	if len(tbRows) > 0 {
+		if err := reconcileTBMatch(f, tbRows); err != nil {
+			return nil, fmt.Errorf("reconcile tb match: %w", err)
+		}
+	}
+
 	// Insert the business days row directly above the month header row.
 	if err := f.InsertRows(sheetName, headerExcelRow, 1); err != nil {
 		return nil, fmt.Errorf("insert business days row: %w", err)
@@ -407,6 +454,10 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 	boldStyle, err := f.NewStyle(&excelize.Style{Font: &excelize.Font{Bold: true}})
 	if err != nil {
 		return nil, fmt.Errorf("create bold style: %w", err)
+	}
+	intStyle, err := f.NewStyle(&excelize.Style{NumFmt: 1}) // 1 = "0" (plain integer)
+	if err != nil {
+		return nil, fmt.Errorf("create integer style: %w", err)
 	}
 	labelCell, _ := excelize.CoordinatesToCellName(1, headerExcelRow)
 	if err := f.SetCellValue(sheetName, labelCell, "Business Days"); err != nil {
@@ -419,6 +470,9 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 		cellName, _ := excelize.CoordinatesToCellName(m.col, headerExcelRow)
 		if err := f.SetCellValue(sheetName, cellName, workdaysInMonth(m.year, m.month)); err != nil {
 			return nil, fmt.Errorf("set workdays %s: %w", cellName, err)
+		}
+		if err := f.SetCellStyle(sheetName, cellName, cellName, intStyle); err != nil {
+			return nil, fmt.Errorf("set integer style %s: %w", cellName, err)
 		}
 	}
 

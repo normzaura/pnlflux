@@ -39,7 +39,7 @@ func main() {
 	}
 	pnlfluxHandler.CategoryNames = categoryNames
 
-	specialTerms, err := util.LoadSpecialTermsFromXLSX("special_terms.xlsx")
+	specialTerms, err := util.LoadSpecialTermsFromXLSX("special_terms.xlsx", strings.EqualFold(os.Getenv("TEST"), "true"))
 	if err != nil {
 		log.Fatalf("failed to load special terms from xlsx: %v", err)
 	}

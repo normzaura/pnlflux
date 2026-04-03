@@ -132,10 +132,13 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		"zapData_attachment_count", len(files.TaskAttachments),
 	)
 
-	results, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
+	results, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return
+	}
+	if tbRows != nil {
+		Logger.Info("loaded TB Match workbook", "client_id", clientID, "doubleTask_id", doubleTaskID, "row_count", len(tbRows))
 	}
 
 	for fileName, data := range results {
