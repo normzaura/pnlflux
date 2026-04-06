@@ -180,7 +180,7 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 		if err != nil {
 			return nil, nil, fmt.Errorf("download %s: %w", a.FileName, err)
 		}
-		processed, err := ProcessFinancials(data, categoryNames, specialTerms, tbRows)
+		processed, err := ProcessFinancials(data, a.FileName, categoryNames, specialTerms, tbRows)
 		if err != nil {
 			return nil, nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
@@ -215,12 +215,18 @@ func downloadAttachment(ctx context.Context, httpClient *http.Client, a Attachme
 //   - highlights the last month cell red if it falls outside avg±threshold
 //
 // Rows not matching any category are skipped entirely.
-func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTerms map[string]float64, tbRows [][]string) ([]byte, error) {
+func ProcessFinancials(data []byte, fileName string, categoryNames map[string]float64, specialTerms map[string]float64, tbRows [][]string) ([]byte, error) {
 	f, err := excelize.OpenReader(bytes.NewReader(data))
 	if err != nil {
 		return nil, fmt.Errorf("open xlsx: %w", err)
 	}
 	defer f.Close()
+
+	log, err := NewProcessLogger(fileName)
+	if err != nil {
+		return nil, fmt.Errorf("create process logger: %w", err)
+	}
+	defer log.Close()
 
 	sheetName, err := findIncomeSheet(f)
 	if err != nil {
@@ -345,7 +351,7 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 			continue
 		}
 
-		fmt.Printf("[MATCH] %s\n", colA)
+		log.LogMatch(row, colA)
 
 		// Skip rows where every month cell is empty — nothing to evaluate.
 		allEmpty := true
@@ -356,7 +362,7 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 			}
 		}
 		if allEmpty {
-			fmt.Printf("  -> all month cells empty, skipping\n")
+			log.LogAllEmpty(row, colA)
 			continue
 		}
 
@@ -372,7 +378,7 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 		if len(monthCols) > 0 {
 			lastCol := monthCols[len(monthCols)-1]
 			if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
-				fmt.Printf("  -> last month cell is empty\n")
+				log.LogEmptyLastMonth(row, colA)
 			}
 		}
 
@@ -381,68 +387,70 @@ func ProcessFinancials(data []byte, categoryNames map[string]float64, specialTer
 		}
 
 		if threshold > 0 {
-			// Compute and print threshold evaluation.
 			if len(monthCols) > 0 {
 				lastCol := monthCols[len(monthCols)-1]
 				if lastCol < len(cells) && strings.TrimSpace(cells[lastCol]) != "" {
 					lastVal, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[lastCol]), ",", ""), 64)
 					if err == nil {
+						var rawVals []float64
+						var normVals []float64
+						var monthHeaders []string
 						var sum float64
-						var count int
 						for _, col := range monthCols[:len(monthCols)-1] {
-							if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
-								continue
+							var v float64
+							if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
+								v, _ = strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
 							}
-							v, parseErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
-							if parseErr != nil {
-								continue
-							}
-							if divisorCells != nil {
-								if col < len(divisorCells) && strings.TrimSpace(divisorCells[col]) != "" {
-									d, dErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[col]), ",", ""), 64)
-									if dErr == nil && d != 0 {
-										v = v / d
-									}
+							rawVals = append(rawVals, v)
+							header := ""
+							for _, m := range parsedMonths {
+								if m.col == col+1 {
+									header = m.month.String()[:3] + " " + fmt.Sprintf("%d", m.year)
+									break
 								}
 							}
-							sum += v
-							count++
+							monthHeaders = append(monthHeaders, header)
+							nv := v
+							if divisorCells != nil && col < len(divisorCells) && strings.TrimSpace(divisorCells[col]) != "" {
+								d, dErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[col]), ",", ""), 64)
+								if dErr == nil && d != 0 {
+									nv = v / d
+								}
+							}
+							normVals = append(normVals, nv)
+							sum += nv
 						}
-						if count > 0 {
-							avg := sum / float64(count)
-							if avg != 0 {
-								effectiveLast := lastVal
-								if divisorCells != nil && lastCol < len(divisorCells) && strings.TrimSpace(divisorCells[lastCol]) != "" {
-									d, dErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[lastCol]), ",", ""), 64)
-									if dErr == nil && d != 0 {
-										effectiveLast = lastVal / d
-									}
-								}
-								pctDiff := math.Abs(effectiveLast-avg) / math.Abs(avg) * 100
-								label := "ok"
-								if pctDiff > threshold {
-									label = "FLAGGED"
-								}
-								if divisorCells != nil {
-									fmt.Printf("  -> (normalized by total) last %.4f vs avg %.4f (%.1f%% diff, threshold %.0f%%) — %s\n", effectiveLast, avg, pctDiff, threshold, label)
-								} else {
-									fmt.Printf("  -> last month %.2f vs avg %.2f (%.1f%% diff, threshold %.0f%%) — %s\n", lastVal, avg, pctDiff, threshold, label)
+						if len(rawVals) > 0 {
+							avg := sum / float64(len(rawVals))
+							effectiveLast := lastVal
+							if divisorCells != nil && lastCol < len(divisorCells) && strings.TrimSpace(divisorCells[lastCol]) != "" {
+								d, dErr := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[lastCol]), ",", ""), 64)
+								if dErr == nil && d != 0 {
+									effectiveLast = lastVal / d
 								}
 							}
+							pctDiff := math.Abs(effectiveLast-avg) / math.Abs(avg) * 100
+							flagged := pctDiff > threshold
+							log.LogFluctuation(row, colA, monthHeaders, rawVals, normVals, divisorCells != nil, avg, lastVal, effectiveLast, pctDiff, threshold, flagged)
 						}
 					}
 				}
+			} else {
+				log.LogNoThreshold(row, colA)
 			}
 
 			if err := detectFluctuation(f, sheetName, row, cells, monthCols, threshold, divisorCells, yellowStyleCache); err != nil {
 				return nil, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
 			}
+		} else {
+			log.LogNoThreshold(row, colA)
 		}
 	}
 
 	// Reconcile TB Match against the Balance Sheet tab.
 	if len(tbRows) > 0 {
-		if err := reconcileTBMatch(f, tbRows); err != nil {
+		log.LogSection("TB Match Reconciliation")
+		if err := reconcileTBMatch(f, tbRows, log); err != nil {
 			return nil, fmt.Errorf("reconcile tb match: %w", err)
 		}
 	}

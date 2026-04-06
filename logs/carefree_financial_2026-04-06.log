@@ -1,0 +1,68 @@
+=== carefree_financial.xlsx processed at 2026-04-06 23:12:28 ===
+
+[ROW 11] MATCH: 51000 Rent
+[ROW 11]   no threshold set — fluctuation check skipped
+[ROW 19] MATCH: Gross Profit
+[ROW 19]   all month cells empty — skipped
+[ROW 22] MATCH: 60001 Officer Wages
+[ROW 22]   no threshold set — fluctuation check skipped
+[ROW 23] MATCH: 60002 Officer Bonus
+[ROW 23]   last month cell is empty — tinted red
+[ROW 23]   no threshold set — fluctuation check skipped
+[ROW 24] MATCH: 60004 Officer Commissions
+[ROW 24]   last month cell is empty — tinted red
+[ROW 24]   no threshold set — fluctuation check skipped
+[ROW 25] MATCH: 60005 Payroll Taxes
+[ROW 25]   no threshold set — fluctuation check skipped
+[ROW 26] MATCH: 60006 Payroll Processing Fees
+[ROW 26]   no threshold set — fluctuation check skipped
+[ROW 36] MATCH: 62000 Business Licenses and Taxes
+[ROW 36]   last month cell is empty — tinted red
+[ROW 36]   no threshold set — fluctuation check skipped
+[ROW 37] MATCH: 62500 Dues & Subscriptions
+[ROW 37]   no threshold set — fluctuation check skipped
+[ROW 38] MATCH: 63000 Insurance
+[ROW 38]   no threshold set — fluctuation check skipped
+[ROW 39] MATCH: 63500 Legal & Accounting Services
+[ROW 39]   no threshold set — fluctuation check skipped
+[ROW 52] MATCH: 83000 Depreciation Expenses
+[ROW 52]   no threshold set — fluctuation check skipped
+
+--- TB Match Reconciliation ---
+[RECONCILE] OK       10000 business adv relationship - 1020                        TB=25944.20  BS=25944.20
+[RECONCILE] OK       11000 accounts receivable                                     TB=0.00  BS=0.00
+[RECONCILE] MISMATCH 11600 prepaid expenses                                        TB=39826.57  BS=39826.63 — cell tinted yellow
+[RECONCILE] OK       13000 axopar suntop 37                                        TB=269900.00  BS=269900.00
+[RECONCILE] OK       13100 beneteau flyer 9                                        TB=263992.78  BS=263992.78
+[RECONCILE] OK       13200 manitou 25 oasis                                        TB=66464.00  BS=66464.00
+[RECONCILE] OK       13400 nx 340 sport coupe                                      TB=272754.50  BS=272754.50
+[RECONCILE] OK       13500 axopar t-top 28                                         TB=140000.00  BS=140000.00
+[RECONCILE] OK       15000 pacific boat club fleet                                 TB=68219.69  BS=68219.69
+[RECONCILE] MISMATCH 15500 accumulated depreciation                                TB=530560.76  BS=530560.90 — cell tinted yellow
+[RECONCILE] OK       17000 goodwill                                                TB=174500.00  BS=174500.00
+[RECONCILE] OK       18000 accumulated amortization                                TB=51357.00  BS=51357.00
+[RECONCILE] OK       21000 accrued expenses                                        TB=3149.75  BS=3149.75
+[RECONCILE] OK       21050 accrued interest                                        TB=794.17  BS=794.17
+[RECONCILE] OK       21100 accrued payroll                                         TB=0.00  BS=0.00
+[RECONCILE] OK       21101 officer wages payable                                   TB=2245.52  BS=2245.52
+[RECONCILE] OK       21102 contractor wages payable                                TB=7930.81  BS=7930.81
+[RECONCILE] OK       21125 unearned revenue                                        TB=442379.08  BS=442379.08
+[RECONCILE] OK       21150 loan from shareholder - ccm integrated                  TB=26221.50  BS=26221.50
+[RECONCILE] OK       21200 loan from shareholder - carlos roman                    TB=55668.06  BS=55668.06
+[RECONCILE] OK       21300 due to/from socal nautical                              TB=53375.07  BS=53375.07
+[RECONCILE] OK       21350 insurance payable                                       TB=31127.18  BS=31127.18
+[RECONCILE] OK       22000 st - axopar suntop 37 loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       22050 st - beneteau flyer 9                                   TB=0.00  BS=0.00
+[RECONCILE] OK       22100 st - manitou 25 oasis loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       22150 st - scott tiernan note                                 TB=5990.53  BS=5990.53
+[RECONCILE] OK       22250 st - nx 340 sport coupe loan                            TB=0.00  BS=0.00
+[RECONCILE] OK       22300 st - axopar t-top 28 loan                               TB=0.00  BS=0.00
+[RECONCILE] OK       23000 lt - axopar suntop 37 loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       23050 lt - beneteau flyer 9                                   TB=0.00  BS=0.00
+[RECONCILE] OK       23100 lt - manitou 25 oasis loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       23250 lt - nx 340 sport coupe loan                            TB=0.00  BS=0.00
+[RECONCILE] OK       23300 lt - axopar t-top 28 loan                               TB=0.00  BS=0.00
+[RECONCILE] OK       30000 paid in capital - ccm                                   TB=300000.00  BS=300000.00
+[RECONCILE] OK       31000 paid in capital - socal nautical                        TB=49823.62  BS=49823.62
+[RECONCILE] OK       32000 shareholder distributions - ccm integrated              TB=21000.00  BS=21000.00
+[RECONCILE] OK       34000 retained earnings                                       TB=794004.76  BS=794004.76
