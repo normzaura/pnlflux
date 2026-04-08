@@ -8,6 +8,27 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
+// parseAmount parses a currency string into a float64.
+// Strips leading "$", commas, and handles parentheses notation for negatives
+// (e.g. "(1,234.56)" → -1234.56).
+func parseAmount(s string) (float64, error) {
+	s = strings.TrimSpace(s)
+	s = strings.ReplaceAll(s, "$", "")
+	s = strings.ReplaceAll(s, ",", "")
+	negative := strings.HasPrefix(s, "(") && strings.HasSuffix(s, ")")
+	if negative {
+		s = s[1 : len(s)-1]
+	}
+	v, err := strconv.ParseFloat(strings.TrimSpace(s), 64)
+	if err != nil {
+		return 0, err
+	}
+	if negative {
+		v = -v
+	}
+	return v, nil
+}
+
 // highlightEmptyCell tints the last month cell red if it is empty.
 func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, styleCache map[int]int) error {
 	if len(monthCols) == 0 {
@@ -65,7 +86,7 @@ func normalizeByDivisor(val float64, col int, divisorCells []string) (float64, b
 	if col >= len(divisorCells) || strings.TrimSpace(divisorCells[col]) == "" {
 		return 0, false
 	}
-	d, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(divisorCells[col]), ",", ""), 64)
+	d, err := parseAmount(divisorCells[col])
 	if err != nil || d == 0 {
 		return 0, false
 	}
@@ -88,7 +109,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 	if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
 		return nil
 	}
-	lastVal, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[lastCol]), ",", ""), 64)
+	lastVal, err := parseAmount(cells[lastCol])
 	if err != nil || lastVal == 0 {
 		return nil
 	}
@@ -107,7 +128,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 	for _, col := range monthCols[:len(monthCols)-1] {
 		var v float64
 		if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
-			parsed, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cells[col]), ",", ""), 64)
+			parsed, err := parseAmount(cells[col])
 			if err != nil {
 				parsed = 0
 			}

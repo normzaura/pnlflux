@@ -132,7 +132,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		"zapData_attachment_count", len(files.TaskAttachments),
 	)
 
-	results, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
+	results, logs, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return
@@ -142,13 +142,26 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 	}
 
 	for fileName, data := range results {
-		key := fmt.Sprintf("processed/%s/%s", cleanClientName(clientName), fileName)
+		folder := fmt.Sprintf("processed/%s", cleanClientName(clientName))
+		key := fmt.Sprintf("%s/%s", folder, fileName)
 		objectURL, err := S3.PushToS3(ctx, key, data)
 		if err != nil {
 			Logger.Error("failed to upload to s3", "client_id", clientID, "file", fileName, "err", err)
 			continue
 		}
 		Logger.Info("uploaded processed file to s3", "client_id", clientID, "doubleTask_id", doubleTaskID, "url", objectURL)
+
+		if !strings.EqualFold(os.Getenv("TEST"), "true") {
+			if logBytes, ok := logs[fileName]; ok && len(logBytes) > 0 {
+				base := strings.TrimSuffix(fileName, ".xlsx")
+				logKey := fmt.Sprintf("%s/%s_log", folder, base)
+				if _, err := S3.PushToS3(ctx, logKey, logBytes); err != nil {
+					Logger.Error("failed to upload log to s3", "client_id", clientID, "file", fileName, "err", err)
+				} else {
+					Logger.Info("uploaded process log to s3", "client_id", clientID, "key", logKey)
+				}
+			}
+		}
 
 		if err := util.PatchTaskSubText(ctx, HttpClient, DoubleBase, Tokens, doubleTaskID, objectURL); err != nil {
 			Logger.Error("failed to patch zapData subtext", "doubleTask_id", doubleTaskID, "err", err)

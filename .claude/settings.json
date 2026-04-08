@@ -7,7 +7,10 @@
       "Bash(mv /var/home/bazzite/Desktop/projects/pnlflux/codeprocess.txt.tmp /var/home/bazzite/Desktop/projects/pnlflux/codeprocess.txt)",
       "Bash(ls financials/carefree*)",
       "Read(//tmp/recon_test/**)",
-      "Bash(go mod:*)"
+      "Bash(go mod:*)",
+      "Bash(TEST=true go run ./cmd/process/main.go financials/carefree_financial.xlsx financials/carefree_workbook.xlsx)",
+      "Bash(TEST=true go run ./cmd/process/main.go financials/griffith_financials.xlsx)",
+      "Bash(TEST=true go run main.go financials/griffith_financials.xlsx)"
     ]
   }
 }

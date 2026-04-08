@@ -107,8 +107,8 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 		}
 		category = strings.ToLower(category)
 
-		debit, _ := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(row[4]), ",", ""), 64)
-		credit, _ := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(row[5]), ",", ""), 64)
+		debit, _ := parseAmount(row[4])
+		credit, _ := parseAmount(row[5])
 		tbValue := math.Abs(debit - credit)
 
 		rowNum, ok := categoryRow[category]
@@ -136,7 +136,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 		if strings.TrimSpace(cellVal) == "" {
 			continue
 		}
-		bsValue, err := strconv.ParseFloat(strings.ReplaceAll(strings.TrimSpace(cellVal), ",", ""), 64)
+		bsValue, err := parseAmount(cellVal)
 		if err != nil {
 			continue
 		}

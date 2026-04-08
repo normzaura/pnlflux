@@ -2,41 +2,62 @@ package util
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
-"strings"
+	"strings"
 	"time"
 )
 
-// ProcessLogger writes detailed per-row calculation logs to a dated file
-// named <inputFileName>_<date>.log inside the logs/ directory.
+const maxLogAgeDays = 7
+
+// ProcessLogger writes detailed per-row calculation logs to both a local dated
+// file and an in-memory buffer. The buffer contents can be retrieved via Bytes()
+// for upload to S3.
 type ProcessLogger struct {
-	w *bufio.Writer
-	f *os.File
+	w   *bufio.Writer
+	f   *os.File
+	buf *bytes.Buffer
 }
 
-// NewProcessLogger creates or appends to a log file for the given input file name.
-// It enforces a FIFO retention of 7 days — any log files older than that are deleted.
+// NewProcessLogger creates a logger that always writes to an in-memory buffer
+// (for S3 upload). When TEST=true it additionally writes to a local dated file
+// with 7-day FIFO retention for local debugging.
 func NewProcessLogger(inputFileName string) (*ProcessLogger, error) {
-	if err := os.MkdirAll("logs", 0755); err != nil {
-		return nil, fmt.Errorf("create logs dir: %w", err)
+	buf := &bytes.Buffer{}
+	var writer io.Writer = buf
+
+	if strings.EqualFold(os.Getenv("TEST"), "true") {
+		if err := os.MkdirAll("logs", 0755); err != nil {
+			return nil, fmt.Errorf("create logs dir: %w", err)
+		}
+		if err := pruneOldLogs("logs", maxLogAgeDays); err != nil {
+			return nil, fmt.Errorf("prune logs: %w", err)
+		}
+		base := strings.TrimSuffix(filepath.Base(inputFileName), filepath.Ext(inputFileName))
+		date := time.Now().Format("2006-01-02")
+		path := filepath.Join("logs", fmt.Sprintf("%s_%s.log", base, date))
+		file, err := os.OpenFile(path, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+		if err != nil {
+			return nil, fmt.Errorf("open log file: %w", err)
+		}
+		writer = io.MultiWriter(file, buf)
+		l := &ProcessLogger{w: bufio.NewWriter(writer), f: file, buf: buf}
+		fmt.Fprintf(l.w, "=== %s processed at %s ===\n\n", inputFileName, time.Now().Format("2006-01-02 15:04:05"))
+		return l, nil
 	}
 
-	if err := pruneOldLogs("logs", 7); err != nil {
-		return nil, fmt.Errorf("prune logs: %w", err)
-	}
-
-	base := strings.TrimSuffix(filepath.Base(inputFileName), filepath.Ext(inputFileName))
-	date := time.Now().Format("2006-01-02")
-	path := filepath.Join("logs", fmt.Sprintf("%s_%s.log", base, date))
-	file, err := os.OpenFile(path, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
-	if err != nil {
-		return nil, fmt.Errorf("open log file: %w", err)
-	}
-	l := &ProcessLogger{w: bufio.NewWriter(file), f: file}
+	l := &ProcessLogger{w: bufio.NewWriter(writer), buf: buf}
 	fmt.Fprintf(l.w, "=== %s processed at %s ===\n\n", inputFileName, time.Now().Format("2006-01-02 15:04:05"))
 	return l, nil
+}
+
+// Bytes returns the full log content written during this session, suitable for upload to S3.
+func (l *ProcessLogger) Bytes() []byte {
+	l.w.Flush()
+	return l.buf.Bytes()
 }
 
 // pruneOldLogs deletes log files in dir whose embedded date is older than maxDays.
@@ -68,10 +89,12 @@ func pruneOldLogs(dir string, maxDays int) error {
 	return nil
 }
 
-// Close flushes buffered writes and closes the underlying file.
+// Close flushes buffered writes and closes the underlying file (if any).
 func (l *ProcessLogger) Close() {
 	l.w.Flush()
-	l.f.Close()
+	if l.f != nil {
+		l.f.Close()
+	}
 }
 
 // LogMatch records that a row's column A matched a category.
