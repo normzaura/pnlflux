@@ -356,11 +356,27 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 		log.LogMatch(row, colA)
 
 		// Skip rows where every month cell is empty — nothing to evaluate.
+		// If all cells are empty, retry with CalcCellValue in case they contain
+		// cell-reference formulas that weren't resolved during grid building.
 		allEmpty := true
 		for _, col := range monthCols {
 			if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
 				allEmpty = false
 				break
+			}
+		}
+		if allEmpty {
+			for _, col := range monthCols {
+				cellName, err := excelize.CoordinatesToCellName(col+1, row)
+				if err != nil {
+					continue
+				}
+				if calc, err := f.CalcCellValue(sheetName, cellName); err == nil && strings.TrimSpace(calc) != "" {
+					if col < len(cells) {
+						cells[col] = calc
+					}
+					allEmpty = false
+				}
 			}
 		}
 		if allEmpty {

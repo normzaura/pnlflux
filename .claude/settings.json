@@ -10,7 +10,8 @@
       "Bash(go mod:*)",
       "Bash(TEST=true go run ./cmd/process/main.go financials/carefree_financial.xlsx financials/carefree_workbook.xlsx)",
       "Bash(TEST=true go run ./cmd/process/main.go financials/griffith_financials.xlsx)",
-      "Bash(TEST=true go run main.go financials/griffith_financials.xlsx)"
+      "Bash(TEST=true go run main.go financials/griffith_financials.xlsx)",
+      "Bash(TEST=true go run main.go financials/carefree_financial.xlsx financials/carefree_workbook.xlsx)"
     ]
   }
 }
