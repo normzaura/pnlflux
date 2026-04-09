@@ -144,7 +144,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 	for fileName, data := range results {
 		folder := fmt.Sprintf("processed/%s", cleanClientName(clientName))
 		key := fmt.Sprintf("%s/%s", folder, fileName)
-		objectURL, err := S3.PushToS3(ctx, key, data)
+		objectURL, err := S3.PushToS3(ctx, key, data, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 		if err != nil {
 			Logger.Error("failed to upload to s3", "client_id", clientID, "file", fileName, "err", err)
 			continue
@@ -155,7 +155,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 			if logBytes, ok := logs[fileName]; ok && len(logBytes) > 0 {
 				base := strings.TrimSuffix(fileName, ".xlsx")
 				logKey := fmt.Sprintf("%s/%s_log", folder, base)
-				if _, err := S3.PushToS3(ctx, logKey, logBytes); err != nil {
+				if _, err := S3.PushToS3(ctx, logKey, logBytes, "text/plain"); err != nil {
 					Logger.Error("failed to upload log to s3", "client_id", clientID, "file", fileName, "err", err)
 				} else {
 					Logger.Info("uploaded process log to s3", "client_id", clientID, "key", logKey)

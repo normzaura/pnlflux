@@ -22,7 +22,7 @@ type S3Client struct {
 // PushToS3 uploads data to the configured S3 bucket under the given key.
 // If an object with the same key already exists, it is renamed to <name>(old).<ext>
 // before uploading. If <name>(old).<ext> also exists, (old1), (old2), etc. are tried.
-func (c *S3Client) PushToS3(ctx context.Context, key string, data []byte) (string, error) {
+func (c *S3Client) PushToS3(ctx context.Context, key string, data []byte, contentType string) (string, error) {
 	if c.objectExists(ctx, key) {
 		if err := c.archiveExisting(ctx, key); err != nil {
 			return "", fmt.Errorf("archive existing %q: %w", key, err)
@@ -33,7 +33,7 @@ func (c *S3Client) PushToS3(ctx context.Context, key string, data []byte) (strin
 		Bucket:      aws.String(c.bucket),
 		Key:         aws.String(key),
 		Body:        bytes.NewReader(data),
-		ContentType: aws.String("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+		ContentType: aws.String(contentType),
 	})
 	if err != nil {
 		return "", fmt.Errorf("s3 put object %q: %w", key, err)

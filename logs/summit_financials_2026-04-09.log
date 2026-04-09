@@ -1,0 +1,655 @@
+=== summit_financials.xlsx processed at 2026-04-09 23:41:00 ===
+
+[ROW 9] MATCH: 40100 Fixed Fee Projects
+[ROW 9]   fluctuation check (threshold 15.6%):
+             Aug 2025: 15817.95
+             Sep 2025: 17849.90
+             Oct 2025: 39630.72
+             Nov 2025: 7806.17
+             Dec 2025: 25346.50
+           average (excl. last month): 21290.25
+           last month: 45036.41
+           % diff: |45036.41 - 21290.25| / |21290.25| * 100 = 111.5354%
+           -> FLAGGED — cell tinted yellow
+[ROW 10] MATCH: 40200 Retainer Projects
+[ROW 10]   fluctuation check (threshold 8.5%):
+             Aug 2025: 35015.79
+             Sep 2025: 82849.61
+             Oct 2025: 73596.29
+             Nov 2025: 45046.41
+             Dec 2025: 61875.90
+           average (excl. last month): 59676.80
+           last month: 70720.17
+           % diff: |70720.17 - 59676.80| / |59676.80| * 100 = 18.5053%
+           -> FLAGGED — cell tinted yellow
+[ROW 11] MATCH: 40300 T&M Projects
+[ROW 11]   fluctuation check (threshold 8.4%):
+             Aug 2025: 68071.75
+             Sep 2025: 77012.50
+             Oct 2025: 142008.73
+             Nov 2025: 32257.50
+             Dec 2025: 42783.99
+           average (excl. last month): 72426.89
+           last month: 53035.50
+           % diff: |53035.50 - 72426.89| / |72426.89| * 100 = 26.7737%
+           -> FLAGGED — cell tinted yellow
+[ROW 15] MATCH: 50000 Cost of Services
+[ROW 15]   all month cells empty — skipped
+[ROW 16] MATCH: 50010 Contracted Labor
+[ROW 16]   fluctuation check (threshold 12.2%):
+             Aug 2025: raw=54290.39  normalized=0.456584
+             Sep 2025: raw=84038.81  normalized=0.472893
+             Oct 2025: raw=117282.39  normalized=0.459506
+             Nov 2025: raw=41380.87  normalized=0.486204
+             Dec 2025: raw=58786.46  normalized=0.452181
+           average (normalized, excl. last month): 0.465474
+           last month: raw=80330.01  normalized=0.475911
+           % diff: |0.475911 - 0.465474| / |0.465474| * 100 = 2.2423%
+           -> OK — within threshold
+[ROW 17] MATCH: 50015 Direct Labor
+[ROW 17]   fluctuation check (threshold 12.5%):
+             Aug 2025: raw=0.00  normalized=0.000000
+             Sep 2025: raw=0.00  normalized=0.000000
+             Oct 2025: raw=2282.50  normalized=0.008943
+             Nov 2025: raw=2510.90  normalized=0.029502
+             Dec 2025: raw=2510.90  normalized=0.019314
+           average (normalized, excl. last month): 0.011552
+           last month: raw=3214.22  normalized=0.019042
+           % diff: |0.019042 - 0.011552| / |0.011552| * 100 = 64.8466%
+           -> FLAGGED — cell tinted yellow
+[ROW 19] MATCH: 50030 Referral Fees
+[ROW 19]   last month cell is empty — tinted red
+[ROW 20] MATCH: 50050 Travel Costs
+[ROW 20]   last month cell is empty — tinted red
+[ROW 23] MATCH: Gross Profit
+[ROW 23]   fluctuation check (threshold 16.9%):
+             Aug 2025: raw=63857.77  normalized=0.537046
+             Sep 2025: raw=93673.20  normalized=0.527107
+             Oct 2025: raw=135090.16  normalized=0.529276
+             Nov 2025: raw=40655.31  normalized=0.477679
+             Dec 2025: raw=68985.79  normalized=0.530634
+           average (normalized, excl. last month): 0.520348
+           last month: raw=85247.85  normalized=0.505047
+           % diff: |0.505047 - 0.520348| / |0.520348| * 100 = 2.9407%
+           -> OK — within threshold
+[ROW 25] MATCH: 60000 Payroll Expenses
+[ROW 25]   all month cells empty — skipped
+[ROW 26] MATCH: 60010 Officer Wages
+[ROW 26]   fluctuation check (threshold 6.3%):
+             Aug 2025: 8400.00
+             Sep 2025: 8700.00
+             Oct 2025: 8360.00
+             Nov 2025: 7912.50
+             Dec 2025: 7912.50
+           average (excl. last month): 8257.00
+           last month: 11862.50
+           % diff: |11862.50 - 8257.00| / |8257.00| * 100 = 43.6660%
+           -> FLAGGED — cell tinted yellow
+[ROW 27] MATCH: 60020 Wages
+[ROW 27]   fluctuation check (threshold 4.7%):
+             Aug 2025: 20642.30
+             Sep 2025: 22124.90
+             Oct 2025: 22442.10
+             Nov 2025: 18345.82
+             Dec 2025: 18345.82
+           average (excl. last month): 20380.19
+           last month: 24096.35
+           % diff: |24096.35 - 20380.19| / |20380.19| * 100 = 18.2342%
+           -> FLAGGED — cell tinted yellow
+[ROW 28] MATCH: 60030 Payroll Taxes
+[ROW 28]   fluctuation check (threshold 7.6%):
+             Aug 2025: 2624.61
+             Sep 2025: 2560.01
+             Oct 2025: 2543.11
+             Nov 2025: 2211.45
+             Dec 2025: 2974.76
+           average (excl. last month): 2582.79
+           last month: 5383.17
+           % diff: |5383.17 - 2582.79| / |2582.79| * 100 = 108.4248%
+           -> FLAGGED — cell tinted yellow
+[ROW 29] MATCH: 60040 401K Match
+[ROW 29]   fluctuation check (threshold 23.0%):
+             Aug 2025: 175.16
+             Sep 2025: 175.16
+             Oct 2025: 175.16
+             Nov 2025: 452.08
+             Dec 2025: -618.88
+           average (excl. last month): 71.74
+           last month: 743.75
+           % diff: |743.75 - 71.74| / |71.74| * 100 = 936.7877%
+           -> FLAGGED — cell tinted yellow
+[ROW 30] MATCH: 60050 Bonus
+[ROW 30]   fluctuation check (threshold 9.7%):
+             Aug 2025: 0.00
+             Sep 2025: 0.00
+             Oct 2025: 0.00
+             Nov 2025: 0.00
+             Dec 2025: 26000.00
+           average (excl. last month): 5200.00
+           last month: 2000.00
+           % diff: |2000.00 - 5200.00| / |5200.00| * 100 = 61.5385%
+           -> FLAGGED — cell tinted yellow
+[ROW 31] MATCH: 60060 Payroll Fees
+[ROW 31]   fluctuation check (threshold 11.7%):
+             Aug 2025: 140.00
+             Sep 2025: 140.00
+             Oct 2025: 300.47
+             Nov 2025: 140.00
+             Dec 2025: 140.00
+           average (excl. last month): 172.09
+           last month: 140.00
+           % diff: |140.00 - 172.09| / |172.09| * 100 = 18.6491%
+           -> FLAGGED — cell tinted yellow
+[ROW 32] MATCH: 60070 Other Benefits
+[ROW 32]   fluctuation check (threshold 4.0%):
+             Aug 2025: 276.92
+             Sep 2025: 138.46
+             Oct 2025: 138.46
+             Nov 2025: 138.46
+             Dec 2025: 207.69
+           average (excl. last month): 180.00
+           last month: 138.46
+           % diff: |138.46 - 180.00| / |180.00| * 100 = 23.0769%
+           -> FLAGGED — cell tinted yellow
+[ROW 34] MATCH: 61000 Advertising & Marketing
+[ROW 34]   all month cells empty — skipped
+[ROW 35] MATCH: 61010 Miscellaneous Marketing
+[ROW 35]   fluctuation check (threshold 22.0%):
+             Aug 2025: 884.00
+             Sep 2025: 159.00
+             Oct 2025: 2739.65
+             Nov 2025: 2466.75
+             Dec 2025: 1282.50
+           average (excl. last month): 1506.38
+           last month: 2110.20
+           % diff: |2110.20 - 1506.38| / |1506.38| * 100 = 40.0842%
+           -> FLAGGED — cell tinted yellow
+[ROW 36] MATCH: 61030 Website
+[ROW 36]   fluctuation check (threshold 16.5%):
+             Aug 2025: 1610.95
+             Sep 2025: 1832.52
+             Oct 2025: 1137.50
+             Nov 2025: 1482.50
+             Dec 2025: 2430.24
+           average (excl. last month): 1698.74
+           last month: 2766.10
+           % diff: |2766.10 - 1698.74| / |1698.74| * 100 = 62.8323%
+           -> FLAGGED — cell tinted yellow
+[ROW 37] MATCH: 61040 Advertising & Sponsorships
+[ROW 37]   fluctuation check (threshold 7.9%):
+             Aug 2025: 1025.01
+             Sep 2025: 644.98
+             Oct 2025: 4225.25
+             Nov 2025: 516.66
+             Dec 2025: 856.64
+           average (excl. last month): 1453.71
+           last month: 1282.55
+           % diff: |1282.55 - 1453.71| / |1453.71| * 100 = 11.7739%
+           -> FLAGGED — cell tinted yellow
+[ROW 38] MATCH: 61045 Content Creation
+[ROW 38]   fluctuation check (threshold 17.9%):
+             Aug 2025: 55.60
+             Sep 2025: 111.20
+             Oct 2025: 0.00
+             Nov 2025: 0.00
+             Dec 2025: 0.00
+           average (excl. last month): 33.36
+           last month: 731.25
+           % diff: |731.25 - 33.36| / |33.36| * 100 = 2091.9964%
+           -> FLAGGED — cell tinted yellow
+[ROW 40] MATCH: 61050 Business Development
+[ROW 40]   all month cells empty — skipped
+[ROW 41] MATCH: 61052 Networking Events - Fees
+[ROW 41]   fluctuation check (threshold 23.9%):
+             Aug 2025: 2069.00
+             Sep 2025: 0.00
+             Oct 2025: 964.80
+             Nov 2025: 535.78
+             Dec 2025: 72.94
+           average (excl. last month): 728.50
+           last month: 549.00
+           % diff: |549.00 - 728.50| / |728.50| * 100 = 24.6401%
+           -> FLAGGED — cell tinted yellow
+[ROW 42] MATCH: 61053 Networking Events - Travel
+[ROW 42]   fluctuation check (threshold 2.6%):
+             Aug 2025: 6142.66
+             Sep 2025: 7.32
+             Oct 2025: 11095.03
+             Nov 2025: 7906.77
+             Dec 2025: 3343.32
+           average (excl. last month): 5699.02
+           last month: 5832.29
+           % diff: |5832.29 - 5699.02| / |5699.02| * 100 = 2.3385%
+           -> OK — within threshold
+[ROW 43] MATCH: 61054 New Ventures
+[ROW 43]   fluctuation check (threshold 19.0%):
+             Aug 2025: 0.00
+             Sep 2025: 503.60
+             Oct 2025: 0.00
+             Nov 2025: 65.00
+             Dec 2025: 5867.50
+           average (excl. last month): 1287.22
+           last month: 10902.28
+           % diff: |10902.28 - 1287.22| / |1287.22| * 100 = 746.9632%
+           -> FLAGGED — cell tinted yellow
+[ROW 45] MATCH: 61500 Office & Other Admin Expenses
+[ROW 45]   all month cells empty — skipped
+[ROW 46] MATCH: 61520 Office Supplies
+[ROW 46]   fluctuation check (threshold 17.5%):
+             Aug 2025: 708.62
+             Sep 2025: 547.64
+             Oct 2025: 265.92
+             Nov 2025: 841.26
+             Dec 2025: 1245.30
+           average (excl. last month): 721.75
+           last month: 779.52
+           % diff: |779.52 - 721.75| / |721.75| * 100 = 8.0045%
+           -> OK — within threshold
+[ROW 49] MATCH: 61550 Software & Apps
+[ROW 49]   fluctuation check (threshold 19.2%):
+             Aug 2025: 1726.75
+             Sep 2025: 1500.31
+             Oct 2025: 1481.31
+             Nov 2025: 1616.26
+             Dec 2025: 2578.11
+           average (excl. last month): 1780.55
+           last month: 3026.44
+           % diff: |3026.44 - 1780.55| / |1780.55| * 100 = 69.9724%
+           -> FLAGGED — cell tinted yellow
+[ROW 51] MATCH: 62000 Travel Expense
+[ROW 51]   all month cells empty — skipped
+[ROW 52] MATCH: 62010 Meals
+[ROW 52]   fluctuation check (threshold 8.1%):
+             Aug 2025: 0.00
+             Sep 2025: 675.33
+             Oct 2025: 0.00
+             Nov 2025: 40.63
+             Dec 2025: 0.00
+           average (excl. last month): 143.19
+           last month: 60.87
+           % diff: |60.87 - 143.19| / |143.19| * 100 = 57.4906%
+           -> FLAGGED — cell tinted yellow
+[ROW 53] MATCH: 62020 Airfare
+[ROW 53]   fluctuation check (threshold 0.7%):
+             Aug 2025: 2758.37
+             Sep 2025: 0.00
+             Oct 2025: 3158.36
+             Nov 2025: 0.00
+             Dec 2025: 0.00
+           average (excl. last month): 1183.35
+           last month: 229.55
+           % diff: |229.55 - 1183.35| / |1183.35| * 100 = 80.6016%
+           -> FLAGGED — cell tinted yellow
+[ROW 54] MATCH: 62030 Hotels
+[ROW 54]   last month cell is empty — tinted red
+[ROW 55] MATCH: 62060 Taxis or shared rides
+[ROW 55]   last month cell is empty — tinted red
+[ROW 56] MATCH: 62070 Parking & Tolls
+[ROW 56]   last month cell is empty — tinted red
+[ROW 57] MATCH: 62080 Meals/Entertainment - EO
+[ROW 57]   fluctuation check (threshold 10.7%):
+             Aug 2025: 0.00
+             Sep 2025: 0.00
+             Oct 2025: 0.00
+             Nov 2025: 0.00
+             Dec 2025: 0.00
+           average (excl. last month): 0.00
+           last month: 0.00
+           % diff: |0.00 - 0.00| / |0.00| * 100 = NaN%
+           -> OK — within threshold
+[ROW 59] MATCH: 63000 Vehicle Expenses
+[ROW 59]   all month cells empty — skipped
+[ROW 60] MATCH: 63010 Lease
+[ROW 60]   fluctuation check (threshold 16.3%):
+             Aug 2025: 819.95
+             Sep 2025: 819.95
+             Oct 2025: 819.95
+             Nov 2025: 819.95
+             Dec 2025: 819.95
+           average (excl. last month): 819.95
+           last month: 819.95
+           % diff: |819.95 - 819.95| / |819.95| * 100 = 0.0000%
+           -> OK — within threshold
+[ROW 61] MATCH: 63020 Gas / Electric Charging
+[ROW 61]   fluctuation check (threshold 18.8%):
+             Aug 2025: 100.00
+             Sep 2025: 183.37
+             Oct 2025: 106.56
+             Nov 2025: 100.00
+             Dec 2025: 100.00
+           average (excl. last month): 117.99
+           last month: 100.00
+           % diff: |100.00 - 117.99| / |117.99| * 100 = 15.2442%
+           -> OK — within threshold
+[ROW 62] MATCH: 63030 General Expenses
+[ROW 62]   fluctuation check (threshold 8.3%):
+             Aug 2025: 229.96
+             Sep 2025: 506.59
+             Oct 2025: 864.11
+             Nov 2025: 49.96
+             Dec 2025: 49.96
+           average (excl. last month): 340.12
+           last month: 49.96
+           % diff: |49.96 - 340.12| / |340.12| * 100 = 85.3109%
+           -> FLAGGED — cell tinted yellow
+[ROW 64] MATCH: 64000 Rent & Utility Expenses
+[ROW 64]   all month cells empty — skipped
+[ROW 65] MATCH: 64010 Rent
+[ROW 65]   fluctuation check (threshold 6.5%):
+             Aug 2025: 1679.09
+             Sep 2025: 1681.69
+             Oct 2025: 1421.08
+             Nov 2025: 1389.28
+             Dec 2025: 1539.51
+           average (excl. last month): 1542.13
+           last month: 1437.13
+           % diff: |1437.13 - 1542.13| / |1542.13| * 100 = 6.8088%
+           -> FLAGGED — cell tinted yellow
+[ROW 66] MATCH: 64020 Utilities
+[ROW 66]   fluctuation check (threshold 16.5%):
+             Aug 2025: 68.55
+             Sep 2025: 84.87
+             Oct 2025: 59.53
+             Nov 2025: 76.93
+             Dec 2025: 92.14
+           average (excl. last month): 76.40
+           last month: 93.28
+           % diff: |93.28 - 76.40| / |76.40| * 100 = 22.0878%
+           -> FLAGGED — cell tinted yellow
+[ROW 67] MATCH: 64030 Telephone
+[ROW 67]   fluctuation check (threshold 11.1%):
+             Aug 2025: 203.94
+             Sep 2025: 325.20
+             Oct 2025: 251.63
+             Nov 2025: 250.61
+             Dec 2025: 250.36
+           average (excl. last month): 256.35
+           last month: 251.34
+           % diff: |251.34 - 256.35| / |256.35| * 100 = 1.9536%
+           -> OK — within threshold
+[ROW 68] MATCH: 64040 Internet
+[ROW 68]   fluctuation check (threshold 0.1%):
+             Aug 2025: 124.94
+             Sep 2025: 170.87
+             Oct 2025: 275.87
+             Nov 2025: 167.88
+             Dec 2025: 108.97
+           average (excl. last month): 169.71
+           last month: 112.72
+           % diff: |112.72 - 169.71| / |169.71| * 100 = 33.5792%
+           -> FLAGGED — cell tinted yellow
+[ROW 69] MATCH: 64050 Repairs and Maintenance
+[ROW 69]   fluctuation check (threshold 5.3%):
+             Aug 2025: 49.11
+             Sep 2025: 43.65
+             Oct 2025: 49.11
+             Nov 2025: 92.11
+             Dec 2025: 81.30
+           average (excl. last month): 63.06
+           last month: 156.94
+           % diff: |156.94 - 63.06| / |63.06| * 100 = 148.8899%
+           -> FLAGGED — cell tinted yellow
+[ROW 71] MATCH: 66000 Insurance Expenses
+[ROW 71]   all month cells empty — skipped
+[ROW 72] MATCH: 66010 Auto Insurance
+[ROW 72]   fluctuation check (threshold 20.1%):
+             Aug 2025: 326.66
+             Sep 2025: 326.66
+             Oct 2025: 326.66
+             Nov 2025: 316.28
+             Dec 2025: 408.28
+           average (excl. last month): 340.91
+           last month: 316.28
+           % diff: |316.28 - 340.91| / |340.91| * 100 = 7.2242%
+           -> OK — within threshold
+[ROW 73] MATCH: 66020 Business Insurance
+[ROW 73]   fluctuation check (threshold 20.1%):
+             Aug 2025: 39.58
+             Sep 2025: 144.58
+             Oct 2025: 39.58
+             Nov 2025: 39.58
+             Dec 2025: 39.58
+           average (excl. last month): 60.58
+           last month: 47.66
+           % diff: |47.66 - 60.58| / |60.58| * 100 = 21.3272%
+           -> FLAGGED — cell tinted yellow
+[ROW 74] MATCH: 66030 Cyber Insurance
+[ROW 74]   fluctuation check (threshold 20.1%):
+             Aug 2025: 227.09
+             Sep 2025: 227.09
+             Oct 2025: 227.09
+             Nov 2025: 227.09
+             Dec 2025: 227.09
+           average (excl. last month): 227.09
+           last month: 310.00
+           % diff: |310.00 - 227.09| / |227.09| * 100 = 36.5098%
+           -> FLAGGED — cell tinted yellow
+[ROW 75] MATCH: 66040 Disability Insurance
+[ROW 75]   fluctuation check (threshold 20.1%):
+             Aug 2025: 170.54
+             Sep 2025: 170.54
+             Oct 2025: 170.54
+             Nov 2025: 170.54
+             Dec 2025: 170.54
+           average (excl. last month): 170.54
+           last month: 170.54
+           % diff: |170.54 - 170.54| / |170.54| * 100 = 0.0000%
+           -> OK — within threshold
+[ROW 76] MATCH: 66060 Liability Insurance
+[ROW 76]   fluctuation check (threshold 20.1%):
+             Aug 2025: 175.25
+             Sep 2025: 175.25
+             Oct 2025: 175.25
+             Nov 2025: 175.25
+             Dec 2025: 175.25
+           average (excl. last month): 175.25
+           last month: 175.25
+           % diff: |175.25 - 175.25| / |175.25| * 100 = 0.0000%
+           -> OK — within threshold
+[ROW 77] MATCH: 66070 Officer Health Insurance
+[ROW 77]   fluctuation check (threshold 20.1%):
+             Aug 2025: 0.00
+             Sep 2025: 17086.86
+             Oct 2025: 1898.54
+             Nov 2025: 1898.54
+             Dec 2025: 1898.54
+           average (excl. last month): 4556.50
+           last month: 2149.43
+           % diff: |2149.43 - 4556.50| / |4556.50| * 100 = 52.8271%
+           -> FLAGGED — cell tinted yellow
+[ROW 78] MATCH: 66080 Worker's Compensation
+[ROW 78]   fluctuation check (threshold 15.1%):
+             Aug 2025: 82.00
+             Sep 2025: 82.00
+             Oct 2025: 82.00
+             Nov 2025: 82.00
+             Dec 2025: 82.00
+           average (excl. last month): 82.00
+           last month: 82.00
+           % diff: |82.00 - 82.00| / |82.00| * 100 = 0.0000%
+           -> OK — within threshold
+[ROW 80] MATCH: 67000 Bank & Other Financing Fees
+[ROW 80]   all month cells empty — skipped
+[ROW 81] MATCH: 67020 Merchant & Bank Fees
+[ROW 81]   fluctuation check (threshold 17.8%):
+             Aug 2025: 76.90
+             Sep 2025: 135.76
+             Oct 2025: 383.99
+             Nov 2025: 81.31
+             Dec 2025: 619.63
+           average (excl. last month): 259.52
+           last month: 122.45
+           % diff: |122.45 - 259.52| / |259.52| * 100 = 52.8164%
+           -> FLAGGED — cell tinted yellow
+[ROW 83] MATCH: 68000 Legal & Professional Fees
+[ROW 83]   all month cells empty — skipped
+[ROW 84] MATCH: 68010 Accounting fees
+[ROW 84]   fluctuation check (threshold 22.8%):
+             Aug 2025: 3758.99
+             Sep 2025: 3717.00
+             Oct 2025: 3740.00
+             Nov 2025: 3873.75
+             Dec 2025: 4004.75
+           average (excl. last month): 3818.90
+           last month: 4533.50
+           % diff: |4533.50 - 3818.90| / |3818.90| * 100 = 18.7123%
+           -> OK — within threshold
+[ROW 85] MATCH: 68020 Consulting
+[ROW 85]   last month cell is empty — tinted red
+[ROW 86] MATCH: 68030 Contractors
+[ROW 86]   fluctuation check (threshold 22.1%):
+             Aug 2025: 3071.25
+             Sep 2025: 3592.00
+             Oct 2025: 6925.96
+             Nov 2025: 6289.00
+             Dec 2025: 3089.00
+           average (excl. last month): 4593.44
+           last month: 1386.67
+           % diff: |1386.67 - 4593.44| / |4593.44| * 100 = 69.8120%
+           -> FLAGGED — cell tinted yellow
+[ROW 87] MATCH: 68040 HR/Recruiting fees
+[ROW 87]   fluctuation check (threshold 9.4%):
+             Aug 2025: 0.00
+             Sep 2025: 0.00
+             Oct 2025: 0.00
+             Nov 2025: 0.00
+             Dec 2025: 0.00
+           average (excl. last month): 0.00
+           last month: 1338.58
+           % diff: |1338.58 - 0.00| / |0.00| * 100 = +Inf%
+           -> FLAGGED — cell tinted yellow
+[ROW 88] MATCH: 68050 IT Services
+[ROW 88]   fluctuation check (threshold 3.9%):
+             Aug 2025: 512.08
+             Sep 2025: 950.79
+             Oct 2025: 1092.44
+             Nov 2025: 1044.97
+             Dec 2025: 3177.97
+           average (excl. last month): 1355.65
+           last month: 2287.97
+           % diff: |2287.97 - 1355.65| / |1355.65| * 100 = 68.7729%
+           -> FLAGGED — cell tinted yellow
+[ROW 89] MATCH: 68060 Legal Fees
+[ROW 89]   last month cell is empty — tinted red
+[ROW 91] MATCH: 69000 Other Operating Expenses
+[ROW 91]   all month cells empty — skipped
+[ROW 92] MATCH: 69010 Seminars & Education
+[ROW 92]   fluctuation check (threshold 22.9%):
+             Aug 2025: 0.00
+             Sep 2025: 0.00
+             Oct 2025: 0.00
+             Nov 2025: 0.00
+             Dec 2025: 0.00
+           average (excl. last month): 0.00
+           last month: 0.00
+           % diff: |0.00 - 0.00| / |0.00| * 100 = NaN%
+           -> OK — within threshold
+[ROW 93] MATCH: 69020 Employee Relations
+[ROW 93]   fluctuation check (threshold 18.8%):
+             Aug 2025: 70.81
+             Sep 2025: 633.73
+             Oct 2025: 607.46
+             Nov 2025: 79.29
+             Dec 2025: 1204.12
+           average (excl. last month): 519.08
+           last month: 24.76
+           % diff: |24.76 - 519.08| / |519.08| * 100 = 95.2300%
+           -> FLAGGED — cell tinted yellow
+[ROW 94] MATCH: 69030 Dues and Subscriptions
+[ROW 94]   fluctuation check (threshold 18.2%):
+             Aug 2025: 406.48
+             Sep 2025: 386.53
+             Oct 2025: 386.53
+             Nov 2025: 886.53
+             Dec 2025: 1116.53
+           average (excl. last month): 636.52
+           last month: 679.45
+           % diff: |679.45 - 636.52| / |636.52| * 100 = 6.7445%
+           -> OK — within threshold
+[ROW 95] MATCH: 69040 QSEHRA
+[ROW 95]   fluctuation check (threshold 19.7%):
+             Aug 2025: 63.65
+             Sep 2025: 30.00
+             Oct 2025: 30.00
+             Nov 2025: 280.00
+             Dec 2025: 30.00
+           average (excl. last month): 86.73
+           last month: 30.00
+           % diff: |30.00 - 86.73| / |86.73| * 100 = 65.4099%
+           -> FLAGGED — cell tinted yellow
+[ROW 100] MATCH: 70000 Other Income
+[ROW 100]   all month cells empty — skipped
+[ROW 101] MATCH: 70010 Miscellaneous Income
+[ROW 101]   last month cell is empty — tinted red
+[ROW 102] MATCH: 70020 Interest earned
+[ROW 102]   fluctuation check (threshold 19.6%):
+             Aug 2025: 10.89
+             Sep 2025: 23.34
+             Oct 2025: 34.22
+             Nov 2025: 46.66
+             Dec 2025: 58.91
+           average (excl. last month): 34.80
+           last month: 424.76
+           % diff: |424.76 - 34.80| / |34.80| * 100 = 1120.4344%
+           -> FLAGGED — cell tinted yellow
+[ROW 106] MATCH: 80000 Other Expenses
+[ROW 106]   all month cells empty — skipped
+[ROW 107] MATCH: 80020 Interest Expense
+[ROW 107]   fluctuation check (threshold 24.4%):
+             Aug 2025: 372.97
+             Sep 2025: 372.96
+             Oct 2025: 233.34
+             Nov 2025: 241.11
+             Dec 2025: 226.04
+           average (excl. last month): 289.28
+           last month: 113.02
+           % diff: |113.02 - 289.28| / |289.28| * 100 = 60.9311%
+           -> FLAGGED — cell tinted yellow
+[ROW 109] MATCH: 91000 Ask My Accountant
+[ROW 109]   fluctuation check (threshold 23.4%):
+             Aug 2025: 0.00
+             Sep 2025: 0.00
+             Oct 2025: 0.00
+             Nov 2025: 0.00
+             Dec 2025: 0.00
+           average (excl. last month): 0.00
+           last month: 0.00
+           % diff: |0.00 - 0.00| / |0.00| * 100 = NaN%
+           -> OK — within threshold
+
+--- TB Match Reconciliation ---
+[RECONCILE] OK       10010 checking - cwb | 0118                                   TB=6784.76  BS=6784.76
+[RECONCILE] OK       10020 checking - paypal bank | c64xw                          TB=0.04  BS=0.04
+[RECONCILE] OK       10030 savings - cwb | 0522                                    TB=0.00  BS=0.00
+[RECONCILE] OK       10040 savings - live oak | 3025                               TB=225360.30  BS=225360.30
+[RECONCILE] OK       10050 checking - beachcities 6427                             TB=135502.75  BS=135502.75
+[RECONCILE] OK       11000 accounts receivable                                     TB=137388.12  BS=137388.12
+[RECONCILE] OK       12009 undeposited funds                                       TB=0.00  BS=0.00
+[RECONCILE] OK       12110 project's prepaid expenses                              TB=0.00  BS=0.00
+[RECONCILE] MISMATCH 12120 prepaid vendors                                         TB=46568.79  BS=47943.79 — discrepancy
+[RECONCILE] OK       12130 prepaid insurance                                       TB=4983.21  BS=4983.21
+[RECONCILE] OK       12210 unbilled ar                                             TB=9586.08  BS=9586.08
+[RECONCILE] OK       12300 state refund receivable                                 TB=0.00  BS=0.00
+[RECONCILE] OK       13010 computers                                               TB=0.00  BS=0.00
+[RECONCILE] OK       14990 accumulated depreciation                                TB=0.00  BS=0.00
+[RECONCILE] MISMATCH 20000 accounts payable                                        TB=93994.64  BS=95494.64 — discrepancy
+[RECONCILE] OK       21010 capital one | 1399                                      TB=23015.51  BS=23015.51
+[RECONCILE] OK       21020 amex amazon  | 1006                                     TB=682.87  BS=682.87
+[RECONCILE] OK       21030 amex business blue | 1001                               TB=1421.82  BS=1421.82
+[RECONCILE] OK       21040 amex delta | 1008                                       TB=3956.94  BS=3956.94
+[RECONCILE] OK       21060 paypal                                                  TB=0.00  BS=0.00
+[RECONCILE] OK       22020 401k liabilities                                        TB=944.32  BS=944.32
+[RECONCILE] OK       22600 unearned revenue                                        TB=514665.21  BS=514665.21
+[RECONCILE] MISMATCH 23010 accrued expenses                                        TB=15825.52  BS=17907.52 — discrepancy
+[RECONCILE] OK       23020 accrued interest                                        TB=0.00  BS=0.00
+[RECONCILE] OK       23030 accrued payroll                                         TB=8289.00  BS=8289.00
+[RECONCILE] OK       23040 ca franchise tax                                        TB=0.00  BS=0.00
+[RECONCILE] OK       24010 amex loan                                               TB=0.00  BS=0.00
+[RECONCILE] OK       24020 commerce west loan 181                                  TB=17500.00  BS=17500.00
+[RECONCILE] OK       24030 headway capital loc                                     TB=0.00  BS=0.00
+[RECONCILE] OK       31000 shareholder equity                                      TB=0.00  BS=0.00
+[RECONCILE] OK       31100 contributions                                           TB=0.00  BS=0.00
+[RECONCILE] MISMATCH 31200 distributions                                           TB=146169.66  BS=20555.00 — discrepancy
+[RECONCILE] OK       31300 krystn business reimbursements                          TB=0.00  BS=0.00
+[RECONCILE] OK       38000 excess distributions                                    TB=154564.00  BS=154564.00
+[RECONCILE] MISMATCH 39000 retained earnings                                       TB=188155.43  BS=62540.77 — discrepancy

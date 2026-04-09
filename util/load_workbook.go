@@ -4,9 +4,11 @@ import (
 	"bytes"
 	"fmt"
 	"math"
+	"os"
 	"strconv"
 	"strings"
-"github.com/xuri/excelize/v2"
+
+	"github.com/xuri/excelize/v2"
 )
 
 const tbMatchSheet = "TB Match"
@@ -81,7 +83,13 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 		}
 	}
 
+	reconThreshold := 0.0
+	if v, err := strconv.ParseFloat(os.Getenv("RECON_THRESHOLD"), 64); err == nil && v >= 0 {
+		reconThreshold = v
+	}
+
 	yellowStyleCache := map[int]int{}
+	greenStyleCache := map[int]int{}
 
 	for i, row := range tbRows {
 		if i <= 1 {
@@ -97,13 +105,12 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 			continue
 		}
 
-		// When the name contains a colon (e.g. "21101 Accrued Payroll:Officer Wages Payable"),
-		// the segment before the colon is the parent account. Strip it and keep only
-		// the digit code + the child name after the colon to match the balance sheet entry.
+		// When the name contains colons (e.g. "12135 Prepaid Expenses:Prepaid Insurance:Health Insurance"),
+		// take the leading digit code and the last colon segment to match the balance sheet entry.
 		category := raw
-		if _, child, found := strings.Cut(raw, ":"); found {
+		if idx := strings.LastIndex(raw, ":"); idx >= 0 {
 			code := strings.SplitN(raw, " ", 2)[0]
-			category = code + " " + strings.TrimSpace(child)
+			category = code + " " + strings.TrimSpace(raw[idx+1:])
 		}
 		category = strings.ToLower(category)
 
@@ -141,14 +148,37 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 			continue
 		}
 
-		match := tbValue == math.Abs(bsValue)
+		match := math.Abs(tbValue-math.Abs(bsValue)) <= reconThreshold
 		log.LogReconcile(category, tbValue, math.Abs(bsValue), match)
 
-		if !match {
-			existingID, err := f.GetCellStyle(bsSheet, cellName)
-			if err != nil {
-				return fmt.Errorf("get cell style %s: %w", cellName, err)
+		existingID, err := f.GetCellStyle(bsSheet, cellName)
+		if err != nil {
+			return fmt.Errorf("get cell style %s: %w", cellName, err)
+		}
+
+		if match {
+			mergedID, ok := greenStyleCache[existingID]
+			if !ok {
+				existing, err := f.GetStyle(existingID)
+				if err != nil {
+					return fmt.Errorf("get style %s: %w", cellName, err)
+				}
+				merged, err := f.NewStyle(&excelize.Style{
+					Border:    existing.Border,
+					Alignment: existing.Alignment,
+					Font:      existing.Font,
+					Fill:      excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
+				})
+				if err != nil {
+					return fmt.Errorf("new green style %s: %w", cellName, err)
+				}
+				greenStyleCache[existingID] = merged
+				mergedID = merged
 			}
+			if err := f.SetCellStyle(bsSheet, cellName, cellName, mergedID); err != nil {
+				return fmt.Errorf("set green style %s: %w", cellName, err)
+			}
+		} else {
 			mergedID, ok := yellowStyleCache[existingID]
 			if !ok {
 				existing, err := f.GetStyle(existingID)
