@@ -52,7 +52,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("read %s: %v", financialPath, err)
 		}
-		processed, _, err := util.ProcessFinancials(data, filepath.Base(financialPath), categoryNames, specialTerms, tbRows)
+		processed, _, _, err := util.ProcessFinancials(data, filepath.Base(financialPath), categoryNames, specialTerms, tbRows)
 		if err != nil {
 			log.Fatalf("process: %v", err)
 		}

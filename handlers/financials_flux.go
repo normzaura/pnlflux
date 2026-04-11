@@ -132,7 +132,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		"zapData_attachment_count", len(files.TaskAttachments),
 	)
 
-	results, logs, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
+	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return
@@ -163,7 +163,12 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 			}
 		}
 
-		if err := util.PatchTaskSubText(ctx, HttpClient, DoubleBase, Tokens, doubleTaskID, objectURL); err != nil {
+		stats := statsMap[fileName]
+		subText := fmt.Sprintf(
+			"Balance Sheet: Inconsistent %d | PNL: Missing %d Flux %d\n%s",
+			stats.Inconsistent, stats.Missing, stats.Flux, objectURL,
+		)
+		if err := util.PatchTaskSubText(ctx, HttpClient, DoubleBase, Tokens, doubleTaskID, subText); err != nil {
 			Logger.Error("failed to patch zapData subtext", "doubleTask_id", doubleTaskID, "err", err)
 		} else {
 			Logger.Info("patched zapData subtext with s3 url", "doubleTask_id", doubleTaskID)

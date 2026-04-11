@@ -30,31 +30,32 @@ func parseAmount(s string) (float64, error) {
 }
 
 // highlightEmptyCell tints the last month cell red if it is empty.
-func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, styleCache map[int]int) error {
+// Returns true if the cell was tinted.
+func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, styleCache map[int]int) (bool, error) {
 	if len(monthCols) == 0 {
-		return nil
+		return false, nil
 	}
 	lastCol := monthCols[len(monthCols)-1]
 	if lastCol >= len(cells) {
-		return nil
+		return false, nil
 	}
 	v := strings.TrimSpace(cells[lastCol])
 	if v != "" && v != "0" && v != "0.00" {
-		return nil
+		return false, nil
 	}
 	cellName, err := excelize.CoordinatesToCellName(lastCol+1, rowNum)
 	if err != nil {
-		return err
+		return false, err
 	}
 	existingID, err := f.GetCellStyle(sheet, cellName)
 	if err != nil {
-		return err
+		return false, err
 	}
 	mergedID, ok := styleCache[existingID]
 	if !ok {
 		existing, err := f.GetStyle(existingID)
 		if err != nil {
-			return err
+			return false, err
 		}
 		rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
 		border := existing.Border
@@ -68,12 +69,12 @@ func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []stri
 			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
 		})
 		if err != nil {
-			return err
+			return false, err
 		}
 		styleCache[existingID] = merged
 		mergedID = merged
 	}
-	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
+	return true, f.SetCellStyle(sheet, cellName, cellName, mergedID)
 }
 
 // normalizeByDivisor divides val by the parsed value of divisorCells[col].
@@ -99,24 +100,25 @@ func normalizeByDivisor(val float64, col int, divisorCells []string) (float64, b
 //
 // When divisorCells is non-nil (code-5 rows), each month value is normalized by the
 // corresponding total income cell via normalizeByDivisor before comparison.
-func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, threshold float64, divisorCells []string, styleCache map[int]int) error {
+// Returns true if the cell was flagged and tinted.
+func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, threshold float64, divisorCells []string, styleCache map[int]int) (bool, error) {
 	if len(monthCols) == 0 {
-		return nil
+		return false, nil
 	}
 
 	// Only evaluate the last month column. If it's empty, skip — it's already flagged by highlightEmptyCell.
 	lastCol := monthCols[len(monthCols)-1]
 	if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
-		return nil
+		return false, nil
 	}
 	lastVal, err := parseAmount(cells[lastCol])
 	if err != nil || lastVal == 0 {
-		return nil
+		return false, nil
 	}
 
 	normLast, ok := normalizeByDivisor(lastVal, lastCol, divisorCells)
 	if !ok {
-		return nil
+		return false, nil
 	}
 
 	// Build average from all previous month columns that have values.
@@ -141,7 +143,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 		previous = append(previous, colVal{col, nv})
 	}
 	if len(previous) == 0 {
-		return nil
+		return false, nil
 	}
 
 	last := colVal{lastCol, normLast}
@@ -153,29 +155,29 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 	avg := sum / float64(len(previous))
 
 	if avg == 0 {
-		return nil
+		return false, nil
 	}
 
 	pctDiff := math.Abs(last.val-avg) / math.Abs(avg) * 100
 	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
 
 	if pctDiff <= threshold {
-		return nil
+		return false, nil
 	}
 
 	cellName, err := excelize.CoordinatesToCellName(last.col+1, rowNum)
 	if err != nil {
-		return err
+		return false, err
 	}
 	existingID, err := f.GetCellStyle(sheet, cellName)
 	if err != nil {
-		return err
+		return false, err
 	}
 	mergedID, ok := styleCache[existingID]
 	if !ok {
 		existing, err := f.GetStyle(existingID)
 		if err != nil {
-			return err
+			return false, err
 		}
 		border := existing.Border
 		if len(border) == 0 {
@@ -188,10 +190,10 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
 		})
 		if err != nil {
-			return err
+			return false, err
 		}
 		styleCache[existingID] = merged
 		mergedID = merged
 	}
-	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
+	return true, f.SetCellStyle(sheet, cellName, cellName, mergedID)
 }

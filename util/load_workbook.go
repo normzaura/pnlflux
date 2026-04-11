@@ -53,21 +53,21 @@ func findBalanceSheet(f *excelize.File) (string, error) {
 // reconcileTBMatch compares each TB Match row's |debit - credit| (columns E and F)
 // against the absolute value of the last month cell for the matching category in
 // the Balance Sheet tab. When they differ, an asterisk is appended to the cell value.
-func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) error {
+func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (int, error) {
 	bsSheet, err := findBalanceSheet(f)
 	if err != nil {
-		return err
+		return 0, err
 	}
 
 	rawRows, err := f.GetRows(bsSheet)
 	if err != nil {
-		return fmt.Errorf("read balance sheet rows: %w", err)
+		return 0, fmt.Errorf("read balance sheet rows: %w", err)
 	}
 
 	maxRow := len(rawRows)
 	headerExcelRow, monthCols := findHeaderAndMonthCols(rawRows, maxRow)
 	if headerExcelRow == -1 || len(monthCols) == 0 {
-		return fmt.Errorf("could not find month headers in balance sheet")
+		return 0, fmt.Errorf("could not find month headers in balance sheet")
 	}
 	lastCol := monthCols[len(monthCols)-1]
 
@@ -88,6 +88,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 		reconThreshold = v
 	}
 
+	inconsistent := 0
 	yellowStyleCache := map[int]int{}
 	greenStyleCache := map[int]int{}
 
@@ -153,7 +154,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 
 		existingID, err := f.GetCellStyle(bsSheet, cellName)
 		if err != nil {
-			return fmt.Errorf("get cell style %s: %w", cellName, err)
+			return 0, fmt.Errorf("get cell style %s: %w", cellName, err)
 		}
 
 		if match {
@@ -161,7 +162,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 			if !ok {
 				existing, err := f.GetStyle(existingID)
 				if err != nil {
-					return fmt.Errorf("get style %s: %w", cellName, err)
+					return 0, fmt.Errorf("get style %s: %w", cellName, err)
 				}
 				merged, err := f.NewStyle(&excelize.Style{
 					Border:    existing.Border,
@@ -170,20 +171,21 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 					Fill:      excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
 				})
 				if err != nil {
-					return fmt.Errorf("new green style %s: %w", cellName, err)
+					return 0, fmt.Errorf("new green style %s: %w", cellName, err)
 				}
 				greenStyleCache[existingID] = merged
 				mergedID = merged
 			}
 			if err := f.SetCellStyle(bsSheet, cellName, cellName, mergedID); err != nil {
-				return fmt.Errorf("set green style %s: %w", cellName, err)
+				return 0, fmt.Errorf("set green style %s: %w", cellName, err)
 			}
 		} else {
+			inconsistent++
 			mergedID, ok := yellowStyleCache[existingID]
 			if !ok {
 				existing, err := f.GetStyle(existingID)
 				if err != nil {
-					return fmt.Errorf("get style %s: %w", cellName, err)
+					return 0, fmt.Errorf("get style %s: %w", cellName, err)
 				}
 				merged, err := f.NewStyle(&excelize.Style{
 					Border:    existing.Border,
@@ -192,15 +194,15 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) e
 					Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
 				})
 				if err != nil {
-					return fmt.Errorf("new yellow style %s: %w", cellName, err)
+					return 0, fmt.Errorf("new yellow style %s: %w", cellName, err)
 				}
 				yellowStyleCache[existingID] = merged
 				mergedID = merged
 			}
 			if err := f.SetCellStyle(bsSheet, cellName, cellName, mergedID); err != nil {
-				return fmt.Errorf("set yellow style %s: %w", cellName, err)
+				return 0, fmt.Errorf("set yellow style %s: %w", cellName, err)
 			}
 		}
 	}
-	return nil
+	return inconsistent, nil
 }

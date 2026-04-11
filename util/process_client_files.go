@@ -16,6 +16,13 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
+// ProcessStats holds counts of flagged cells produced during processing.
+type ProcessStats struct {
+	Missing      int // red-tinted last month cells (empty)
+	Flux         int // yellow-tinted last month cells (fluctuation)
+	Inconsistent int // yellow-tinted balance sheet cells (TB Match mismatch)
+}
+
 // codePrefix matches leading account code patterns like "6001 ", "40500-000 ", "4009.1 ".
 var codePrefix = regexp.MustCompile(`^\s*\d[\d.\-]*\s+`)
 
@@ -144,7 +151,7 @@ func LoadSpecialTermsFromXLSX(xlsxPath string, randomThresholds bool) (map[strin
 // If two files are attached, the file whose name contains "financial" is
 // processed with ProcessFinancials; the other is loaded via LoadTBMatch.
 // The second return value contains the TB Match rows (nil when only one file).
-func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64, specialTerms map[string]float64) (map[string][]byte, map[string][]byte, [][]string, error) {
+func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, categoryNames map[string]float64, specialTerms map[string]float64) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
 	// Separate financials file from the TB workbook when two files are present.
 	var financialsAttachments []Attachment
 	var tbAttachment *Attachment
@@ -165,30 +172,32 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 	if tbAttachment != nil {
 		data, err := downloadAttachment(ctx, httpClient, *tbAttachment)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("download %s: %w", tbAttachment.FileName, err)
+			return nil, nil, nil, nil, fmt.Errorf("download %s: %w", tbAttachment.FileName, err)
 		}
 		tbRows, err = LoadTBMatch(data)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("load tb match %s: %w", tbAttachment.FileName, err)
+			return nil, nil, nil, nil, fmt.Errorf("load tb match %s: %w", tbAttachment.FileName, err)
 		}
 	}
 
 	// Download and process each financials file.
 	results := map[string][]byte{}
 	logs := map[string][]byte{}
+	statsMap := map[string]ProcessStats{}
 	for _, a := range financialsAttachments {
 		data, err := downloadAttachment(ctx, httpClient, a)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("download %s: %w", a.FileName, err)
+			return nil, nil, nil, nil, fmt.Errorf("download %s: %w", a.FileName, err)
 		}
-		processed, logBytes, err := ProcessFinancials(data, a.FileName, categoryNames, specialTerms, tbRows)
+		processed, logBytes, stats, err := ProcessFinancials(data, a.FileName, categoryNames, specialTerms, tbRows)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("process %s: %w", a.FileName, err)
+			return nil, nil, nil, nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
 		results[a.FileName] = processed
 		logs[a.FileName] = logBytes
+		statsMap[a.FileName] = stats
 	}
-	return results, logs, tbRows, nil
+	return results, logs, statsMap, tbRows, nil
 }
 
 func downloadAttachment(ctx context.Context, httpClient *http.Client, a Attachment) ([]byte, error) {
@@ -217,27 +226,27 @@ func downloadAttachment(ctx context.Context, httpClient *http.Client, a Attachme
 //   - highlights the last month cell red if it falls outside avg±threshold
 //
 // Rows not matching any category are skipped entirely.
-func ProcessFinancials(data []byte, fileName string, categoryNames map[string]float64, specialTerms map[string]float64, tbRows [][]string) ([]byte, []byte, error) {
+func ProcessFinancials(data []byte, fileName string, categoryNames map[string]float64, specialTerms map[string]float64, tbRows [][]string) ([]byte, []byte, ProcessStats, error) {
 	f, err := excelize.OpenReader(bytes.NewReader(data))
 	if err != nil {
-		return nil, nil, fmt.Errorf("open xlsx: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("open xlsx: %w", err)
 	}
 	defer f.Close()
 
 	log, err := NewProcessLogger(fileName)
 	if err != nil {
-		return nil, nil, fmt.Errorf("create process logger: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("create process logger: %w", err)
 	}
 	defer log.Close()
 
 	sheetName, err := findIncomeSheet(f)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, ProcessStats{}, err
 	}
 
 	maxRow, maxCol, err := sheetDimensions(f, sheetName)
 	if err != nil {
-		return nil, nil, fmt.Errorf("get sheet dimensions: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("get sheet dimensions: %w", err)
 	}
 
 	// Read all cells by actual Excel coordinates.
@@ -263,11 +272,11 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 
 	rawRows, err := f.GetRows(sheetName)
 	if err != nil {
-		return nil, nil, fmt.Errorf("get rows for header scan: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("get rows for header scan: %w", err)
 	}
 	headerExcelRow, monthCols := findHeaderAndMonthCols(rawRows, maxRow)
 	if headerExcelRow == -1 || len(monthCols) == 0 {
-		return nil, nil, fmt.Errorf("could not find month column headers in first 10 rows")
+		return nil, nil, ProcessStats{}, fmt.Errorf("could not find month column headers in first 10 rows")
 	}
 
 	// Parse month/year from each header cell for the business days row inserted later.
@@ -321,6 +330,7 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 		}
 	}
 
+	var totalStats ProcessStats
 	redStyleCache := map[int]int{}
 	yellowStyleCache := map[int]int{}
 
@@ -400,8 +410,14 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 			}
 		}
 
-		if err := highlightEmptyCell(f, sheetName, row, cells, monthCols, redStyleCache); err != nil {
-			return nil, nil, fmt.Errorf("highlight empty last month row %d: %w", row, err)
+		var stats ProcessStats
+
+		tinted, err := highlightEmptyCell(f, sheetName, row, cells, monthCols, redStyleCache)
+		if err != nil {
+			return nil, nil, ProcessStats{}, fmt.Errorf("highlight empty last month row %d: %w", row, err)
+		}
+		if tinted {
+			stats.Missing++
 		}
 
 		if threshold > 0 {
@@ -457,56 +473,78 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 				log.LogNoThreshold(row, colA)
 			}
 
-			if err := detectFluctuation(f, sheetName, row, cells, monthCols, threshold, divisorCells, yellowStyleCache); err != nil {
-				return nil, nil, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
+			flagged, err := detectFluctuation(f, sheetName, row, cells, monthCols, threshold, divisorCells, yellowStyleCache)
+			if err != nil {
+				return nil, nil, ProcessStats{}, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
+			}
+			if flagged {
+				stats.Flux++
 			}
 		} else {
 			log.LogNoThreshold(row, colA)
 		}
+
+		totalStats.Missing += stats.Missing
+		totalStats.Flux += stats.Flux
 	}
 
 	// Reconcile TB Match against the Balance Sheet tab.
 	if len(tbRows) > 0 {
 		log.LogSection("TB Match Reconciliation")
-		if err := reconcileTBMatch(f, tbRows, log); err != nil {
-			return nil, nil, fmt.Errorf("reconcile tb match: %w", err)
+		inconsistent, err := reconcileTBMatch(f, tbRows, log)
+		if err != nil {
+			return nil, nil, ProcessStats{}, fmt.Errorf("reconcile tb match: %w", err)
+		}
+		totalStats.Inconsistent = inconsistent
+	}
+
+	// Check if a Business Days row already exists directly above the month header row.
+	// If so, skip insertion entirely to avoid duplicating on reprocessed files.
+	alreadyHasBusinessDays := false
+	if headerExcelRow > 1 {
+		aboveCell, _ := excelize.CoordinatesToCellName(1, headerExcelRow-1)
+		aboveVal, _ := f.GetCellValue(sheetName, aboveCell)
+		if strings.EqualFold(strings.TrimSpace(aboveVal), "business days") {
+			alreadyHasBusinessDays = true
 		}
 	}
 
 	// Insert the business days row directly above the month header row.
+	if !alreadyHasBusinessDays {
 	if err := f.InsertRows(sheetName, headerExcelRow, 1); err != nil {
-		return nil, nil, fmt.Errorf("insert business days row: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("insert business days row: %w", err)
 	}
 	boldStyle, err := f.NewStyle(&excelize.Style{Font: &excelize.Font{Bold: true}})
 	if err != nil {
-		return nil, nil, fmt.Errorf("create bold style: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("create bold style: %w", err)
 	}
 	intStyle, err := f.NewStyle(&excelize.Style{NumFmt: 1}) // 1 = "0" (plain integer)
 	if err != nil {
-		return nil, nil, fmt.Errorf("create integer style: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("create integer style: %w", err)
 	}
 	labelCell, _ := excelize.CoordinatesToCellName(1, headerExcelRow)
 	if err := f.SetCellValue(sheetName, labelCell, "Business Days"); err != nil {
-		return nil, nil, fmt.Errorf("set business days label: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("set business days label: %w", err)
 	}
 	if err := f.SetCellStyle(sheetName, labelCell, labelCell, boldStyle); err != nil {
-		return nil, nil, fmt.Errorf("set bold style on business days label: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("set bold style on business days label: %w", err)
 	}
 	for _, m := range parsedMonths {
 		cellName, _ := excelize.CoordinatesToCellName(m.col, headerExcelRow)
 		if err := f.SetCellValue(sheetName, cellName, workdaysInMonth(m.year, m.month)); err != nil {
-			return nil, nil, fmt.Errorf("set workdays %s: %w", cellName, err)
+			return nil, nil, ProcessStats{}, fmt.Errorf("set workdays %s: %w", cellName, err)
 		}
 		if err := f.SetCellStyle(sheetName, cellName, cellName, intStyle); err != nil {
-			return nil, nil, fmt.Errorf("set integer style %s: %w", cellName, err)
+			return nil, nil, ProcessStats{}, fmt.Errorf("set integer style %s: %w", cellName, err)
 		}
 	}
+	} // end !alreadyHasBusinessDays
 
 	var buf bytes.Buffer
 	if err := f.Write(&buf); err != nil {
-		return nil, nil, fmt.Errorf("write xlsx: %w", err)
+		return nil, nil, ProcessStats{}, fmt.Errorf("write xlsx: %w", err)
 	}
-	return buf.Bytes(), log.Bytes(), nil
+	return buf.Bytes(), log.Bytes(), totalStats, nil
 }
 
 // workdaysInMonth returns the number of Mon–Fri days in the given month and year.
