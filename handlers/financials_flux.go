@@ -165,7 +165,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 
 		stats := statsMap[fileName]
 		subText := fmt.Sprintf(
-			"Balance Sheet: Inconsistent %d | PNL: Missing %d Flux %d\n%s",
+			"Balance Sheet - [%d] inconsistent  ||  PNL: [%d] missing, [%d] Flux\n\n%s",
 			stats.Inconsistent, stats.Missing, stats.Flux, objectURL,
 		)
 		if err := util.PatchTaskSubText(ctx, HttpClient, DoubleBase, Tokens, doubleTaskID, subText); err != nil {
