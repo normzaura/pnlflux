@@ -164,9 +164,17 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		}
 
 		stats := statsMap[fileName]
+		bsPart := fmt.Sprintf("[%d] inconsistent", stats.Inconsistent)
+		if stats.Inconsistent == 0 {
+			bsPart = "CLEAN"
+		}
+		pnlPart := fmt.Sprintf("[%d] missing, [%d] Flux", stats.Missing, stats.Flux)
+		if stats.Missing == 0 && stats.Flux == 0 {
+			pnlPart = "CLEAN"
+		}
 		subText := fmt.Sprintf(
-			"Balance Sheet - [%d] inconsistent  ||  PNL: [%d] missing, [%d] Flux\n\n%s",
-			stats.Inconsistent, stats.Missing, stats.Flux, objectURL,
+			"Balance Sheet - %s  ||  PNL - %s\n\n-------------------------------------------------------------\n\n%s",
+			bsPart, pnlPart, objectURL,
 		)
 		if err := util.PatchTaskSubText(ctx, HttpClient, DoubleBase, Tokens, doubleTaskID, subText); err != nil {
 			Logger.Error("failed to patch zapData subtext", "doubleTask_id", doubleTaskID, "err", err)

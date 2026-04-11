@@ -84,7 +84,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 	}
 
 	reconThreshold := 0.0
-	if v, err := strconv.ParseFloat(os.Getenv("RECON_THRESHOLD"), 64); err == nil && v >= 0 {
+	if v, err := strconv.ParseFloat(os.Getenv("BALANCE_SHEET_THRESHOLD"), 64); err == nil && v >= 0 {
 		reconThreshold = v
 	}
 
