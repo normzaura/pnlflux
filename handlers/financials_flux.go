@@ -168,7 +168,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		if stats.Inconsistent == 0 {
 			bsPart = "CLEAN"
 		}
-		pnlPart := fmt.Sprintf("[%d] missing, [%d] Flux", stats.Missing, stats.Flux)
+		pnlPart := fmt.Sprintf("[%d] missing, [%d] flux", stats.Missing, stats.Flux)
 		if stats.Missing == 0 && stats.Flux == 0 {
 			pnlPart = "CLEAN"
 		}
