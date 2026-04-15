@@ -1,0 +1,405 @@
+=== carefree_financial.xlsx processed at 2026-04-15 18:38:16 ===
+
+[ROW 7] MATCH: 40000 Monthly Membership Fees
+[ROW 7]   fluctuation check (threshold 6.6%):
+             Jan 2025: 58088.97
+             Feb 2025: 56274.02
+             Mar 2025: 56929.64
+             Apr 2025: 56567.89
+             May 2025: 63219.97
+             Jun 2025: 60629.94
+             Jul 2025: 61028.23
+             Aug 2025: 55907.33
+             Sep 2025: 57772.33
+             Oct 2025: 52859.41
+             Nov 2025: 50873.19
+           average (excl. last month): 57286.45
+           last month: 52608.83
+           % diff: |52608.83 - 57286.45| / |57286.45| * 100 = 8.1653%
+           -> FLAGGED — cell tinted yellow
+[ROW 8] MATCH: 41000 Initiation Fees
+[ROW 8]   fluctuation check (threshold 2.0%):
+             Jan 2025: 12942.33
+             Feb 2025: 12942.33
+             Mar 2025: 12942.33
+             Apr 2025: 13325.67
+             May 2025: 13921.50
+             Jun 2025: 13921.50
+             Jul 2025: 13921.50
+             Aug 2025: 13921.50
+             Sep 2025: 14268.17
+             Oct 2025: 14268.17
+             Nov 2025: 14418.17
+           average (excl. last month): 13708.47
+           last month: 14418.17
+           % diff: |14418.17 - 13708.47| / |13708.47| * 100 = 5.1771%
+           -> FLAGGED — cell tinted yellow
+[ROW 11] MATCH: 51000 Rent
+[ROW 11]   fluctuation check (threshold 3.3%):
+             Jan 2025: raw=12897.00  normalized=0.181568
+             Feb 2025: raw=12897.00  normalized=0.186329
+             Mar 2025: raw=12853.50  normalized=0.183958
+             Apr 2025: raw=12855.00  normalized=0.183923
+             May 2025: raw=12896.00  normalized=0.167173
+             Jun 2025: raw=12875.50  normalized=0.172706
+             Jul 2025: raw=12875.00  normalized=0.171782
+             Aug 2025: raw=12877.00  normalized=0.184408
+             Sep 2025: raw=12877.00  normalized=0.178747
+             Oct 2025: raw=12877.00  normalized=0.191829
+             Nov 2025: raw=12877.00  normalized=0.197224
+           average (normalized, excl. last month): 0.181786
+           last month: raw=12770.00  normalized=0.190520
+           % diff: |0.190520 - 0.181786| / |0.181786| * 100 = 4.8047%
+           -> FLAGGED — cell tinted yellow
+[ROW 12] MATCH: 52000 Boat Fuel
+[ROW 12]   last month cell is empty — tinted red
+[ROW 13] MATCH: 53000 Boat Repairs & Maintenance
+[ROW 13]   all month cells empty — skipped
+[ROW 14] MATCH: 53001 Repairs & Maintenance
+[ROW 14]   fluctuation check (threshold 1.5%):
+             Jan 2025: raw=13291.49  normalized=0.187122
+             Feb 2025: raw=1428.78  normalized=0.020642
+             Mar 2025: raw=4487.21  normalized=0.064220
+             Apr 2025: raw=5752.18  normalized=0.082299
+             May 2025: raw=1154.28  normalized=0.014963
+             Jun 2025: raw=3362.67  normalized=0.045105
+             Jul 2025: raw=14795.24  normalized=0.197402
+             Aug 2025: raw=-737.82  normalized=-0.010566
+             Sep 2025: raw=11939.20  normalized=0.165729
+             Oct 2025: raw=509.38  normalized=0.007588
+             Nov 2025: raw=1380.20  normalized=0.021139
+           average (normalized, excl. last month): 0.072331
+           last month: raw=399.00  normalized=0.005953
+           % diff: |0.005953 - 0.072331| / |0.072331| * 100 = 91.7701%
+           -> FLAGGED — cell tinted yellow
+[ROW 15] MATCH: 53003 Supplies & Parts
+[ROW 15]   fluctuation check (threshold 0.8%):
+             Jan 2025: raw=930.49  normalized=0.013100
+             Feb 2025: raw=75.00  normalized=0.001084
+             Mar 2025: raw=571.89  normalized=0.008185
+             Apr 2025: raw=1226.60  normalized=0.017550
+             May 2025: raw=1125.07  normalized=0.014585
+             Jun 2025: raw=384.08  normalized=0.005152
+             Jul 2025: raw=860.53  normalized=0.011481
+             Aug 2025: raw=1872.99  normalized=0.026823
+             Sep 2025: raw=102.51  normalized=0.001423
+             Oct 2025: raw=945.83  normalized=0.014090
+             Nov 2025: raw=263.63  normalized=0.004038
+           average (normalized, excl. last month): 0.010683
+           last month: raw=1582.09  normalized=0.023604
+           % diff: |0.023604 - 0.010683| / |0.010683| * 100 = 120.9550%
+           -> FLAGGED — cell tinted yellow
+[ROW 17] MATCH: 54000 Direct Contract Labor
+[ROW 17]   fluctuation check (threshold 8.9%):
+             Jan 2025: raw=7943.52  normalized=0.111831
+             Feb 2025: raw=8359.73  normalized=0.120777
+             Mar 2025: raw=8946.13  normalized=0.128036
+             Apr 2025: raw=11643.69  normalized=0.166592
+             May 2025: raw=12314.33  normalized=0.159633
+             Jun 2025: raw=11861.34  normalized=0.159103
+             Jul 2025: raw=9865.16  normalized=0.131624
+             Aug 2025: raw=10068.86  normalized=0.144193
+             Sep 2025: raw=8135.86  normalized=0.112935
+             Oct 2025: raw=11968.01  normalized=0.178288
+             Nov 2025: raw=7622.43  normalized=0.116745
+           average (normalized, excl. last month): 0.139069
+           last month: raw=9673.11  normalized=0.144317
+           % diff: |0.144317 - 0.139069| / |0.139069| * 100 = 3.7736%
+           -> OK — within threshold
+[ROW 19] MATCH: Gross Profit
+[ROW 19]   fluctuation check (threshold 7.2%):
+             Jan 2025: raw=35968.80  normalized=0.506380
+             Feb 2025: raw=46455.84  normalized=0.671169
+             Mar 2025: raw=43013.24  normalized=0.615601
+             Apr 2025: raw=38416.09  normalized=0.549637
+             May 2025: raw=49651.79  normalized=0.643646
+             Jun 2025: raw=46067.85  normalized=0.617934
+             Jul 2025: raw=36553.80  normalized=0.487711
+             Aug 2025: raw=45706.11  normalized=0.654545
+             Sep 2025: raw=38901.76  normalized=0.539998
+             Oct 2025: raw=40827.36  normalized=0.608205
+             Nov 2025: raw=43148.10  normalized=0.660855
+           average (normalized, excl. last month): 0.595971
+           last month: raw=42602.80  normalized=0.635607
+           % diff: |0.635607 - 0.595971| / |0.595971| * 100 = 6.6506%
+           -> OK — within threshold
+[ROW 21] MATCH: 60000 Payroll Expenses
+[ROW 21]   all month cells empty — skipped
+[ROW 22] MATCH: 60001 Officer Wages
+[ROW 22]   fluctuation check (threshold 6.5%):
+             Jan 2025: 5000.00
+             Feb 2025: 5000.00
+             Mar 2025: 5000.00
+             Apr 2025: 5000.00
+             May 2025: 5000.00
+             Jun 2025: 5000.00
+             Jul 2025: 5000.00
+             Aug 2025: 5000.00
+             Sep 2025: 5000.00
+             Oct 2025: 5000.00
+             Nov 2025: 5000.00
+           average (excl. last month): 5000.00
+           last month: 5000.00
+           % diff: |5000.00 - 5000.00| / |5000.00| * 100 = 0.0000%
+           -> OK — within threshold
+[ROW 23] MATCH: 60002 Officer Bonus
+[ROW 23]   last month cell is empty — tinted red
+[ROW 24] MATCH: 60004 Officer Commissions
+[ROW 24]   last month cell is empty — tinted red
+[ROW 25] MATCH: 60005 Payroll Taxes
+[ROW 25]   fluctuation check (threshold 19.7%):
+             Jan 2025: 768.50
+             Feb 2025: 562.50
+             Mar 2025: 526.50
+             Apr 2025: 382.50
+             May 2025: 624.06
+             Jun 2025: 404.50
+             Jul 2025: 301.25
+             Aug 2025: 492.00
+             Sep 2025: 492.00
+             Oct 2025: 460.00
+             Nov 2025: 400.00
+           average (excl. last month): 492.16
+           last month: 400.00
+           % diff: |400.00 - 492.16| / |492.16| * 100 = 18.7264%
+           -> OK — within threshold
+[ROW 26] MATCH: 60006 Payroll Processing Fees
+[ROW 26]   fluctuation check (threshold 14.8%):
+             Jan 2025: 409.12
+             Feb 2025: 1291.48
+             Mar 2025: 648.38
+             Apr 2025: 728.38
+             May 2025: 259.72
+             Jun 2025: 937.32
+             Jul 2025: 999.06
+             Aug 2025: 468.66
+             Sep 2025: 1295.16
+             Oct 2025: 1029.59
+             Nov 2025: 1024.48
+           average (excl. last month): 826.49
+           last month: -850.16
+           % diff: |-850.16 - 826.49| / |826.49| * 100 = 202.8644%
+           -> FLAGGED — cell tinted yellow
+[ROW 27] MATCH: 60007 Workers' Compensation
+[ROW 27]   fluctuation check (threshold 2.3%):
+             Jan 2025: 501.75
+             Feb 2025: 1003.50
+             Mar 2025: 501.75
+             Apr 2025: 501.75
+             May 2025: 732.06
+             Jun 2025: 456.25
+             Jul 2025: 456.25
+             Aug 2025: 462.77
+             Sep 2025: -167.82
+             Oct 2025: 288.43
+             Nov 2025: 599.60
+           average (excl. last month): 485.12
+           last month: 356.01
+           % diff: |356.01 - 485.12| / |485.12| * 100 = 26.6136%
+           -> FLAGGED — cell tinted yellow
+[ROW 29] MATCH: 60500 Advertising & Marketing
+[ROW 29]   fluctuation check (threshold 6.0%):
+             Jan 2025: 704.24
+             Feb 2025: 1736.14
+             Mar 2025: 640.16
+             Apr 2025: 1043.05
+             May 2025: 6574.07
+             Jun 2025: 696.96
+             Jul 2025: 673.74
+             Aug 2025: 738.41
+             Sep 2025: 664.85
+             Oct 2025: 1379.07
+             Nov 2025: 671.99
+           average (excl. last month): 1411.15
+           last month: 1509.94
+           % diff: |1509.94 - 1411.15| / |1411.15| * 100 = 7.0005%
+           -> FLAGGED — cell tinted yellow
+[ROW 30] MATCH: 61000 Auto Expenses
+[ROW 30]   all month cells empty — skipped
+[ROW 31] MATCH: 61001 Auto Fuel
+[ROW 31]   last month cell is empty — tinted red
+[ROW 32] MATCH: 61002 Auto Repairs & Registration
+[ROW 32]   last month cell is empty — tinted red
+[ROW 33] MATCH: 61003 Parking & Tolls
+[ROW 33]   fluctuation check (threshold 9.5%):
+             Jan 2025: 300.00
+             Feb 2025: 300.00
+             Mar 2025: 300.00
+             Apr 2025: 300.00
+             May 2025: 313.90
+             Jun 2025: 300.00
+             Jul 2025: 300.00
+             Aug 2025: 318.00
+             Sep 2025: 300.00
+             Oct 2025: 300.00
+             Nov 2025: 300.00
+           average (excl. last month): 302.90
+           last month: 300.00
+           % diff: |300.00 - 302.90| / |302.90| * 100 = 0.9574%
+           -> OK — within threshold
+[ROW 35] MATCH: 61500 Bank Fees & Service Charges
+[ROW 35]   last month cell is empty — tinted red
+[ROW 36] MATCH: 62000 Business Licenses and Taxes
+[ROW 36]   last month cell is empty — tinted red
+[ROW 37] MATCH: 62500 Dues & Subscriptions
+[ROW 37]   fluctuation check (threshold 2.8%):
+             Jan 2025: 79.96
+             Feb 2025: 84.66
+             Mar 2025: 80.58
+             Apr 2025: 82.31
+             May 2025: 314.06
+             Jun 2025: 82.54
+             Jul 2025: 87.25
+             Aug 2025: 132.67
+             Sep 2025: 129.00
+             Oct 2025: 131.93
+             Nov 2025: 128.95
+           average (excl. last month): 121.26
+           last month: 55.00
+           % diff: |55.00 - 121.26| / |121.26| * 100 = 54.6446%
+           -> FLAGGED — cell tinted yellow
+[ROW 38] MATCH: 63000 Insurance
+[ROW 38]   fluctuation check (threshold 20.8%):
+             Jan 2025: 3317.43
+             Feb 2025: 3317.43
+             Mar 2025: 3317.43
+             Apr 2025: 3317.43
+             May 2025: 3317.43
+             Jun 2025: 3317.43
+             Jul 2025: 3317.43
+             Aug 2025: 3317.43
+             Sep 2025: 3317.43
+             Oct 2025: 2669.90
+             Nov 2025: 2669.90
+           average (excl. last month): 3199.70
+           last month: 2669.90
+           % diff: |2669.90 - 3199.70| / |3199.70| * 100 = 16.5577%
+           -> OK — within threshold
+[ROW 39] MATCH: 63500 Legal & Accounting Services
+[ROW 39]   fluctuation check (threshold 5.4%):
+             Jan 2025: 2287.69
+             Feb 2025: 2357.69
+             Mar 2025: 2287.69
+             Apr 2025: 2287.69
+             May 2025: 2287.69
+             Jun 2025: 2706.44
+             Jul 2025: 2706.44
+             Aug 2025: 2846.02
+             Sep 2025: 2681.24
+             Oct 2025: 2402.07
+             Nov 2025: 2402.07
+           average (excl. last month): 2477.52
+           last month: 2402.07
+           % diff: |2402.07 - 2477.52| / |2477.52| * 100 = 3.0454%
+           -> OK — within threshold
+[ROW 40] MATCH: 64000 Meals
+[ROW 40]   fluctuation check (threshold 6.9%):
+             Jan 2025: 18.27
+             Feb 2025: 0.00
+             Mar 2025: 51.60
+             Apr 2025: 136.68
+             May 2025: 835.01
+             Jun 2025: 31.09
+             Jul 2025: 111.29
+             Aug 2025: 120.59
+             Sep 2025: 0.00
+             Oct 2025: 164.76
+             Nov 2025: 0.00
+           average (excl. last month): 133.57
+           last month: 123.19
+           % diff: |123.19 - 133.57| / |133.57| * 100 = 7.7725%
+           -> FLAGGED — cell tinted yellow
+[ROW 41] MATCH: 64500 Merchant Account Fees
+[ROW 41]   fluctuation check (threshold 15.1%):
+             Jan 2025: 1259.79
+             Feb 2025: 1324.19
+             Mar 2025: 942.65
+             Apr 2025: 1533.38
+             May 2025: 322.85
+             Jun 2025: 2742.64
+             Jul 2025: 1318.84
+             Aug 2025: 976.73
+             Sep 2025: 1637.29
+             Oct 2025: 1234.25
+             Nov 2025: 1079.53
+           average (excl. last month): 1306.56
+           last month: 1431.43
+           % diff: |1431.43 - 1306.56| / |1306.56| * 100 = 9.5573%
+           -> OK — within threshold
+[ROW 47] MATCH: 71000 Other Miscellaneous Income
+[ROW 47]   last month cell is empty — tinted red
+[ROW 50] MATCH: 81000 Other Miscellaneous Expense
+[ROW 50]   last month cell is empty — tinted red
+[ROW 51] MATCH: 82000 Interest Expense
+[ROW 51]   fluctuation check (threshold 22.1%):
+             Jan 2025: 6474.86
+             Feb 2025: 4384.60
+             Mar 2025: 5162.92
+             Apr 2025: 27224.92
+             May 2025: 3958.38
+             Jun 2025: 3858.62
+             Jul 2025: 3758.15
+             Aug 2025: 3668.44
+             Sep 2025: 3566.65
+             Oct 2025: 3432.30
+             Nov 2025: 3360.94
+           average (excl. last month): 6259.16
+           last month: 3378.50
+           % diff: |3378.50 - 6259.16| / |6259.16| * 100 = 46.0231%
+           -> FLAGGED — cell tinted yellow
+[ROW 52] MATCH: 83000 Depreciation Expenses
+[ROW 52]   fluctuation check (threshold 7.8%):
+             Jan 2025: 13932.68
+             Feb 2025: 13932.68
+             Mar 2025: 13932.68
+             Apr 2025: 13932.68
+             May 2025: 13932.68
+             Jun 2025: 13932.68
+             Jul 2025: 13932.68
+             Aug 2025: 13932.68
+             Sep 2025: 13932.68
+             Oct 2025: 13932.68
+             Nov 2025: 13932.68
+           average (excl. last month): 13932.68
+           last month: 13932.68
+           % diff: |13932.68 - 13932.68| / |13932.68| * 100 = 0.0000%
+           -> OK — within threshold
+
+--- TB Match Reconciliation ---
+[RECONCILE] OK       10000 business adv relationship - 1020                        TB=25944.20  BS=25944.20
+[RECONCILE] OK       11000 accounts receivable                                     TB=0.00  BS=0.00
+[RECONCILE] MISMATCH 11600 prepaid expenses                                        TB=39826.57  BS=39826.63 — discrepancy
+[RECONCILE] OK       13000 axopar suntop 37                                        TB=269900.00  BS=269900.00
+[RECONCILE] OK       13100 beneteau flyer 9                                        TB=263992.78  BS=263992.78
+[RECONCILE] OK       13200 manitou 25 oasis                                        TB=66464.00  BS=66464.00
+[RECONCILE] OK       13400 nx 340 sport coupe                                      TB=272754.50  BS=272754.50
+[RECONCILE] OK       13500 axopar t-top 28                                         TB=140000.00  BS=140000.00
+[RECONCILE] OK       15000 pacific boat club fleet                                 TB=68219.69  BS=68219.69
+[RECONCILE] MISMATCH 15500 accumulated depreciation                                TB=530560.76  BS=530560.90 — discrepancy
+[RECONCILE] OK       17000 goodwill                                                TB=174500.00  BS=174500.00
+[RECONCILE] OK       18000 accumulated amortization                                TB=51357.00  BS=51357.00
+[RECONCILE] OK       21000 accrued expenses                                        TB=3149.75  BS=3149.75
+[RECONCILE] OK       21050 accrued interest                                        TB=794.17  BS=794.17
+[RECONCILE] OK       21100 accrued payroll                                         TB=0.00  BS=0.00
+[RECONCILE] OK       21101 officer wages payable                                   TB=2245.52  BS=2245.52
+[RECONCILE] OK       21102 contractor wages payable                                TB=7930.81  BS=7930.81
+[RECONCILE] OK       21125 unearned revenue                                        TB=442379.08  BS=442379.08
+[RECONCILE] OK       21150 loan from shareholder - ccm integrated                  TB=26221.50  BS=26221.50
+[RECONCILE] OK       21200 loan from shareholder - carlos roman                    TB=55668.06  BS=55668.06
+[RECONCILE] OK       21300 due to/from socal nautical                              TB=53375.07  BS=53375.07
+[RECONCILE] OK       21350 insurance payable                                       TB=31127.18  BS=31127.18
+[RECONCILE] OK       22000 st - axopar suntop 37 loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       22050 st - beneteau flyer 9                                   TB=0.00  BS=0.00
+[RECONCILE] OK       22100 st - manitou 25 oasis loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       22150 st - scott tiernan note                                 TB=5990.53  BS=5990.53
+[RECONCILE] OK       22250 st - nx 340 sport coupe loan                            TB=0.00  BS=0.00
+[RECONCILE] OK       22300 st - axopar t-top 28 loan                               TB=0.00  BS=0.00
+[RECONCILE] OK       23000 lt - axopar suntop 37 loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       23050 lt - beneteau flyer 9                                   TB=0.00  BS=0.00
+[RECONCILE] OK       23100 lt - manitou 25 oasis loan                              TB=0.00  BS=0.00
+[RECONCILE] OK       23250 lt - nx 340 sport coupe loan                            TB=0.00  BS=0.00
+[RECONCILE] OK       23300 lt - axopar t-top 28 loan                               TB=0.00  BS=0.00
+[RECONCILE] OK       30000 paid in capital - ccm                                   TB=300000.00  BS=300000.00
+[RECONCILE] OK       31000 paid in capital - socal nautical                        TB=49823.62  BS=49823.62
+[RECONCILE] OK       32000 shareholder distributions - ccm integrated              TB=21000.00  BS=21000.00
+[RECONCILE] OK       34000 retained earnings                                       TB=794004.76  BS=794004.76

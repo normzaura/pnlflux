@@ -334,6 +334,7 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 	redStyleCache := map[int]int{}
 	yellowStyleCache := map[int]int{}
 	greenStyleCache := map[int]int{}
+	orangeStyleCache := map[int]int{}
 
 	for row := headerExcelRow + 1; row <= maxRow; row++ {
 		cells := grid[row-1]
@@ -361,6 +362,22 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 		}
 
 		if len(categoryNames) > 0 && !matched {
+			// Tint orange if the row has a digit code in col A, is not a total row,
+			// and has a value in the last month cell — likely an uncategorised account.
+			if codePrefix.MatchString(colA) {
+				hasValue := false
+				for _, col := range monthCols {
+					if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
+						hasValue = true
+						break
+					}
+				}
+				if hasValue {
+					if err := tintOrangeLastMonth(f, sheetName, row, cells, monthCols, orangeStyleCache); err != nil {
+						return nil, nil, ProcessStats{}, fmt.Errorf("tint orange row %d: %w", row, err)
+					}
+				}
+			}
 			continue
 		}
 

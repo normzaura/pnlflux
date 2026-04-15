@@ -89,8 +89,10 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 	}
 
 	inconsistent := 0
+	matchedCategories := map[string]bool{}
 	yellowStyleCache := map[int]int{}
 	greenStyleCache := map[int]int{}
+	redStyleCache := map[int]int{}
 
 	for i, row := range tbRows {
 		if i <= 1 {
@@ -123,6 +125,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 		if !ok {
 			continue
 		}
+		matchedCategories[category] = true
 
 		cellName, err := excelize.CoordinatesToCellName(lastCol+1, rowNum)
 		if err != nil {
@@ -204,5 +207,53 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 			}
 		}
 	}
+	// Tint red any balance sheet category that has a digit code, has a value in the
+	// last month cell, but was not matched by any TB Match row.
+	for i := headerExcelRow; i < len(rawRows); i++ {
+		if len(rawRows[i]) == 0 {
+			continue
+		}
+		name := strings.ToLower(strings.TrimSpace(rawRows[i][0]))
+		if name == "" || !strings.ContainsAny(string(name[0]), "0123456789") {
+			continue
+		}
+		if matchedCategories[name] {
+			continue
+		}
+		rowNum := i + 1
+		cellName, err := excelize.CoordinatesToCellName(lastCol+1, rowNum)
+		if err != nil {
+			continue
+		}
+		cellVal, _ := f.GetCellValue(bsSheet, cellName)
+		if strings.TrimSpace(cellVal) == "" {
+			continue
+		}
+		existingID, err := f.GetCellStyle(bsSheet, cellName)
+		if err != nil {
+			continue
+		}
+		mergedID, ok := redStyleCache[existingID]
+		if !ok {
+			existing, err := f.GetStyle(existingID)
+			if err != nil {
+				continue
+			}
+			merged, err := f.NewStyle(&excelize.Style{
+				Border:    existing.Border,
+				Alignment: existing.Alignment,
+				Font:      existing.Font,
+				Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
+			})
+			if err != nil {
+				continue
+			}
+			redStyleCache[existingID] = merged
+			mergedID = merged
+		}
+		f.SetCellStyle(bsSheet, cellName, cellName, mergedID)
+		log.LogReconcile(name, 0, 0, false)
+	}
+
 	return inconsistent, nil
 }
