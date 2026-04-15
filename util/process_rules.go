@@ -77,6 +77,45 @@ func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []stri
 	return true, f.SetCellStyle(sheet, cellName, cellName, mergedID)
 }
 
+// tintGreenLastMonth applies a green fill to the last month cell of the row.
+// Used for matched P&L rows whose last month cell has a value and passed all checks.
+func tintGreenLastMonth(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, styleCache map[int]int) error {
+	if len(monthCols) == 0 {
+		return nil
+	}
+	lastCol := monthCols[len(monthCols)-1]
+	if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
+		return nil
+	}
+	cellName, err := excelize.CoordinatesToCellName(lastCol+1, rowNum)
+	if err != nil {
+		return err
+	}
+	existingID, err := f.GetCellStyle(sheet, cellName)
+	if err != nil {
+		return err
+	}
+	mergedID, ok := styleCache[existingID]
+	if !ok {
+		existing, err := f.GetStyle(existingID)
+		if err != nil {
+			return err
+		}
+		merged, err := f.NewStyle(&excelize.Style{
+			Border:    existing.Border,
+			Alignment: existing.Alignment,
+			Font:      existing.Font,
+			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
+		})
+		if err != nil {
+			return err
+		}
+		styleCache[existingID] = merged
+		mergedID = merged
+	}
+	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
+}
+
 // normalizeByDivisor divides val by the parsed value of divisorCells[col].
 // When divisorCells is nil the raw value is returned unchanged.
 // Returns (0, false) if the divisor cell is missing, empty, zero, or unparseable.

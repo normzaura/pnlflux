@@ -333,6 +333,7 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 	var totalStats ProcessStats
 	redStyleCache := map[int]int{}
 	yellowStyleCache := map[int]int{}
+	greenStyleCache := map[int]int{}
 
 	for row := headerExcelRow + 1; row <= maxRow; row++ {
 		cells := grid[row-1]
@@ -479,9 +480,18 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 			}
 			if flagged {
 				stats.Flux++
+			} else if !tinted {
+				if err := tintGreenLastMonth(f, sheetName, row, cells, monthCols, greenStyleCache); err != nil {
+					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
+				}
 			}
 		} else {
 			log.LogNoThreshold(row, colA)
+			if !tinted {
+				if err := tintGreenLastMonth(f, sheetName, row, cells, monthCols, greenStyleCache); err != nil {
+					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
+				}
+			}
 		}
 
 		totalStats.Missing += stats.Missing
