@@ -63,10 +63,12 @@ func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []stri
 			border = rowBorder
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:    border,
-			Alignment: existing.Alignment,
-			Font:      existing.Font,
-			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
+			Border:        border,
+			Alignment:     existing.Alignment,
+			Font:          existing.Font,
+			NumFmt:        existing.NumFmt,
+			CustomNumFmt:  existing.CustomNumFmt,
+			Fill:          excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
 		})
 		if err != nil {
 			return false, err
@@ -102,10 +104,12 @@ func tintGreenLastMonth(f *excelize.File, sheet string, rowNum int, cells []stri
 			return err
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:    existing.Border,
-			Alignment: existing.Alignment,
-			Font:      existing.Font,
-			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
+			Border:       existing.Border,
+			Alignment:    existing.Alignment,
+			Font:         existing.Font,
+			NumFmt:       existing.NumFmt,
+			CustomNumFmt: existing.CustomNumFmt,
+			Fill:         excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
 		})
 		if err != nil {
 			return err
@@ -139,10 +143,12 @@ func tintLastMonthOrange(f *excelize.File, sheet string, rowNum int, monthCols [
 			return err
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:    existing.Border,
-			Alignment: existing.Alignment,
-			Font:      existing.Font,
-			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF6600"}, Pattern: 1},
+			Border:       existing.Border,
+			Alignment:    existing.Alignment,
+			Font:         existing.Font,
+			NumFmt:       existing.NumFmt,
+			CustomNumFmt: existing.CustomNumFmt,
+			Fill:         excelize.Fill{Type: "pattern", Color: []string{"#FF6600"}, Pattern: 1},
 		})
 		if err != nil {
 			return err
@@ -178,10 +184,12 @@ func tintOrangeLastMonth(f *excelize.File, sheet string, rowNum int, cells []str
 			return err
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:    existing.Border,
-			Alignment: existing.Alignment,
-			Font:      existing.Font,
-			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF6600"}, Pattern: 1},
+			Border:       existing.Border,
+			Alignment:    existing.Alignment,
+			Font:         existing.Font,
+			NumFmt:       existing.NumFmt,
+			CustomNumFmt: existing.CustomNumFmt,
+			Fill:         excelize.Fill{Type: "pattern", Color: []string{"#FF6600"}, Pattern: 1},
 		})
 		if err != nil {
 			return err
@@ -307,10 +315,12 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 			border = rowBorder
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:    border,
-			Alignment: existing.Alignment,
-			Font:      existing.Font,
-			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
+			Border:       border,
+			Alignment:    existing.Alignment,
+			Font:         existing.Font,
+			NumFmt:       existing.NumFmt,
+			CustomNumFmt: existing.CustomNumFmt,
+			Fill:         excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
 		})
 		if err != nil {
 			return false, err

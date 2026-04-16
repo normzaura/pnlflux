@@ -168,10 +168,12 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 					return 0, fmt.Errorf("get style %s: %w", cellName, err)
 				}
 				merged, err := f.NewStyle(&excelize.Style{
-					Border:    existing.Border,
-					Alignment: existing.Alignment,
-					Font:      existing.Font,
-					Fill:      excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
+					Border:       existing.Border,
+					Alignment:    existing.Alignment,
+					Font:         existing.Font,
+					NumFmt:       existing.NumFmt,
+					CustomNumFmt: existing.CustomNumFmt,
+					Fill:         excelize.Fill{Type: "pattern", Color: []string{"#00B050"}, Pattern: 1},
 				})
 				if err != nil {
 					return 0, fmt.Errorf("new green style %s: %w", cellName, err)
@@ -191,10 +193,12 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 					return 0, fmt.Errorf("get style %s: %w", cellName, err)
 				}
 				merged, err := f.NewStyle(&excelize.Style{
-					Border:    existing.Border,
-					Alignment: existing.Alignment,
-					Font:      existing.Font,
-					Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
+					Border:       existing.Border,
+					Alignment:    existing.Alignment,
+					Font:         existing.Font,
+					NumFmt:       existing.NumFmt,
+					CustomNumFmt: existing.CustomNumFmt,
+					Fill:         excelize.Fill{Type: "pattern", Color: []string{"#FFFF00"}, Pattern: 1},
 				})
 				if err != nil {
 					return 0, fmt.Errorf("new yellow style %s: %w", cellName, err)
@@ -240,10 +244,12 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 				continue
 			}
 			merged, err := f.NewStyle(&excelize.Style{
-				Border:    existing.Border,
-				Alignment: existing.Alignment,
-				Font:      existing.Font,
-				Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
+				Border:       existing.Border,
+				Alignment:    existing.Alignment,
+				Font:         existing.Font,
+				NumFmt:       existing.NumFmt,
+				CustomNumFmt: existing.CustomNumFmt,
+				Fill:         excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
 			})
 			if err != nil {
 				continue
