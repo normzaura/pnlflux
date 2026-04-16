@@ -233,10 +233,18 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 	avg := sum / float64(len(previous))
 
 	if avg == 0 {
-		return false, nil
+		if normLast == 0 {
+			return false, nil
+		}
+		// avg is zero but last month has a value — flag it unconditionally.
 	}
 
-	pctDiff := math.Abs(last.val-avg) / math.Abs(avg) * 100
+	var pctDiff float64
+	if avg != 0 {
+		pctDiff = math.Abs(last.val-avg) / math.Abs(avg) * 100
+	} else {
+		pctDiff = math.MaxFloat64
+	}
 	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
 
 	if pctDiff <= threshold {
