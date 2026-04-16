@@ -361,6 +361,7 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 			}
 		}
 
+
 		if len(categoryNames) > 0 && !matched {
 			// Unmatched rows with a digit code get orange on the last month cell
 			// whenever any month cell has a value — regardless of whether the last
@@ -505,9 +506,17 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 			}
 		} else {
 			log.LogNoThreshold(row, colA)
-			if !tinted {
-				if err := tintGreenLastMonth(f, sheetName, row, cells, monthCols, greenStyleCache); err != nil {
-					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
+			if len(monthCols) > 0 {
+				lastCol := monthCols[len(monthCols)-1]
+				noteCellName, err := excelize.CoordinatesToCellName(lastCol+3, row)
+				if err == nil {
+					existing, _ := f.GetCellValue(sheetName, noteCellName)
+					existing = strings.TrimSpace(existing)
+					note := "NO THRESHOLD FOUND"
+					if existing != "" {
+						note = existing + " " + note
+					}
+					f.SetCellValue(sheetName, noteCellName, note)
 				}
 			}
 		}
