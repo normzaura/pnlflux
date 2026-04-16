@@ -362,18 +362,19 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 		}
 
 		if len(categoryNames) > 0 && !matched {
-			// Tint orange if the row has a digit code in col A, is not a total row,
-			// and has a value in the last month cell — likely an uncategorised account.
+			// Unmatched rows with a digit code get orange on the last month cell
+			// whenever any month cell has a value — regardless of whether the last
+			// month cell itself is populated.
 			if codePrefix.MatchString(colA) {
-				hasValue := false
+				hasAnyValue := false
 				for _, col := range monthCols {
 					if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
-						hasValue = true
+						hasAnyValue = true
 						break
 					}
 				}
-				if hasValue {
-					if err := tintOrangeLastMonth(f, sheetName, row, cells, monthCols, orangeStyleCache); err != nil {
+				if hasAnyValue {
+					if err := tintLastMonthOrange(f, sheetName, row, monthCols, orangeStyleCache); err != nil {
 						return nil, nil, ProcessStats{}, fmt.Errorf("tint orange row %d: %w", row, err)
 					}
 				}

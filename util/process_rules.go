@@ -116,6 +116,43 @@ func tintGreenLastMonth(f *excelize.File, sheet string, rowNum int, cells []stri
 	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
 }
 
+// tintLastMonthOrange applies an orange fill to the last month cell unconditionally
+// (regardless of whether the cell has a value). Used for unmatched rows that have
+// data in at least one month column.
+func tintLastMonthOrange(f *excelize.File, sheet string, rowNum int, monthCols []int, styleCache map[int]int) error {
+	if len(monthCols) == 0 {
+		return nil
+	}
+	lastCol := monthCols[len(monthCols)-1]
+	cellName, err := excelize.CoordinatesToCellName(lastCol+1, rowNum)
+	if err != nil {
+		return err
+	}
+	existingID, err := f.GetCellStyle(sheet, cellName)
+	if err != nil {
+		return err
+	}
+	mergedID, ok := styleCache[existingID]
+	if !ok {
+		existing, err := f.GetStyle(existingID)
+		if err != nil {
+			return err
+		}
+		merged, err := f.NewStyle(&excelize.Style{
+			Border:    existing.Border,
+			Alignment: existing.Alignment,
+			Font:      existing.Font,
+			Fill:      excelize.Fill{Type: "pattern", Color: []string{"#FF6600"}, Pattern: 1},
+		})
+		if err != nil {
+			return err
+		}
+		styleCache[existingID] = merged
+		mergedID = merged
+	}
+	return f.SetCellStyle(sheet, cellName, cellName, mergedID)
+}
+
 // tintOrangeLastMonth applies an orange fill to the last month cell of the row.
 // Used for P&L rows that have values but no match in the category index.
 func tintOrangeLastMonth(f *excelize.File, sheet string, rowNum int, cells []string, monthCols []int, styleCache map[int]int) error {
