@@ -182,6 +182,12 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 			Logger.Info("patched zapData subtext with s3 url", "doubleTask_id", doubleTaskID)
 		}
 	}
+
+	if err := util.PatchTaskStatus(ctx, HttpClient, DoubleBase, Tokens, doubleTaskID, "Reviewed"); err != nil {
+		Logger.Error("failed to update task status to reviewed", "doubleTask_id", doubleTaskID, "err", err)
+	} else {
+		Logger.Info("updated task status to reviewed", "doubleTask_id", doubleTaskID)
+	}
 }
 
 func cleanClientName(clientName string) string {

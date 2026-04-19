@@ -80,6 +80,38 @@ func fetchAttachments(ctx context.Context, httpClient *http.Client, baseURL, bea
 	return filtered, nil
 }
 
+// PatchTaskStatus updates the status of a task via PATCH /api/tasks/{taskId}.
+func PatchTaskStatus(ctx context.Context, httpClient *http.Client, baseURL string, tokens *TokenProvider, taskID int, status string) error {
+	token, err := tokens.Token(ctx)
+	if err != nil {
+		return fmt.Errorf("get token: %w", err)
+	}
+
+	body, err := json.Marshal(map[string]string{"status": status})
+	if err != nil {
+		return fmt.Errorf("marshal patch body: %w", err)
+	}
+
+	url := fmt.Sprintf("%s/api/tasks/%d", baseURL, taskID)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, url, bytes.NewReader(body))
+	if err != nil {
+		return fmt.Errorf("build patch request: %w", err)
+	}
+	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("patch task status: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("patch task status returned %d", resp.StatusCode)
+	}
+	return nil
+}
+
 // PatchTaskSubText appends text to a task's subText field via PATCH /api/tasks/{taskId}.
 func PatchTaskSubText(ctx context.Context, httpClient *http.Client, baseURL string, tokens *TokenProvider, taskID int, subText string) error {
 	token, err := tokens.Token(ctx)
