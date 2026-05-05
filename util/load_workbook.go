@@ -88,6 +88,23 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 		reconThreshold = v
 	}
 
+	// Detect debit and credit column indices from the header row (index 1).
+	debitCol, creditCol := 4, 5 // fallback to original hardcoded positions
+	if len(tbRows) > 1 {
+		headerRow := tbRows[1]
+		firstDebit := -1
+		for j, cell := range headerRow {
+			lower := strings.ToLower(strings.TrimSpace(cell))
+			if lower == "debit" && firstDebit == -1 {
+				firstDebit = j
+			} else if lower == "credit" && firstDebit != -1 {
+				debitCol = firstDebit
+				creditCol = j
+				break
+			}
+		}
+	}
+
 	inconsistent := 0
 	matchedCategories := map[string]bool{}
 	yellowStyleCache := map[int]int{}
@@ -98,7 +115,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 		if i <= 1 {
 			continue // skip date row and header row
 		}
-		if len(row) < 6 {
+		if len(row) <= debitCol {
 			continue
 		}
 
@@ -117,8 +134,11 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 		}
 		category = strings.ToLower(category)
 
-		debit, _ := parseAmount(row[4])
-		credit, _ := parseAmount(row[5])
+		debit, _ := parseAmount(row[debitCol])
+		var credit float64
+		if creditCol < len(row) {
+			credit, _ = parseAmount(row[creditCol])
+		}
 		tbValue := math.Abs(debit - credit)
 
 		rowNum, ok := categoryRow[category]

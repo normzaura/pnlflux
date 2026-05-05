@@ -390,9 +390,12 @@ func ProcessFinancials(data []byte, fileName string, categoryNames map[string]fl
 		// cell-reference formulas that weren't resolved during grid building.
 		allEmpty := true
 		for _, col := range monthCols {
-			if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
-				allEmpty = false
-				break
+			if col < len(cells) {
+				v := strings.TrimSpace(cells[col])
+				if v != "" && v != "0" && v != "0.00" {
+					allEmpty = false
+					break
+				}
 			}
 		}
 		if allEmpty {
