@@ -120,12 +120,10 @@ func UpdateAccountThresholdStats(ctx context.Context, httpClient *http.Client, s
 	return nil
 }
 
-// EnsureSpecialAccount ensures the accounts table row for code is present and has a threshold:
-//   - No row → inserts with termThreshold and special_term=true.
-//   - Row exists, threshold null/0 → patches threshold to termThreshold.
-//   - Row exists with threshold already set → no-op (caller uses the existing value).
-func EnsureSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, termThreshold float64) error {
-	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
+
+// Search if there is a matched special account, if not then it will insert
+func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, termThreshold float64) error {
+	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
 	if err != nil {
 		return fmt.Errorf("build check request: %w", err)
@@ -148,54 +146,24 @@ func EnsureSpecialAccount(ctx context.Context, httpClient *http.Client, supabase
 		return fmt.Errorf("decode check response: %w", err)
 	}
 
-	if len(rows) == 0 {
-		// Insert new row.
-		body, err := json.Marshal(map[string]interface{}{
-			"code":         code,
-			"threshold":    termThreshold,
-			"special_term": true,
-		})
-		if err != nil {
-			return fmt.Errorf("marshal insert body: %w", err)
-		}
-		insertURL := fmt.Sprintf("%s/rest/v1/accounts", supabaseURL)
-		req, err = http.NewRequestWithContext(ctx, http.MethodPost, insertURL, bytes.NewReader(body))
-		if err != nil {
-			return fmt.Errorf("build insert request: %w", err)
-		}
-		req.Header.Set("apikey", supabaseKey)
-		req.Header.Set("Authorization", "Bearer "+supabaseKey)
-		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("Prefer", "return=minimal")
-		resp2, err := httpClient.Do(req)
-		if err != nil {
-			return fmt.Errorf("insert account: %w", err)
-		}
-		resp2.Body.Close()
-		if resp2.StatusCode != http.StatusCreated {
-			return fmt.Errorf("insert account returned %d", resp2.StatusCode)
-		}
-		return nil
+	if len(rows) > 0 {
+		return nil // row already exists with a threshold set
 	}
 
-	// Row exists — check whether threshold is already set.
-	var existingThreshold float64
-	if thBytes, ok := rows[0]["threshold"]; ok && string(thBytes) != "null" {
-		json.Unmarshal(thBytes, &existingThreshold) //nolint:errcheck — zero value on failure is correct
-	}
-	if existingThreshold > 0 {
-		return nil // threshold already set, nothing to do
-	}
-
-	// Patch threshold only.
-	body, err := json.Marshal(map[string]interface{}{"threshold": termThreshold})
+	body, err := json.Marshal(map[string]interface{}{
+		"code":                 code,
+		"threshold":            termThreshold,
+		"k":                    defaultK,
+		"policy_min_threshold": defaultPolicyMinThresh,
+		"special_term":         true,
+	})
 	if err != nil {
-		return fmt.Errorf("marshal patch body: %w", err)
+		return fmt.Errorf("marshal insert body: %w", err)
 	}
-	patchURL := fmt.Sprintf("%s/rest/v1/accounts?code=eq.%s", supabaseURL, url.QueryEscape(code))
-	req, err = http.NewRequestWithContext(ctx, http.MethodPatch, patchURL, bytes.NewReader(body))
+	insertURL := fmt.Sprintf("%s/rest/v1/accounts", supabaseURL)
+	req, err = http.NewRequestWithContext(ctx, http.MethodPost, insertURL, bytes.NewReader(body))
 	if err != nil {
-		return fmt.Errorf("build patch request: %w", err)
+		return fmt.Errorf("build insert request: %w", err)
 	}
 	req.Header.Set("apikey", supabaseKey)
 	req.Header.Set("Authorization", "Bearer "+supabaseKey)
@@ -203,11 +171,11 @@ func EnsureSpecialAccount(ctx context.Context, httpClient *http.Client, supabase
 	req.Header.Set("Prefer", "return=minimal")
 	resp2, err := httpClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("patch account threshold: %w", err)
+		return fmt.Errorf("insert account: %w", err)
 	}
 	resp2.Body.Close()
-	if resp2.StatusCode != http.StatusNoContent {
-		return fmt.Errorf("patch account threshold returned %d", resp2.StatusCode)
+	if resp2.StatusCode != http.StatusCreated {
+		return fmt.Errorf("insert account returned %d", resp2.StatusCode)
 	}
 	return nil
 }

@@ -145,7 +145,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				if threshold == 0 {
 					threshold = termThreshold
 					if supabaseURL != "" {
-						if err := EnsureSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, termThreshold); err != nil {
+						if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, termThreshold); err != nil {
 							return nil, nil, ProcessStats{}, fmt.Errorf("ensure special account %q: %w", colALower, err)
 						}
 					}
