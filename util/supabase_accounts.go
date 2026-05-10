@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -175,9 +176,10 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 	if err != nil {
 		return fmt.Errorf("insert account: %w", err)
 	}
-	resp2.Body.Close()
+	defer resp2.Body.Close()
 	if resp2.StatusCode != http.StatusCreated {
-		return fmt.Errorf("insert account returned %d", resp2.StatusCode)
+		respBody, _ := io.ReadAll(resp2.Body)
+		return fmt.Errorf("insert account returned %d: %s", resp2.StatusCode, strings.TrimSpace(string(respBody)))
 	}
 	return nil
 }
