@@ -57,18 +57,12 @@ func highlightEmptyCell(f *excelize.File, sheet string, rowNum int, cells []stri
 		if err != nil {
 			return false, err
 		}
-		rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
-		border := existing.Border
-		if len(border) == 0 {
-			border = rowBorder
-		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:        border,
-			Alignment:     existing.Alignment,
-			Font:          existing.Font,
-			NumFmt:        existing.NumFmt,
-			CustomNumFmt:  existing.CustomNumFmt,
-			Fill:          excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
+			Alignment:    existing.Alignment,
+			Font:         existing.Font,
+			NumFmt:       existing.NumFmt,
+			CustomNumFmt: existing.CustomNumFmt,
+			Fill:         excelize.Fill{Type: "pattern", Color: []string{"#FF0000"}, Pattern: 1},
 		})
 		if err != nil {
 			return false, err
@@ -104,7 +98,6 @@ func tintGreenLastMonth(f *excelize.File, sheet string, rowNum int, cells []stri
 			return err
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:       existing.Border,
 			Alignment:    existing.Alignment,
 			Font:         existing.Font,
 			NumFmt:       existing.NumFmt,
@@ -143,7 +136,6 @@ func tintLastMonthOrange(f *excelize.File, sheet string, rowNum int, monthCols [
 			return err
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:       existing.Border,
 			Alignment:    existing.Alignment,
 			Font:         existing.Font,
 			NumFmt:       existing.NumFmt,
@@ -184,7 +176,6 @@ func tintOrangeLastMonth(f *excelize.File, sheet string, rowNum int, cells []str
 			return err
 		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:       existing.Border,
 			Alignment:    existing.Alignment,
 			Font:         existing.Font,
 			NumFmt:       existing.NumFmt,
@@ -290,8 +281,6 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 	} else {
 		pctDiff = math.MaxFloat64
 	}
-	rowBorder := resolveRowBorder(f, sheet, rowNum, monthCols)
-
 	if pctDiff <= threshold {
 		return false, nil
 	}
@@ -310,12 +299,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 		if err != nil {
 			return false, err
 		}
-		border := existing.Border
-		if len(border) == 0 {
-			border = rowBorder
-		}
 		merged, err := f.NewStyle(&excelize.Style{
-			Border:       border,
 			Alignment:    existing.Alignment,
 			Font:         existing.Font,
 			NumFmt:       existing.NumFmt,

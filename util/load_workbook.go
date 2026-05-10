@@ -59,25 +59,24 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 		return 0, err
 	}
 
-	rawRows, err := f.GetRows(bsSheet)
+	grid, err := buildSheetGrid(f, bsSheet)
 	if err != nil {
-		return 0, fmt.Errorf("read balance sheet rows: %w", err)
+		return 0, fmt.Errorf("initialize balance sheet grid: %w", err)
 	}
-
-	maxRow := len(rawRows)
-	headerExcelRow, monthCols := findHeaderAndMonthCols(rawRows, maxRow)
-	if headerExcelRow == -1 || len(monthCols) == 0 {
+	if grid.HeaderRow == -1 || len(grid.MonthCols) == 0 {
 		return 0, fmt.Errorf("could not find month headers in balance sheet")
 	}
+	headerRow := grid.HeaderRow
+	monthCols := grid.MonthCols
 	lastCol := monthCols[len(monthCols)-1]
 
 	// Build a map of lowercase category name → 1-based Excel row number.
 	categoryRow := map[string]int{}
-	for i := headerExcelRow; i < len(rawRows); i++ {
-		if len(rawRows[i]) == 0 {
+	for i := headerRow; i < len(grid.Cells); i++ {
+		if len(grid.Cells[i]) == 0 {
 			continue
 		}
-		name := strings.ToLower(strings.TrimSpace(rawRows[i][0]))
+		name := strings.ToLower(strings.TrimSpace(grid.Cells[i][0]))
 		if name != "" {
 			categoryRow[name] = i + 1 // convert to 1-based
 		}
@@ -188,8 +187,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 					return 0, fmt.Errorf("get style %s: %w", cellName, err)
 				}
 				merged, err := f.NewStyle(&excelize.Style{
-					Border:       existing.Border,
-					Alignment:    existing.Alignment,
+						Alignment:    existing.Alignment,
 					Font:         existing.Font,
 					NumFmt:       existing.NumFmt,
 					CustomNumFmt: existing.CustomNumFmt,
@@ -213,8 +211,7 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 					return 0, fmt.Errorf("get style %s: %w", cellName, err)
 				}
 				merged, err := f.NewStyle(&excelize.Style{
-					Border:       existing.Border,
-					Alignment:    existing.Alignment,
+						Alignment:    existing.Alignment,
 					Font:         existing.Font,
 					NumFmt:       existing.NumFmt,
 					CustomNumFmt: existing.CustomNumFmt,
@@ -233,11 +230,11 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 	}
 	// Tint red any balance sheet category that has a digit code, has a value in the
 	// last month cell, but was not matched by any TB Match row.
-	for i := headerExcelRow; i < len(rawRows); i++ {
-		if len(rawRows[i]) == 0 {
+	for i := headerRow; i < len(grid.Cells); i++ {
+		if len(grid.Cells[i]) == 0 {
 			continue
 		}
-		name := strings.ToLower(strings.TrimSpace(rawRows[i][0]))
+		name := strings.ToLower(strings.TrimSpace(grid.Cells[i][0]))
 		if name == "" || !strings.ContainsAny(string(name[0]), "0123456789") {
 			continue
 		}
@@ -264,7 +261,6 @@ func reconcileTBMatch(f *excelize.File, tbRows [][]string, log *ProcessLogger) (
 				continue
 			}
 			merged, err := f.NewStyle(&excelize.Style{
-				Border:       existing.Border,
 				Alignment:    existing.Alignment,
 				Font:         existing.Font,
 				NumFmt:       existing.NumFmt,

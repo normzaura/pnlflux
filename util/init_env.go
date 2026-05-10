@@ -8,11 +8,12 @@ import (
 
 // AppConfig holds all environment-derived configuration for the service.
 type AppConfig struct {
-	DoubleBase         string
-	ClientID           string
-	ClientSecret       string
-	CategoriesXLSXPath string
-	S3Bucket           string
+	DoubleBase    string
+	ClientID      string
+	ClientSecret  string
+	S3Bucket      string
+	SupabaseURL   string
+	SupabaseKey   string
 }
 
 // LoadConfig reads and validates all required environment variables,
@@ -40,10 +41,22 @@ func LoadConfig() AppConfig {
 		log.Fatal("AWS_S3_BUCKET is required")
 	}
 
+	supabaseURL := os.Getenv("SUPABASE_URL")
+	if supabaseURL == "" {
+		log.Fatal("SUPABASE_URL is required")
+	}
+
+	supabaseKey := os.Getenv("SUPABASE_KEY")
+	if supabaseKey == "" {
+		log.Fatal("SUPABASE_KEY is required")
+	}
+
 	return AppConfig{
 		DoubleBase:   doubleBase,
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
 		S3Bucket:     s3Bucket,
+		SupabaseURL:  supabaseURL,
+		SupabaseKey:  supabaseKey,
 	}
 }

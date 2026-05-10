@@ -23,9 +23,10 @@ var (
 	HttpClient    *http.Client
 	DoubleBase    string
 	Tokens        *util.TokenProvider
-	CategoryNames map[string]float64
-	SpecialTerms  map[string]float64
+	Accounts      map[string]util.AccountsData
 	S3            *util.S3Client
+	SupabaseURL   string
+	SupabaseKey   string
 )
 
 // zapierTaskPayload matches the exact JSON Zapier sends on a
@@ -132,7 +133,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		"zapData_attachment_count", len(files.TaskAttachments),
 	)
 
-	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, CategoryNames, SpecialTerms)
+	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, Accounts, SupabaseURL, SupabaseKey)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return
@@ -151,15 +152,13 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		}
 		Logger.Info("uploaded processed file to s3", "client_id", clientID, "doubleTask_id", doubleTaskID, "url", objectURL)
 
-		if !strings.EqualFold(os.Getenv("TEST"), "true") {
-			if logBytes, ok := logs[fileName]; ok && len(logBytes) > 0 {
-				base := strings.TrimSuffix(fileName, ".xlsx")
-				logKey := fmt.Sprintf("%s/%s_log", folder, base)
-				if _, err := S3.PushToS3(ctx, logKey, logBytes, "text/plain"); err != nil {
-					Logger.Error("failed to upload log to s3", "client_id", clientID, "file", fileName, "err", err)
-				} else {
-					Logger.Info("uploaded process log to s3", "client_id", clientID, "key", logKey)
-				}
+		if logBytes, ok := logs[fileName]; ok && len(logBytes) > 0 {
+			base := strings.TrimSuffix(fileName, ".xlsx")
+			logKey := fmt.Sprintf("%s/%s_log", folder, base)
+			if _, err := S3.PushToS3(ctx, logKey, logBytes, "text/plain"); err != nil {
+				Logger.Error("failed to upload log to s3", "client_id", clientID, "file", fileName, "err", err)
+			} else {
+				Logger.Info("uploaded process log to s3", "client_id", clientID, "key", logKey)
 			}
 		}
 
