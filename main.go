@@ -41,6 +41,7 @@ func startServer() {
 
 	r := gin.Default()
 
+	r.GET("/health", func(c *gin.Context) { c.Status(http.StatusOK) })
 	r.POST("/webhooks/financialsflux", pnlfluxHandler.HandleFinancialsFlux)
 
 	log.Println("Server running on :8080")

@@ -16,17 +16,17 @@ import (
 type specialTermEntry struct {
 	threshold  float64
 	termType   string // allowed: revenue, cogs, opex, other
-	volatility string
+	volatility string // allowed: fixed, variable, semi_variable
 }
 
 var specialTerms = map[string]specialTermEntry{
-	"rent":         {threshold: 5, termType: "opex", volatility: "low"},
-	"insurance":    {threshold: 5, termType: "opex", volatility: "low"},
-	"depreciation": {threshold: 5, termType: "opex", volatility: "low"},
-	"accounting":   {threshold: 5, termType: "opex", volatility: "low"},
-	"officer":      {threshold: 5, termType: "opex", volatility: "medium"},
-	"professional": {threshold: 5, termType: "opex", volatility: "medium"},
-	"gross profit": {threshold: 5, termType: "other", volatility: "medium"},
+	"rent":         {threshold: 5, termType: "opex", volatility: "fixed"},
+	"insurance":    {threshold: 5, termType: "opex", volatility: "fixed"},
+	"depreciation": {threshold: 5, termType: "opex", volatility: "fixed"},
+	"accounting":   {threshold: 5, termType: "opex", volatility: "fixed"},
+	"officer":      {threshold: 5, termType: "opex", volatility: "semi_variable"},
+	"professional": {threshold: 5, termType: "opex", volatility: "semi_variable"},
+	"gross profit": {threshold: 5, termType: "other", volatility: "semi_variable"},
 }
 
 func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, accounts map[string]AccountsData, supabaseURL, supabaseKey string) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
