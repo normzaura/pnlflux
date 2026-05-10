@@ -13,14 +13,20 @@ import (
 )
 
 
-var specialTerms = map[string]float64{
-	"rent":         5,
-	"insurance":    5,
-	"officer":      5,
-	"depreciation": 5,
-	"professional": 5,
-	"accounting":   5,
-	"gross profit": 5,
+type specialTermEntry struct {
+	threshold  float64
+	termType   string
+	volatility string
+}
+
+var specialTerms = map[string]specialTermEntry{
+	"rent":         {threshold: 5, termType: "expense", volatility: "low"},
+	"insurance":    {threshold: 5, termType: "expense", volatility: "low"},
+	"depreciation": {threshold: 5, termType: "expense", volatility: "low"},
+	"accounting":   {threshold: 5, termType: "expense", volatility: "low"},
+	"officer":      {threshold: 5, termType: "expense", volatility: "medium"},
+	"professional": {threshold: 5, termType: "expense", volatility: "medium"},
+	"gross profit": {threshold: 5, termType: "income", volatility: "medium"},
 }
 
 func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, accounts map[string]AccountsData, supabaseURL, supabaseKey string) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
@@ -139,14 +145,14 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		// as matched. Only override threshold (and sync to Supabase) when the accounts
 		// table has no threshold set for this entry; if it already has one, use it as-is.
 		colALower := strings.ToLower(colA)
-		for term, termThreshold := range specialTerms {
+		for term, entry := range specialTerms {
 			if strings.Contains(colALower, term) {
 				matched = true
 				if threshold == 0 {
-					threshold = termThreshold
+					threshold = entry.threshold
 					if supabaseURL != "" {
-						if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, termThreshold); err != nil {
-							return nil, nil, ProcessStats{}, fmt.Errorf("ensure special account %q: %w", colALower, err)
+						if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.threshold, entry.termType, entry.volatility); err != nil {
+							return nil, nil, ProcessStats{}, fmt.Errorf("lookup and update special account %q: %w", colALower, err)
 						}
 					}
 				}

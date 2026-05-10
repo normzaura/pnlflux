@@ -122,7 +122,7 @@ func UpdateAccountThresholdStats(ctx context.Context, httpClient *http.Client, s
 
 
 // Search if there is a matched special account, if not then it will insert
-func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, termThreshold float64) error {
+func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, termThreshold float64, termType, volatility string) error {
 	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
 	if err != nil {
@@ -156,6 +156,8 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 		"k":                    defaultK,
 		"policy_min_threshold": defaultPolicyMinThresh,
 		"special_term":         true,
+		"type":                 termType,
+		"volatility":           volatility,
 	})
 	if err != nil {
 		return fmt.Errorf("marshal insert body: %w", err)
