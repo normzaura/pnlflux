@@ -19,12 +19,10 @@ type ProcessStats struct {
 // of normalized monthly values using the formula:
 //
 //	σ̂        = 1.4826 × MAD(|Δ%|)
-//	raw       = max(k × σ̂, max(|Δ%|))
-//	threshold = clamp(policyMin, policyMax, raw)
+//	threshold = max(policyMin, k × σ̂)
 //
 // All returned percentages are in percentage-point units (same scale as pctDiff).
-// The sigmaHat return value occupies the stdDev slot and is stored as std_dev in the DB.
-func computeThresholdStats(normVals []float64, k, policyMin, policyMax float64) (threshold, sigmaHat, avgDelta, minVal, maxVal float64) {
+func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold, sigmaHat, avgDelta, minVal, maxVal float64) {
 	if len(normVals) == 0 {
 		return 0, 0, 0, 0, 0
 	}
@@ -70,9 +68,7 @@ func computeThresholdStats(normVals []float64, k, policyMin, policyMax float64) 
 	sort.Float64s(absDevs)
 	sigmaHat = 1.4826 * median(absDevs)
 
-	maxDelta := sorted[len(sorted)-1]
-	raw := math.Max(k*sigmaHat, maxDelta)
-	threshold = math.Min(policyMax, math.Max(policyMin, raw))
+	threshold = math.Max(policyMin, k*sigmaHat)
 	return threshold, sigmaHat, avgDelta, minVal, maxVal
 }
 

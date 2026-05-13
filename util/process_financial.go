@@ -266,11 +266,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			if policyMin == 0 {
 				policyMin = defaultPolicyMinThresh
 			}
-			policyMax := account.PolicyMaxThreshold
-			if policyMax == 0 {
-				policyMax = defaultPolicyMaxThresh
-			}
-			computed, _, _, _, _ := computeThresholdStats(normVals, k, policyMin, policyMax)
+			computed, _, _, _, _ := computeThresholdStats(normVals, k, policyMin)
 			if computed > 0 {
 				threshold = computed
 				updatedEntries := appendThresholdRecord(account.ThresholdEntries, grid.CompanyName, closingMonth, computed)

@@ -36,19 +36,17 @@ type AccountsData struct {
 	ThresholdEntries   []ThresholdEntry
 	K                  float64
 	PolicyMinThreshold float64
-	PolicyMaxThreshold float64
 }
 
 const (
-	defaultK               = 1.5
-	defaultPolicyMinThresh = 5.0  // percentage points
-	defaultPolicyMaxThresh = 50.0 // percentage points
+	defaultK               = 1.0
+	defaultPolicyMinThresh = 5.0 // percentage points
 )
 
-// LoadAccountsData fetches code, threshold, k, policy_min_threshold, and policy_max_threshold
+// LoadAccountsData fetches code, threshold, k, and policy_min_threshold
 // from the accounts table in a single request, returning a map of lowercase code → AccountsData.
 func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string) (map[string]AccountsData, error) {
-	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,k,policy_min_threshold,policy_max_threshold", supabaseURL)
+	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,k,policy_min_threshold", supabaseURL)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fetchURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("build accounts request: %w", err)
@@ -94,9 +92,6 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		}
 		if pmBytes, ok := row["policy_min_threshold"]; ok && string(pmBytes) != "null" {
 			json.Unmarshal(pmBytes, &d.PolicyMinThreshold) //nolint:errcheck
-		}
-		if pxBytes, ok := row["policy_max_threshold"]; ok && string(pxBytes) != "null" {
-			json.Unmarshal(pxBytes, &d.PolicyMaxThreshold) //nolint:errcheck
 		}
 		accounts[code] = d
 	}
