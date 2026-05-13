@@ -33,6 +33,7 @@ type CompanyInfo struct {
 
 // AccountsData holds all per-account fields loaded from the accounts table.
 type AccountsData struct {
+	Code               string // original case as stored in the DB, used for PATCH filters
 	ThresholdEntries   []ThresholdEntry
 	K                  float64
 	PolicyMinThreshold float64
@@ -75,15 +76,17 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		if !ok {
 			continue
 		}
-		var code string
-		if err := json.Unmarshal(codeBytes, &code); err != nil {
+		var originalCode string
+		if err := json.Unmarshal(codeBytes, &originalCode); err != nil {
 			continue
 		}
-		code = strings.ToLower(strings.TrimSpace(code))
-		if code == "" {
+		originalCode = strings.TrimSpace(originalCode)
+		if originalCode == "" {
 			continue
 		}
+		code := strings.ToLower(originalCode)
 		var d AccountsData
+		d.Code = originalCode
 		if thBytes, ok := row["threshold"]; ok && string(thBytes) != "null" {
 			json.Unmarshal(thBytes, &d.ThresholdEntries) //nolint:errcheck
 		}
@@ -121,9 +124,10 @@ func PatchAccountThreshold(ctx context.Context, httpClient *http.Client, supabas
 	if err != nil {
 		return fmt.Errorf("patch account threshold: %w", err)
 	}
-	resp.Body.Close()
+	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusNoContent {
-		return fmt.Errorf("patch account threshold returned %d", resp.StatusCode)
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("patch account threshold returned %d: %s", resp.StatusCode, strings.TrimSpace(string(body)))
 	}
 	return nil
 }

@@ -270,7 +270,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			if computed > 0 {
 				threshold = computed
 				updatedEntries := appendThresholdRecord(account.ThresholdEntries, grid.CompanyName, closingMonth, computed)
-				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, colALower, updatedEntries); err != nil {
+				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, account.Code, updatedEntries); err != nil {
 					stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 				}
 			}
