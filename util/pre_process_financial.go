@@ -46,11 +46,21 @@ type monthInfo struct {
 // metadata discovered during initialization.
 type SheetGrid struct {
 	Sheet            string      // name of the Excel sheet this grid was built from
+	CompanyName      string      // value of cell A1 — the client's company name
 	Cells            [][]string  // [row-1][col-1], built from GetCellValue with formula fallback
 	HeaderRow        int         // 1-based Excel row containing month headers; -1 if not found
 	MonthCols        []int       // 0-based column indices of month columns
 	TotalIncomeCells []string    // evaluated cells of the "Total Income" row; nil if not found
 	ParsedMonths     []monthInfo // parsed month/year for each month column header
+}
+
+// extractCompanyName returns the trimmed value of cell A1, which by convention
+// contains the client's company name in the P&L sheet.
+func extractCompanyName(cells [][]string) string {
+	if len(cells) == 0 || len(cells[0]) == 0 {
+		return ""
+	}
+	return strings.TrimSpace(cells[0][0])
 }
 
 
@@ -171,7 +181,7 @@ func buildSheetGrid(f *excelize.File, sheet string) (*SheetGrid, error) {
 		}
 	}
 
-	return &SheetGrid{Sheet: sheet, Cells: cells, HeaderRow: headerRow, MonthCols: monthCols, TotalIncomeCells: totalCells, ParsedMonths: parsedMonths}, nil
+	return &SheetGrid{Sheet: sheet, CompanyName: extractCompanyName(cells), Cells: cells, HeaderRow: headerRow, MonthCols: monthCols, TotalIncomeCells: totalCells, ParsedMonths: parsedMonths}, nil
 }
 
 func sheetDimensions(f *excelize.File, sheet string) (maxRow, maxCol int, err error) {

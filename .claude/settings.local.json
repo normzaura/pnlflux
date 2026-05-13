@@ -11,7 +11,13 @@
       "WebFetch(domain:api.keeper.app)",
       "Bash(curl -s -X POST https://pnlflux.onrender.com/webhooks/financialsflux -H \"Content-Type: application/json\" -d '{\"\"id\"\":1,\"\"name\"\":\"\"Pre Manager Financial Analysis\"\",\"\"status\"\":\"\"inProgress\"\",\"\"clientId\"\":123}')",
       "Bash(curl -s -X POST https://pnlflux.onrender.com/webhooks/financialsflux -H \"Content-Type: application/json\" -d '{\"\"id\"\":1,\"\"name\"\":\"\"Pre Manager Financial Analysis\"\",\"\"status\"\":\"\"inProgress\"\",\"\"clientId\"\":290239}')",
-      "Bash(GOROOT=/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec/bin/go build ./...)"
+      "Bash(GOROOT=/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec/bin/go build ./...)",
+      "Bash(go env *)",
+      "Read(//usr/local/**)",
+      "Bash(GOROOT=$\\(go env GOROOT 2>/dev/null || ls /usr/local/go 2>/dev/null && echo /usr/local/go\\) go build ./...)",
+      "Read(//usr/local/go/bin/**)",
+      "Bash(GOROOT=/var/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /var/home/linuxbrew/.linuxbrew/bin/go build ./...)",
+      "Bash(GOROOT=/var/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /var/home/linuxbrew/.linuxbrew/bin/go vet ./util/)"
     ]
   }
 }

@@ -120,6 +120,12 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 	if grid.HeaderRow == -1 || len(grid.MonthCols) == 0 {
 		return nil, nil, ProcessStats{}, fmt.Errorf("could not find month column headers in first 10 rows")
 	}
+	var closingMonth string
+	if len(grid.ParsedMonths) > 0 {
+		last := grid.ParsedMonths[len(grid.ParsedMonths)-1]
+		closingMonth = fmt.Sprintf("%02d-%d", int(last.month), last.year)
+	}
+
 	var totalStats ProcessStats
 	redStyleCache := map[int]int{}
 	yellowStyleCache := map[int]int{}
@@ -139,7 +145,19 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		account, matched := accounts[strings.ToLower(colA)]
-		threshold := account.Threshold
+
+		var threshold float64
+		for _, entry := range account.ThresholdEntries {
+			if strings.EqualFold(entry.Company.Name, grid.CompanyName) {
+				for _, rec := range entry.Thresholds {
+					if rec.ClosingMonth == closingMonth {
+						threshold = rec.Value
+						break
+					}
+				}
+				break
+			}
+		}
 
 		// Special terms: if column A contains any term from special_terms.xlsx, mark
 		// as matched. Only override threshold (and sync to Supabase) when the accounts
@@ -224,7 +242,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			divisorCells = grid.TotalIncomeCells
 		}
 
-		// If matched but no threshold is set, compute one from the row's historical data.
+		// If no threshold found for this company, compute one and append it to the account's entry.
 		if threshold == 0 && supabaseURL != "" {
 			var normVals []float64
 			for _, col := range grid.MonthCols {
@@ -248,11 +266,16 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			if policyMin == 0 {
 				policyMin = defaultPolicyMinThresh
 			}
-			computed, stdDev, avgDelta, minVal, maxVal := computeThresholdStats(normVals, k, policyMin)
+			policyMax := account.PolicyMaxThreshold
+			if policyMax == 0 {
+				policyMax = defaultPolicyMaxThresh
+			}
+			computed, _, _, _, _ := computeThresholdStats(normVals, k, policyMin, policyMax)
 			if computed > 0 {
 				threshold = computed
-				if err := UpdateAccountThresholdStats(ctx, httpClient, supabaseURL, supabaseKey, colALower, computed, stdDev, avgDelta, minVal, maxVal, k, policyMin); err != nil {
-					stdlog.Printf("warn: update threshold stats for %q: %v", colALower, err)
+				updatedEntries := appendThresholdRecord(account.ThresholdEntries, grid.CompanyName, closingMonth, computed)
+				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, colALower, updatedEntries); err != nil {
+					stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 				}
 			}
 		}

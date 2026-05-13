@@ -8,26 +8,47 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strconv"
 	"strings"
+	"time"
 )
+
+// ThresholdRecord is a single computed threshold value within a company entry.
+type ThresholdRecord struct {
+	Value        float64 `json:"value"`
+	ClosingMonth string  `json:"closing_month"` // "MM-YYYY"
+	CreatedOn    string  `json:"created_on"`
+}
+
+// ThresholdEntry is one element of the threshold JSONB array stored per account,
+// scoped to a specific company. All historical threshold records for that company
+// are nested inside Thresholds.
+type ThresholdEntry struct {
+	Company    CompanyInfo       `json:"company"`
+	Thresholds []ThresholdRecord `json:"thresholds"`
+}
+
+type CompanyInfo struct {
+	Name string `json:"name"`
+}
 
 // AccountsData holds all per-account fields loaded from the accounts table.
 type AccountsData struct {
-	Threshold          float64
+	ThresholdEntries   []ThresholdEntry
 	K                  float64
 	PolicyMinThreshold float64
+	PolicyMaxThreshold float64
 }
 
 const (
 	defaultK               = 1.5
-	defaultPolicyMinThresh = 5.0 // percentage points
+	defaultPolicyMinThresh = 5.0  // percentage points
+	defaultPolicyMaxThresh = 50.0 // percentage points
 )
 
-// LoadAccountsData fetches code, threshold, k, and policy_min_threshold from the
-// accounts table in a single request, returning a map of lowercase code → AccountsData.
+// LoadAccountsData fetches code, threshold, k, policy_min_threshold, and policy_max_threshold
+// from the accounts table in a single request, returning a map of lowercase code → AccountsData.
 func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string) (map[string]AccountsData, error) {
-	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,k,policy_min_threshold", supabaseURL)
+	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,k,policy_min_threshold,policy_max_threshold", supabaseURL)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fetchURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("build accounts request: %w", err)
@@ -66,12 +87,7 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		}
 		var d AccountsData
 		if thBytes, ok := row["threshold"]; ok && string(thBytes) != "null" {
-			if err := json.Unmarshal(thBytes, &d.Threshold); err != nil {
-				var s string
-				if json.Unmarshal(thBytes, &s) == nil {
-					d.Threshold, _ = strconv.ParseFloat(strings.TrimSpace(s), 64)
-				}
-			}
+			json.Unmarshal(thBytes, &d.ThresholdEntries) //nolint:errcheck
 		}
 		if kBytes, ok := row["k"]; ok && string(kBytes) != "null" {
 			json.Unmarshal(kBytes, &d.K) //nolint:errcheck
@@ -79,31 +95,27 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		if pmBytes, ok := row["policy_min_threshold"]; ok && string(pmBytes) != "null" {
 			json.Unmarshal(pmBytes, &d.PolicyMinThreshold) //nolint:errcheck
 		}
+		if pxBytes, ok := row["policy_max_threshold"]; ok && string(pxBytes) != "null" {
+			json.Unmarshal(pxBytes, &d.PolicyMaxThreshold) //nolint:errcheck
+		}
 		accounts[code] = d
 	}
 	return accounts, nil
 }
 
-// UpdateAccountThresholdStats PATCHes the computed threshold and statistics back
-// to the accounts table row identified by code.
-func UpdateAccountThresholdStats(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, threshold, stdDev, avgDelta, minVal, maxVal, k, policyMin float64) error {
+// PatchAccountThreshold replaces the threshold JSONB array for an account row.
+func PatchAccountThreshold(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, entries []ThresholdEntry) error {
 	body, err := json.Marshal(map[string]interface{}{
-		"threshold":           threshold,
-		"std_dev":             stdDev,
-		"avg_delta_percent":   avgDelta,
-		"min":                 minVal,
-		"max":                 maxVal,
-		"k":                   k,
-		"policy_min_threshold": policyMin,
+		"threshold": entries,
 	})
 	if err != nil {
-		return fmt.Errorf("marshal update body: %w", err)
+		return fmt.Errorf("marshal threshold body: %w", err)
 	}
 
 	patchURL := fmt.Sprintf("%s/rest/v1/accounts?code=eq.%s", supabaseURL, url.QueryEscape(code))
 	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, patchURL, bytes.NewReader(body))
 	if err != nil {
-		return fmt.Errorf("build update request: %w", err)
+		return fmt.Errorf("build patch request: %w", err)
 	}
 	req.Header.Set("apikey", supabaseKey)
 	req.Header.Set("Authorization", "Bearer "+supabaseKey)
@@ -112,13 +124,37 @@ func UpdateAccountThresholdStats(ctx context.Context, httpClient *http.Client, s
 
 	resp, err := httpClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("update account stats: %w", err)
+		return fmt.Errorf("patch account threshold: %w", err)
 	}
 	resp.Body.Close()
 	if resp.StatusCode != http.StatusNoContent {
-		return fmt.Errorf("update account stats returned %d", resp.StatusCode)
+		return fmt.Errorf("patch account threshold returned %d", resp.StatusCode)
 	}
 	return nil
+}
+
+func newThresholdRecord(closingMonth string, value float64) ThresholdRecord {
+	return ThresholdRecord{
+		Value:        value,
+		ClosingMonth: closingMonth,
+		CreatedOn:    time.Now().UTC().Format(time.RFC3339),
+	}
+}
+
+// appendThresholdRecord adds a new ThresholdRecord to the matching company entry.
+// If no entry exists for the company yet, a new one is created.
+func appendThresholdRecord(entries []ThresholdEntry, companyName, closingMonth string, value float64) []ThresholdEntry {
+	record := newThresholdRecord(closingMonth, value)
+	for i, entry := range entries {
+		if strings.EqualFold(entry.Company.Name, companyName) {
+			entries[i].Thresholds = append(entries[i].Thresholds, record)
+			return entries
+		}
+	}
+	return append(entries, ThresholdEntry{
+		Company:    CompanyInfo{Name: companyName},
+		Thresholds: []ThresholdRecord{record},
+	})
 }
 
 

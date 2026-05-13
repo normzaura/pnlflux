@@ -12,13 +12,19 @@ type ProcessStats struct {
 	Inconsistent int // yellow-tinted balance sheet cells (TB Match mismatch)
 }
 
+
+
+
 // computeThresholdStats derives threshold and supporting statistics from a slice
 // of normalized monthly values using the formula:
 //
-//	threshold = max(policyMin, min(k×stdDev, 0.5×maxDelta, percentile95(|Δ%|)))
+//	σ̂        = 1.4826 × MAD(|Δ%|)
+//	raw       = max(k × σ̂, max(|Δ%|))
+//	threshold = clamp(policyMin, policyMax, raw)
 //
 // All returned percentages are in percentage-point units (same scale as pctDiff).
-func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold, stdDev, avgDelta, minVal, maxVal float64) {
+// The sigmaHat return value occupies the stdDev slot and is stored as std_dev in the DB.
+func computeThresholdStats(normVals []float64, k, policyMin, policyMax float64) (threshold, sigmaHat, avgDelta, minVal, maxVal float64) {
 	if len(normVals) == 0 {
 		return 0, 0, 0, 0, 0
 	}
@@ -52,28 +58,32 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 	}
 	avgDelta = sum / float64(len(deltas))
 
-	var varSum float64
-	for _, d := range deltas {
-		diff := d - avgDelta
-		varSum += diff * diff
-	}
-	stdDev = math.Sqrt(varSum / float64(len(deltas)))
-
 	sorted := make([]float64, len(deltas))
 	copy(sorted, deltas)
 	sort.Float64s(sorted)
 
-	maxDelta := sorted[len(sorted)-1]
-	idx := int(math.Ceil(0.95*float64(len(sorted)))) - 1
-	if idx < 0 {
-		idx = 0
+	medianDeltas := median(sorted)
+	absDevs := make([]float64, len(sorted))
+	for i, d := range sorted {
+		absDevs[i] = math.Abs(d - medianDeltas)
 	}
-	if idx >= len(sorted) {
-		idx = len(sorted) - 1
-	}
-	pct95 := sorted[idx]
+	sort.Float64s(absDevs)
+	sigmaHat = 1.4826 * median(absDevs)
 
-	inner := math.Min(k*stdDev, math.Min(0.5*maxDelta, pct95))
-	threshold = math.Max(policyMin, inner)
-	return threshold, stdDev, avgDelta, minVal, maxVal
+	maxDelta := sorted[len(sorted)-1]
+	raw := math.Max(k*sigmaHat, maxDelta)
+	threshold = math.Min(policyMax, math.Max(policyMin, raw))
+	return threshold, sigmaHat, avgDelta, minVal, maxVal
+}
+
+// median returns the median of a pre-sorted slice.
+func median(sorted []float64) float64 {
+	n := len(sorted)
+	if n == 0 {
+		return 0
+	}
+	if n%2 == 1 {
+		return sorted[n/2]
+	}
+	return (sorted[n/2-1] + sorted[n/2]) / 2
 }
