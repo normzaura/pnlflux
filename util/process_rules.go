@@ -277,7 +277,7 @@ func detectFluctuation(f *excelize.File, sheet string, rowNum int, cells []strin
 
 	var pctDiff float64
 	if avg != 0 {
-		pctDiff = math.Abs(last.val-avg) / math.Abs(avg) * 100
+		pctDiff = math.Abs(last.val-avg) / math.Abs(avg)
 	} else {
 		pctDiff = math.MaxFloat64
 	}

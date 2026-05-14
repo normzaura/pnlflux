@@ -20,13 +20,13 @@ type specialTermEntry struct {
 }
 
 var specialTerms = map[string]specialTermEntry{
-	"rent":         {threshold: 5, termType: "opex", volatility: "fixed"},
-	"insurance":    {threshold: 5, termType: "opex", volatility: "fixed"},
-	"depreciation": {threshold: 5, termType: "opex", volatility: "fixed"},
-	"accounting":   {threshold: 5, termType: "opex", volatility: "fixed"},
-	"officer":      {threshold: 5, termType: "opex", volatility: "semi_variable"},
-	"professional": {threshold: 5, termType: "opex", volatility: "semi_variable"},
-	"gross profit": {threshold: 5, termType: "other", volatility: "semi_variable"},
+	"rent":         {threshold: 0.05, termType: "opex", volatility: "fixed"},
+	"insurance":    {threshold: 0.05, termType: "opex", volatility: "fixed"},
+	"depreciation": {threshold: 0.05, termType: "opex", volatility: "fixed"},
+	"accounting":   {threshold: 0.05, termType: "opex", volatility: "fixed"},
+	"officer":      {threshold: 0.05, termType: "opex", volatility: "semi_variable"},
+	"professional": {threshold: 0.05, termType: "opex", volatility: "semi_variable"},
+	"gross profit": {threshold: 0.05, termType: "other", volatility: "semi_variable"},
 }
 
 func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, accounts map[string]AccountsData, supabaseURL, supabaseKey string) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
@@ -148,13 +148,8 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 
 		var threshold float64
 		for _, entry := range account.ThresholdEntries {
-			if strings.EqualFold(entry.Company.Name, grid.CompanyName) {
-				for _, rec := range entry.Thresholds {
-					if rec.ClosingMonth == closingMonth {
-						threshold = rec.Value
-						break
-					}
-				}
+			if strings.EqualFold(entry.Company.Name, grid.CompanyName) && entry.Stats.ClosingDate == closingMonth {
+				threshold = entry.Threshold
 				break
 			}
 		}
@@ -269,7 +264,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			computed, _, _, _, _ := computeThresholdStats(normVals, k, policyMin)
 			if computed > 0 {
 				threshold = computed
-				updatedEntries := appendThresholdRecord(account.ThresholdEntries, grid.CompanyName, closingMonth, computed)
+				updatedEntries := append(account.ThresholdEntries, newThresholdEntry(grid.CompanyName, closingMonth, computed))
 				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, account.Code, updatedEntries); err != nil {
 					stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 				}
@@ -337,7 +332,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 									effectiveLast = lastVal / d
 								}
 							}
-							pctDiff := math.Abs(effectiveLast-avg) / math.Abs(avg) * 100
+							pctDiff := math.Abs(effectiveLast-avg) / math.Abs(avg)
 							flagged := pctDiff > threshold
 							log.LogFluctuation(row, colA, monthHeaders, rawVals, normVals, divisorCells != nil, avg, lastVal, effectiveLast, pctDiff, threshold, flagged)
 						}

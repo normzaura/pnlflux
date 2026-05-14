@@ -21,7 +21,7 @@ type ProcessStats struct {
 //	σ̂        = 1.4826 × MAD(|Δ%|)
 //	threshold = max(policyMin, k × σ̂)
 //
-// All returned percentages are in percentage-point units (same scale as pctDiff).
+// All values are in decimal format (0.15 = 15%), matching the DB storage format.
 func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold, sigmaHat, avgDelta, minVal, maxVal float64) {
 	if len(normVals) == 0 {
 		return 0, 0, 0, 0, 0
@@ -43,7 +43,7 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 	for i := 1; i < len(normVals); i++ {
 		prev := normVals[i-1]
 		if prev != 0 {
-			deltas = append(deltas, math.Abs(normVals[i]-prev)/math.Abs(prev)*100)
+			deltas = append(deltas, math.Abs(normVals[i]-prev)/math.Abs(prev))
 		}
 	}
 	if len(deltas) == 0 {

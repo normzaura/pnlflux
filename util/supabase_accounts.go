@@ -12,23 +12,19 @@ import (
 	"time"
 )
 
-// ThresholdRecord is a single computed threshold value within a company entry.
-type ThresholdRecord struct {
-	Value        float64 `json:"value"`
-	ClosingMonth string  `json:"closing_month"` // "MM-YYYY"
-	CreatedOn    string  `json:"created_on"`
-}
-
-// ThresholdEntry is one element of the threshold JSONB array stored per account,
-// scoped to a specific company. All historical threshold records for that company
-// are nested inside Thresholds.
 type ThresholdEntry struct {
-	Company    CompanyInfo       `json:"company"`
-	Thresholds []ThresholdRecord `json:"thresholds"`
+	Company   CompanyInfo    `json:"company"`
+	Threshold float64        `json:"threshold"`
+	Stats     ThresholdStats `json:"stats"`
 }
 
 type CompanyInfo struct {
 	Name string `json:"name"`
+}
+
+type ThresholdStats struct {
+	CreatedOn   string `json:"created_on"`
+	ClosingDate string `json:"closing_date"` // "MM-YYYY"
 }
 
 // AccountsData holds all per-account fields loaded from the accounts table.
@@ -41,7 +37,7 @@ type AccountsData struct {
 
 const (
 	defaultK               = 1.0
-	defaultPolicyMinThresh = 5.0 // percentage points
+	defaultPolicyMinThresh = 0.05 // decimal (5%)
 )
 
 // LoadAccountsData fetches code, threshold, k, and policy_min_threshold
@@ -132,28 +128,15 @@ func PatchAccountThreshold(ctx context.Context, httpClient *http.Client, supabas
 	return nil
 }
 
-func newThresholdRecord(closingMonth string, value float64) ThresholdRecord {
-	return ThresholdRecord{
-		Value:        value,
-		ClosingMonth: closingMonth,
-		CreatedOn:    time.Now().UTC().Format(time.RFC3339),
+func newThresholdEntry(companyName, closingDate string, threshold float64) ThresholdEntry {
+	return ThresholdEntry{
+		Company:   CompanyInfo{Name: companyName},
+		Threshold: threshold,
+		Stats: ThresholdStats{
+			CreatedOn:   time.Now().UTC().Format(time.RFC3339),
+			ClosingDate: closingDate,
+		},
 	}
-}
-
-// appendThresholdRecord adds a new ThresholdRecord to the matching company entry.
-// If no entry exists for the company yet, a new one is created.
-func appendThresholdRecord(entries []ThresholdEntry, companyName, closingMonth string, value float64) []ThresholdEntry {
-	record := newThresholdRecord(closingMonth, value)
-	for i, entry := range entries {
-		if strings.EqualFold(entry.Company.Name, companyName) {
-			entries[i].Thresholds = append(entries[i].Thresholds, record)
-			return entries
-		}
-	}
-	return append(entries, ThresholdEntry{
-		Company:    CompanyInfo{Name: companyName},
-		Thresholds: []ThresholdRecord{record},
-	})
 }
 
 
