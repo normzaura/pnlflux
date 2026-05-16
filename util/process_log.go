@@ -96,6 +96,11 @@ func (l *ProcessLogger) LogNoThreshold(rowNum int, colA string) {
 	fmt.Fprintf(l.w, "[ROW %d]   no threshold set — fluctuation check skipped\n", rowNum)
 }
 
+// LogNoK records that a matched row has no k set for this company and threshold cannot be computed.
+func (l *ProcessLogger) LogNoK(rowNum int, colA string) {
+	fmt.Fprintf(l.w, "[ROW %d]   NO K SET for %q — cannot compute threshold, last month tinted blue\n", rowNum, colA)
+}
+
 // LogReconcile records a TB Match reconciliation result for a category.
 func (l *ProcessLogger) LogReconcile(category string, tbVal, bsVal float64, match bool) {
 	if match {

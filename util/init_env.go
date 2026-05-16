@@ -20,9 +20,9 @@ type AppConfig struct {
 // applying defaults where applicable. Exits immediately if a required
 // variable is missing.
 func LoadConfig() AppConfig {
-	doubleBase := os.Getenv("DOUBLE_HQ_BASE_URL")
+	doubleBase := os.Getenv("DOUBLE_BASE_URL")
 	if doubleBase == "" {
-		fmt.Println("No DOUBLE_HQ_BASE_URL environment variable set, resetting to default: api.doublehq.com")
+		fmt.Println("No DOUBLE_BASE_URL environment variable set, resetting to default: api.doublehq.com")
 		doubleBase = "https://api.doublehq.com"
 	}
 

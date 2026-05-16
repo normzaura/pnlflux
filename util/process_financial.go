@@ -131,6 +131,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 	yellowStyleCache := map[int]int{}
 	greenStyleCache := map[int]int{}
 	orangeStyleCache := map[int]int{}
+	blueStyleCache := map[int]int{}
 
 	// MAIN LOOP
 	for row := grid.HeaderRow + 1; row <= len(grid.Cells); row++ {
@@ -268,12 +269,20 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			patchCode = colALower
 		}
 
-		k := defaultK
+		k, kFound := 0.0, false
 		if kVal, ok := findKForCompany(account.KEntries, grid.CompanyName); ok {
 			k = kVal
-		} else if account.K != 0 {
-			k = account.K
+			kFound = true
 		}
+
+		if !hasStoredThreshold && !kFound {
+			log.LogNoK(row, colA)
+			if err := tintBlueLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, blueStyleCache); err != nil {
+				return nil, nil, ProcessStats{}, fmt.Errorf("tint blue row %d: %w", row, err)
+			}
+			continue
+		}
+
 		policyMin := account.PolicyMinThreshold
 		if policyMin == 0 {
 			policyMin = defaultPolicyMinThresh

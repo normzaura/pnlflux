@@ -55,19 +55,17 @@ type AccountsData struct {
 	ThresholdEntries   []ThresholdEntry
 	KEntries           []KEntry
 	HistoryEntries     []HistoryEntry
-	K                  float64
 	PolicyMinThreshold float64
 }
 
 const (
-	defaultK               = 1.0
 	defaultPolicyMinThresh = 0.05 // decimal (5%)
 )
 
 // LoadAccountsData fetches code, threshold, k, and policy_min_threshold
 // from the accounts table in a single request, returning a map of lowercase code → AccountsData.
 func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string) (map[string]AccountsData, error) {
-	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,k,policy_min_threshold,k_and_flagrate,history_and_avg_absdelta", supabaseURL)
+	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,policy_min_threshold,k_and_flagrate,history_and_avg_absdelta", supabaseURL)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fetchURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("build accounts request: %w", err)
@@ -109,9 +107,6 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		d.Code = originalCode
 		if thBytes, ok := row["threshold"]; ok && string(thBytes) != "null" {
 			json.Unmarshal(thBytes, &d.ThresholdEntries) //nolint:errcheck
-		}
-		if kBytes, ok := row["k"]; ok && string(kBytes) != "null" {
-			json.Unmarshal(kBytes, &d.K) //nolint:errcheck
 		}
 		if pmBytes, ok := row["policy_min_threshold"]; ok && string(pmBytes) != "null" {
 			json.Unmarshal(pmBytes, &d.PolicyMinThreshold) //nolint:errcheck
@@ -340,8 +335,6 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 
 	body, err := json.Marshal(map[string]interface{}{
 		"code":                 code,
-		"threshold":            termThreshold,
-		"k":                    defaultK,
 		"policy_min_threshold": defaultPolicyMinThresh,
 		"special_term":         true,
 		"type":                 termType,
