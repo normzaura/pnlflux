@@ -133,7 +133,13 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		"zapData_attachment_count", len(files.TaskAttachments),
 	)
 
-	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, Accounts, SupabaseURL, SupabaseKey)
+	accounts, err := util.LoadAccountsData(ctx, HttpClient, SupabaseURL, SupabaseKey)
+	if err != nil {
+		Logger.Error("failed to reload accounts from supabase", "doubleTask_id", doubleTaskID, "err", err)
+		return
+	}
+
+	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, accounts, SupabaseURL, SupabaseKey)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return
