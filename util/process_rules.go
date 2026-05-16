@@ -8,6 +8,24 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
+// isBalanceSheetCode reports whether a row should be skipped because its
+// account code belongs to the balance-sheet range (starts with 1, 2, or 3).
+// When the code contains a '-', the digit immediately after the '-' is used
+// instead of the leading digit.
+func isBalanceSheetCode(colA string) bool {
+	code := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
+	if code == "" {
+		return false
+	}
+	var ch byte
+	if idx := strings.IndexByte(code, '-'); idx != -1 && idx+1 < len(code) {
+		ch = code[idx+1]
+	} else {
+		ch = code[0]
+	}
+	return ch == '1' || ch == '2' || ch == '3'
+}
+
 // parseAmount parses a currency string into a float64.
 // Strips leading "$", commas, and handles parentheses notation for negatives
 // (e.g. "(1,234.56)" → -1234.56).

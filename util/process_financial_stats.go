@@ -3,6 +3,8 @@ package util
 import (
 	"math"
 	"sort"
+	"strings"
+	"time"
 )
 
 // ProcessStats holds counts of flagged cells produced during processing.
@@ -22,20 +24,9 @@ type ProcessStats struct {
 //	threshold = max(policyMin, k × σ̂)
 //
 // All values are in decimal format (0.15 = 15%), matching the DB storage format.
-func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold, sigmaHat, avgDelta, minVal, maxVal float64) {
+func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold, sigmaHat, avgDelta float64) {
 	if len(normVals) == 0 {
-		return 0, 0, 0, 0, 0
-	}
-
-	minVal = normVals[0]
-	maxVal = normVals[0]
-	for _, v := range normVals {
-		if v < minVal {
-			minVal = v
-		}
-		if v > maxVal {
-			maxVal = v
-		}
+		return 0, 0, 0
 	}
 
 	// Month-over-month absolute percent changes.
@@ -47,7 +38,7 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 		}
 	}
 	if len(deltas) == 0 {
-		return 0, 0, 0, minVal, maxVal
+		return 0, 0, 0
 	}
 
 	var sum float64
@@ -69,7 +60,71 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 	sigmaHat = 1.4826 * median(absDevs)
 
 	threshold = math.Max(policyMin, k*sigmaHat)
-	return threshold, sigmaHat, avgDelta, minVal, maxVal
+	return threshold, sigmaHat, avgDelta
+}
+
+// computeHistoryMetrics derives avg_absdelta and flag_rate from the full stored history
+// for a given company. History entries are sorted chronologically before computing
+// month-over-month absolute % changes.
+//
+//   - avg_absdelta: mean of all |Δ%| across consecutive months
+//   - flag_rate:    fraction of those deltas that exceed threshold (0 when threshold == 0)
+func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold float64) (avgAbsDelta, flagRate float64) {
+	var hist []map[string]float64
+	for _, e := range entries {
+		if strings.EqualFold(e.Company.Name, companyName) {
+			hist = e.History
+			break
+		}
+	}
+	if len(hist) < 2 {
+		return 0, 0
+	}
+
+	type mv struct {
+		t   time.Time
+		val float64
+	}
+	var points []mv
+	for _, h := range hist {
+		for monthStr, val := range h {
+			t, err := time.Parse("01-2006", monthStr)
+			if err != nil {
+				continue
+			}
+			points = append(points, mv{t, val})
+		}
+	}
+	sort.Slice(points, func(i, j int) bool { return points[i].t.Before(points[j].t) })
+	if len(points) < 2 {
+		return 0, 0
+	}
+
+	var deltas []float64
+	for i := 1; i < len(points); i++ {
+		prev := points[i-1].val
+		if prev == 0 {
+			continue
+		}
+		deltas = append(deltas, math.Abs(points[i].val-prev)/math.Abs(prev))
+	}
+	if len(deltas) == 0 {
+		return 0, 0
+	}
+
+	var sum float64
+	var flagged int
+	for _, d := range deltas {
+		sum += d
+		if threshold > 0 && d > threshold {
+			flagged++
+		}
+	}
+	avgAbsDelta = sum / float64(len(deltas))
+	if threshold > 0 {
+		flagRate = float64(flagged) / float64(len(deltas))
+	}
+	return avgAbsDelta, flagRate
 }
 
 // median returns the median of a pre-sorted slice.

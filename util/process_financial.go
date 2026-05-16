@@ -143,30 +143,38 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		if strings.Contains(strings.ToLower(colA), "total") {
 			continue
 		}
+		if isBalanceSheetCode(colA) {
+			continue
+		}
 
 		account, matched := accounts[strings.ToLower(colA)]
 
 		var threshold float64
+		var hasStoredThreshold bool
 		for _, entry := range account.ThresholdEntries {
-			if strings.EqualFold(entry.Company.Name, grid.CompanyName) && entry.Stats.ClosingDate == closingMonth {
-				threshold = entry.Threshold
+			if strings.EqualFold(entry.Company.Name, grid.CompanyName) {
+				for _, tv := range entry.Thresholds {
+					if tv.ClosingMonth == closingMonth {
+						threshold = tv.Value
+						hasStoredThreshold = true
+						break
+					}
+				}
 				break
 			}
 		}
 
-		// Special terms: if column A contains any term from special_terms.xlsx, mark
-		// as matched. Only override threshold (and sync to Supabase) when the accounts
-		// table has no threshold set for this entry; if it already has one, use it as-is.
+		// Special terms: mark as matched and ensure the account row exists in Supabase.
+		// Use the special term threshold only as a fallback if no computed threshold is stored.
 		colALower := strings.ToLower(colA)
+		var specialTermThreshold float64
 		for term, entry := range specialTerms {
 			if strings.Contains(colALower, term) {
 				matched = true
-				if threshold == 0 {
-					threshold = entry.threshold
-					if supabaseURL != "" {
-						if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.threshold, entry.termType, entry.volatility); err != nil {
-							return nil, nil, ProcessStats{}, fmt.Errorf("lookup and update special account %q: %w", colALower, err)
-						}
+				specialTermThreshold = entry.threshold
+				if supabaseURL != "" {
+					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.threshold, entry.termType, entry.volatility); err != nil {
+						return nil, nil, ProcessStats{}, fmt.Errorf("lookup and update special account %q: %w", colALower, err)
 					}
 				}
 				break
@@ -229,6 +237,24 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			continue
 		}
 
+		// Collect raw monthly values for history tracking (all months, raw amounts).
+		historyVals := make(map[string]float64)
+		for _, col := range grid.MonthCols {
+			if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
+				continue
+			}
+			v, parseErr := parseAmount(cells[col])
+			if parseErr != nil {
+				continue
+			}
+			for _, m := range grid.ParsedMonths {
+				if m.col == col+1 {
+					historyVals[fmt.Sprintf("%02d-%d", int(m.month), m.year)] = v
+					break
+				}
+			}
+		}
+
 		// Determine if this row should normalize against total income.
 		// Code-5 rows and rows matching 'gross profit' both divide by total income.
 		itemCode := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
@@ -237,8 +263,24 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			divisorCells = grid.TotalIncomeCells
 		}
 
-		// If no threshold found for this company, compute one and append it to the account's entry.
-		if threshold == 0 && supabaseURL != "" {
+		patchCode := account.Code
+		if patchCode == "" {
+			patchCode = colALower
+		}
+
+		k := defaultK
+		if kVal, ok := findKForCompany(account.KEntries, grid.CompanyName); ok {
+			k = kVal
+		} else if account.K != 0 {
+			k = account.K
+		}
+		policyMin := account.PolicyMinThreshold
+		if policyMin == 0 {
+			policyMin = defaultPolicyMinThresh
+		}
+
+		// If no stored threshold exists for this company+month, compute one from the row's data.
+		if !hasStoredThreshold && supabaseURL != "" {
 			var normVals []float64
 			for _, col := range grid.MonthCols {
 				var v float64
@@ -253,21 +295,32 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				}
 				normVals = append(normVals, v)
 			}
-			k := account.K
-			if k == 0 {
-				k = defaultK
-			}
-			policyMin := account.PolicyMinThreshold
-			if policyMin == 0 {
-				policyMin = defaultPolicyMinThresh
-			}
-			computed, _, _, _, _ := computeThresholdStats(normVals, k, policyMin)
+			computed, _, _ := computeThresholdStats(normVals, k, policyMin)
 			if computed > 0 {
 				threshold = computed
-				updatedEntries := append(account.ThresholdEntries, newThresholdEntry(grid.CompanyName, closingMonth, computed))
-				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, account.Code, updatedEntries); err != nil {
+			} else {
+				threshold = specialTermThreshold
+			}
+			if computed > 0 {
+				updatedEntries := appendThresholdValue(account.ThresholdEntries, grid.CompanyName, closingMonth, computed, 0)
+				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
 					stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 				}
+			}
+		}
+
+		// Upsert per-company history and derive avg_absdelta + flag_rate from full history.
+		var histFlagRate float64
+		if supabaseURL != "" {
+			updatedHistEntries := account.HistoryEntries
+			for monthStr, val := range historyVals {
+				updatedHistEntries = upsertHistoryEntry(updatedHistEntries, grid.CompanyName, monthStr, val)
+			}
+			histAvgAbsDelta, fr := computeHistoryMetrics(updatedHistEntries, grid.CompanyName, threshold)
+			histFlagRate = fr
+			updatedHistEntries = updateHistoryAvgAbsDelta(updatedHistEntries, grid.CompanyName, histAvgAbsDelta)
+			if err := PatchAccountHistoryAndAvgAbsDelta(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedHistEntries); err != nil {
+				stdlog.Printf("warn: patch history for %q: %v", colALower, err)
 			}
 		}
 
@@ -351,6 +404,12 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			} else if !tinted {
 				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
+				}
+			}
+			if supabaseURL != "" {
+				updatedKEntries := upsertKFlagRate(account.KEntries, grid.CompanyName, k, histFlagRate)
+				if err := PatchAccountKAndFlagRate(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedKEntries); err != nil {
+					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
 				}
 			}
 		} else {

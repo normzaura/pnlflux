@@ -17,7 +17,13 @@
       "Bash(GOROOT=$\\(go env GOROOT 2>/dev/null || ls /usr/local/go 2>/dev/null && echo /usr/local/go\\) go build ./...)",
       "Read(//usr/local/go/bin/**)",
       "Bash(GOROOT=/var/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /var/home/linuxbrew/.linuxbrew/bin/go build ./...)",
-      "Bash(GOROOT=/var/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /var/home/linuxbrew/.linuxbrew/bin/go vet ./util/)"
+      "Bash(GOROOT=/var/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /var/home/linuxbrew/.linuxbrew/bin/go vet ./util/)",
+      "Read(//home/bazzite/go/bin/**)",
+      "Read(//var/home/bazzite/**)",
+      "Bash(/home/linuxbrew/.linuxbrew/bin/go env *)",
+      "Bash(GOROOT=$\\(/home/linuxbrew/.linuxbrew/bin/go env GOROOT 2>/dev/null || echo \"\"\\) /home/linuxbrew/.linuxbrew/bin/go build ./...)",
+      "Bash(go1.22* build *)",
+      "Bash(/home/linuxbrew/.linuxbrew/bin/go build *)"
     ]
   }
 }
