@@ -137,6 +137,14 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		closingMonth = fmt.Sprintf("%02d-%d", int(last.month), last.year)
 	}
 
+	// Write analysis column headers after the last month column.
+	analysisLastCol := grid.MonthCols[len(grid.MonthCols)-1]
+	for i, h := range []string{"threshold", "confidence", "flag_review", "agent_k_threshold", "justification"} {
+		if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+3+i, grid.HeaderRow); err == nil {
+			financialFile.SetCellValue(grid.Sheet, cellName, h)
+		}
+	}
+
 	var totalStats ProcessStats
 	redStyleCache := map[int]int{}
 	yellowStyleCache := map[int]int{}
@@ -343,22 +351,29 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		// Upsert per-company history and derive avg_absdelta + flag_rate from full history.
-		var histFlagRate float64
+		var histFlagRate, histAvgAbsDelta float64
+		updatedHistEntries := account.HistoryEntries
+		for monthStr, val := range historyVals {
+			updatedHistEntries = upsertHistoryEntry(updatedHistEntries, grid.CompanyName, monthStr, val)
+		}
+		histAvgAbsDelta, histFlagRate = computeHistoryMetrics(updatedHistEntries, grid.CompanyName, threshold)
+		updatedHistEntries = updateHistoryAvgAbsDelta(updatedHistEntries, grid.CompanyName, histAvgAbsDelta)
 		if supabaseURL != "" {
-			updatedHistEntries := account.HistoryEntries
-			for monthStr, val := range historyVals {
-				updatedHistEntries = upsertHistoryEntry(updatedHistEntries, grid.CompanyName, monthStr, val)
-			}
-			histAvgAbsDelta, fr := computeHistoryMetrics(updatedHistEntries, grid.CompanyName, threshold)
-			histFlagRate = fr
-			updatedHistEntries = updateHistoryAvgAbsDelta(updatedHistEntries, grid.CompanyName, histAvgAbsDelta)
 			if err := PatchAccountHistoryAndAvgAbsDelta(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedHistEntries); err != nil {
 				stdlog.Printf("warn: patch history for %q: %v", colALower, err)
 			}
 		}
 
+		// Write threshold value into the analysis columns for this row.
+		if threshold > 0 {
+			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+3, row); err == nil {
+				financialFile.SetCellValue(grid.Sheet, cellName, threshold)
+			}
+		}
+
 		var stats ProcessStats
 		var dollarDelta float64
+		var fluctuationStatus string
 
 		if threshold > 0 {
 			if len(grid.MonthCols) > 0 {
@@ -419,13 +434,16 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				return nil, nil, ProcessStats{}, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
 			}
 			if flagged && dollarFloor > 0 && dollarDelta < dollarFloor {
+				fluctuationStatus = "stable"
 				// Percent threshold breached but dollar movement too small — tint green.
 				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green (dollar floor) row %d: %w", row, err)
 				}
 			} else if flagged {
+				fluctuationStatus = "fluctuating"
 				stats.Flux++
 			} else {
+				fluctuationStatus = "stable"
 				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
 				}
@@ -436,21 +454,38 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
 				}
 			}
-		} else {
-			log.LogNoThreshold(row, colA)
-			if len(grid.MonthCols) > 0 {
-				lastCol := grid.MonthCols[len(grid.MonthCols)-1]
-				noteCellName, err := excelize.CoordinatesToCellName(lastCol+3, row)
-				if err == nil {
-					existing, _ := financialFile.GetCellValue(grid.Sheet, noteCellName)
-					existing = strings.TrimSpace(existing)
-					note := "NO THRESHOLD FOUND"
-					if existing != "" {
-						note = existing + " " + note
+			if fluctuationStatus == "fluctuating" || fluctuationStatus == "stable" {
+				var agentHistory []map[string]float64
+				for _, e := range updatedHistEntries {
+					if strings.EqualFold(e.Company.Name, grid.CompanyName) {
+						agentHistory = e.History
+						break
 					}
-					financialFile.SetCellValue(grid.Sheet, noteCellName, note)
+				}
+				agentResult, agentErr := callClaudeAgent(ctx, httpClient, agentPayload{
+					AccountCode:       patchCode,
+					AccountType:       account.Type,
+					Volatility:        account.Volatility,
+					ThresholdUsed:     threshold,
+					KUsed:             k,
+					FlagRate:          histFlagRate,
+					FluctuationStatus: fluctuationStatus,
+					AvgAbsDelta:       histAvgAbsDelta,
+					History:           agentHistory,
+				})
+				if agentErr != nil {
+					stdlog.Printf("warn: claude agent for %q: %v", colALower, agentErr)
+				} else {
+					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+6, row); err == nil {
+						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.AgentKThreshold)
+					}
+					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+7, row); err == nil {
+						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.Justification)
+					}
 				}
 			}
+		} else {
+			log.LogNoThreshold(row, colA)
 		}
 
 		totalStats.Flux += stats.Flux

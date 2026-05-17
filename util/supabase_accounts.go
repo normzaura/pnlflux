@@ -56,6 +56,8 @@ type AccountsData struct {
 	KEntries           []KEntry
 	HistoryEntries     []HistoryEntry
 	PolicyMinThreshold float64
+	Type               string
+	Volatility         string
 }
 
 const (
@@ -65,7 +67,7 @@ const (
 // LoadAccountsData fetches code, threshold, k, and policy_min_threshold
 // from the accounts table in a single request, returning a map of lowercase code → AccountsData.
 func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string) (map[string]AccountsData, error) {
-	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,policy_min_threshold,k_and_flagrate,history_and_avg_absdelta", supabaseURL)
+	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,policy_min_threshold,k_and_flagrate,history_and_avg_absdelta,type,volatility", supabaseURL)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fetchURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("build accounts request: %w", err)
@@ -116,6 +118,12 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		}
 		if hBytes, ok := row["history_and_avg_absdelta"]; ok && string(hBytes) != "null" {
 			json.Unmarshal(hBytes, &d.HistoryEntries) //nolint:errcheck
+		}
+		if tBytes, ok := row["type"]; ok && string(tBytes) != "null" {
+			json.Unmarshal(tBytes, &d.Type) //nolint:errcheck
+		}
+		if vBytes, ok := row["volatility"]; ok && string(vBytes) != "null" {
+			json.Unmarshal(vBytes, &d.Volatility) //nolint:errcheck
 		}
 		accounts[code] = d
 	}
