@@ -434,7 +434,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				return nil, nil, ProcessStats{}, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
 			}
 			if flagged && dollarFloor > 0 && dollarDelta < dollarFloor {
-				fluctuationStatus = "stable"
+				fluctuationStatus = "dollar_suppressed"
 				// Percent threshold breached but dollar movement too small — tint green.
 				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green (dollar floor) row %d: %w", row, err)
