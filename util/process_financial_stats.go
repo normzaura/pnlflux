@@ -17,12 +17,46 @@ type ProcessStats struct {
 
 
 
+// winsorizeUpperPct is the upper percentile at which deltas are capped before
+// MAD computation. Values above this percentile are pulled down to the cap,
+// limiting the influence of extreme month-over-month swings on σ̂.
+const winsorizeUpperPct = 0.76
+
+// winsorize caps values in a pre-sorted slice at the given upper percentile
+// using linear interpolation. Values above the cap are replaced by the cap;
+// the slice length is unchanged.
+func winsorize(sorted []float64, upperPct float64) []float64 {
+	if len(sorted) < 2 {
+		return sorted
+	}
+	pos := upperPct * float64(len(sorted)-1)
+	lo := int(pos)
+	frac := pos - float64(lo)
+	var cap float64
+	if lo+1 >= len(sorted) {
+		cap = sorted[len(sorted)-1]
+	} else {
+		cap = sorted[lo] + frac*(sorted[lo+1]-sorted[lo])
+	}
+	result := make([]float64, len(sorted))
+	for i, v := range sorted {
+		if v > cap {
+			result[i] = cap
+		} else {
+			result[i] = v
+		}
+	}
+	return result
+}
+
 // computeThresholdStats derives threshold and supporting statistics from a slice
 // of normalized monthly values using the formula:
 //
-//	σ̂        = 1.4826 × MAD(|Δ%|)
+//	σ̂        = 1.4826 × MAD(winsorized |Δ%|)
 //	threshold = max(policyMin, k × σ̂)
 //
+// Deltas are winsorized at winsorizeUpperPct before MAD computation to limit
+// the influence of spike months on the resulting threshold.
 // All values are in decimal format (0.15 = 15%), matching the DB storage format.
 func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold, sigmaHat, avgDelta float64) {
 	if len(normVals) == 0 {
@@ -50,6 +84,7 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 	sorted := make([]float64, len(deltas))
 	copy(sorted, deltas)
 	sort.Float64s(sorted)
+	sorted = winsorize(sorted, winsorizeUpperPct)
 
 	medianDeltas := median(sorted)
 	absDevs := make([]float64, len(sorted))
