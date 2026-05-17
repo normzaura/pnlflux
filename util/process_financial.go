@@ -8,10 +8,14 @@ import (
 	stdlog "log"
 	"math"
 	"net/http"
+	"os"
+	"strconv"
 	"strings"
 	"github.com/xuri/excelize/v2"
 )
 
+
+const enableOrangeTint = false
 
 type specialTermEntry struct {
 	threshold  float64
@@ -113,6 +117,13 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 	}
 	defer log.Close()
 
+	var dollarFloor float64
+	if v := os.Getenv("DOLLAR_THRESHOLD"); v != "" {
+		if parsed, err := strconv.ParseFloat(v, 64); err == nil {
+			dollarFloor = parsed
+		}
+	}
+
 	grid, err := initializeGrid(financialFile)
 	if err != nil {
 		return nil, nil, ProcessStats{}, fmt.Errorf("initialize grid: %w", err)
@@ -195,7 +206,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 						break
 					}
 				}
-				if hasAnyValue {
+				if hasAnyValue && enableOrangeTint {
 					if err := tintLastMonthOrange(financialFile, grid.Sheet, row, grid.MonthCols, orangeStyleCache); err != nil {
 						return nil, nil, ProcessStats{}, fmt.Errorf("tint orange row %d: %w", row, err)
 					}
@@ -236,6 +247,19 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		if allEmpty {
 			log.LogAllEmpty(row, colA)
 			continue
+		}
+
+		// If the last month cell is empty, tint red and skip all processing for this row.
+		if len(grid.MonthCols) > 0 {
+			lastCol := grid.MonthCols[len(grid.MonthCols)-1]
+			if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
+				log.LogEmptyLastMonth(row, colA)
+				if _, err := highlightEmptyCell(financialFile, grid.Sheet, row, cells, grid.MonthCols, redStyleCache); err != nil {
+					return nil, nil, ProcessStats{}, fmt.Errorf("highlight empty last month row %d: %w", row, err)
+				}
+				totalStats.Missing++
+				continue
+			}
 		}
 
 		// Collect raw monthly values for history tracking (all months, raw amounts).
@@ -333,23 +357,8 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 		}
 
-		// Check if last month cell is empty.
-		if len(grid.MonthCols) > 0 {
-			lastCol := grid.MonthCols[len(grid.MonthCols)-1]
-			if lastCol >= len(cells) || strings.TrimSpace(cells[lastCol]) == "" {
-				log.LogEmptyLastMonth(row, colA)
-			}
-		}
-
 		var stats ProcessStats
-
-		tinted, err := highlightEmptyCell(financialFile, grid.Sheet, row, cells, grid.MonthCols, redStyleCache)
-		if err != nil {
-			return nil, nil, ProcessStats{}, fmt.Errorf("highlight empty last month row %d: %w", row, err)
-		}
-		if tinted {
-			stats.Missing++
-		}
+		var dollarDelta float64
 
 		if threshold > 0 {
 			if len(grid.MonthCols) > 0 {
@@ -387,6 +396,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 						}
 						if len(rawVals) > 0 {
 							avg := sum / float64(len(rawVals))
+							dollarDelta = math.Abs(lastVal - avg)
 							effectiveLast := lastVal
 							if divisorCells != nil && lastCol < len(divisorCells) && strings.TrimSpace(divisorCells[lastCol]) != "" {
 								d, dErr := parseAmount(divisorCells[lastCol])
@@ -408,9 +418,14 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			if err != nil {
 				return nil, nil, ProcessStats{}, fmt.Errorf("highlight threshold outliers row %d: %w", row, err)
 			}
-			if flagged {
+			if flagged && dollarFloor > 0 && dollarDelta < dollarFloor {
+				// Percent threshold breached but dollar movement too small — tint green.
+				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
+					return nil, nil, ProcessStats{}, fmt.Errorf("tint green (dollar floor) row %d: %w", row, err)
+				}
+			} else if flagged {
 				stats.Flux++
-			} else if !tinted {
+			} else {
 				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
 				}
@@ -438,7 +453,6 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 		}
 
-		totalStats.Missing += stats.Missing
 		totalStats.Flux += stats.Flux
 	}
 

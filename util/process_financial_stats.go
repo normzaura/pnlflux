@@ -59,7 +59,7 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 	sort.Float64s(absDevs)
 	sigmaHat = 1.4826 * median(absDevs)
 
-	threshold = math.Max(policyMin, k*sigmaHat)
+	threshold = math.Round(math.Max(policyMin, k*sigmaHat)*100) / 100
 	return threshold, sigmaHat, avgDelta
 }
 
@@ -120,9 +120,9 @@ func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold
 			flagged++
 		}
 	}
-	avgAbsDelta = sum / float64(len(deltas))
+	avgAbsDelta = math.Round(sum/float64(len(deltas))*100) / 100
 	if threshold > 0 {
-		flagRate = float64(flagged) / float64(len(deltas))
+		flagRate = math.Round(float64(flagged)/float64(len(deltas))*100) / 100
 	}
 	return avgAbsDelta, flagRate
 }
