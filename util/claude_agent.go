@@ -8,8 +8,11 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"strings"
 )
+
+var jsonBlock = regexp.MustCompile(`\{[\s\S]*\}`)
 
 // AgentAnalysisResult holds the two fields Claude returns for each analyzed row.
 type AgentAnalysisResult struct {
@@ -111,8 +114,13 @@ func callClaudeAgent(ctx context.Context, httpClient *http.Client, payload agent
 	rawText := cr.Content[0].Text
 	fmt.Printf("[claude-agent] raw response: %s\n", rawText)
 
+	jsonStr := jsonBlock.FindString(rawText)
+	if jsonStr == "" {
+		return AgentAnalysisResult{}, fmt.Errorf("no JSON object found in claude response")
+	}
+
 	var result AgentAnalysisResult
-	if err := json.Unmarshal([]byte(rawText), &result); err != nil {
+	if err := json.Unmarshal([]byte(jsonStr), &result); err != nil {
 		return AgentAnalysisResult{}, fmt.Errorf("parse claude result JSON: %w", err)
 	}
 	return result, nil

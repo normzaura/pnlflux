@@ -139,9 +139,28 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 
 	// Write analysis column headers after the last month column.
 	analysisLastCol := grid.MonthCols[len(grid.MonthCols)-1]
+
+	// Derive base font size from an existing header cell; fall back to Excel default.
+	baseFontSize := 11.0
+	if refCell, err := excelize.CoordinatesToCellName(grid.MonthCols[0]+1, grid.HeaderRow); err == nil {
+		if styleID, err := financialFile.GetCellStyle(grid.Sheet, refCell); err == nil {
+			if s, err := financialFile.GetStyle(styleID); err == nil && s.Font != nil && s.Font.Size > 0 {
+				baseFontSize = s.Font.Size
+			}
+		}
+	}
+	analysisHeaderStyleID, err := financialFile.NewStyle(&excelize.Style{
+		Font:      &excelize.Font{Bold: true, Size: baseFontSize + 2},
+		Alignment: &excelize.Alignment{Horizontal: "center"},
+	})
+	if err != nil {
+		return nil, nil, ProcessStats{}, fmt.Errorf("create analysis header style: %w", err)
+	}
+
 	for i, h := range []string{"threshold", "confidence", "flag_review", "agent_k_threshold", "justification"} {
-		if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+3+i, grid.HeaderRow); err == nil {
+		if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4+i, grid.HeaderRow); err == nil {
 			financialFile.SetCellValue(grid.Sheet, cellName, h)
+			financialFile.SetCellStyle(grid.Sheet, cellName, cellName, analysisHeaderStyleID)
 		}
 	}
 
@@ -366,7 +385,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 
 		// Write threshold value into the analysis columns for this row.
 		if threshold > 0 {
-			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+3, row); err == nil {
+			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4, row); err == nil {
 				financialFile.SetCellValue(grid.Sheet, cellName, threshold)
 			}
 		}
@@ -476,10 +495,10 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				if agentErr != nil {
 					stdlog.Printf("warn: claude agent for %q: %v", colALower, agentErr)
 				} else {
-					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+6, row); err == nil {
+					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+7, row); err == nil {
 						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.AgentKThreshold)
 					}
-					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+7, row); err == nil {
+					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+8, row); err == nil {
 						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.Justification)
 					}
 				}
