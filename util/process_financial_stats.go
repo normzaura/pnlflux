@@ -104,7 +104,7 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 //
 //   - avg_absdelta: mean of all |Δ%| across consecutive months
 //   - flag_rate:    fraction of those deltas that exceed threshold (0 when threshold == 0)
-func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold float64) (avgAbsDelta, flagRate float64) {
+func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold float64) (avgAbsDelta, flagRate, cv float64) {
 	var hist []map[string]float64
 	for _, e := range entries {
 		if strings.EqualFold(e.Company.Name, companyName) {
@@ -113,7 +113,7 @@ func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold
 		}
 	}
 	if len(hist) < 2 {
-		return 0, 0
+		return 0, 0, 0
 	}
 
 	type mv struct {
@@ -132,7 +132,7 @@ func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold
 	}
 	sort.Slice(points, func(i, j int) bool { return points[i].t.Before(points[j].t) })
 	if len(points) < 2 {
-		return 0, 0
+		return 0, 0, 0
 	}
 
 	var deltas []float64
@@ -144,7 +144,7 @@ func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold
 		deltas = append(deltas, math.Abs(points[i].val-prev)/math.Abs(prev))
 	}
 	if len(deltas) == 0 {
-		return 0, 0
+		return 0, 0, 0
 	}
 
 	var sum float64
@@ -155,11 +155,22 @@ func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold
 			flagged++
 		}
 	}
-	avgAbsDelta = math.Round(sum/float64(len(deltas))*100) / 100
+	mean := sum / float64(len(deltas))
+	avgAbsDelta = math.Round(mean*100) / 100
 	if threshold > 0 {
 		flagRate = math.Round(float64(flagged)/float64(len(deltas))*100) / 100
 	}
-	return avgAbsDelta, flagRate
+
+	var variance float64
+	for _, d := range deltas {
+		diff := d - mean
+		variance += diff * diff
+	}
+	variance /= float64(len(deltas))
+	if mean > 0 {
+		cv = math.Round(math.Sqrt(variance)/mean*100) / 100
+	}
+	return avgAbsDelta, flagRate, cv
 }
 
 // median returns the median of a pre-sorted slice.

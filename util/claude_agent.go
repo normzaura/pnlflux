@@ -32,10 +32,11 @@ type agentPayload struct {
 	Volatility    string               `json:"volatility"`
 	ThresholdUsed float64              `json:"threshold_used"`
 	KUsed         float64              `json:"k_used"`
-	FlagRate      float64              `json:"flag_rate"`
-	FluctuationStatus string             `json:"fluctuation_status"`
-	AvgAbsDelta   float64              `json:"avg_absdelta"`
-	History       []map[string]float64 `json:"history"`
+	FlagRate               float64              `json:"flag_rate"`
+	FluctuationStatus      string               `json:"fluctuation_status"`
+	AvgAbsDelta            float64              `json:"avg_absdelta"`
+	CoefficientOfVariation float64              `json:"coefficient_of_variation"`
+	History                []map[string]float64 `json:"history"`
 }
 
 type claudeMsg struct {

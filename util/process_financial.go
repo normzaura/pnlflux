@@ -370,13 +370,14 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		// Upsert per-company history and derive avg_absdelta + flag_rate from full history.
-		var histFlagRate, histAvgAbsDelta float64
+		var histFlagRate, histAvgAbsDelta, histCV float64
 		updatedHistEntries := account.HistoryEntries
 		for monthStr, val := range historyVals {
 			updatedHistEntries = upsertHistoryEntry(updatedHistEntries, grid.CompanyName, monthStr, val)
 		}
-		histAvgAbsDelta, histFlagRate = computeHistoryMetrics(updatedHistEntries, grid.CompanyName, threshold)
+		histAvgAbsDelta, histFlagRate, histCV = computeHistoryMetrics(updatedHistEntries, grid.CompanyName, threshold)
 		updatedHistEntries = updateHistoryAvgAbsDelta(updatedHistEntries, grid.CompanyName, histAvgAbsDelta)
+		updatedHistEntries = updateHistoryCoefficientOfVariation(updatedHistEntries, grid.CompanyName, histCV)
 		if supabaseURL != "" {
 			if err := PatchAccountHistoryAndAvgAbsDelta(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedHistEntries); err != nil {
 				stdlog.Printf("warn: patch history for %q: %v", colALower, err)
@@ -482,15 +483,16 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 					}
 				}
 				agentResult, agentErr := callClaudeAgent(ctx, httpClient, agentPayload{
-					AccountCode:       patchCode,
-					AccountType:       account.Type,
-					Volatility:        account.Volatility,
-					ThresholdUsed:     threshold,
-					KUsed:             k,
-					FlagRate:          histFlagRate,
-					FluctuationStatus: fluctuationStatus,
-					AvgAbsDelta:       histAvgAbsDelta,
-					History:           agentHistory,
+					AccountCode:            patchCode,
+					AccountType:            account.Type,
+					Volatility:             account.Volatility,
+					ThresholdUsed:          threshold,
+					KUsed:                  k,
+					FlagRate:               histFlagRate,
+					FluctuationStatus:      fluctuationStatus,
+					AvgAbsDelta:            histAvgAbsDelta,
+					CoefficientOfVariation: histCV,
+					History:                agentHistory,
 				})
 				if agentErr != nil {
 					stdlog.Printf("warn: claude agent for %q: %v", colALower, agentErr)

@@ -44,9 +44,10 @@ type KStats struct {
 }
 
 type HistoryEntry struct {
-	Company     CompanyInfo          `json:"company"`
-	AvgAbsDelta float64              `json:"avg_absdelta"`
-	History     []map[string]float64 `json:"history"` // each element: {"MM-YYYY": rawValue}
+	Company                CompanyInfo          `json:"company"`
+	AvgAbsDelta            float64              `json:"avg_absdelta"`
+	CoefficientOfVariation float64              `json:"coefficient_of_variation"`
+	History                []map[string]float64 `json:"history"` // each element: {"MM-YYYY": rawValue}
 }
 
 // AccountsData holds all per-account fields loaded from the accounts table.
@@ -306,6 +307,17 @@ func updateHistoryAvgAbsDelta(entries []HistoryEntry, companyName string, avgAbs
 	for i, e := range entries {
 		if strings.EqualFold(e.Company.Name, companyName) {
 			entries[i].AvgAbsDelta = avgAbsDelta
+			return entries
+		}
+	}
+	return entries
+}
+
+// updateHistoryCoefficientOfVariation sets the coefficient_of_variation field on the company's HistoryEntry.
+func updateHistoryCoefficientOfVariation(entries []HistoryEntry, companyName string, cv float64) []HistoryEntry {
+	for i, e := range entries {
+		if strings.EqualFold(e.Company.Name, companyName) {
+			entries[i].CoefficientOfVariation = cv
 			return entries
 		}
 	}
