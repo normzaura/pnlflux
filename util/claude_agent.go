@@ -10,9 +10,14 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 )
 
 var jsonBlock = regexp.MustCompile(`\{[\s\S]*\}`)
+
+// claudeHTTPClient is a dedicated client for Claude API calls with a longer
+// timeout than the shared HttpClient used for Double HQ and Supabase requests.
+var claudeHTTPClient = &http.Client{Timeout: 60 * time.Second}
 
 // AgentAnalysisResult holds the two fields Claude returns for each analyzed row.
 type AgentAnalysisResult struct {
@@ -93,7 +98,7 @@ func callClaudeAgent(ctx context.Context, httpClient *http.Client, payload agent
 	req.Header.Set("anthropic-version", "2023-06-01")
 	req.Header.Set("Content-Type", "application/json")
 
-	resp, err := httpClient.Do(req)
+	resp, err := claudeHTTPClient.Do(req)
 	if err != nil {
 		return AgentAnalysisResult{}, fmt.Errorf("claude request: %w", err)
 	}
