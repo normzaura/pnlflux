@@ -18,19 +18,19 @@ import (
 const enableOrangeTint = false
 
 type specialTermEntry struct {
-	threshold  float64
+	k          float64
 	termType   string // allowed: revenue, cogs, opex, other
 	volatility string // allowed: fixed, variable, semi_variable
 }
 
 var specialTerms = map[string]specialTermEntry{
-	"rent":         {threshold: 0.05, termType: "opex", volatility: "fixed"},
-	"insurance":    {threshold: 0.05, termType: "opex", volatility: "fixed"},
-	"depreciation": {threshold: 0.05, termType: "opex", volatility: "fixed"},
-	"accounting":   {threshold: 0.05, termType: "opex", volatility: "fixed"},
-	"officer":      {threshold: 0.05, termType: "opex", volatility: "semi_variable"},
-	"professional": {threshold: 0.05, termType: "opex", volatility: "semi_variable"},
-	"gross profit": {threshold: 0.05, termType: "other", volatility: "semi_variable"},
+	"rent":         {k: 0.25, termType: "opex", volatility: "fixed"},
+	"insurance":    {k: 0.25, termType: "opex", volatility: "fixed"},
+	"depreciation": {k: 0.25, termType: "opex", volatility: "fixed"},
+	"accounting":   {k: 0.25, termType: "opex", volatility: "fixed"},
+	"officer":      {k: 0.25, termType: "opex", volatility: "semi_variable"},
+	"professional": {k: 0.25, termType: "opex", volatility: "semi_variable"},
+	"gross profit": {k: 0.25, termType: "other", volatility: "semi_variable"},
 }
 
 func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, accounts map[string]AccountsData, supabaseURL, supabaseKey string) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
@@ -124,6 +124,8 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 	}
 
+	testMode := os.Getenv("TEST") == "true"
+
 	grid, err := initializeGrid(financialFile)
 	if err != nil {
 		return nil, nil, ProcessStats{}, fmt.Errorf("initialize grid: %w", err)
@@ -140,27 +142,28 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 	// Write analysis column headers after the last month column.
 	analysisLastCol := grid.MonthCols[len(grid.MonthCols)-1]
 
-	// Derive base font size from an existing header cell; fall back to Excel default.
-	baseFontSize := 11.0
-	if refCell, err := excelize.CoordinatesToCellName(grid.MonthCols[0]+1, grid.HeaderRow); err == nil {
-		if styleID, err := financialFile.GetCellStyle(grid.Sheet, refCell); err == nil {
-			if s, err := financialFile.GetStyle(styleID); err == nil && s.Font != nil && s.Font.Size > 0 {
-				baseFontSize = s.Font.Size
+	if testMode {
+		// Derive base font size from an existing header cell; fall back to Excel default.
+		baseFontSize := 11.0
+		if refCell, err := excelize.CoordinatesToCellName(grid.MonthCols[0]+1, grid.HeaderRow); err == nil {
+			if styleID, err := financialFile.GetCellStyle(grid.Sheet, refCell); err == nil {
+				if s, err := financialFile.GetStyle(styleID); err == nil && s.Font != nil && s.Font.Size > 0 {
+					baseFontSize = s.Font.Size
+				}
 			}
 		}
-	}
-	analysisHeaderStyleID, err := financialFile.NewStyle(&excelize.Style{
-		Font:      &excelize.Font{Bold: true, Size: baseFontSize + 2},
-		Alignment: &excelize.Alignment{Horizontal: "center"},
-	})
-	if err != nil {
-		return nil, nil, ProcessStats{}, fmt.Errorf("create analysis header style: %w", err)
-	}
-
-	for i, h := range []string{"threshold", "confidence", "flag_review", "agent_k_threshold", "justification"} {
-		if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4+i, grid.HeaderRow); err == nil {
-			financialFile.SetCellValue(grid.Sheet, cellName, h)
-			financialFile.SetCellStyle(grid.Sheet, cellName, cellName, analysisHeaderStyleID)
+		analysisHeaderStyleID, err := financialFile.NewStyle(&excelize.Style{
+			Font:      &excelize.Font{Bold: true, Size: baseFontSize + 2},
+			Alignment: &excelize.Alignment{Horizontal: "center"},
+		})
+		if err != nil {
+			return nil, nil, ProcessStats{}, fmt.Errorf("create analysis header style: %w", err)
+		}
+		for i, h := range []string{"threshold", "confidence", "flag_review", "agent_k_threshold", "justification"} {
+			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4+i, grid.HeaderRow); err == nil {
+				financialFile.SetCellValue(grid.Sheet, cellName, h)
+				financialFile.SetCellStyle(grid.Sheet, cellName, cellName, analysisHeaderStyleID)
+			}
 		}
 	}
 
@@ -188,31 +191,16 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 
 		account, matched := accounts[strings.ToLower(colA)]
 
-		var threshold float64
-		var hasStoredThreshold bool
-		for _, entry := range account.ThresholdEntries {
-			if strings.EqualFold(entry.Company.Name, grid.CompanyName) {
-				for _, tv := range entry.Thresholds {
-					if tv.ClosingMonth == closingMonth {
-						threshold = tv.Value
-						hasStoredThreshold = true
-						break
-					}
-				}
-				break
-			}
-		}
-
 		// Special terms: mark as matched and ensure the account row exists in Supabase.
-		// Use the special term threshold only as a fallback if no computed threshold is stored.
 		colALower := strings.ToLower(colA)
-		var specialTermThreshold float64
+		var matchedSpecialTerm *specialTermEntry
 		for term, entry := range specialTerms {
 			if strings.Contains(colALower, term) {
 				matched = true
-				specialTermThreshold = entry.threshold
+				e := entry
+				matchedSpecialTerm = &e
 				if supabaseURL != "" {
-					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.threshold, entry.termType, entry.volatility); err != nil {
+					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.k, entry.termType, entry.volatility, grid.CompanyName); err != nil {
 						return nil, nil, ProcessStats{}, fmt.Errorf("lookup and update special account %q: %w", colALower, err)
 					}
 				}
@@ -324,9 +312,12 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		if kVal, ok := findKForCompany(account.KEntries, grid.CompanyName); ok {
 			k = kVal
 			kFound = true
+		} else if matchedSpecialTerm != nil {
+			k = matchedSpecialTerm.k
+			kFound = true
 		}
 
-		if !hasStoredThreshold && !kFound {
+		if !kFound {
 			log.LogNoK(row, colA)
 			if err := tintBlueLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, blueStyleCache); err != nil {
 				return nil, nil, ProcessStats{}, fmt.Errorf("tint blue row %d: %w", row, err)
@@ -335,37 +326,35 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		policyMin := account.PolicyMinThreshold
+		if policyMin == 0 && matchedSpecialTerm != nil {
+			policyMin = 0.05
+		}
 		if policyMin == 0 {
-			policyMin = defaultPolicyMinThresh
+			stdlog.Printf("error: account %q has no policy_min_threshold set — skipping row %d", colALower, row)
+			continue
 		}
 
-		// If no stored threshold exists for this company+month, compute one from the row's data.
-		if !hasStoredThreshold && supabaseURL != "" {
-			var normVals []float64
-			for _, col := range grid.MonthCols {
-				var v float64
-				if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
-					v, _ = parseAmount(cells[col])
-				}
-				if divisorCells != nil && col < len(divisorCells) && strings.TrimSpace(divisorCells[col]) != "" {
-					d, dErr := parseAmount(divisorCells[col])
-					if dErr == nil && d != 0 {
-						v /= d
-					}
-				}
-				normVals = append(normVals, v)
+		// Always compute threshold fresh from k and this row's data.
+		var threshold float64
+		var normVals []float64
+		for _, col := range grid.MonthCols {
+			var v float64
+			if col < len(cells) && strings.TrimSpace(cells[col]) != "" {
+				v, _ = parseAmount(cells[col])
 			}
-			computed, _, _ := computeThresholdStats(normVals, k, policyMin)
-			if computed > 0 {
-				threshold = computed
-			} else {
-				threshold = specialTermThreshold
-			}
-			if computed > 0 {
-				updatedEntries := appendThresholdValue(account.ThresholdEntries, grid.CompanyName, closingMonth, computed, 0)
-				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
-					stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
+			if divisorCells != nil && col < len(divisorCells) && strings.TrimSpace(divisorCells[col]) != "" {
+				d, dErr := parseAmount(divisorCells[col])
+				if dErr == nil && d != 0 {
+					v /= d
 				}
+			}
+			normVals = append(normVals, v)
+		}
+		threshold, _, _ = computeThresholdStats(normVals, k, policyMin)
+		if threshold > 0 && supabaseURL != "" {
+			updatedEntries := appendThresholdValue(account.ThresholdEntries, grid.CompanyName, closingMonth, threshold, 0)
+			if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
+				stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 			}
 		}
 
@@ -385,7 +374,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		// Write threshold value into the analysis columns for this row.
-		if threshold > 0 {
+		if testMode && threshold > 0 {
 			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4, row); err == nil {
 				financialFile.SetCellValue(grid.Sheet, cellName, threshold)
 			}
@@ -474,7 +463,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
 				}
 			}
-			if fluctuationStatus == "fluctuating" || fluctuationStatus == "stable" {
+			if testMode && (fluctuationStatus == "fluctuating" || fluctuationStatus == "stable") {
 				var agentHistory []map[string]float64
 				for _, e := range updatedHistEntries {
 					if strings.EqualFold(e.Company.Name, grid.CompanyName) {

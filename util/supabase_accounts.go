@@ -53,7 +53,7 @@ type HistoryEntry struct {
 // AccountsData holds all per-account fields loaded from the accounts table.
 type AccountsData struct {
 	Code               string // original case as stored in the DB, used for PATCH filters
-	ThresholdEntries   []ThresholdEntry
+	ThresholdEntries   []ThresholdEntry // used only for preserving history when patching — never for detection
 	KEntries           []KEntry
 	HistoryEntries     []HistoryEntry
 	PolicyMinThreshold float64
@@ -61,9 +61,6 @@ type AccountsData struct {
 	Volatility         string
 }
 
-const (
-	defaultPolicyMinThresh = 0.05 // decimal (5%)
-)
 
 // LoadAccountsData fetches code, threshold, k, and policy_min_threshold
 // from the accounts table in a single request, returning a map of lowercase code → AccountsData.
@@ -325,7 +322,7 @@ func updateHistoryCoefficientOfVariation(entries []HistoryEntry, companyName str
 }
 
 // Search if there is a matched special account, if not then it will insert
-func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, termThreshold float64, termType, volatility string) error {
+func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, k float64, termType, volatility, companyName string) error {
 	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
 	if err != nil {
@@ -353,12 +350,20 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 		return nil // row already exists with a threshold set
 	}
 
+	initialK := []KEntry{{
+		Company: CompanyInfo{Name: companyName},
+		K: []KValue{{
+			Value: k,
+			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: 0},
+		}},
+	}}
 	body, err := json.Marshal(map[string]interface{}{
 		"code":                 code,
-		"policy_min_threshold": defaultPolicyMinThresh,
+		"policy_min_threshold": 0.05,
 		"special_term":         true,
 		"type":                 termType,
 		"volatility":           volatility,
+		"k_and_flagrate":       initialK,
 	})
 	if err != nil {
 		return fmt.Errorf("marshal insert body: %w", err)
