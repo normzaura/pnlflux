@@ -218,6 +218,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 		}
 		if excludedSpecialTerm {
+			log.LogExcluded(row, colA)
 			continue
 		}
 
@@ -343,12 +344,12 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			policyMin = 0.05
 		}
 		if policyMin == 0 {
-			stdlog.Printf("error: account %q has no policy_min_threshold set — skipping row %d", colALower, row)
+			log.LogNoPolicy(row, colA)
 			continue
 		}
 
 		// Always compute threshold fresh from k and this row's data.
-		var threshold float64
+		var threshold, sigmaHat float64
 		var normVals []float64
 		for _, col := range grid.MonthCols {
 			var v float64
@@ -363,7 +364,8 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 			normVals = append(normVals, v)
 		}
-		threshold, _, _ = computeThresholdStats(normVals, k, policyMin)
+		threshold, sigmaHat, _ = computeThresholdStats(normVals, k, policyMin)
+		log.LogThreshold(row, k, sigmaHat, k*sigmaHat, policyMin, threshold)
 		if threshold > 0 && supabaseURL != "" {
 			updatedEntries := appendThresholdValue(account.ThresholdEntries, grid.CompanyName, closingMonth, threshold, 0)
 			if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
@@ -457,7 +459,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 			if flagged && dollarFloor > 0 && dollarDelta < dollarFloor {
 				fluctuationStatus = "dollar_suppressed"
-				// Percent threshold breached but dollar movement too small — tint green.
+				log.LogDollarSuppressed(row, dollarDelta, dollarFloor)
 				if err := tintGreenLastMonth(financialFile, grid.Sheet, row, cells, grid.MonthCols, greenStyleCache); err != nil {
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green (dollar floor) row %d: %w", row, err)
 				}
@@ -470,13 +472,19 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 					return nil, nil, ProcessStats{}, fmt.Errorf("tint green row %d: %w", row, err)
 				}
 			}
+			log.LogFluctuationStatus(row, fluctuationStatus)
 			if supabaseURL != "" {
 				updatedKEntries := upsertKFlagRate(account.KEntries, grid.CompanyName, k, histFlagRate)
 				if err := PatchAccountKAndFlagRate(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedKEntries); err != nil {
 					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
 				}
 			}
-			if testMode && (fluctuationStatus == "fluctuating" || fluctuationStatus == "stable") {
+			switch {
+			case !testMode:
+				log.LogClaudeSkipped(row, "TEST mode not enabled")
+			case fluctuationStatus == "dollar_suppressed":
+				log.LogClaudeSkipped(row, "dollar_suppressed")
+			case fluctuationStatus == "fluctuating" || fluctuationStatus == "stable":
 				var agentHistory []map[string]float64
 				for _, e := range updatedHistEntries {
 					if strings.EqualFold(e.Company.Name, grid.CompanyName) {
@@ -497,8 +505,9 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 					History:                agentHistory,
 				})
 				if agentErr != nil {
-					stdlog.Printf("warn: claude agent for %q: %v", colALower, agentErr)
+					log.LogClaudeError(row, agentErr)
 				} else {
+					log.LogClaudeResult(row, agentResult.AgentKThreshold, agentResult.Justification)
 					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+7, row); err == nil {
 						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.AgentKThreshold)
 					}
