@@ -159,7 +159,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		if err != nil {
 			return nil, nil, ProcessStats{}, fmt.Errorf("create analysis header style: %w", err)
 		}
-		for i, h := range []string{"threshold", "confidence", "flag_review", "agent_k_threshold", "justification"} {
+		for i, h := range []string{"threshold", "confidence", "flag_review", "agent_proposed_threshold", "threshold_justification"} {
 			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4+i, grid.HeaderRow); err == nil {
 				financialFile.SetCellValue(grid.Sheet, cellName, h)
 				financialFile.SetCellStyle(grid.Sheet, cellName, cellName, analysisHeaderStyleID)
@@ -512,13 +512,13 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				if agentErr != nil {
 					stdlog.Printf("warn: [row %d] %q claude agent error: %v", row, colA, agentErr)
 				} else {
-					stdlog.Printf("info: [row %d] %q claude agent: agent_k_threshold=%.4f  justification=%q",
-						row, colA, agentResult.AgentKThreshold, agentResult.Justification)
+					stdlog.Printf("info: [row %d] %q claude agent: agent_proposed_threshold=%.4f  threshold_justification=%q",
+						row, colA, agentResult.AgentProposedThreshold, agentResult.ThresholdJustification)
 					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+7, row); err == nil {
-						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.AgentKThreshold)
+						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.AgentProposedThreshold)
 					}
 					if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+8, row); err == nil {
-						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.Justification)
+						financialFile.SetCellValue(grid.Sheet, cellName, agentResult.ThresholdJustification)
 					}
 				}
 			}

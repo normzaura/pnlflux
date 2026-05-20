@@ -21,8 +21,8 @@ var claudeHTTPClient = &http.Client{Timeout: 60 * time.Second}
 
 // AgentAnalysisResult holds the two fields Claude returns for each analyzed row.
 type AgentAnalysisResult struct {
-	AgentKThreshold float64 `json:"agent_k_threshold"`
-	Justification   string  `json:"justification"`
+	AgentProposedThreshold float64 `json:"agent_proposed_threshold"`
+	ThresholdJustification string  `json:"threshold_justification"`
 }
 
 // agentPayload is the full context sent to Claude for a single account row.
