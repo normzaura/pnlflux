@@ -23,7 +23,8 @@
       "Bash(/home/linuxbrew/.linuxbrew/bin/go env *)",
       "Bash(GOROOT=$\\(/home/linuxbrew/.linuxbrew/bin/go env GOROOT 2>/dev/null || echo \"\"\\) /home/linuxbrew/.linuxbrew/bin/go build ./...)",
       "Bash(go1.22* build *)",
-      "Bash(/home/linuxbrew/.linuxbrew/bin/go build *)"
+      "Bash(/home/linuxbrew/.linuxbrew/bin/go build *)",
+      "Bash(GOROOT=/home/linuxbrew/.linuxbrew/Cellar/go/1.26.2/libexec /home/linuxbrew/.linuxbrew/bin/go build ./...)"
     ]
   }
 }

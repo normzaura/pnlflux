@@ -110,51 +110,6 @@ func (l *ProcessLogger) LogReconcile(category string, tbVal, bsVal float64, matc
 	}
 }
 
-// LogExcluded records that a special term row exists in public.excluded and was skipped.
-func (l *ProcessLogger) LogExcluded(rowNum int, colA string) {
-	fmt.Fprintf(l.w, "[ROW %d] EXCLUDED: %s — found in public.excluded, skipped\n", rowNum, colA)
-}
-
-// LogNoPolicy records that a matched row has no policy_min_threshold and was skipped.
-func (l *ProcessLogger) LogNoPolicy(rowNum int, colA string) {
-	fmt.Fprintf(l.w, "[ROW %d]   no policy_min_threshold set — skipped\n", rowNum)
-}
-
-// LogThreshold records the computed threshold and whether k×σ̂ or the policyMin floor was used.
-func (l *ProcessLogger) LogThreshold(rowNum int, k, sigmaHat, kResult, policyMin, threshold float64) {
-	source := "k×σ̂"
-	if kResult < policyMin {
-		source = "policyMin floor"
-	}
-	fmt.Fprintf(l.w, "[ROW %d]   threshold: k=%.4f  σ̂=%.4f  k×σ̂=%.4f  policyMin=%.4f  → %.2f%% (%s)\n",
-		rowNum, k, sigmaHat, kResult, policyMin, threshold*100, source)
-}
-
-// LogDollarSuppressed records that a flagged row was suppressed by the dollar floor and tinted green.
-func (l *ProcessLogger) LogDollarSuppressed(rowNum int, dollarDelta, dollarFloor float64) {
-	fmt.Fprintf(l.w, "[ROW %d]   DOLLAR SUPPRESSED: delta=$%.2f below floor=$%.2f — tinted green\n", rowNum, dollarDelta, dollarFloor)
-}
-
-// LogFluctuationStatus records the final fluctuation outcome for the row.
-func (l *ProcessLogger) LogFluctuationStatus(rowNum int, status string) {
-	fmt.Fprintf(l.w, "[ROW %d]   status: %s\n", rowNum, status)
-}
-
-// LogClaudeSkipped records that the Claude agent was not called and why.
-func (l *ProcessLogger) LogClaudeSkipped(rowNum int, reason string) {
-	fmt.Fprintf(l.w, "[ROW %d]   claude agent: skipped (%s)\n", rowNum, reason)
-}
-
-// LogClaudeResult records the Claude agent's recommendation.
-func (l *ProcessLogger) LogClaudeResult(rowNum int, agentK float64, justification string) {
-	fmt.Fprintf(l.w, "[ROW %d]   claude agent: agent_k_threshold=%.4f  justification=%q\n", rowNum, agentK, justification)
-}
-
-// LogClaudeError records that the Claude agent call failed.
-func (l *ProcessLogger) LogClaudeError(rowNum int, err error) {
-	fmt.Fprintf(l.w, "[ROW %d]   claude agent: ERROR — %v\n", rowNum, err)
-}
-
 // LogSection writes a blank-line-padded section header.
 func (l *ProcessLogger) LogSection(title string) {
 	fmt.Fprintf(l.w, "\n--- %s ---\n", title)
