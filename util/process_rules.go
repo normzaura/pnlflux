@@ -8,10 +8,7 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
-// isBalanceSheetCode reports whether a row should be skipped because its
 // account code belongs to the balance-sheet range (starts with 1, 2, or 3).
-// When the code contains a '-', the digit immediately after the '-' is used
-// instead of the leading digit.
 func isBalanceSheetCode(colA string) bool {
 	code := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
 	if code == "" {
@@ -26,9 +23,7 @@ func isBalanceSheetCode(colA string) bool {
 	return ch == '1' || ch == '2' || ch == '3'
 }
 
-// parseAmount parses a currency string into a float64.
 // Strips leading "$", commas, and handles parentheses notation for negatives
-// (e.g. "(1,234.56)" → -1234.56).
 func parseAmount(s string) (float64, error) {
 	s = strings.TrimSpace(s)
 	s = strings.ReplaceAll(s, "$", "")

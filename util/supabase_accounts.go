@@ -321,33 +321,6 @@ func updateHistoryCoefficientOfVariation(entries []HistoryEntry, companyName str
 	return entries
 }
 
-// isExcluded reports whether the given account code exists in the public.excluded table.
-func isExcluded(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string) (bool, error) {
-	checkURL := fmt.Sprintf("%s/rest/v1/excluded?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
-	if err != nil {
-		return false, fmt.Errorf("build excluded check request: %w", err)
-	}
-	req.Header.Set("apikey", supabaseKey)
-	req.Header.Set("Authorization", "Bearer "+supabaseKey)
-	req.Header.Set("Accept", "application/json")
-
-	resp, err := httpClient.Do(req)
-	if err != nil {
-		return false, fmt.Errorf("excluded check request: %w", err)
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		return false, fmt.Errorf("excluded check returned %d", resp.StatusCode)
-	}
-
-	var rows []map[string]json.RawMessage
-	if err := json.NewDecoder(resp.Body).Decode(&rows); err != nil {
-		return false, fmt.Errorf("decode excluded response: %w", err)
-	}
-	return len(rows) > 0, nil
-}
-
 // Search if there is a matched special account, if not then it will insert
 func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, k float64, termType, volatility, companyName string) error {
 	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))

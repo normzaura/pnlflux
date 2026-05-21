@@ -191,21 +191,11 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 
 		account, matched := accounts[strings.ToLower(colA)]
 
-		// Special terms: check public.excluded first, then mark as matched and ensure the account row exists in Supabase.
+		// Special terms: mark as matched and ensure the account row exists in Supabase.
 		colALower := strings.ToLower(colA)
 		var matchedSpecialTerm *specialTermEntry
-		excludedSpecialTerm := false
 		for term, entry := range specialTerms {
 			if strings.Contains(colALower, term) {
-				if supabaseURL != "" {
-					excluded, err := isExcluded(ctx, httpClient, supabaseURL, supabaseKey, colALower)
-					if err != nil {
-						stdlog.Printf("warn: excluded check for %q: %v", colALower, err)
-					} else if excluded {
-						excludedSpecialTerm = true
-						break
-					}
-				}
 				matched = true
 				e := entry
 				matchedSpecialTerm = &e
@@ -216,10 +206,6 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				}
 				break
 			}
-		}
-		if excludedSpecialTerm {
-			stdlog.Printf("info: %q found in public.excluded — skipped", colA)
-			continue
 		}
 
 
