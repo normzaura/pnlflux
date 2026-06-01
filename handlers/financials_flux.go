@@ -139,7 +139,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		return
 	}
 
-	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, accounts, SupabaseURL, SupabaseKey)
+	results, logs, statsMap, tbRows, err := util.DownloadAndProcess(ctx, HttpClient, files.TaskAttachments, accounts, SupabaseURL, SupabaseKey, clientID, clientName)
 	if err != nil {
 		Logger.Error("failed to download and process financials", "client_id", clientID, "doubleTask_id", doubleTaskID, "err", err)
 		return

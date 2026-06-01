@@ -33,7 +33,7 @@ var specialTerms = map[string]specialTermEntry{
 	"gross profit": {k: 0.25, termType: "other", volatility: "semi_variable"},
 }
 
-func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, accounts map[string]AccountsData, supabaseURL, supabaseKey string) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
+func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachments []Attachment, accounts map[string]AccountsData, supabaseURL, supabaseKey string, clientID int, clientName string) (map[string][]byte, map[string][]byte, map[string]ProcessStats, [][]string, error) {
 	// Separate financials file from the TB workbook when two files are present.
 	var financialsAttachments []Attachment
 	var tbAttachment *Attachment
@@ -71,7 +71,7 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 		if err != nil {
 			return nil, nil, nil, nil, fmt.Errorf("download %s: %w", a.FileName, err)
 		}
-		processed, logBytes, stats, err := ProcessFinancials(ctx, httpClient, data, a.FileName, accounts, tbRows, supabaseURL, supabaseKey)
+		processed, logBytes, stats, err := ProcessFinancials(ctx, httpClient, data, a.FileName, accounts, tbRows, supabaseURL, supabaseKey, clientID, clientName)
 		if err != nil {
 			return nil, nil, nil, nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
@@ -104,7 +104,7 @@ func downloadAttachment(ctx context.Context, httpClient *http.Client, a Attachme
 
 // ProcessFinancials opens an xlsx file, finds the Income Statement / Profit & Loss sheet,
 // and for each row whose column A matches a code in accountThresholds:
-func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte, fileName string, accounts map[string]AccountsData, tbRows [][]string, supabaseURL, supabaseKey string) ([]byte, []byte, ProcessStats, error) {
+func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte, fileName string, accounts map[string]AccountsData, tbRows [][]string, supabaseURL, supabaseKey string, clientID int, clientName string) ([]byte, []byte, ProcessStats, error) {
 	financialFile, err := excelize.OpenReader(bytes.NewReader(data))
 	if err != nil {
 		return nil, nil, ProcessStats{}, fmt.Errorf("open xlsx: %w", err)
@@ -200,7 +200,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				e := entry
 				matchedSpecialTerm = &e
 				if supabaseURL != "" {
-					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.k, entry.termType, entry.volatility, grid.CompanyName); err != nil {
+					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.k, entry.termType, entry.volatility, clientID, clientName); err != nil {
 						return nil, nil, ProcessStats{}, fmt.Errorf("lookup and update special account %q: %w", colALower, err)
 					}
 				}
@@ -309,7 +309,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		k, kFound := 0.0, false
-		if kVal, ok := findKForCompany(account.KEntries, grid.CompanyName); ok {
+		if kVal, ok := findKForCompany(account.KEntries, clientID); ok {
 			k = kVal
 			kFound = true
 		} else if matchedSpecialTerm != nil {
@@ -358,7 +358,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		stdlog.Printf("info: [row %d] %q threshold: k=%.4f  σ̂=%.4f  k×σ̂=%.4f  policyMin=%.4f  → %.2f%% (%s)",
 			row, colA, k, sigmaHat, k*sigmaHat, policyMin, threshold*100, thresholdSource)
 		if threshold > 0 && supabaseURL != "" {
-			updatedEntries := appendThresholdValue(account.ThresholdEntries, grid.CompanyName, closingMonth, threshold, 0)
+			updatedEntries := appendThresholdValue(account.ThresholdEntries, clientID, clientName, closingMonth, threshold, 0)
 			if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
 				stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 			}
@@ -368,11 +368,11 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		var histFlagRate, histAvgAbsDelta, histCV float64
 		updatedHistEntries := account.HistoryEntries
 		for monthStr, val := range historyVals {
-			updatedHistEntries = upsertHistoryEntry(updatedHistEntries, grid.CompanyName, monthStr, val)
+			updatedHistEntries = upsertHistoryEntry(updatedHistEntries, clientID, clientName, monthStr, val)
 		}
-		histAvgAbsDelta, histFlagRate, histCV = computeHistoryMetrics(updatedHistEntries, grid.CompanyName, threshold)
-		updatedHistEntries = updateHistoryAvgAbsDelta(updatedHistEntries, grid.CompanyName, histAvgAbsDelta)
-		updatedHistEntries = updateHistoryCoefficientOfVariation(updatedHistEntries, grid.CompanyName, histCV)
+		histAvgAbsDelta, histFlagRate, histCV = computeHistoryMetrics(updatedHistEntries, clientID, threshold)
+		updatedHistEntries = updateHistoryAvgAbsDelta(updatedHistEntries, clientID, histAvgAbsDelta)
+		updatedHistEntries = updateHistoryCoefficientOfVariation(updatedHistEntries, clientID, histCV)
 		if supabaseURL != "" {
 			if err := PatchAccountHistoryAndAvgAbsDelta(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedHistEntries); err != nil {
 				stdlog.Printf("warn: patch history for %q: %v", colALower, err)
@@ -465,7 +465,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 			stdlog.Printf("info: [row %d] %q status: %s", row, colA, fluctuationStatus)
 			if supabaseURL != "" {
-				updatedKEntries := upsertKFlagRate(account.KEntries, grid.CompanyName, k, histFlagRate)
+				updatedKEntries := upsertKFlagRate(account.KEntries, clientID, clientName, k, histFlagRate)
 				if err := PatchAccountKAndFlagRate(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedKEntries); err != nil {
 					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
 				}
@@ -478,7 +478,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			case fluctuationStatus == "fluctuating" || fluctuationStatus == "stable":
 				var agentHistory []map[string]float64
 				for _, e := range updatedHistEntries {
-					if strings.EqualFold(e.Company.Name, grid.CompanyName) {
+					if e.Company.ID == clientID {
 						agentHistory = e.History
 						break
 					}

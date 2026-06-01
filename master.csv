@@ -1,0 +1,486 @@
+code,category
+5100 Direct Labor,wages
+5110 Direct Labor - Wages,wages
+5130 Direct Labor - OT,wages
+5140 Direct Labor - PTO,wages
+5150 Direct Labor - Bonuses,wages
+6000 Payroll,wages
+6020 Payroll - Employees,wages
+6021 Employee Wages,wages
+6024 Employee PTO,wages
+6025 Employee Bonuses,wages
+6404 HSA Contribution,wages
+6405 Worker's Comp,wages
+5100 Direct Labor - COGS,wages
+5101 Direct Labor PR - Wages,wages
+5103 Direct Labor PR - Commiss...,wages
+5104 Direct Labor PR - Health ...,wages
+5105 Direct Labor PR - Wellnes...,wages
+6100 Indirect Labor - Employees,wages
+6101 Employee PR - Wages,wages
+6101.2 Wages - Social Media Ma...,wages
+6101.3 Wages - Social Media Ad...,wages
+6101.4 Wages - SEM,wages
+6101.5 Wages - Sales,wages
+6101.6 Wages - Video,wages
+52100-000 Payroll Expenses,wages
+52101-000 Salaries and Wages,wages
+52103-001 Benefits,wages
+53100-000 Payroll Expenses,wages
+53101-000 Salaries and Wages,wages
+53103-001 Benefits,wages
+60010-000 Payroll Expenses,wages
+60011-000 Salaries and Wages,wages
+65100-000 Payroll Expenses,wages
+65101-000 Salaries and Wages,wages
+5001 Direct Labor - Wages,wages
+6350 Payroll Expenses,wages
+3-65500 Payroll Expenses,wages
+3-65520 Bonuses,wages
+3-65530 Salaries and Wages,wages
+6450 Payroll Expenses,wages
+6451 Salaries and Wages,wages
+6454 Workers Comp,wages
+60000 Payroll Expenses,wages
+6020 Payroll Expenses,wages
+6022 Wages,wages
+6400 Payroll Expenses,wages
+6401 Employee Wages,wages
+6404 Employee Bonus,wages
+6403 Bradley Feldman - Payroll,wages
+6404 Jacci Pearce - Payroll,wages
+6000 Payroll Expenses,wages
+6001 Wages,wages
+5001 Direct Labor Salaries & Wages,wages
+5002 Direct Labor Employer Taxes,wages
+6003 Indirect Salaries & Wages,wages
+6009 Bonus,wages
+6025 Payroll Expenses,wages
+6030 Wages,wages
+5503 Sales - Salary,wages
+6350 Payroll & Other Employee Exp.,wages
+6351 Payroll Services,wages
+6356 Salaries & Wages,wages
+6358 Overtime,wages
+6359 Margin Bonus,wages
+6360 PTO,wages
+6361 Bonus & Incentives,wages
+5010 Direct Labor,wages
+5021 DL - EE Wages,wages
+5023 DL - Bonus,wages
+6023 Employee Bonus,wages
+51100-000 Payroll Expenses,wages
+51110-000 Salaries and Wages,wages
+51130-001 Benefits,wages
+60014-001 Benefits,wages
+65102-001 Benefits,wages
+5020 Direct Payroll Expenses,wages
+5021 Employee PR - DL Wages,wages
+5023 Employee PR - DL PTO,wages
+5120 The Garage Agency - Direct Payroll Expen...,wages
+5220 The TREAD Agency - Direct Payroll Expenses,wages
+5221 The TREAD Agency - DL Wages,wages
+6000 Indirect Payroll Expenses,wages
+6020 Payroll Expenses - Employee,wages
+6021 Employee PR - Wages,wages
+6023 Employee PR - PTO,wages
+6024 Employee PR - Bonuses,wages
+6030 Payroll Expense - 401k EE Match,wages
+6031 Payroll Expense - Medical Benefits,wages
+6033 Payroll Expense - Worker'...,wages
+4-65500 Payroll Expenses,wages
+4-65530 Salaries and Wages,wages
+5100 Direct Payroll Expense,wages
+5101 Direct Wages,wages
+6000 Payroll Expense,wages
+6025 Benefits,wages
+60002 Salaries & Wages,wages
+60005 Bonus,wages
+60006 Profit Share Contributions,wages
+1-54000 Direct Labor,wages
+1-65500 Payroll Expenses,wages
+1-65520 Bonuses,wages
+1-65530 Salaries and Wages,wages
+1-65540 Tech Salaries,wages
+6550 Payroll Expenses,wages
+6551 Salaries & Wages,wages
+6553 Employer Taxes & Benefits,wages
+6555 Bonus,wages
+6556 Unemployement Benefits,wages
+5001 Direct Wages,wages
+6700 Payroll & Employee Expenses,wages
+6701 Salaries & Wages,wages
+6705 401K Match,wages
+6706 Health Benefits,wages
+6707 Other Benefits,wages
+6709 Bonus,wages
+5100 Direct Salaries & Benefits,wages
+5130 Direct Labor - 401K,wages
+5150 Direct Labor - Bonus,wages
+5180 Direct Labor - Worker's Comp,wages
+5185 Direct Labor - Other Benefits,wages
+6100 Indirect Salaries & Benefits,wages
+6110 Employee PR - Wages,wages
+6111 Employee PR - Bonus,wages
+6140 Employee PR - PTO,wages
+6180 Employee PR - Worker's Comp,wages
+6220 Retirement & Benefits,wages
+5310 Payroll - Direct,wages
+5315 Benefits - Direct,wages
+5330 Vacation - Direct,wages
+6010 Payroll - G&A,wages
+6015 Benefits - G&A,wages
+6030 Vacation - G&A,wages
+6002 Salaries & Wages,wages
+6004 Employee Bonus,wages
+6011 PTO Expense,wages
+6450 Payroll Benefits,wages
+55000 Direct Labor,wages
+60001 Salaries & Wages,wages
+60006 Bonus,wages
+50015 Direct Labor,wages
+60020 Wages,wages
+60040 401K Match,wages
+60050 Bonus,wages
+60070 Other Benefits,wages
+50063 Fulfillment Center Wages,wages
+60000 Payroll Expense,wages
+60010 Salaries & Wages,wages
+60031 401K Match,wages
+60040 Bonus,wages
+6300 Indirect Payroll Expenses,wages
+51200 Direct Labor,wages
+64000 Payroll Expenses,wages
+64100 Wages,wages
+64500 Bonus,wages
+22100-000 401k Withholding,wages
+22200-001 Payroll Clearing,wages
+22200-002 Payroll benefits,wages
+6600 Office Supplies & Software,subscriptions
+6200 Computer Software & Inter...,subscriptions
+6300 Dues & Subscriptions,subscriptions
+62500 Dues and Subscriptions,subscriptions
+5040 Software COGS - Apps & Other,subscriptions
+6151 Dues & Subscriptions,subscriptions
+6158 Software & apps,subscriptions
+60101-000 Dues and Subscriptions,subscriptions
+65270-000 Dues and Subscriptions,subscriptions
+12700-000 Software Development Costs,subscriptions
+5004 Software & App COGS,subscriptions
+6201 Dues & Subscription,subscriptions
+6206 Software & Apps,subscriptions
+2-61000 Dues and Subscriptions,subscriptions
+3-61000 Dues and Subscriptions,subscriptions
+6250 Dues and Subscriptions,subscriptions
+40000 Monthly Membership Fees,subscriptions
+62500 Dues & Subscriptions,subscriptions
+6130 Dues & Subscriptions,subscriptions
+5005 Software & App COGS,subscriptions
+"6275 Software, Apps, Subscriptions",subscriptions
+6153 Dues & Subscriptions,subscriptions
+6158 Software & Apps,subscriptions
+6040 Dues & Membership,subscriptions
+6041 Douglas Elliman Dues,subscriptions
+6045 Other Dues & Memberships,subscriptions
+6300 Systems & Software,subscriptions
+6715 Software Expense,subscriptions
+6055 Dues and Subscriptions,subscriptions
+6063 Software Expenses,subscriptions
+6101 Dues & Subscriptions,subscriptions
+6100 Dues and Subscriptions,subscriptions
+6155 Office Software,subscriptions
+5003 Software & Apps - COGS,subscriptions
+6307 Software & Apps,subscriptions
+5004 SaaS Software,subscriptions
+6155 Software & Apps,subscriptions
+40100-000 Membership Dues,subscriptions
+40100-007 Premium Membership,subscriptions
+40100-008 Community Subscription,subscriptions
+6352 Apps & Software,subscriptions
+6353 Dues & Subscriptions,subscriptions
+4-64600 Dues & Subscriptions,subscriptions
+5200 Production Software,subscriptions
+6152 Software & Applications,subscriptions
+6903 Dues & Subscriptions,subscriptions
+60500 Dues and Subscriptions,subscriptions
+1-61000 Dues and Subscriptions,subscriptions
+6401 Dues & Subscriptions,subscriptions
+6405 Software,subscriptions
+6300 Memberships & Subscriptions,subscriptions
+6301 Software & Applications,subscriptions
+6302 Dues & Subscriptions,subscriptions
+6450 Office Supplies & Software,subscriptions
+5210 Software & Subscriptions,subscriptions
+6404 Software Expenses,subscriptions
+6052 Association Dues,subscriptions
+6215 Computer Software,subscriptions
+6255 Subscriptions,subscriptions
+6101 Computer Software,subscriptions
+6200 Dues and Subscriptions,subscriptions
+6204 Software Subscriptions,subscriptions
+40000 Membership Dues,subscriptions
+41000 Membership Fees,subscriptions
+62275 Dues & Subscription,subscriptions
+62500 Office Supplies & Software,subscriptions
+50020 Software and Tools Subsc...,subscriptions
+61550 Software & Apps,subscriptions
+69030 Dues and Subscriptions,subscriptions
+6004 Office Supplies & Software,subscriptions
+69030 Dues & Subscriptions,subscriptions
+6203 Dues & Subscriptions,subscriptions
+6205 Software & Computer Expen...,subscriptions
+63031 Dues & Subscriptions,subscriptions
+5120 Direct Labor - Taxes,pr_taxes
+6022 Employee Taxes,pr_taxes
+5102 Direct Labor PR - Taxes,pr_taxes
+6102 Employee PR - Taxes,pr_taxes
+52103-000 Payroll Taxes,pr_taxes
+53103-000 Payroll Taxes,pr_taxes
+60014-000 Payroll Taxes,pr_taxes
+65102-000 Payroll Taxes,pr_taxes
+5002 Direct Labor - Taxes,pr_taxes
+3-65550 Payroll Taxes,pr_taxes
+6452 Payroll Taxes,pr_taxes
+60005 Payroll Taxes,pr_taxes
+6023 Payroll Tax Expense,pr_taxes
+6402 Employee Taxes,pr_taxes
+6412 Employer Tax,pr_taxes
+6354 Payroll Taxes,pr_taxes
+51120-000 Payroll Taxes,pr_taxes
+6022 Employee PR - Taxes,pr_taxes
+4-65550 Payroll Taxes,pr_taxes
+5102 Direct Payroll Taxes,pr_taxes
+6002 Payroll Taxes,pr_taxes
+60003 Payroll Taxes,pr_taxes
+1-65550 Payroll Taxes,pr_taxes
+5002 Direct Payroll Taxes,pr_taxes
+6703 Payroll Taxes,pr_taxes
+6120 Employee PR - Taxes,pr_taxes
+5320 Payroll Taxes - Direct,pr_taxes
+5005 Direct Support Payroll Taxes,pr_taxes
+6007 Payroll Taxes,pr_taxes
+60030 Payroll Taxes,pr_taxes
+60020 Payroll Taxes,pr_taxes
+22200-003 Payroll tax paya...,pr_taxes
+22301-000 Federal Income Tax Payable,pr_taxes
+6030 Payroll Processing Fees,pr_fees
+6031 401K Processing Fee,pr_fees
+6032 Payroll Fees - HSA,pr_fees
+6110 Payroll Fees,pr_fees
+65108-000 Payroll Processing Fees,pr_fees
+6355 Payroll Fees,pr_fees
+3-65510 Payroll Processing Fees,pr_fees
+6453 Payroll Processing Fees,pr_fees
+60006 Payroll Processing Fees,pr_fees
+5003 Direct Labor - PR Fees,pr_fees
+6403 Payroll Fees,pr_fees
+6407 ADP Payroll Fees,pr_fees
+6006 Payroll Processing Fees,pr_fees
+6030 Payroll Fees,pr_fees
+6032 Payroll Expense - PR Fees,pr_fees
+4-65510 Payroll Processing Fees,pr_fees
+6004 Payroll Fees,pr_fees
+60004 Payroll Processing Fee,pr_fees
+1-65510 Payroll Processing Fees,pr_fees
+6558 Payroll Processing Fee,pr_fees
+6708 Payroll Processing Fees,pr_fees
+6200 Payroll Processing Fees,pr_fees
+6025 Payroll Fees,pr_fees
+6008 Payroll Fees,pr_fees
+6009 401K Processing Fee,pr_fees
+60005 Payroll Fee,pr_fees
+60060 Payroll Fees,pr_fees
+61560 401k Admin,pr_fees
+63011 401K Admin Fees,pr_fees
+6900 Utilities,utilities
+6850 Telephone,utilities
+6950 Utilities,utilities
+61700 Computer and Internet Expe...,utilities
+68100 Telephone Expense,utilities
+68600 Utilities,utilities
+6154 Electric & Gas,utilities
+6155 Phone & Internet Expenses,utilities
+6203 Phone/Internet,utilities
+6801 Gas & Fuel,utilities
+3-61750 Computer and Internet Expenses,utilities
+3-67000 Telephone Expense,utilities
+3-67700 Utilities,utilities
+6750 Telephone Expense,utilities
+6062 Utilities,utilities
+6063 Telephone,utilities
+6064 Internet Expense,utilities
+6375 Utilities,utilities
+6801 Gas & Car Charge,utilities
+6101 Gas,utilities
+6200 Computer and Internet Expenses,utilities
+6800 Telephone Expense,utilities
+6045 Computer and Internet Expen...,utilities
+6115 Utilities,utilities
+6117 Internet & Telephone,utilities
+6065 Utilities,utilities
+5511 Cell Phone Expense - Sales,utilities
+6256 Telephone & Internet,utilities
+6257 Utilities,utilities
+6301 Gas,utilities
+6403 Internet,utilities
+6404 Telephone,utilities
+6308 Telephone & Internet,utilities
+65240-001 Telephone Expense,utilities
+6366 Telephone,utilities
+6367 Utilities,utilities
+4-67000 Telephone Expense,utilities
+4-67700 Utilities,utilities
+61600 Utilities,utilities
+61700 Telephone Expense,utilities
+1-67000 Telephone Expense,utilities
+1-67700 Utilities,utilities
+6103 Phone service,utilities
+6207 Vehicle Gas & Fuel,utilities
+6653 Electricity,utilities
+6654 Internet & TV Services,utilities
+6655 Other Utilities,utilities
+6225 Utilities,utilities
+6230 Cell Phone,utilities
+6231 Internet,utilities
+6233 Phone Service,utilities
+6100 Computer and Internet,utilities
+6800 Utilities,utilities
+6801 Cable & Internet,utilities
+6806 Telephone,utilities
+62850 Utilities,utilities
+63020 Gas / Electric Charging,utilities
+64020 Utilities,utilities
+64030 Telephone,utilities
+64040 Internet,utilities
+62030 Gas/Mileage,utilities
+6204 Internet & Telephone Expe...,utilities
+62000 Office & Utility Expenses,utilities
+62051 Utilities,utilities
+6402 General Liability,insurance
+6403 Health,insurance
+6104 Employee PR - Health Bene...,insurance
+6105 Employee PR - Wellness Benefit,insurance
+3-63020 Health,insurance
+3-63030 Liability,insurance
+3-63050 Umbrella,insurance
+3-63060 Workers Compensation,insurance
+6035 Company Contributions,insurance
+4-63020 Health,insurance
+4-63030 Liability & Property,insurance
+4-65560 Workers Compensation,insurance
+60601 Health,insurance
+60604 Workmans Comp,insurance
+1-63020 Health,insurance
+1-63030 Liability,insurance
+1-63060 Workers Compensation,insurance
+6201 General Liability Insuranc,insurance
+62301 Liability,insurance
+62302 Workmans Comp,insurance
+66080 Worker's Compensation,insurance
+66070 Life/Dental/Vision,insurance
+64400 Company Contributions,insurance
+6102 Lease,rent
+6704 Property Tax,rent
+6725 Storage,rent
+11700-000 Lease Deposits,rent
+6804 Lease Expense,rent
+3-63040 Property,rent
+3-64020 CAM Charges,rent
+3-67640 Property,rent
+6051 Auto and Truck Lease,rent
+6060 Facilities Expense,rent
+4002 Lease Commission,rent
+6107 Property Websites,rent
+6205 US Storage,rent
+6018 Lease,rent
+6060 Facilities,rent
+6066 Facility Repair & Maintenance,rent
+6088 Auto Lease,rent
+5012 Warehouse,rent
+6250 Facilities Expenses,rent
+6252 Commercial Storage Lease,rent
+6401 Taxes - Property,rent
+40200-004 Storage Locker,rent
+6702 Lease,rent
+4-60600 Car Lease,rent
+61402 Property,rent
+1-54250 Meeting Facilities,rent
+1-67640 Property,rent
+6450 Facilities and Equipment,rent
+5006 Facilities & Tools,rent
+6650 Facility & Equipment,rent
+6100 Facility Costs,rent
+6115 Facilities Maintenance,rent
+63010 Lease,rent
+50062 Fulfillment Center Lease,rent
+64040 CAM Expenses,rent
+6450 Building Repairs,rent
+11710-000 Lease Deposits,rent
+12500-001 Furniture - Storage,rent
+23000-000 Short-Term Lease Liabilities,rent
+24000-000 Long-Term Lease Liabilities,rent
+8100 Interest Expense,accounting_fees
+60400 Bank Service Charges,accounting_fees
+63400 Interest Expense,accounting_fees
+6302 QuickBooks Payments Fees,accounting_fees
+6352 Legal Services,accounting_fees
+65510-000 Legal Fees,accounting_fees
+6502 Consulting Fees,accounting_fees
+6600 QuickBooks Payments Fees,accounting_fees
+8003 Interest Expense,accounting_fees
+3-60500 Bank Service Charges,accounting_fees
+3-80000 Interest Expense,accounting_fees
+6100 Bank Service Charges,accounting_fees
+6110 Bank Service Fees,accounting_fees
+82000 Interest Expense,accounting_fees
+6210 QuickBooks Fees,accounting_fees
+6503 Legal Services,accounting_fees
+6505 Consulting Fee,accounting_fees
+8004 Interest Expense,accounting_fees
+6802 Legal Fees,accounting_fees
+"6506 Strategy, Consulting & Im...",accounting_fees
+8200 Interest Expense,accounting_fees
+6025 Bank Service Charges & Fees,accounting_fees
+6027 Finance Charge,accounting_fees
+6076 Legal Expenses,accounting_fees
+6077 Consulting,accounting_fees
+8005 Interest Expense,accounting_fees
+6102 QuickBooks Payments Fees,accounting_fees
+8001 Interest Expense,accounting_fees
+7051 Interest Expense,accounting_fees
+6703 QuickBooks Payments Fees,accounting_fees
+6802 Business Consulting,accounting_fees
+6152 QuickBooks Payment Fees,accounting_fees
+6503 Consulting,accounting_fees
+6802 Legal,accounting_fees
+22400-700 Due to Attorney Share,accounting_fees
+4-80000 Interest Expense,accounting_fees
+60300 Bank Service Charges,accounting_fees
+61003 Legal,accounting_fees
+81000 Interest Expense,accounting_fees
+1-60500 Bank Service Charges,accounting_fees
+1-80000 Interest Expense,accounting_fees
+6602 Legal Services,accounting_fees
+6603 Business Consulting Servi...,accounting_fees
+8025 Interest Expense,accounting_fees
+4200 HR Consulting,accounting_fees
+6353 Melio CC Fees,accounting_fees
+6620 Consulting,accounting_fees
+6630 IT Tech Consulting,accounting_fees
+6640 Legal,accounting_fees
+8020 Interest Expense,accounting_fees
+5435 COGS-Marketing Consulting,accounting_fees
+5445 COGS-PR Consulting,accounting_fees
+6240 IT Consulting/Projects,accounting_fees
+6260 QuickBooks Payments Fees,accounting_fees
+6700 QuickBooks Payments Fees,accounting_fees
+80000 Interest Expense,accounting_fees
+68020 Consulting,accounting_fees
+68060 Legal Fees,accounting_fees
+80020 Interest Expense,accounting_fees
+68020 Consulting Fees - Heartl...,accounting_fees
+68025 Consulting Fees - Scord ...,accounting_fees
+80010 Interest Expense,accounting_fees
+"63000 Adminstrative, Legal, & Taxes",accounting_fees
+81100-000 Interest Expense,accounting_fees
+11750-800 Due from Attorney Share,accounting_fees

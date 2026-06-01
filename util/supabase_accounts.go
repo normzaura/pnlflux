@@ -18,6 +18,7 @@ type ThresholdEntry struct {
 }
 
 type CompanyInfo struct {
+	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
 
@@ -162,7 +163,7 @@ func PatchAccountThreshold(ctx context.Context, httpClient *http.Client, supabas
 // appendThresholdValue adds a new ThresholdValue for the given company into entries.
 // If an entry for that company already exists its thresholds slice is extended;
 // otherwise a new ThresholdEntry is appended.
-func appendThresholdValue(entries []ThresholdEntry, companyName, closingMonth string, value float64, confidence int) []ThresholdEntry {
+func appendThresholdValue(entries []ThresholdEntry, clientID int, clientName, closingMonth string, value float64, confidence int) []ThresholdEntry {
 	tv := ThresholdValue{
 		Value:        value,
 		CreatedOn:    time.Now().UTC().Format(time.RFC3339),
@@ -170,13 +171,13 @@ func appendThresholdValue(entries []ThresholdEntry, companyName, closingMonth st
 		Confidence:   confidence,
 	}
 	for i, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			entries[i].Thresholds = append(entries[i].Thresholds, tv)
 			return entries
 		}
 	}
 	return append(entries, ThresholdEntry{
-		Company:    CompanyInfo{Name: companyName},
+		Company:    CompanyInfo{ID: clientID, Name: clientName},
 		Thresholds: []ThresholdValue{tv},
 	})
 }
@@ -212,9 +213,9 @@ func PatchAccountKAndFlagRate(ctx context.Context, httpClient *http.Client, supa
 }
 
 // findKForCompany returns the k value from the most recent KValue entry for the given company.
-func findKForCompany(entries []KEntry, companyName string) (float64, bool) {
+func findKForCompany(entries []KEntry, clientID int) (float64, bool) {
 	for _, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			if len(e.K) == 0 {
 				return 0, false
 			}
@@ -226,9 +227,9 @@ func findKForCompany(entries []KEntry, companyName string) (float64, bool) {
 
 // upsertKFlagRate updates the flag_rate on the most recent KValue entry for the given company.
 // If no entry exists for the company, a new one is created using kVal.
-func upsertKFlagRate(entries []KEntry, companyName string, kVal, flagRate float64) []KEntry {
+func upsertKFlagRate(entries []KEntry, clientID int, clientName string, kVal, flagRate float64) []KEntry {
 	for i, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			if len(e.K) > 0 {
 				entries[i].K[len(e.K)-1].Stats.FlagRate = flagRate
 			} else {
@@ -241,7 +242,7 @@ func upsertKFlagRate(entries []KEntry, companyName string, kVal, flagRate float6
 		}
 	}
 	return append(entries, KEntry{
-		Company: CompanyInfo{Name: companyName},
+		Company: CompanyInfo{ID: clientID, Name: clientName},
 		K: []KValue{{
 			Value: kVal,
 			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: flagRate},
@@ -281,9 +282,9 @@ func PatchAccountHistoryAndAvgAbsDelta(ctx context.Context, httpClient *http.Cli
 // upsertHistoryEntry appends a month→value entry to the company's history slice.
 // If the month is already recorded it is a no-op (months are unique per company).
 // If no entry exists for the company a new one is created.
-func upsertHistoryEntry(entries []HistoryEntry, companyName, monthStr string, value float64) []HistoryEntry {
+func upsertHistoryEntry(entries []HistoryEntry, clientID int, clientName, monthStr string, value float64) []HistoryEntry {
 	for i, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			for _, h := range e.History {
 				if _, ok := h[monthStr]; ok {
 					return entries
@@ -294,15 +295,15 @@ func upsertHistoryEntry(entries []HistoryEntry, companyName, monthStr string, va
 		}
 	}
 	return append(entries, HistoryEntry{
-		Company: CompanyInfo{Name: companyName},
+		Company: CompanyInfo{ID: clientID, Name: clientName},
 		History: []map[string]float64{{monthStr: value}},
 	})
 }
 
 // updateHistoryAvgAbsDelta sets the avg_absdelta field on the company's HistoryEntry.
-func updateHistoryAvgAbsDelta(entries []HistoryEntry, companyName string, avgAbsDelta float64) []HistoryEntry {
+func updateHistoryAvgAbsDelta(entries []HistoryEntry, clientID int, avgAbsDelta float64) []HistoryEntry {
 	for i, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			entries[i].AvgAbsDelta = avgAbsDelta
 			return entries
 		}
@@ -311,9 +312,9 @@ func updateHistoryAvgAbsDelta(entries []HistoryEntry, companyName string, avgAbs
 }
 
 // updateHistoryCoefficientOfVariation sets the coefficient_of_variation field on the company's HistoryEntry.
-func updateHistoryCoefficientOfVariation(entries []HistoryEntry, companyName string, cv float64) []HistoryEntry {
+func updateHistoryCoefficientOfVariation(entries []HistoryEntry, clientID int, cv float64) []HistoryEntry {
 	for i, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			entries[i].CoefficientOfVariation = cv
 			return entries
 		}
@@ -322,7 +323,7 @@ func updateHistoryCoefficientOfVariation(entries []HistoryEntry, companyName str
 }
 
 // Search if there is a matched special account, if not then it will insert
-func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, k float64, termType, volatility, companyName string) error {
+func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, k float64, termType, volatility string, clientID int, clientName string) error {
 	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
 	if err != nil {
@@ -351,7 +352,7 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 	}
 
 	initialK := []KEntry{{
-		Company: CompanyInfo{Name: companyName},
+		Company: CompanyInfo{ID: clientID, Name: clientName},
 		K: []KValue{{
 			Value: k,
 			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: 0},

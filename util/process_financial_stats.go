@@ -3,7 +3,6 @@ package util
 import (
 	"math"
 	"sort"
-	"strings"
 	"time"
 )
 
@@ -104,10 +103,10 @@ func computeThresholdStats(normVals []float64, k, policyMin float64) (threshold,
 //
 //   - avg_absdelta: mean of all |Δ%| across consecutive months
 //   - flag_rate:    fraction of those deltas that exceed threshold (0 when threshold == 0)
-func computeHistoryMetrics(entries []HistoryEntry, companyName string, threshold float64) (avgAbsDelta, flagRate, cv float64) {
+func computeHistoryMetrics(entries []HistoryEntry, clientID int, threshold float64) (avgAbsDelta, flagRate, cv float64) {
 	var hist []map[string]float64
 	for _, e := range entries {
-		if strings.EqualFold(e.Company.Name, companyName) {
+		if e.Company.ID == clientID {
 			hist = e.History
 			break
 		}
