@@ -27,20 +27,7 @@ type ThresholdValue struct {
 	CreatedOn    string  `json:"created_on"`    // RFC3339
 	ClosingMonth string  `json:"closing_month"` // "MM-YYYY"
 	Confidence   int     `json:"confidence"`
-}
-
-type KEntry struct {
-	K []KValue `json:"k"`
-}
-
-type KValue struct {
-	Value float64 `json:"value"`
-	Stats KStats  `json:"stats"`
-}
-
-type KStats struct {
-	CreatedOn string  `json:"created_on"` // RFC3339
-	FlagRate  float64 `json:"flag_rate"`
+	FlagRate     float64 `json:"flagrate"`
 }
 
 type HistoryEntry struct {
@@ -54,7 +41,7 @@ type HistoryEntry struct {
 type AccountsData struct {
 	Code               string // original case as stored in the DB, used for PATCH filters
 	ThresholdEntries   []ThresholdEntry // used only for preserving history when patching — never for detection
-	KEntries           []KEntry
+	KVal               float64
 	HistoryEntries     []HistoryEntry
 	PolicyMinThreshold float64
 	Type               string
@@ -65,7 +52,7 @@ type AccountsData struct {
 // LoadAccountsData fetches code, threshold, k, and policy_min_threshold
 // from the accounts table in a single request, returning a map of lowercase code → AccountsData.
 func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string) (map[string]AccountsData, error) {
-	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,policy_min_threshold,k_and_flagrate,history_and_avg_absdelta,type,volatility", supabaseURL)
+	fetchURL := fmt.Sprintf("%s/rest/v1/accounts?select=code,threshold,policy_min_threshold,k_val,history_and_avg_absdelta,type,volatility", supabaseURL)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, fetchURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("build accounts request: %w", err)
@@ -111,8 +98,8 @@ func LoadAccountsData(ctx context.Context, httpClient *http.Client, supabaseURL,
 		if pmBytes, ok := row["policy_min_threshold"]; ok && string(pmBytes) != "null" {
 			json.Unmarshal(pmBytes, &d.PolicyMinThreshold) //nolint:errcheck
 		}
-		if kfBytes, ok := row["k_and_flagrate"]; ok && string(kfBytes) != "null" {
-			json.Unmarshal(kfBytes, &d.KEntries) //nolint:errcheck
+		if kvBytes, ok := row["k_val"]; ok && string(kvBytes) != "null" {
+			json.Unmarshal(kvBytes, &d.KVal) //nolint:errcheck
 		}
 		if hBytes, ok := row["history_and_avg_absdelta"]; ok && string(hBytes) != "null" {
 			json.Unmarshal(hBytes, &d.HistoryEntries) //nolint:errcheck
@@ -162,12 +149,13 @@ func PatchAccountThreshold(ctx context.Context, httpClient *http.Client, supabas
 // appendThresholdValue adds a new ThresholdValue for the given company into entries.
 // If an entry for that company already exists its thresholds slice is extended;
 // otherwise a new ThresholdEntry is appended.
-func appendThresholdValue(entries []ThresholdEntry, clientID int, clientName, closingMonth string, value float64, confidence int) []ThresholdEntry {
+func appendThresholdValue(entries []ThresholdEntry, clientID int, clientName, closingMonth string, value float64, confidence int, flagRate float64) []ThresholdEntry {
 	tv := ThresholdValue{
 		Value:        value,
 		CreatedOn:    time.Now().UTC().Format(time.RFC3339),
 		ClosingMonth: closingMonth,
 		Confidence:   confidence,
+		FlagRate:     flagRate,
 	}
 	for i, e := range entries {
 		if e.Company.ID == clientID {
@@ -182,64 +170,6 @@ func appendThresholdValue(entries []ThresholdEntry, clientID int, clientName, cl
 }
 
 
-// PatchAccountKAndFlagRate replaces the k_and_flagrate JSONB array for an account row.
-func PatchAccountKAndFlagRate(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, entries []KEntry) error {
-	body, err := json.Marshal(map[string]interface{}{
-		"k_and_flagrate": entries,
-	})
-	if err != nil {
-		return fmt.Errorf("marshal k_and_flagrate body: %w", err)
-	}
-	patchURL := fmt.Sprintf("%s/rest/v1/accounts?code=eq.%s", supabaseURL, url.QueryEscape(code))
-	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, patchURL, bytes.NewReader(body))
-	if err != nil {
-		return fmt.Errorf("build patch request: %w", err)
-	}
-	req.Header.Set("apikey", supabaseKey)
-	req.Header.Set("Authorization", "Bearer "+supabaseKey)
-	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Prefer", "return=minimal")
-	resp, err := httpClient.Do(req)
-	if err != nil {
-		return fmt.Errorf("patch k_and_flagrate: %w", err)
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusNoContent {
-		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("patch k_and_flagrate returned %d: %s", resp.StatusCode, strings.TrimSpace(string(b)))
-	}
-	return nil
-}
-
-// findKForCompany returns the k value from the most recent KValue entry for the given company.
-func findK(entries []KEntry) (float64, bool) {
-	if len(entries) == 0 || len(entries[0].K) == 0 {
-		return 0, false
-	}
-	return entries[0].K[len(entries[0].K)-1].Value, true
-}
-
-// upsertKFlagRate updates the flag_rate on the most recent KValue entry for the given company.
-// If no entry exists for the company, a new one is created using kVal.
-func upsertKFlagRate(entries []KEntry, kVal, flagRate float64) []KEntry {
-	if len(entries) > 0 {
-		if len(entries[0].K) > 0 {
-			entries[0].K[len(entries[0].K)-1].Stats.FlagRate = flagRate
-		} else {
-			entries[0].K = append(entries[0].K, KValue{
-				Value: kVal,
-				Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: flagRate},
-			})
-		}
-		return entries
-	}
-	return append(entries, KEntry{
-		K: []KValue{{
-			Value: kVal,
-			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: flagRate},
-		}},
-	})
-}
 
 // PatchAccountHistoryAndAvgAbsDelta replaces the history_and_avg_absdelta JSONB array for an account row.
 func PatchAccountHistoryAndAvgAbsDelta(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, entries []HistoryEntry) error {
@@ -339,22 +269,43 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 	}
 
 	if len(rows) > 0 {
-		return nil // row already exists with a threshold set
+		return nil // row already exists
 	}
 
-	initialK := []KEntry{{
-		K: []KValue{{
-			Value: k,
-			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: 0},
-		}},
-	}}
+	excludedURL := fmt.Sprintf("%s/rest/v1/excluded?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
+	excludedReq, err := http.NewRequestWithContext(ctx, http.MethodGet, excludedURL, nil)
+	if err != nil {
+		return fmt.Errorf("build excluded check request: %w", err)
+	}
+	excludedReq.Header.Set("apikey", supabaseKey)
+	excludedReq.Header.Set("Authorization", "Bearer "+supabaseKey)
+	excludedReq.Header.Set("Accept", "application/json")
+
+	excludedResp, err := httpClient.Do(excludedReq)
+	if err != nil {
+		return fmt.Errorf("check excluded: %w", err)
+	}
+	defer excludedResp.Body.Close()
+	if excludedResp.StatusCode != http.StatusOK {
+		return fmt.Errorf("check excluded returned %d", excludedResp.StatusCode)
+	}
+
+	var excludedRows []map[string]json.RawMessage
+	if err := json.NewDecoder(excludedResp.Body).Decode(&excludedRows); err != nil {
+		return fmt.Errorf("decode excluded response: %w", err)
+	}
+
+	if len(excludedRows) > 0 {
+		return nil // code is excluded, do not insert
+	}
+
 	body, err := json.Marshal(map[string]interface{}{
 		"code":                 code,
 		"policy_min_threshold": 0.05,
 		"special_term":         true,
 		"type":                 termType,
 		"volatility":           volatility,
-		"k_and_flagrate":       initialK,
+		"k_val":                k,
 	})
 	if err != nil {
 		return fmt.Errorf("marshal insert body: %w", err)

@@ -309,8 +309,8 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		k, kFound := 0.0, false
-		if kVal, ok := findK(account.KEntries); ok {
-			k = kVal
+		if account.KVal > 0 {
+			k = account.KVal
 			kFound = true
 		} else if matchedSpecialTerm != nil {
 			k = matchedSpecialTerm.k
@@ -357,13 +357,6 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 		stdlog.Printf("info: [row %d] %q threshold: k=%.4f  σ̂=%.4f  k×σ̂=%.4f  policyMin=%.4f  → %.2f%% (%s)",
 			row, colA, k, sigmaHat, k*sigmaHat, policyMin, threshold*100, thresholdSource)
-		if threshold > 0 && supabaseURL != "" {
-			updatedEntries := appendThresholdValue(account.ThresholdEntries, clientID, clientName, closingMonth, threshold, 0)
-			if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
-				stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
-			}
-		}
-
 		// Upsert per-company history and derive avg_absdelta + flag_rate from full history.
 		var histFlagRate, histAvgAbsDelta, histCV float64
 		updatedHistEntries := account.HistoryEntries
@@ -376,6 +369,13 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		if supabaseURL != "" {
 			if err := PatchAccountHistoryAndAvgAbsDelta(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedHistEntries); err != nil {
 				stdlog.Printf("warn: patch history for %q: %v", colALower, err)
+			}
+		}
+
+		if threshold > 0 && supabaseURL != "" {
+			updatedEntries := appendThresholdValue(account.ThresholdEntries, clientID, clientName, closingMonth, threshold, 0, histFlagRate)
+			if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
+				stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
 			}
 		}
 
@@ -464,12 +464,6 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				}
 			}
 			stdlog.Printf("info: [row %d] %q status: %s", row, colA, fluctuationStatus)
-			if supabaseURL != "" {
-				updatedKEntries := upsertKFlagRate(account.KEntries, k, histFlagRate)
-				if err := PatchAccountKAndFlagRate(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedKEntries); err != nil {
-					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
-				}
-			}
 			switch {
 			case !testMode:
 				stdlog.Printf("info: [row %d] %q claude agent: skipped (TEST mode not enabled)", row, colA)
