@@ -30,8 +30,7 @@ type ThresholdValue struct {
 }
 
 type KEntry struct {
-	Company CompanyInfo `json:"company"`
-	K       []KValue    `json:"k"`
+	K []KValue `json:"k"`
 }
 
 type KValue struct {
@@ -213,36 +212,28 @@ func PatchAccountKAndFlagRate(ctx context.Context, httpClient *http.Client, supa
 }
 
 // findKForCompany returns the k value from the most recent KValue entry for the given company.
-func findKForCompany(entries []KEntry, clientID int) (float64, bool) {
-	for _, e := range entries {
-		if e.Company.ID == clientID {
-			if len(e.K) == 0 {
-				return 0, false
-			}
-			return e.K[len(e.K)-1].Value, true
-		}
+func findK(entries []KEntry) (float64, bool) {
+	if len(entries) == 0 || len(entries[0].K) == 0 {
+		return 0, false
 	}
-	return 0, false
+	return entries[0].K[len(entries[0].K)-1].Value, true
 }
 
 // upsertKFlagRate updates the flag_rate on the most recent KValue entry for the given company.
 // If no entry exists for the company, a new one is created using kVal.
-func upsertKFlagRate(entries []KEntry, clientID int, clientName string, kVal, flagRate float64) []KEntry {
-	for i, e := range entries {
-		if e.Company.ID == clientID {
-			if len(e.K) > 0 {
-				entries[i].K[len(e.K)-1].Stats.FlagRate = flagRate
-			} else {
-				entries[i].K = append(entries[i].K, KValue{
-					Value: kVal,
-					Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: flagRate},
-				})
-			}
-			return entries
+func upsertKFlagRate(entries []KEntry, kVal, flagRate float64) []KEntry {
+	if len(entries) > 0 {
+		if len(entries[0].K) > 0 {
+			entries[0].K[len(entries[0].K)-1].Stats.FlagRate = flagRate
+		} else {
+			entries[0].K = append(entries[0].K, KValue{
+				Value: kVal,
+				Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: flagRate},
+			})
 		}
+		return entries
 	}
 	return append(entries, KEntry{
-		Company: CompanyInfo{ID: clientID, Name: clientName},
 		K: []KValue{{
 			Value: kVal,
 			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: flagRate},
@@ -323,7 +314,7 @@ func updateHistoryCoefficientOfVariation(entries []HistoryEntry, clientID int, c
 }
 
 // Search if there is a matched special account, if not then it will insert
-func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, k float64, termType, volatility string, clientID int, clientName string) error {
+func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, code string, k float64, termType, volatility string) error {
 	checkURL := fmt.Sprintf("%s/rest/v1/accounts?select=code&code=eq.%s&limit=1", supabaseURL, url.QueryEscape(code))
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
 	if err != nil {
@@ -352,7 +343,6 @@ func lookupAndUpdateSpecialAccount(ctx context.Context, httpClient *http.Client,
 	}
 
 	initialK := []KEntry{{
-		Company: CompanyInfo{ID: clientID, Name: clientName},
 		K: []KValue{{
 			Value: k,
 			Stats: KStats{CreatedOn: time.Now().UTC().Format(time.RFC3339), FlagRate: 0},

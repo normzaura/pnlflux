@@ -200,7 +200,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				e := entry
 				matchedSpecialTerm = &e
 				if supabaseURL != "" {
-					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.k, entry.termType, entry.volatility, clientID, clientName); err != nil {
+					if err := lookupAndUpdateSpecialAccount(ctx, httpClient, supabaseURL, supabaseKey, colALower, entry.k, entry.termType, entry.volatility); err != nil {
 						return nil, nil, ProcessStats{}, fmt.Errorf("lookup and update special account %q: %w", colALower, err)
 					}
 				}
@@ -309,7 +309,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 		}
 
 		k, kFound := 0.0, false
-		if kVal, ok := findKForCompany(account.KEntries, clientID); ok {
+		if kVal, ok := findK(account.KEntries); ok {
 			k = kVal
 			kFound = true
 		} else if matchedSpecialTerm != nil {
@@ -465,7 +465,7 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 			stdlog.Printf("info: [row %d] %q status: %s", row, colA, fluctuationStatus)
 			if supabaseURL != "" {
-				updatedKEntries := upsertKFlagRate(account.KEntries, clientID, clientName, k, histFlagRate)
+				updatedKEntries := upsertKFlagRate(account.KEntries, k, histFlagRate)
 				if err := PatchAccountKAndFlagRate(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedKEntries); err != nil {
 					stdlog.Printf("warn: patch k_and_flagrate for %q: %v", colALower, err)
 				}
