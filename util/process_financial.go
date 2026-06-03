@@ -66,18 +66,26 @@ func DownloadAndProcess(ctx context.Context, httpClient *http.Client, attachment
 	results := map[string][]byte{}
 	logs := map[string][]byte{}
 	statsMap := map[string]ProcessStats{}
+	currentAccounts := accounts
 	for _, a := range financialsAttachments {
 		data, err := downloadAttachment(ctx, httpClient, a)
 		if err != nil {
 			return nil, nil, nil, nil, fmt.Errorf("download %s: %w", a.FileName, err)
 		}
-		processed, logBytes, stats, err := ProcessFinancials(ctx, httpClient, data, a.FileName, accounts, tbRows, supabaseURL, supabaseKey, clientID, clientName)
+		processed, logBytes, stats, err := ProcessFinancials(ctx, httpClient, data, a.FileName, currentAccounts, tbRows, supabaseURL, supabaseKey, clientID, clientName)
 		if err != nil {
 			return nil, nil, nil, nil, fmt.Errorf("process %s: %w", a.FileName, err)
 		}
 		results[a.FileName] = processed
 		logs[a.FileName] = logBytes
 		statsMap[a.FileName] = stats
+
+		// Reload accounts so the next file sees history/threshold updates written by this file.
+		if supabaseURL != "" && len(financialsAttachments) > 1 {
+			if refreshed, rerr := LoadAccountsData(ctx, httpClient, supabaseURL, supabaseKey); rerr == nil {
+				currentAccounts = refreshed
+			}
+		}
 	}
 	return results, logs, statsMap, tbRows, nil
 }
