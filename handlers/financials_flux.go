@@ -29,8 +29,13 @@ var (
 	SupabaseURL   string
 	SupabaseKey   string
 
-	clientLocks sync.Map // map[int]*sync.Mutex — one mutex per clientID
+	clientStates sync.Map // map[int]*clientProcessState
 )
+
+type clientProcessState struct {
+	mu         sync.Mutex
+	lastFinish time.Time
+}
 
 // zapierTaskPayload matches the exact JSON Zapier sends on a
 // Double HQ "Task Status Update" trigger. All numeric IDs arrive as strings.
@@ -109,11 +114,21 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		}
 	}()
 
-	// Serialize processing per client to prevent concurrent webhooks for the
-	// same client from racing on Supabase history/threshold patches.
-	mu, _ := clientLocks.LoadOrStore(clientID, &sync.Mutex{})
-	mu.(*sync.Mutex).Lock()
-	defer mu.(*sync.Mutex).Unlock()
+	// Serialize processing per client and enforce a 15s gap between consecutive
+	// runs so Supabase patches from the previous run are fully visible.
+	stateVal, _ := clientStates.LoadOrStore(clientID, &clientProcessState{})
+	state := stateVal.(*clientProcessState)
+	state.mu.Lock()
+	defer func() {
+		state.lastFinish = time.Now()
+		state.mu.Unlock()
+	}()
+	if !state.lastFinish.IsZero() {
+		if wait := 15*time.Second - time.Since(state.lastFinish); wait > 0 {
+			Logger.Info("consecutive client run — waiting before processing", "client_id", clientID, "wait_ms", wait.Milliseconds())
+			time.Sleep(wait)
+		}
+	}
 
 	ctx := context.Background()
 
