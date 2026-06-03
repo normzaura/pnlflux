@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -27,6 +28,8 @@ var (
 	S3            *util.S3Client
 	SupabaseURL   string
 	SupabaseKey   string
+
+	clientLocks sync.Map // map[int]*sync.Mutex — one mutex per clientID
 )
 
 // zapierTaskPayload matches the exact JSON Zapier sends on a
@@ -105,6 +108,12 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 			Logger.Error("panic in processZapierPost", "recover", r, "doubleTask_id", doubleTaskID)
 		}
 	}()
+
+	// Serialize processing per client to prevent concurrent webhooks for the
+	// same client from racing on Supabase history/threshold patches.
+	mu, _ := clientLocks.LoadOrStore(clientID, &sync.Mutex{})
+	mu.(*sync.Mutex).Lock()
+	defer mu.(*sync.Mutex).Unlock()
 
 	ctx := context.Background()
 
