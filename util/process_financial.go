@@ -372,13 +372,6 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 		}
 
-		if threshold > 0 && supabaseURL != "" {
-			updatedEntries := appendThresholdValue(account.ThresholdEntries, clientID, clientName, closingMonth, threshold, 0, histFlagRate)
-			if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
-				stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
-			}
-		}
-
 		// Write threshold value into the analysis columns for this row.
 		if testMode && threshold > 0 {
 			if cellName, err := excelize.CoordinatesToCellName(analysisLastCol+4, row); err == nil {
@@ -464,6 +457,16 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 				}
 			}
 			stdlog.Printf("info: [row %d] %q status: %s", row, colA, fluctuationStatus)
+			if threshold > 0 && supabaseURL != "" {
+				effectiveFlagRate := histFlagRate
+				if fluctuationStatus == "dollar_suppressed" {
+					effectiveFlagRate = 0
+				}
+				updatedEntries := appendThresholdValue(account.ThresholdEntries, clientID, clientName, closingMonth, threshold, 0, effectiveFlagRate)
+				if err := PatchAccountThreshold(ctx, httpClient, supabaseURL, supabaseKey, patchCode, updatedEntries); err != nil {
+					stdlog.Printf("warn: patch threshold for %q: %v", colALower, err)
+				}
+			}
 			switch {
 			case !testMode:
 				stdlog.Printf("info: [row %d] %q claude agent: skipped (TEST mode not enabled)", row, colA)
