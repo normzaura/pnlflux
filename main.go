@@ -27,12 +27,6 @@ func startServer() {
 	pnlfluxHandler.SupabaseURL = cfg.SupabaseURL
 	pnlfluxHandler.SupabaseKey = cfg.SupabaseKey
 
-	accounts, err := util.LoadAccountsData(context.Background(), pnlfluxHandler.HttpClient, cfg.SupabaseURL, cfg.SupabaseKey)
-	if err != nil {
-		log.Fatalf("failed to load accounts from supabase: %v", err)
-	}
-	pnlfluxHandler.Accounts = accounts
-
 	s3Client, err := util.NewS3Client(context.Background(), cfg.S3Bucket)
 	if err != nil {
 		log.Fatalf("failed to create s3 client: %v", err)

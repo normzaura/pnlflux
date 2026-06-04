@@ -22,7 +22,6 @@ var (
 	HttpClient    *http.Client
 	DoubleBase    string
 	Tokens        *util.TokenProvider
-	Accounts      map[string]util.AccountsData
 	S3            *util.S3Client
 	SupabaseURL   string
 	SupabaseKey   string
