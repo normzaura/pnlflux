@@ -8,12 +8,10 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/normzaura/pnlflux/util"
@@ -29,13 +27,8 @@ var (
 	SupabaseURL   string
 	SupabaseKey   string
 
-	clientStates sync.Map // map[int]*clientProcessState
+	clientLocks sync.Map // map[int]*sync.Mutex — one mutex per clientID
 )
-
-type clientProcessState struct {
-	mu         sync.Mutex
-	lastFinish time.Time
-}
 
 // zapierTaskPayload matches the exact JSON Zapier sends on a
 // Double HQ "Task Status Update" trigger. All numeric IDs arrive as strings.
@@ -114,31 +107,11 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 		}
 	}()
 
-	// Serialize processing per client and enforce a 15s gap between consecutive
-	// runs so Supabase patches from the previous run are fully visible.
-	stateVal, _ := clientStates.LoadOrStore(clientID, &clientProcessState{})
-	state := stateVal.(*clientProcessState)
-	state.mu.Lock()
-	defer func() {
-		state.lastFinish = time.Now()
-		state.mu.Unlock()
-	}()
-	if !state.lastFinish.IsZero() {
-		if wait := 15*time.Second - time.Since(state.lastFinish); wait > 0 {
-			Logger.Info("consecutive client run — waiting before processing", "client_id", clientID, "wait_ms", wait.Milliseconds())
-			time.Sleep(wait)
-		}
-	}
+	mu, _ := clientLocks.LoadOrStore(clientID, &sync.Mutex{})
+	mu.(*sync.Mutex).Lock()
+	defer mu.(*sync.Mutex).Unlock()
 
 	ctx := context.Background()
-
-	bufferSecs := 20 // DEFAULT VALUE, REPLACED BY ENV SET VALUE
-	if v, err := strconv.Atoi(os.Getenv("POST_REQUEST_BUFFER")); err == nil && v > 0 {
-		bufferSecs = v
-	} else {
-		Logger.Warn("POST_REQUEST_BUFFER not set or invalid, using default", "default_secs", bufferSecs)
-	}
-	time.Sleep(time.Duration(bufferSecs) * time.Second)
 
 	files, err := util.FilterClientAttachedFiles(ctx, HttpClient, DoubleBase, Tokens, clientID, doubleTaskID)
 	if err != nil {

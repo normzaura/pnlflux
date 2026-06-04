@@ -159,6 +159,12 @@ func appendThresholdValue(entries []ThresholdEntry, clientID int, clientName, cl
 	}
 	for i, e := range entries {
 		if e.Company.ID == clientID {
+			for j, t := range e.Thresholds {
+				if t.ClosingMonth == closingMonth {
+					entries[i].Thresholds[j].FlagRate = flagRate
+					return entries
+				}
+			}
 			entries[i].Thresholds = append(entries[i].Thresholds, tv)
 			return entries
 		}
