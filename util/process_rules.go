@@ -15,7 +15,7 @@ func isBalanceSheetCode(colA string) bool {
 		return false
 	}
 	var ch byte
-	if idx := strings.IndexByte(code, '-'); idx != -1 && idx+1 < len(code) {
+	if idx := strings.IndexByte(code, '-'); idx == 1 && idx+1 < len(code) {
 		ch = code[idx+1]
 	} else {
 		ch = code[0]
