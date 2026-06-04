@@ -119,7 +119,7 @@ func processZapierPost(clientID, doubleTaskID int, clientName string) {
 	}
 
 	if len(files.TaskAttachments) == 0 {
-		Logger.Info("zapData has no attached files", "doubleTask_id", doubleTaskID)
+		Logger.Warn("no files attached to task in Double HQ", "client_id", clientID, "doubleTask_id", doubleTaskID)
 		return
 	}
 
