@@ -41,7 +41,7 @@ func SyncClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL,
 		return nil
 	}
 
-	if err := deleteClientClosed(ctx, httpClient, supabaseURL, supabaseKey, companyID); err != nil {
+	if err := DeleteClientClosed(ctx, httpClient, supabaseURL, supabaseKey, companyID); err != nil {
 		return err
 	}
 	return insertClosed(ctx, httpClient, supabaseURL, supabaseKey, rows)
@@ -51,7 +51,12 @@ func isQuarterlyPeriod(yearMonth string) bool {
 	return len(yearMonth) >= 2 && (yearMonth[0] == 'Q' || yearMonth[0] == 'q')
 }
 
-func deleteClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string, companyID int) error {
+// IsQuarterlyPeriod reports whether a yearMonth string represents a quarterly period.
+func IsQuarterlyPeriod(yearMonth string) bool {
+	return isQuarterlyPeriod(yearMonth)
+}
+
+func DeleteClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string, companyID int) error {
 	deleteURL := fmt.Sprintf("%s/rest/v1/closed?company_id=eq.%s", supabaseURL, url.QueryEscape(fmt.Sprintf("%d", companyID)))
 	req, err := http.NewRequestWithContext(ctx, http.MethodDelete, deleteURL, nil)
 	if err != nil {
