@@ -18,13 +18,15 @@ import (
 )
 
 var (
-	Logger        *slog.Logger
-	HttpClient    *http.Client
-	DoubleBase    string
-	Tokens        *util.TokenProvider
-	S3            *util.S3Client
-	SupabaseURL   string
-	SupabaseKey   string
+	Logger            *slog.Logger
+	HttpClient        *http.Client
+	DoubleBase        string
+	Tokens            *util.TokenProvider
+	S3                *util.S3Client
+	SupabaseURL       string
+	SupabaseKey       string
+	ClosedSupabaseURL string
+	ClosedSupabaseKey string
 
 	clientLocks sync.Map // map[int]*sync.Mutex — one mutex per clientID
 )

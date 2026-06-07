@@ -38,7 +38,7 @@ func HandleClosedUpdate(c *gin.Context) {
 	}
 
 	ctx := c.Request.Context()
-	if err := util.UpsertClosedRow(ctx, HttpClient, SupabaseURL, SupabaseKey, payload.ClientID, date, payload.Status); err != nil {
+	if err := util.UpsertClosedRow(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, payload.ClientID, date, payload.Status); err != nil {
 		Logger.Error("failed to upsert closed row",
 			"client_id", payload.ClientID,
 			"year_month", payload.YearMonth,

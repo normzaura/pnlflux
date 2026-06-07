@@ -3,6 +3,7 @@ package handler
 import (
 	"context"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/normzaura/pnlflux/util"
@@ -38,11 +39,12 @@ func runEndClosesExport() {
 		if len(closes) == 0 {
 			continue
 		}
-		if err := util.SyncClientClosed(ctx, HttpClient, SupabaseURL, SupabaseKey, client.ID, closes); err != nil {
+		if err := util.SyncClientClosed(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, client.ID, closes); err != nil {
 			Logger.Error("end-closes export: failed to sync closed", "client_id", client.ID, "client_name", client.Name, "err", err)
 			continue
 		}
 		Logger.Info("end-closes export: synced client", "client_id", client.ID, "client_name", client.Name, "count", len(closes))
+		time.Sleep(5 * time.Second)
 	}
 
 	Logger.Info("end-closes export: complete")
