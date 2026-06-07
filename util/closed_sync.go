@@ -28,7 +28,7 @@ func SyncClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL,
 	for _, ec := range closes {
 		date, err := yearMonthToDate(ec.YearMonth)
 		if err != nil {
-			continue
+			return fmt.Errorf("yearMonth parse failed (raw value: %q): %w", ec.YearMonth, err)
 		}
 		rows = append(rows, ClosedRow{
 			Status:    ec.Status,
