@@ -18,14 +18,14 @@ type ClosedRow struct {
 }
 
 // SyncClientClosed replaces all closed rows for a company with fresh data from Double HQ.
-// It deletes existing rows for the company then inserts the new set.
+// Closes with quarterly dates (Q1–Q4) are silently skipped.
+// Delete only runs if at least one valid row exists, preventing accidental data loss.
 func SyncClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string, companyID int, closes []EndCloseSummary) error {
-	if err := deleteClientClosed(ctx, httpClient, supabaseURL, supabaseKey, companyID); err != nil {
-		return err
-	}
-
 	var rows []ClosedRow
 	for _, ec := range closes {
+		if isQuarterlyPeriod(ec.YearMonth) {
+			continue
+		}
 		date, err := yearMonthToDate(ec.YearMonth)
 		if err != nil {
 			return fmt.Errorf("yearMonth parse failed (raw value: %q): %w", ec.YearMonth, err)
@@ -40,7 +40,15 @@ func SyncClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL,
 	if len(rows) == 0 {
 		return nil
 	}
+
+	if err := deleteClientClosed(ctx, httpClient, supabaseURL, supabaseKey, companyID); err != nil {
+		return err
+	}
 	return insertClosed(ctx, httpClient, supabaseURL, supabaseKey, rows)
+}
+
+func isQuarterlyPeriod(yearMonth string) bool {
+	return len(yearMonth) >= 2 && (yearMonth[0] == 'Q' || yearMonth[0] == 'q')
 }
 
 func deleteClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string, companyID int) error {
