@@ -36,7 +36,8 @@ func startServer() {
 	r := gin.Default()
 
 	r.POST("/webhooks/financialsflux", pnlfluxHandler.HandleFinancialsFlux)
-	r.GET("/updatemonthstatus", pnlfluxHandler.HandleExportEndCloses)
+	r.GET("/webhooks/closedsync", pnlfluxHandler.HandleClosedSync)
+	r.POST("/webhooks/updateclosed", pnlfluxHandler.HandleClosedUpdate)
 
 	log.Println("Server running on :8080")
 	if err := r.Run(":8080"); err != nil {
