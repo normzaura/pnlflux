@@ -31,7 +31,7 @@ func HandleClosedUpdate(c *gin.Context) {
 		return
 	}
 
-	date, err := util.YearMonthToDate(payload.YearMonth)
+	date, err := util.MMYYYYToDate(payload.YearMonth)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("invalid yearMonth: %s", err)})
 		return

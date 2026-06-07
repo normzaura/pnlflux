@@ -2,7 +2,9 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/normzaura/pnlflux/util"
@@ -22,19 +24,33 @@ func runEndClosesExport() {
 
 	ctx := context.Background()
 
-	const testClientID = 511616
-	closes, err := util.FetchClientEndCloses(ctx, HttpClient, DoubleBase, Tokens, testClientID)
+	clients, err := util.FetchAllClients(ctx, HttpClient, DoubleBase, Tokens)
 	if err != nil {
-		Logger.Error("end-closes export: failed to fetch end-closes", "client_id", testClientID, "err", err)
+		Logger.Error("end-closes export: failed to fetch clients", "err", err)
 		return
 	}
-	Logger.Info("end-closes export: fetched closes", "client_id", testClientID, "count", len(closes))
-	if len(closes) > 0 {
-		if err := util.SyncClientClosed(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, testClientID, closes); err != nil {
-			Logger.Error("end-closes export: failed to sync closed", "client_id", testClientID, "err", err)
-			return
+	Logger.Info("end-closes export: fetched clients", "count", len(clients))
+
+	for _, client := range clients {
+		closes, err := util.FetchClientEndCloses(ctx, HttpClient, DoubleBase, Tokens, client.ID)
+		if err != nil {
+			Logger.Error("end-closes export: failed to fetch end-closes", "client_id", client.ID, "client_name", client.Name, "err", err)
+			continue
 		}
-		Logger.Info("end-closes export: synced client", "client_id", testClientID, "count", len(closes))
+		if len(closes) == 0 {
+			continue
+		}
+		companyID := fmt.Sprintf("%d", client.ID)
+		if err := util.EnsureCompanyExists(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, companyID, client.Name); err != nil {
+			Logger.Error("end-closes export: failed to ensure company", "client_id", client.ID, "client_name", client.Name, "err", err)
+			continue
+		}
+		if err := util.SyncClientClosed(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, client.ID, closes); err != nil {
+			Logger.Error("end-closes export: failed to sync closed", "client_id", client.ID, "client_name", client.Name, "err", err)
+			continue
+		}
+		Logger.Info("end-closes export: synced client", "client_id", client.ID, "client_name", client.Name, "count", len(closes))
+		time.Sleep(5 * time.Second)
 	}
 
 	Logger.Info("end-closes export: complete")

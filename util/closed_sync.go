@@ -134,8 +134,16 @@ func UpsertClosedRow(ctx context.Context, httpClient *http.Client, supabaseURL, 
 	})
 }
 
-// YearMonthToDate converts "MM-YYYY" to "YYYY-MM-26" for Postgres date columns.
+// YearMonthToDate converts "YYYYMM" (Double HQ API format) to "YYYY-MM-26" for Postgres date columns.
 func YearMonthToDate(yearMonth string) (string, error) {
+	if len(yearMonth) == 6 {
+		return yearMonth[:4] + "-" + yearMonth[4:] + "-26", nil
+	}
+	return "", fmt.Errorf("unrecognized yearMonth format: %s", yearMonth)
+}
+
+// MMYYYYToDate converts "MM-YYYY" (webhook payload format) to "YYYY-MM-26" for Postgres date columns.
+func MMYYYYToDate(yearMonth string) (string, error) {
 	if len(yearMonth) == 7 && yearMonth[2] == '-' {
 		return yearMonth[3:] + "-" + yearMonth[:2] + "-26", nil
 	}
@@ -144,4 +152,61 @@ func YearMonthToDate(yearMonth string) (string, error) {
 
 func yearMonthToDate(yearMonth string) (string, error) {
 	return YearMonthToDate(yearMonth)
+}
+
+// EnsureCompanyExists checks if a company exists in public.companies and creates it if not.
+func EnsureCompanyExists(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, companyID, companyName string) error {
+	checkURL := fmt.Sprintf("%s/rest/v1/companies?id=eq.%s&select=id&limit=1", supabaseURL, url.QueryEscape(companyID))
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, checkURL, nil)
+	if err != nil {
+		return fmt.Errorf("build company check request: %w", err)
+	}
+	req.Header.Set("apikey", supabaseKey)
+	req.Header.Set("Authorization", "Bearer "+supabaseKey)
+	req.Header.Set("Accept", "application/json")
+
+	resp, err := httpClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("check company: %w", err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("check company returned %d", resp.StatusCode)
+	}
+
+	var rows []json.RawMessage
+	if err := json.NewDecoder(resp.Body).Decode(&rows); err != nil {
+		return fmt.Errorf("decode company check: %w", err)
+	}
+	if len(rows) > 0 {
+		return nil
+	}
+
+	body, err := json.Marshal(map[string]string{
+		"id":           companyID,
+		"company_name": companyName,
+	})
+	if err != nil {
+		return fmt.Errorf("marshal company: %w", err)
+	}
+	insertURL := fmt.Sprintf("%s/rest/v1/companies", supabaseURL)
+	req, err = http.NewRequestWithContext(ctx, http.MethodPost, insertURL, bytes.NewReader(body))
+	if err != nil {
+		return fmt.Errorf("build company insert request: %w", err)
+	}
+	req.Header.Set("apikey", supabaseKey)
+	req.Header.Set("Authorization", "Bearer "+supabaseKey)
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Prefer", "return=minimal")
+
+	resp2, err := httpClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("insert company: %w", err)
+	}
+	defer resp2.Body.Close()
+	if resp2.StatusCode != http.StatusCreated {
+		b, _ := io.ReadAll(resp2.Body)
+		return fmt.Errorf("insert company returned %d: %s", resp2.StatusCode, strings.TrimSpace(string(b)))
+	}
+	return nil
 }
