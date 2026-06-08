@@ -23,9 +23,6 @@ type ClosedRow struct {
 func SyncClientClosed(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey string, companyID int, closes []EndCloseSummary) error {
 	var rows []ClosedRow
 	for _, ec := range closes {
-		if isQuarterlyPeriod(ec.YearMonth) {
-			continue
-		}
 		date, err := yearMonthToDate(ec.YearMonth)
 		if err != nil {
 			return fmt.Errorf("yearMonth parse failed (raw value: %q): %w", ec.YearMonth, err)

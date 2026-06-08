@@ -37,20 +37,10 @@ func runEndClosesExport() {
 			Logger.Error("end-closes export: failed to fetch end-closes", "client_id", client.ID, "client_name", client.Name, "err", err)
 			continue
 		}
-		var validCloses []util.EndCloseSummary
-		for _, ec := range closes {
-			if !util.IsQuarterlyPeriod(ec.YearMonth) {
-				validCloses = append(validCloses, ec)
-			}
-		}
-		companyID := fmt.Sprintf("%d", client.ID)
-		if len(validCloses) == 0 {
-			if err := util.DeleteClientClosed(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, client.ID); err != nil {
-				Logger.Error("end-closes export: failed to delete quarterly-only client", "client_id", client.ID, "client_name", client.Name, "err", err)
-			}
+		if len(closes) == 0 {
 			continue
 		}
-		closes = validCloses
+		companyID := fmt.Sprintf("%d", client.ID)
 		if err := util.EnsureCompanyExists(ctx, HttpClient, ClosedSupabaseURL, ClosedSupabaseKey, companyID, client.Name); err != nil {
 			Logger.Error("end-closes export: failed to ensure company", "client_id", client.ID, "client_name", client.Name, "err", err)
 			continue
