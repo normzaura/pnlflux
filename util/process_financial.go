@@ -277,7 +277,16 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			}
 		}
 
-		// Collect raw monthly values for history tracking (all months, raw amounts).
+		// Determine if this row should normalize against total income.
+		// Code-5 rows and rows matching 'gross profit' both divide by total income.
+		itemCode := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
+		var divisorCells []string
+		if grid.TotalIncomeCells != nil && (strings.HasPrefix(itemCode, "5") || strings.Contains(colALower, "gross profit")) {
+			divisorCells = grid.TotalIncomeCells
+		}
+
+		// Collect monthly values for history tracking.
+		// Gross profit rows store normalized values (monthly / total income); all others store raw amounts.
 		historyVals := make(map[string]float64)
 		for _, col := range grid.MonthCols {
 			if col >= len(cells) || strings.TrimSpace(cells[col]) == "" {
@@ -287,20 +296,18 @@ func ProcessFinancials(ctx context.Context, httpClient *http.Client, data []byte
 			if parseErr != nil {
 				continue
 			}
+			if divisorCells != nil && col < len(divisorCells) && strings.TrimSpace(divisorCells[col]) != "" {
+				d, dErr := parseAmount(divisorCells[col])
+				if dErr == nil && d != 0 {
+					v = v / d
+				}
+			}
 			for _, m := range grid.ParsedMonths {
 				if m.col == col+1 {
 					historyVals[fmt.Sprintf("%02d-%d", int(m.month), m.year)] = v
 					break
 				}
 			}
-		}
-
-		// Determine if this row should normalize against total income.
-		// Code-5 rows and rows matching 'gross profit' both divide by total income.
-		itemCode := strings.SplitN(strings.TrimSpace(colA), " ", 2)[0]
-		var divisorCells []string
-		if grid.TotalIncomeCells != nil && (strings.HasPrefix(itemCode, "5") || strings.Contains(colALower, "gross profit")) {
-			divisorCells = grid.TotalIncomeCells
 		}
 
 		patchCode := account.Code
