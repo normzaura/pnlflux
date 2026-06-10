@@ -103,59 +103,10 @@ func insertClosed(ctx context.Context, httpClient *http.Client, supabaseURL, sup
 	return nil
 }
 
-// UpsertClosedRow updates the status for an existing company+date row, or inserts it if absent.
-func UpsertClosedRow(ctx context.Context, httpClient *http.Client, supabaseURL, supabaseKey, companyID, date, status string) error {
-	body, err := json.Marshal(map[string]string{"status": status})
-	if err != nil {
-		return fmt.Errorf("marshal patch body: %w", err)
-	}
-
-	patchURL := fmt.Sprintf("%s/rest/v1/closed?company_id=eq.%s&date=eq.%s",
-		supabaseURL, url.QueryEscape(companyID), url.QueryEscape(date))
-	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, patchURL, bytes.NewReader(body))
-	if err != nil {
-		return fmt.Errorf("build patch request: %w", err)
-	}
-	req.Header.Set("apikey", supabaseKey)
-	req.Header.Set("Authorization", "Bearer "+supabaseKey)
-	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Prefer", "return=representation")
-
-	resp, err := httpClient.Do(req)
-	if err != nil {
-		return fmt.Errorf("patch closed: %w", err)
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("patch closed returned %d: %s", resp.StatusCode, strings.TrimSpace(string(b)))
-	}
-
-	var updated []json.RawMessage
-	if err := json.NewDecoder(resp.Body).Decode(&updated); err != nil {
-		return fmt.Errorf("decode patch response: %w", err)
-	}
-	if len(updated) > 0 {
-		return nil
-	}
-
-	return insertClosed(ctx, httpClient, supabaseURL, supabaseKey, []ClosedRow{
-		{Status: status, CompanyID: companyID, Date: date},
-	})
-}
-
 // YearMonthToDate converts "YYYYMM" (Double HQ API format) to "YYYY-MM-26" for Postgres date columns.
 func YearMonthToDate(yearMonth string) (string, error) {
 	if len(yearMonth) == 6 {
 		return yearMonth[:4] + "-" + yearMonth[4:] + "-26", nil
-	}
-	return "", fmt.Errorf("unrecognized yearMonth format: %s", yearMonth)
-}
-
-// MMYYYYToDate converts "MM-YYYY" (webhook payload format) to "YYYY-MM-26" for Postgres date columns.
-func MMYYYYToDate(yearMonth string) (string, error) {
-	if len(yearMonth) == 7 && yearMonth[2] == '-' {
-		return yearMonth[3:] + "-" + yearMonth[:2] + "-26", nil
 	}
 	return "", fmt.Errorf("unrecognized yearMonth format: %s", yearMonth)
 }

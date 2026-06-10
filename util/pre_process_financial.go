@@ -151,7 +151,8 @@ func buildSheetGrid(f *excelize.File, sheet string) (*SheetGrid, error) {
 			if len(c) == 0 {
 				continue
 			}
-			if strings.EqualFold(strings.TrimSpace(c[0]), "total income") {
+			colALower := strings.ToLower(strings.TrimSpace(c[0]))
+			if strings.Contains(colALower, "total") && strings.Contains(colALower, "income") {
 				evaluated := make([]string, len(c))
 				for i, v := range c {
 					evaluated[i] = v

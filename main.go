@@ -42,7 +42,6 @@ func startServer() {
 
 	r.POST("/webhooks/financialsflux", pnlfluxHandler.HandleFinancialsFlux)
 	r.GET("/webhooks/closedsync", pnlfluxHandler.HandleClosedSync)
-	r.POST("/webhooks/updateclosed", pnlfluxHandler.HandleClosedUpdate)
 
 	log.Println("Server running on :8080")
 	if err := r.Run(":8080"); err != nil {
