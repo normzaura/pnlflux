@@ -31,22 +31,10 @@ var (
 	clientLocks sync.Map // map[int]*sync.Mutex — one mutex per clientID
 )
 
-// zapierTaskPayload matches the exact JSON Zapier sends on a
-// Double HQ "Task Status Update" trigger. All numeric IDs arrive as strings.
 type zapierTaskPayload struct {
-	TaskID         string `json:"taskId"`
-	DoubleTaskName string `json:"name"`
-	ClientID       string `json:"clientId"`
-	ClientName     string `json:"clientName"`
-	AssigneeID     string `json:"assigneeId"`
-	AssigneeName   string `json:"assigneeName"`
-	NewStatus      string `json:"newStatus"`
-	OldStatus      string `json:"oldStatus"`
-	Section        string `json:"section"`
-	DueDate        string `json:"dueDate"`
-	IsHighPriority string `json:"isHighPriority"`
-	Type           string `json:"type"`
-	UpdatedTime    string `json:"updatedTime"`
+	ClientID   string `json:"clientId"`
+	TaskID     string `json:"taskId"`
+	ClientName string `json:"clientName"`
 }
 
 // The process starts from a Zapier POST
@@ -77,24 +65,7 @@ func HandleFinancialsFlux(c *gin.Context) {
 		return
 	}
 
-	Logger.Info("financials flux webhook received",
-		"doubleTask_id", doubleTaskID,
-		"name", zapData.DoubleTaskName,
-		"status", zapData.NewStatus,
-		"client_id", clientID,
-	)
-
-	if !strings.EqualFold(zapData.DoubleTaskName, "automated review") {
-		Logger.Info("ignoring double task, task name is not 'automated review'", "name", zapData.DoubleTaskName)
-		c.JSON(http.StatusOK, gin.H{"received": true})
-		return
-	}
-
-	if !strings.EqualFold(zapData.NewStatus, "In Progress") {
-		Logger.Info("ignoring double task, status is not 'In Progress'", "status", zapData.NewStatus)
-		c.JSON(http.StatusOK, gin.H{"received": true})
-		return
-	}
+	Logger.Info("financials flux webhook received", "doubleTask_id", doubleTaskID, "client_id", clientID)
 
 	c.JSON(http.StatusOK, gin.H{"received": true})
 
